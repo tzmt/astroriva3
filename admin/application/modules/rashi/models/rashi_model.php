@@ -1,4 +1,4 @@
-<?php
+<?php 
 	if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Rashi_model extends CI_Model{
