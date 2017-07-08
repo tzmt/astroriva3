@@ -1,82 +1,63 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<style>
-table { 
-color: #333;
-font-family: Helvetica, Arial, sans-serif;
-width: 70%; 
-border-collapse: 
-collapse; border-spacing: 0; 
-}
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>student/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Dashboard</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>	
 
-td, th { 
-border: 1px solid transparent; /* No more visible border */
-height: 30px; 
-transition: all 0.3s;  /* Simple transition for hover effect */
-}
+	<div class="container">
+		<div class="row">
+			<?php require "sidebar.php"; ?>
 
-th {
-background: #DFDFDF;  /* Darken header a bit */
-font-weight: bold;
-}
-
-td {
-background: #FAFAFA;
-text-align: left;
-padding-left: 10px;
-}
-
-/* Cells in even rows (2,4,6...) are one color */ 
-tr:nth-child(even) td { background: #F1F1F1;}   
-
-/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */ 
-tr:nth-child(odd) td { background: #FEFEFE; }  
-
-/*tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */*/
-</style>							
-				<div class="col-md-9 col-sm-7 blog-content">
-					<?php //foreach($all_data as $dat){ ?>
+			<div class="col-sm-9 padding-right">					
 					<div class="entry-header">										
 						<h3>DETAILS</h3>						
 					</div>
-					<div class="entry-post">
-						<table>
-							<tr>
-							    <th >Specification</th>
-							    <th style=>Details</th>							    
-							</tr>
-							<tr>
-								<td style="">Name</td>
-								<td><?php echo $all_data->name; ?></td>
-							</tr>
-							<tr>
-								<td>Email</td>
-								<td><?php echo $all_data->email; ?></td>
-							</tr>
-							<tr>
-								<td>Phone</td>
-								<td><?php echo $all_data->phone; ?></td>
-							</tr>
-							<tr>
-								<td>Date Of Birth</td>
-								<td><?php echo $all_data->dob; ?></td>
-							</tr>
-							<tr>
-								<td>Time Of Birth</td>
-								<td><?php echo $all_data->tob; ?></td>
-							</tr>
-							<tr>
-								<td>Place Of Birth</td>
-								<td><?php echo $all_data->pob; ?></td>
-							</tr>							
-						</table>
-						
-					</div>
-					<hr/>
-					<?php //} ?>
-									
-							
-				</div>
-				</div>
+					
+
+					<table class="table table-bordered">
+	                    <tr>
+	                        <td><strong>Name</strong></td>
+	                        <td><?php echo $all_data->name; ?></td>
+	                    </tr>
+	                    <tr>
+	                        <td><strong>Email</strong></td>
+	                        <td><?php echo $all_data->email; ?></td>
+	                    </tr>	                    
+	                    <tr>
+	                        <td><strong>Phone</strong></td>
+	                        <td><?php echo $all_data->phone; ?></td>
+	                    </tr>	                    
+	                    <tr>
+	                        <td><strong>Date Of Birth</strong></td>
+	                        <td><?php echo $all_data->dob; ?></td>
+	                    </tr>	                    
+	                    <tr>
+	                        <td><strong>Time Of Birth</strong></td>
+	                        <td><?php echo $all_data->tob; ?></td>
+	                    </tr>
+	                    <tr>
+	                        <td><strong>Place Of Birth</strong></td>
+	                        <td><?php echo $all_data->pob; ?></td>
+	                    </tr>
+                	</table>
+					
+								
+			</div>
 		</div>
+	</div>		
 	</section>
-				
+

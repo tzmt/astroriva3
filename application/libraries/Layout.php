@@ -46,14 +46,14 @@ class Layout {
         if ($default == 'astrologer') {
             $this->CI->load->view('includes/header', $params);
             $this->CI->load->view('includes/menu', $this->data);
-            $this->CI->load->view('includes/astrologer_sidebar', $this->data);
+            // $this->CI->load->view('includes/astrologer_sidebar', $this->data);
             $this->CI->load->view($view_name, $params);            
             $this->CI->load->view('includes/footer', $this->data);
         }
         if ($default == 'student') {
             $this->CI->load->view('includes/header', $params);
             $this->CI->load->view('includes/menu', $this->data);
-            $this->CI->load->view('includes/student_sidebar', $this->data);
+            //$this->CI->load->view('includes/student_sidebar', $this->data);
             $this->CI->load->view($view_name, $params);            
             $this->CI->load->view('includes/footer', $this->data);
         }

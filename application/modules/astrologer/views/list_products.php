@@ -1,8 +1,30 @@
-<div class="col-md-9 col-sm-7 blog-content" style="margin-top: -78px;">
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Product Listing</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>	
+<div class="container">
+		<div class="row">
+			<?php require "sidebar.php"; ?>	
+				<div class="col-md-9 col-sm-7 blog-content">
 					<div class="replay-box">
 						<div class="row">
 							<div class="col-md-12">
-								<h3>Product Listing</h3>
+								<h3></h3>
 								<?php if($this->session->flashdata('error')){ ?>
 								<div style="padding:10px;background:#f8dcdc;color:red;margin-bottom:10px;text-align:center;border:1px solid red"><?php echo $this->session->flashdata('error'); ?></div>
 								<?php } ?>
@@ -13,18 +35,24 @@
 								<div class="row">
 									<?php foreach($products as $prod){ ?>
 									<?php $product_image = $this->db->limit(1)->get_where('product_images',array('product_id'=>$prod->id))->row()->image; ?>
-									<div class="col-md-3" style="margin:10px;border:2px solid #eee;padding:5px">
+									<div class="col-sm-3" style="margin:10px;border:2px solid #eee;padding:5px">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<a class="product-image" href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>">							
+														<img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/>
+													</a>
+													<h2><i class="fa fa-rupee"></i> <?php echo $prod->price ?></h2>
+													<p><?php echo $prod->name; ?></p>
+													
+													
+													<p><a href="javascript:void(0)" data-toggle="modal" data-target="#edit<?php echo $prod->id; ?>" style="color:blue"><span class="pull-left"><strong>Edit</strong></span></a></p>
 
-										<a class="product-image" href="<?php echo base_url(); ?>astrologer-details/<?php echo $this->session->userdata('user')->id; ?>/<?php echo strtolower(str_replace(" ","-",$this->session->userdata('user')->name)); ?>/products/<?php echo $prod->id; ?>/<?php echo strtolower(str_replace(" ","-",$prod->name)); ?>/">							
-											<img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" width="100%" height="231px;" alt="<?php echo $prod->name; ?>" style="width:100% !important;height:231px !important;" />
-										</a>
-										<div class="product-name" style="margin-top:10px;">
-											<p><span class="pull-left"><strong><?php echo $prod->name ?></strong></span> <span class="pull-right"><i class="fa fa-rupee"></i> <?php echo $prod->price ?></span></p><br/>
-											<p>
-												<a href="javascript:void(0)" data-toggle="modal" data-target="#edit<?php echo $prod->id; ?>" style="color:blue"><span class="pull-left"><strong>Edit</strong></span></a>
-
-												<span class="pull-right"><strong><a href="<?php echo base_url(); ?>astrologer/delete_products/<?php echo $prod->id;?>" style="color:red;">Delete</a></strong></span></p>
+													<p><span class="pull-right"><strong><a href="<?php echo base_url(); ?>astrologer/delete_products/<?php echo $prod->id;?>" style="color:red;">Delete</a></strong></span></p>
+												</div>									
+											</div>							
 										</div>
+										
 									</div>
 
 

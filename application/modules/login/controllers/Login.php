@@ -27,7 +27,8 @@ class Login extends MX_Controller {
 
 			if($this->form_validation->run() == FALSE)
 			{
-				echo validation_errors();
+				$this->session->set_flashdata('error',validation_errors());		
+				redirect('login');	
 			}
 			else
 			{
@@ -35,12 +36,28 @@ class Login extends MX_Controller {
 				$post_data['password'] = $this->input->post('password');
 				$post_data['type'] = $this->input->post('type');
 				if($this->login_model->login_check($post_data))
-				{
-					echo 1;			
+				{	
+					if($post_data['type'] == 1)
+					{
+						redirect('astrologer/dashboard/');	
+					}
+
+					if($post_data['type'] == 2)
+					{
+						redirect('student/dashboard/');	
+					}
+
+					if($post_data['type'] == 1)
+					{
+
+					}
+
+						
 				}
 				else
-				{
-					echo "Invalid login details / Or you may have not verified your email";					
+				{					
+					$this->session->set_flashdata('error',"Invalid login details / Or you may have not verified your email");	
+					redirect('login');					
 				}
 			}
 		}
@@ -69,7 +86,8 @@ class Login extends MX_Controller {
 
 			if($this->form_validation->run() == FALSE)
 			{
-				echo validation_errors();				
+				$this->session->set_flashdata('error',validation_errors());		
+				redirect('login');		
 			}
 			else
 			{
@@ -93,12 +111,15 @@ class Login extends MX_Controller {
 					$this->email->message($msg);	
 
 					$this->email->send();
-					echo "A verification email has been sent to your email. Please verify it.";	
+					
+					$this->session->set_flashdata('success',"A verification email has been sent to your email. Please verify it.");
+					redirect("login/");	
 					
 				}
 				else
-				{
-					echo "Email id or phone number already exist.";										
+				{					
+					$this->session->set_flashdata('error',"Email id or phone number already exist.");
+					redirect("login/");										
 				}
 			}
 		}

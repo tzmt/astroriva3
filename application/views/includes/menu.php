@@ -158,7 +158,12 @@
                             </ul>
                         </li> -->
                         <li class="header_li">
-                            <a href="<?php echo base_url(); ?>login/" class="text-info">Login / Signup</a>
+                            <?php
+                                if($this->session->userdata('astro_student') != "" || $this->session->userdata('user') != "" || $this->session->userdata('astro_client') != ""){?>
+                                <a href="<?php echo base_url(); ?>login/logout/" class="text-info" style="color:#fff;font-weight: bold;background: #ed5e5e;">Logout</a>
+                            <?php } else {?>
+                                <a href="<?php echo base_url(); ?>login/" class="text-info">Login / Signup</a>
+                            <?php } ?>
                         </li>
                         <!-- <li class="header_li">
                             <a href="<?php //echo base_url(); ?>contact/" class="text-info">Contact Us</a>

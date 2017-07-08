@@ -17,165 +17,84 @@
         </div>
     </div>
 </section>
-
 <section>
-
 	<div class="container">
-
 		<div class="row">
-
 			<div class="col-sm-3">
-
 				<div class="left-sidebar">
-
 					<h2>Category</h2>
-
 					<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-
 						<?php foreach($category as $cat){ ?>
-
 						<?php $q = $this->db->get_where('shop_category',array('category_id'=>$cat->id)); ?>
-
 						<div class="panel panel-default">
-
 							<div class="panel-heading">
-
 								<h4 class="panel-title">
-
 									<?php if($q->num_rows() > 0){ ?>
-
 									<a data-toggle="collapse" data-parent="#accordian" href="#<?php echo strtolower($cat->name); ?>">
-
 										<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-
 										<?php echo $cat->name; ?>
-
 									</a>
-
 									<?php } else { ?>
-
 									<h4 class="panel-title"><a href="<?php echo base_url(); ?>shop/category/<?php echo strtolower($cat->name); ?>"><?php echo $cat->name; ?></a></h4>
-
 									<?php } ?>
-
 								</h4>
-
 							</div>
-
 							<?php if($q->num_rows() > 0){ ?>
-
 							<div id="<?php echo strtolower($cat->name); ?>" class="panel-collapse collapse">
-
 								<div class="panel-body">
-
 									<ul>
-
 										<?php $q1 = $q->result(); ?>
-
 										<?php foreach($q1 as $q2){ ?>
-
 										<li><a href="<?php echo base_url(); ?>shop/category/<?php echo strtolower($cat->name); ?>/<?php echo strtolower($q2->name); ?>"><?php echo $q2->name; ?> </a></li>
-
 										<?php } ?>
-
 									</ul>
-
 								</div>
-
 							</div>
-
 							<?php } ?>
-
 						</div>
-
 						<?php } ?>						
-
 					</div><!--/category-productsr-->
-
 					
-
 					<div class="shipping text-center"><!--shipping-->
-
 						<img src="<?php echo ASSETS; ?>shop/images/home/shipping.jpg" alt="" />
-
 					</div><!--/shipping-->
-
 					
-
 				</div>
-
 			</div>
-
 			
-
 			<div class="col-sm-9 padding-right" style="margin-top: 20px;">
-
 				<div class="features_items"><!--features_items-->
-
 					<?php if(count($products) == 0){ ?>
-
 					<h2 class="title text-center">No Products Available</h2>
-
 					<?php } ?>
-
 					<?php if(count($products) > 0){ ?>
-
 					<?php foreach($products as $prod){ ?>
-
 					<?php $product_image = $this->db->limit(1)->get_where('product_images',array('product_id'=>$prod->id))->row()->image; ?>
-
 						<div class="col-sm-4">
-
 							<div class="product-image-wrapper">
-
 								<div class="single-products">
-
 									<div class="productinfo text-center">
-
 										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>"><img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/></a>
-
 										<h2><i class="fa fa-rupee"></i> <?php echo $prod->price ?></h2>
-
 										<p><?php echo $prod->name; ?></p>
-
 										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>" class="btn btn-default add-to-cart"><i class="fa fa-view"></i>View Details</a>
-
 									</div>									
-
 								</div>							
-
 							</div>
-
 						</div>
-
 					<?php } ?>
-
 					<div class="row col-md-12 text-center">
-
 						<ul class="pagination">
-
 							<li class="active"><a href="#">1</a></li>
-
 							<li><a href="#">2</a></li>
-
 							<li><a href="#">3</a></li>
-
 							<li><a href="#">&raquo;</a></li>
-
 						</ul>
-
 					</div>
-
 					<?php }  ?>
-
 						
-
 				</div><!--features_items-->
-
 			</div>
-
 		</div>
-
 	</div>
-
 </section>

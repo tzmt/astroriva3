@@ -765,5 +765,74 @@ class Astrology extends MX_Controller{
 			}
 		}
 	}
+
+
+	public function books()
+	{
+		if($this->input->post())
+		{
+			$this->form_validation->set_rules('name','Name','required');
+			$this->form_validation->set_rules('author','Author Name','required');
+			$this->form_validation->set_rules('rashi','Rashi Name ','required');
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->session->Set_flashdata('error',validation_errors());
+				redirect('astrology/books/');
+			}
+			else
+			{
+				$dir = '../assets/books/image/';
+				$ext = end(explode('.',$_FILES['file']['name']));
+				$files = time().rand(00000,99999).'.'.$ext;
+				move_uploaded_file($_FILES['file']['tmp_name'], $dir.$files);
+
+				$dir = '../assets/books/pdf/';
+				$ext = end(explode('.',$_FILES['book']['name']));
+				$pdf = str_replace(" ",'-',$this->input->post('name')).'.'.$ext;
+				move_uploaded_file($_FILES['book']['tmp_name'], $dir.$pdf);
+				
+				$post_data['name'] = $this->input->post('name');
+				$post_data['author'] = $this->input->post('author');
+				$post_data['image'] = $files;
+				$post_data['rashi'] = $this->input->post('rashi');
+				$post_data['file'] = $pdf;
+
+				if($this->db->insert("books",$post_data))
+				{
+					$this->session->set_flashdata('success',"Books Added Successfully");
+					redirect('astrology/books/');
+				}
+				else
+				{
+					$this->session->set_flashdata('error',"Please try again");
+					redirect('astrology/books/');
+				}
+			}
+		}
+		else
+		{
+			$data['all_data'] = $this->db->get_where("books")->result();
+			$this->layout->view('books',$data,'normal');	
+		}
+	}
+
+
+	public function delete_books($id,$image,$books)
+	{				
+		$this->db->where('id',$id);
+		$q = $this->db->delete('books');						
+		unlink('../assets/books/image/'.$image);
+		unlink('../assets/books/pdf/'.$image);
+		if($q)
+		{
+			$this->session->set_flashdata('success',"Books Deleted Successfully");
+			redirect('astrology/books/');
+		}
+		else
+		{
+			$this->session->set_flashdata('error',"Please try again");
+			redirect('astrology/books/');
+		}
+	}
 	
 }

@@ -1,9 +1,30 @@
-							
-				<div class="col-md-9 col-sm-7 blog-content" style="margin-top: -78px;">
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Edit Profile</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>								
+		<div class="container">
+		<div class="row">
+			<?php require "sidebar.php"; ?>			
+			<div class="col-md-9 col-sm-7 blog-content">
 					<div class="replay-box">
 						<div class="row">
 							<div class="col-md-12">
-								<h3>Edit Profile</h3>
+								<h3></h3>
 								<?php if($this->session->flashdata('error')){ ?>
 								<div style="padding:10px;background:#f8dcdc;color:red;margin-bottom:10px;text-align:center;border:1px solid red"><?php echo $this->session->flashdata('error'); ?></div>
 								<?php } ?>
@@ -60,7 +81,7 @@
 
 										</div>
 										<div class="form-group">
-											<button type="submit" class="btn btn-default pull-right">Submit</button>
+											<button type="submit" class="btn btn-primary pull-right">Submit</button>
 										</div>
 									</div>
 									
@@ -82,37 +103,17 @@
 
 								</div>								
 								<?php foreach($astrologers as $ast){ ?>		
-								<div class="col-sm-3 text-center">
-
-									<div class="team-member">
-
-										<img class="img-responsive" src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" />						
-
-										<div class="member-text">							
-
-											<h5><?php echo $ast->name; ?></h5>
-											<h6><a href="">TIPS</a></h6>
-											<h6><a href="">PREDICTION</a></h6>
-											<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo str_replace(" ","-",$ast->name); ?>">VIEW DETAILS</a></h6>
-											<h6><a href="">PRODUTCS</a></h6>
-
-											<ul class="social-icons">
-
-												<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-
-												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-
-												<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-
-												<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-
-											</ul>
-
-										</div>						
-
-									</div>
-
-								</div>	
+									<div class="col-md-2" style="margin-bottom: 10px;text-align: center;">
+										<div class="team-member">
+											<div class="col-md-12" style="margin-bottom: 15px;">
+												<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+											</div>
+											<div class="member-text">			
+												<h5><?php echo $ast->name; ?></h5>
+												<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+											</div>						
+										</div>
+									</div>	
 								<?php } ?>														
 
 							</div>

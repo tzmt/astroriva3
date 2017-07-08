@@ -894,3 +894,7 @@ label {
 .showhide{
   display: none;
 }
+
+.success{color:green;padding:10px;text-align:center;border:1px solid green;margin-top:10px;margin-bottom:-10px}
+
+.error{color:red;padding:10px;text-align:center;border:1px solid red;margin-top:10px;margin-bottom:-10px}

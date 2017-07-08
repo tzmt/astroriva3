@@ -22,7 +22,7 @@ class Student extends MX_Controller {
 	}
 
 	public function index()
-	{		
+	{				
 		$this->dashboard();
 	}
 
@@ -67,7 +67,7 @@ class Student extends MX_Controller {
 		}
 		else
 		{
-			$data['astrologers'] = $this->student_model->getAstrologers();
+			//$data['astrologers'] = $this->student_model->getAstrologers();
 			$data['all_data'] = $this->student_model->getStudentData();	
 			$this->layout->view('edit_profile',$data,'student');
 		}		
@@ -88,10 +88,14 @@ class Student extends MX_Controller {
 		}
 		else
 		{
+			$q = $this->db->select('image')->get_where('student',array('id'=>$this->session->userdata('astro_student')->id))->row()->image;
+			unlink('./assets/student/'.$q);
+
 			$data = $this->upload->data();
 			$this->db->where('id',$this->session->userdata('astro_student')->id);
 			$arr = array('image'=>$data['file_name']);
 			$this->db->update('student',$arr);
+
 			$this->session->set_flashdata('success','Profile Picture Updated Successfully');
 			redirect('student/profile');
 		}

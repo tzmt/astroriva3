@@ -75,7 +75,7 @@ class Astrologer extends MX_Controller {
 	}
 
 	public function changePhoto()
-	{
+	{		
 		$config['upload_path'] = './assets/astrologer/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '200';		
@@ -89,6 +89,10 @@ class Astrologer extends MX_Controller {
 		}
 		else
 		{
+			$q = $this->db->select('image')->get_where('student',array('id'=>$this->session->userdata('astro_astrologer')->id))->row()->image;
+			unlink('./assets/astrologer/'.$q);
+
+
 			$data = $this->upload->data();
 			$this->db->where('id',$this->session->userdata('user')->id);
 			$arr = array('image'=>$data['file_name']);
