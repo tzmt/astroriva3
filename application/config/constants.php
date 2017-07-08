@@ -86,7 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 /*CUSTOM DEFINES*/
-define('URL','http://localhost/astroriva3/');
+define('URL','http://localhost/Github/astroriva3/');
 define('ASSETS',URL.'assets/');
 define('CSS',URL.'assets/css');
 define('JS',URL.'assets/js');

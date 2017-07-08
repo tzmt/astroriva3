@@ -85,9 +85,9 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 /*CUSTOM DEFINES*/
-define('SITE_URL','http://localhost/astroriva3/');
-define('MAIN_URL','http://localhost/astroriva3/admin/');
-define('URL','http://localhost/astroriva3/admin/');
+define('SITE_URL','http://localhost/Github/astroriva3/');
+define('MAIN_URL','http://localhost/Github/astroriva3/admin/');
+define('URL','http://localhost/Github/astroriva3/admin/');
 define('ASSETS',URL.'assets/');
 define('CSS',URL.'assets/css');
 define('JS',URL.'assets/js');
