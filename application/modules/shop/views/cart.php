@@ -1,13 +1,33 @@
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>shop/" class="font13">Shop</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Cart</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="cart_items">
-		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
-				</ol>
-			</div>
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
+		<div class="container">			
+			<div class="elements_desc font14 gemstone_align">
+				<table class="table table-bordered">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Item</td>
@@ -23,7 +43,7 @@
 						<?php foreach($this->cart->contents() as $cart){ ?>
 						<tr>
 							<td class="cart_product">
-								<a href="#"><img src="<?php echo ASSETS; ?>products/<?php echo $cart['options']['image'] ?>" width="50px" alt=""></a>
+								<a href="#"><img src="<?php echo ASSETS; ?>products/<?php echo $cart['options']['image'] ?>" width="100px" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="#"><?php echo $cart['name']; ?></a></h4>		
@@ -41,7 +61,7 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price" id="price<?php echo $cart['id']; ?>"><i class="fa fa-rupee"></i><?php echo $cart['qty']* $cart['price']; ?></p>
+								<p class="cart_total_price" id="price<?php echo $cart['id']; ?>"><i class="fa fa-rupee"></i> <?php echo $cart['qty']* $cart['price']; ?></p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href="<?php echo base_url(); ?>shop/remove/<?php echo $cart['rowid']; ?>"><i class="fa fa-times"></i></a>
@@ -51,28 +71,10 @@
 						
 					</tbody>
 				</table>
+				<div class="pull-right"><a class="btn btn-primary check_out" href="<?php echo base_url(); ?>shop/checkout/">Check Out</a></div>
 			</div>
 		</div>
-	</section> <!--/#cart_items-->
-
-	<section id="do_action">
-		<div class="container">
-			<div class="heading">
-				<h3>Proceed to checkout?</h3>				
-			</div>
-			<div class="row">				
-				<div class="col-sm-6">
-					<div class="total_area">
-						<ul>							
-							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span><i class="fa fa-rupee"></i><?php echo $this->cart->total(); ?></span></li>
-						</ul>							
-							<a class="btn btn-default check_out" href="<?php echo base_url(); ?>shop/checkout/">Check Out</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section><!--/#do_action-->
+	</section> <br/><br/><br/>
 
 	<script>
 	function UpdateOrders(qty,rowid,price,id)

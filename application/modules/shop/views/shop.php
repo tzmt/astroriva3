@@ -70,7 +70,7 @@
 					<?php if(count($products) > 0){ ?>
 					<?php foreach($products as $prod){ ?>
 					<?php $product_image = $this->db->limit(1)->get_where('product_images',array('product_id'=>$prod->id))->row()->image; ?>
-						<div class="col-sm-4">
+						<div class="col-sm-4" style="margin-bottom:25px;">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">

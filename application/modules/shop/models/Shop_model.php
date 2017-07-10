@@ -19,9 +19,9 @@ class Shop_model extends CI_Model{
             return $q = $this->db->get_where('shop_product',array('type'=>1))->result();
         }
         else
-        {
+        {            
             $id = $this->db->get_where('shop_category',array('name'=>$cat))->row()->id;
-            return $q = $this->db->get_where('shop_product',array('sub_category_id'=>$id,'type'=>1))->result();
+            return $q = $this->db->get_where('shop_product',array('category_id'=>$id,'type'=>'1'))->result();            
         }
     }
 
@@ -33,11 +33,14 @@ class Shop_model extends CI_Model{
             return $q = $this->db->select('shop_product.name,shop_product.price,shop_product.quantity,product_images.image,shop_product.dimension,shop_product.weight,shop_product.refractive_index,shop_product.specific_gravity,shop_product.product_type,shop_product.id')->from('shop_product')->join('product_images','product_images.product_id = shop_product.id')->get()->row();
     }
 
-    public function getProductReviews($name)
-    {
-        $name = str_replace('_',' ',$name);
-        $id = $this->db->get_where('shop_product',array('name'=>$name))->row()->id;
-        return $this->db->get_where('product_reviews',array('product_id'=>$id))->result();
+    public function getProductReviews($id)
+    {        
+        return $q = $this->db->get_where('product_reviews',array('product_id'=>$id,'status'=>'1'))->result();
+    }
+
+    public function getProductReviewsCount($id)
+    {        
+        return $this->db->get_where('product_reviews',array('product_id'=>$id,'status'=>'1'))->num_rows();
     }
 
     public function getRelatedProducts($name)

@@ -23,29 +23,48 @@
 </section>
 <!--=============== Header Section End ===============-->
 <!--=============== Body Section Start ===============-->
+<style>
+    .active12{background: #4b3065 !important;border: 1px solid #4b3065;color: #fff !important}
+    
+
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-xs-12 m-t-40">
             <span class="text-primary font35"><?php echo ucwords($this->uri->segment(2)); ?> Horoscope </span>
-            <div class="clearfix visible-xs-block"></div>            
+            <div class="clearfix visible-xs-block"></div>  
+
             <div class="row wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                 <div class="col-xs-12">
-                    <ul class="nav nav-tabs elements_desc signsingle_nav">
-                    <?php
-                        $q = $this->db->get("rashi_list")->result();
-                        foreach($q as $q1){
-                    ?>
-                        <li <?php if($this->uri->segment(2) === $q1->name){echo "class='active'";} ?>>
-                            <a href="<?php echo base_url(); ?>astrology/<?php echo $q1->name; ?>/details"><span class="font14 blog_pre"><?php echo $q1->name; ?></span></a>
-                        </li>
-                    <?php } ?>    
-
-                    </ul>
+                    <div class="row">                       
+                        <div class="col-sm-12 col-xs-12 single_slide text-right button_margin">
+                            <a href="#">
+                                <img src="<?php echo URL; ?>assets/site_assets/images/left-arrow.png" class="single_swiper_prev" alt="arrow missing"/>
+                            </a>
+                            <a href="#">
+                                <img src="<?php echo URL; ?>assets/site_assets/images/right-arrow1.png" class="single_swiper_next" alt="arrow missing"/>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="swiper-container single_swiper">
+                        <div class="swiper-wrapper">
+                            <?php
+                                $q = $this->db->get("rashi_list")->result();
+                                foreach($q as $q1){
+                            ?>
+                                <div class="swiper-slide <?php if($this->uri->segment(2) === $q1->name){echo "active12";}else{echo "inactive";} ?>" style="margin: 0px !important;padding: 10px;text-align: center;">                            
+                                    <a href="<?php echo base_url(); ?>astrology/<?php echo $q1->name; ?>/details" ><span class="font14 blog_pre"><?php echo $q1->name; ?></span></a>                            
+                                </div>
+                            <?php } ?> 
+                        </div>
+                    </div>
+                    <br/>
+                    <hr>
                     <div class="tab-content tab_singlepost">
                         <div class="tab-pane active" id="tab1">
-                            <div class="row">
-                                <div class="col-xs-6 text-primary elements_desc">Tuesday, July 5th, 2016</div>
-                                <div class="col-xs-6 text-right elements_desc">
+                            <div class="row">                                
+                                <div class="col-xs-6 text-right elements_desc pull-right">
                                     <a href="#">
                                         <i class="fa fa-facebook-square header_icons fa-lg"></i>
                                     </a>
@@ -57,7 +76,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="margin-top: -10px !important;">
                                 <div class="col-xs-12">
                                     <p class="elements_desc">
                                         You'll find that things are slipping nicely into place for you today, Leo. Your
@@ -99,10 +118,19 @@
                     <span class="text-info"> Send me horoscope by email</span>
                 </div>
             </div>
+
+
+            <?php
+                $this->db->limit(10);
+                $this->db->order_by('id','RANDOM');
+                $books = $this->db->get('books')->result();
+
+                if(count($books) > 0){
+            ?>
             <section class="hr_bottom_align">
                 <div class="row">
                     <div class="col-sm-8 col-xs-9 m-t-26">
-                        <h1 class="text-primary">Your Daily Tarot Reading</h1>
+                        <h1 class="text-primary">Astrology Books</h1>
                     </div>
                     <div class="col-sm-4 col-xs-3 single_slide text-right button_margin">
                         <a href="#">
@@ -114,96 +142,60 @@
                     </div>
                 </div>
                 <hr>
+
                 <div class="m-t-40 swiper-container single_swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card1.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                CAREER
+
+                        <?php foreach($books as $book){ ?>
+                            <div class="swiper-slide">
+                                <img src="<?php echo URL; ?>assets/books/images/<?php echo $book->image; ?>" class="img-responsive" alt="Image missing"/>
+                                <div class="text-primary card1_text bg-white text-center font14">
+                                    <?php echo $book->name; ?>
+                                </div>
+
+                                <div class="text-primary card1_text bg-white text-center font14">
+                                    <?php echo $book->author; ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="center-block">
-                                <img src="<?php echo URL; ?>assets/site_assets/images/card2.png" class="img-responsive" alt="Image missing"/>
-                            </div>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                FAMILY
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card3.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text card2_text bg-white text-center font14">
-                                LOVE
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card4.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                BEAUTY
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card5.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                HEALTH
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card1.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                CAREER
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card2.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                FAMILY
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card3.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text card2_text bg-white text-center font14">
-                                LOVE
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card4.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                BEAUTY
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card5.png" class="img-responsive" alt="Image missing"/>
-                            <div class="text-primary card1_text bg-white text-center font14">
-                                HEALTH
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
+
             </section>
-            <div class="row m-t-26">
-                <div class="col-xs-12 hr_bottom_align">
-                    <h1>Bastu Ideas</h1>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-4 m-t-40">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/card.jpg" class="img-responsive" alt="Image missing">
-                        </div>
-                        <div class="col-sm-10 col-xs-8 m-t-26">
-                            <h4>THE CHARIOT</h4>
-                            <p> As a priest, the Pope or the best Hierophant, represents all those
-                                traditional values and morals of development. He is the wisely teacher / counselor
-                                guiding
-                                the ones who won’t give up or the ones who are not even with no one.
-                            </p>
-                            <div class="row">
-                                <div class="col-md-6"><button type="submit" class="btn btn-success col-md-12">Book Appointment</button></div>
-                                <div class="col-md-6"><button type="submit" class="btn btn-warning col-md-12">View More</button></div>
+
+            <?php } ?>
+
+            <?php
+                $this->db->order_by('id','RANDOM');
+                $this->db->limit(1);
+                $bastu = $this->db->get('bastu')->row();
+
+                if(count($bastu) > 0){
+             ?>
+
+                <div class="row m-t-26">
+                    <div class="col-xs-12 hr_bottom_align">
+                        <h1>Bastu Ideas</h1>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-4 m-t-40">
+                                <img src="<?php echo URL; ?>assets/bastu/<?php echo $bastu->image; ?>" class="img-responsive" alt="Image missing">
+                            </div>
+                            <div class="col-sm-10 col-xs-8 m-t-26">
+                                <h4><?php echo $bastu->title; ?></h4>
+                                <p><?php echo $bastu->description; ?></p>
+                                <div class="row">
+                                    <div class="col-md-6"><button type="submit" class="btn btn-success col-md-12">Book Appointment</button></div>
+                                    <div class="col-md-6"><button type="submit" class="btn btn-warning col-md-12">View More</button></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <?php } ?>
+
+
             <div class="row m-t-40">
                 <div class="col-xs-12">
                     <?php

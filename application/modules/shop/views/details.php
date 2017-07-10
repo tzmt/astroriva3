@@ -89,6 +89,26 @@
                 <div class="swiper-button-prev swiper-button-white"></div>
                 <div class="swiper-button-next swiper-button-white"></div>
             </div>
+                <span>
+                    <form method="POST" action="<?php echo base_url(); ?>shop/add/">
+                        <h2><span><i class="fa fa-rupee"></i> <?php echo $product_details->price; ?></span></h2>
+                        <label>Quantity:</label>
+                        <input type="number" value="1" name="quantity" min="0" max="<?php echo $product_details->quantity; ?>"/>
+                        <input type="hidden" name="name" value="<?php echo $product_details->name; ?>"/>
+                        <input type="hidden" name="dimension" value="<?php echo $product_details->dimension; ?>"/>
+                        <input type="hidden" name="specific_gravity" value="<?php echo $product_details->specific_gravity; ?>"/>
+                        <input type="hidden" name="refractive_index" value="<?php echo $product_details->refractive_index; ?>"/>
+                        <input type="hidden" name="image" value="<?php echo $product_details->image; ?>"/>
+                        <input type="hidden" name="id" value="<?php echo $product_details->id; ?>"/>
+                        <input type="hidden" name="price" value="<?php echo $product_details->price; ?>"/>
+                        <input type="hidden" name="weight" value="<?php echo $product_details->weight; ?>"/>
+                        <input type="hidden" name="quantity1" value="<?php echo $product_details->quantity; ?>"/>
+                        <button type="submit" class="btn btn-primary cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to cart
+                        </button>
+                    </form>
+                </span>
 
             <div class="elements_desc font14 gemstone_align">
             	<h3>Product Details:</h3>           	
@@ -122,47 +142,74 @@
                     <?php } ?>
                 </table>
 
-                <form action="http://dev.lorvent.com/astrology/contact.php" method="post">
-        <div class="row">
-            <div class="col-md-12 m-t-26">
-                <h1 class="text-primary">Share Your Feedback</h1>
-                <hr>
-            </div>
-        </div>
-        <div class="row m-t-20">
-            <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>assets/site_assets/images/Contact-Line-Stripe.jpg" alt="loading" class="img-responsive">
-            </div>
-        </div>
-        <div class="row content_margin con_pad">
-            <div class="col-md-4 contact_block">
-                <div>
-                    <label for="contact_name" class="text-info label_align">Name:</label>
-                    <input type="text" name="name" id="contact_name" class="contact_name form-control">
+                <div class="row">
+                    <div class="col-md-12 m-t-26">
+                        <a href="javascript:void(0)" id="showComment"><h1 class="text-primary">Product Reviews (<?php echo $total = $this->shop_model->getProductReviewsCount($product_details->id); ?>) <?php if($total > 0){ ?><span style="font-size: 11px;">Click to expand</span><?php } ?></h1></a>
+                        <hr>
+                        <?php $qq = $this->shop_model->getProductReviews($product_details->id);                           
+                        ?>
+                    </div>
+                </div>
+                <div id="shcomment" style="display:none;"> 
+                    <?php if(count($qq) > 0){
+                        foreach ($qq as $value) {                         
+                    ?>
+                        <div class="row" style="border:1px solid #eee;padding:15px;">
+                            <div class="col-md-2"><img src="<?php echo base_url(); ?>assets/images/user.png" width="100px"/></div>
+                            <div class="col-md-9">
+                                <strong>Name:</strong> <?php echo $value->name; ?><br/>
+                                <strong>Date:</strong> <?php echo date("d F, y",$value->datetime); ?><br/>
+                                <?php echo $value->comments; ?>
+                            </div>
+                        </div>                        
+                    <?php }  }?>
+                </div>
 
-                    <label for="contact_email" class="text-info label_align">Email:</label>
-                    <input type="email" name="email" id="contact_email" class="contact_email form-control">
+                <form action="<?php echo base_url() ?>shop/addReview/<?php echo $product_details->id; ?>/<?php echo $this->uri->segment(3); ?>" method="post">
+                    <div class="row">
+                        <div class="col-md-12 m-t-26">
+                            <h1 class="text-primary">Share Your Feedback</h1>
+                            <hr>
+                        </div>
+                    </div>
+                        <?php if($this->session->flashdata('success1')){ ?>
+                            <div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success1'); ?></div>
+                        <?php } ?>
+                    <div class="row m-t-20">
+                        <div class="col-md-12">
+                            <img src="<?php echo base_url(); ?>assets/site_assets/images/Contact-Line-Stripe.jpg" alt="loading" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="row content_margin con_pad">
 
-                    <label for="contact_name" class="text-info label_align">Subject:</label>
-                    <input type="text" name="name" id="contact_name" class="contact_name form-control">
-                </div>
-            </div>
-            <div class="col-md-8 contact_block">
-                <div>
-                    <label for="contact_text" class="text-info content_margin">Message:</label>
-                    <textarea name="message" id="contact_text" cols="30" rows="8" class="form-control"
-                              placeholder="Your message comes here.."></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="align_btn contact_block text-center">
-                    <input type="submit" class="btn btn-sm btn-primary content_margin m-b-25" value="Send Now">
-                </div>
-            </div>
-        </div>
-    </form>
+                        <div class="col-md-4 contact_block">
+                            <div>
+                                <label for="contact_name" class="text-info label_align">Name:</label>
+                                <input type="text" name="name1" id="contact_name" class="contact_name form-control" required>
+
+                                <label for="contact_email" class="text-info label_align">Email:</label>
+                                <input type="email" name="email1" id="contact_email" class="contact_email form-control" required>
+
+                                <label for="contact_name" class="text-info label_align">Subject:</label>
+                                <input type="text" name="subject1" id="contact_name" class="contact_name form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-8 contact_block">
+                            <div>
+                                <label for="contact_text" class="text-info content_margin">Message:</label>
+                                <textarea name="comments1" id="contact_text" cols="30" rows="8" class="form-control"
+                                          placeholder="Your message comes here.." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="align_btn contact_block text-center">
+                                <input type="submit" class="btn btn-sm btn-primary content_margin m-b-25" value="Send Now">
+                            </div>
+                        </div>
+                    </div>
+                </form>
             	
             </div>
 		</div>	

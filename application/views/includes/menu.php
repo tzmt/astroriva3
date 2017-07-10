@@ -165,6 +165,11 @@
                                 <a href="<?php echo base_url(); ?>login/" class="text-info">Login / Signup</a>
                             <?php } ?>
                         </li>
+                        
+                        <li class="header_li">
+                            <a href="<?php echo base_url(); ?>shop/cart/" class="text-info" style="color:#e36480;font-weight: bold;">Cart [ <?php echo count($this->cart->contents()); ?> ]</a>
+                        </li>
+                        
                         <!-- <li class="header_li">
                             <a href="<?php //echo base_url(); ?>contact/" class="text-info">Contact Us</a>
                         </li> -->

@@ -1,20 +1,41 @@
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>shop/" class="font13">Shop</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Checkout</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+	.nav>li{float: left;margin-right: 50px;}
+</style>
 <section id="cart_items">
 		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Check out</li>
-				</ol>
-			</div><!--/breadcrums-->
+			<div class="elements_desc font14 gemstone_align">
 
 			<div class="step-one">
-				<h2 class="heading">Step1</h2>
+				<h2 class="heading">Checkout options</h2>
 			</div>
 			<?php //echo "<pre>";print_r($this->cart->contents()); ?>
 			<?php if(!isset($this->session->userdata('user')->id)){ ?>
-			<div class="checkout-options">
-				<h3>New User</h3>
-				<p>Checkout options</p>
+			<div class="checkout-options" style="background: #eee;padding:5px;">	
 				<form method="post" action="<?php echo base_url(); ?>shop/checkout/">
 				<ul class="nav">
 					<li>
@@ -42,24 +63,42 @@
 					<?php if(!isset($this->session->userdata('user')->id)){ ?>
 					<div class="col-sm-5">
 						<div class="shopper-info">
-							<p>Shopper Information</p>							
-								<input type="text" name="name"  placeholder="Display Name">
-								<input type="email" name="email" placeholder="User Name">
-								<input type="password" name="password" placeholder="Password">
-								<input type="password" name="cpassword" placeholder="Confirm password">	
+							<h3>Shopper Information</h3>	
+								<label class="text-info label_align">Display Name</label>						
+								<input type="text" name="name" class="contact_name form-control"  placeholder="Display Name">
+
+								<label class="text-info label_align">Username</label>
+								<input type="email" name="email" class="contact_name form-control" placeholder="User Name">
+
+								<label class="text-info label_align">Password</label>
+								<input type="password" name="password" class="contact_name form-control" placeholder="Password">
+
+								<label class="text-info label_align">Confirm Password</label>
+								<input type="password" name="cpassword" class="contact_name form-control" placeholder="Confirm password">	
 						</div>
 					</div>
 					<?php } ?>
 					<div class="col-sm-7 clearfix">
 						<div class="bill-to">
-							<p>Bill To</p>
-							<div class="form-one">																	
-									<input type="text" name="fname" placeholder="First Name *" required>									
-									<input type="text" name="lname" placeholder="Last Name *" required>
-									<input type="text" name="order_email" placeholder="Email*" required>
-									<input type="text" name="address" placeholder="Address 1 *" required>
-									<input type="number" name="pincode" placeholder="Zip / Postal Code *" required>
-									<select name="country" onchange="getStates(this.value)" required>
+							<h3>Bill To</h3>
+							<div class="form-one">		
+									<label class="text-info label_align">First Name</label>	
+									<input type="text" name="fname" class="contact_name form-control" placeholder="First Name *" required>
+
+									<label class="text-info label_align">Last Name</label>									
+									<input type="text" name="lname" class="contact_name form-control"  placeholder="Last Name *" required>
+
+									<label class="text-info label_align">Email Id</label>	
+									<input type="text" name="order_email" class="contact_name form-control"  placeholder="Email*" required>
+
+									<label class="text-info label_align">Address</label>	
+									<input type="text" name="address" class="contact_name form-control"  placeholder="Address 1 *" required>
+
+									<label class="text-info label_align">Zip</label>	
+									<input type="number" name="pincode" class="contact_name form-control"  placeholder="Zip / Postal Code *" required>
+
+									<label class="text-info label_align">Country</label>	
+									<select name="country" class="contact_name form-control"  onchange="getStates(this.value)" required>
 										<option>-- Country --</option>
 										<?php foreach($countries as $coun){ ?>
 											<option value="<?php echo $coun->id; ?>"><?php echo $coun->name; ?></option>
@@ -67,15 +106,21 @@
 									</select>
 							</div>
 							<div class="form-two">	
-									<select name="state" id="state" onchange="getCities(this.value)" required>
+								<label class="text-info label_align">State</label>	
+									<select name="state" id="state" class="contact_name form-control"  onchange="getCities(this.value)" required>
 										<option>-- State / Province / Region --</option>										
 									</select>
-									<select name="city" id="city" required>
+
+									<label class="text-info label_align">City</label>	
+									<select name="city" id="city" class="contact_name form-control"  required>
 										<option>-- City --</option>										
 									</select>
 
-									<input type="number" name="phone" placeholder="Phone *" required>
-									<button class="btn btn-primary" type="submit">Proceed To Pay</button>	
+									<label class="text-info label_align">Phone</label>	
+									<input type="number" class="contact_name form-control"  name="phone" placeholder="Phone *" required><br/>
+
+									<label class="text-info label_align"></label>	
+									<button class="btn btn-primary pull-right" type="submit">Proceed To Pay</button>	
 								</form>
 							</div>
 						</div>
@@ -87,7 +132,7 @@
 			</div>
 
 			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
+				<table class="table table-bordered">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Item</td>
@@ -103,14 +148,14 @@
 						<?php foreach($this->cart->contents() as $cart){ ?>
 						<tr>
 							<td class="cart_product">
-								<a href="#"><img src="<?php echo ASSETS; ?>products/<?php echo $cart['options']['image'] ?>" width="50px" alt=""></a>
+								<a href="#"><img src="<?php echo ASSETS; ?>products/<?php echo $cart['options']['image'] ?>" width="100px" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="#"><?php echo $cart['name']; ?></a></h4>		
-								<p>Dimension: <?php echo $cart['options']['dimension']; ?></p>															
-								<p>Specifiv Gravity: <?php echo $cart['options']['specific_gravity']; ?></p>	
-								<p>Refractive Index: <?php echo $cart['options']['refractive_index']; ?></p>	
-								<p>Weight: <?php echo $cart['options']['weight']; ?></p>	
+								<span>Dimension: <?php echo $cart['options']['dimension']; ?></span>	<br/>
+								<span>Specifiv Gravity: <?php echo $cart['options']['specific_gravity']; ?></span>	<br/>
+								<span>Refractive Index: <?php echo $cart['options']['refractive_index']; ?></span><br/>	
+								<span>Weight: <?php echo $cart['options']['weight']; ?></span>	
 							</td>
 							<td class="cart_price">
 								<p><i class="fa fa-rupee"></i><?php echo $cart['price']; ?></p>
@@ -121,7 +166,7 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price" id="price<?php echo $cart['id']; ?>"><i class="fa fa-rupee"></i><?php echo $cart['qty']* $cart['price']; ?></p>
+								<span class="cart_total_price" id="price<?php echo $cart['id']; ?>"><i class="fa fa-rupee"></i><?php echo $cart['qty']* $cart['price']; ?></span>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href="<?php echo base_url(); ?>shop/remove/<?php echo $cart['rowid']; ?>"><i class="fa fa-times"></i></a>
@@ -132,10 +177,10 @@
 						<tr>
 							<td colspan="4">&nbsp;</td>
 							<td colspan="2">
-								<table class="table table-condensed total-result">
+								<table>
 									<tr>
-										<td>Total</td>
-										<td><span><i class="fa fa-rupee"></i><?php echo $this->cart->total(); ?></span></td>
+										<td><strong>Total</strong></td>
+										<td><span><strong>&nbsp;&nbsp;<i class="fa fa-rupee"></i> <?php echo $this->cart->total(); ?></strong></span></td>
 									</tr>
 								</table>
 							</td>
@@ -145,7 +190,7 @@
 			</div>			
 		</div>
 	</section> <!--/#cart_items-->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	function UpdateOrders(qty,rowid,price,id)
 	{

@@ -50,12 +50,12 @@ class Shop_model extends CI_Model{
 
     public function record_count()
     {         
-        return $this->db->query("SELECT * FROM shop_product WHERE type = '1'")->num_rows();
+        return $this->db->query("SELECT * FROM astro_shop_product WHERE type = '1'")->num_rows();
     }
 
     public function record_count1()
     {
-        return $this->db->query("SELECT * FROM shop_product WHERE type = '0'")->num_rows();
+        return $this->db->query("SELECT * FROM astro_shop_product WHERE type = '0'")->num_rows();
     }
 
     public function getProducts($lim_to,$lim_from,$s_key="")

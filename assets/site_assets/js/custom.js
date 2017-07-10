@@ -724,3 +724,8 @@ $('.signs_bg').mouseleave(function(){
 	$('.show1234'+id).hide();
     $('.show123'+id).show();
 });
+
+
+$('#showComment').click(function(){
+        $('#shcomment').slideToggle();
+});

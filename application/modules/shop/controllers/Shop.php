@@ -49,6 +49,7 @@ class Shop extends MX_Controller {
 			$data['product_id'] = $id;
 			$data['name'] = $this->input->post('name1');
 			$data['email'] = $this->input->post('email1');
+			$data['subject'] = $this->input->post('subject1');
 			$data['comments'] = $this->input->post('comments1');
 			$data['datetime'] = time();
 			$this->db->insert('product_reviews',$data);
@@ -91,11 +92,11 @@ class Shop extends MX_Controller {
 	public function cart()
 	{
 		$data = array();
-		$this->layout->view('cart',$data,'shop');
+		$this->layout->view('cart',$data,'home1');
 	}
 
 	public function checkout()
-	{
+	{		
 		if($this->input->post())
 		{
 			$this->form_validation->set_rules('fname','First Name','required');
@@ -140,6 +141,11 @@ class Shop extends MX_Controller {
 					{
 						if($this->shop_model->register($post_data,$post_data1))
 						{
+							foreach($this->cart->contents() as $cont)
+							{
+								$this->cart->remove($cont['rowid']); 
+							}
+
 							$this->session->set_flashdata('success','Thank your. Your order has been successfully received by us.');
 							redirect('shop/checkout/');
 						}
@@ -159,6 +165,11 @@ class Shop extends MX_Controller {
 				{
 					if($this->shop_model->guestRegister($post_data1))
 					{
+						foreach($this->cart->contents() as $cont)
+						{
+							$this->cart->remove($cont['rowid']); 
+						}
+
 						$this->session->set_flashdata('success','Thank your. Your order has been successfully received by us.');
 						redirect('shop/checkout/');
 					}
@@ -173,7 +184,7 @@ class Shop extends MX_Controller {
 		else
 		{
 			$data['countries'] = $this->shop_model->getCountries();
-			$this->layout->view('checkout',$data,'shop');
+			$this->layout->view('checkout',$data,'home1');
 		}
 		
 	}
