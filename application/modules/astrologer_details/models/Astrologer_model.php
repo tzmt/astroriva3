@@ -28,7 +28,7 @@ class Astrologer_model extends CI_Model{
     public function getAppointmentDates()
     {
     	$date = date("Y-m");
-    	$query = $this->db->query("SELECT day FROM acharya_branch WHERE day LIKE '%$date%' AND status = '0'")->result();
+    	$query = $this->db->query("SELECT day FROM astro_acharya_branch WHERE day LIKE '%$date%' AND status = '0'")->result();
     	$data = '';
     	foreach($query as $q)
     	{
@@ -49,11 +49,11 @@ class Astrologer_model extends CI_Model{
     		$service_id = $q1->request_service_id.','.$id;
     		if($q1->full == $q1->person - 1)
     		{
-    			$this->db->query("UPDATE acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1', status = '1' WHERE day = '{$data['date']}'");
+    			$this->db->query("UPDATE astro_acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1', status = '1' WHERE day = '{$data['date']}'");
     		}
     		else
     		{
-    			$this->db->query("UPDATE acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1' WHERE day = '{$data['date']}'");
+    			$this->db->query("UPDATE astro_acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1' WHERE day = '{$data['date']}'");
     		}  
     		return TRUE;  		
     	}
@@ -74,11 +74,11 @@ class Astrologer_model extends CI_Model{
     		$service_id = $q1->request_service_id.','.$id;
     		if($q1->full == $q1->person - 1)
     		{
-    			$this->db->query("UPDATE acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1', status = '1' WHERE day = '{$data['date']}'");
+    			$this->db->query("UPDATE astro_acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1', status = '1' WHERE day = '{$data['date']}'");
     		}
     		else
     		{
-    			$this->db->query("UPDATE acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1' WHERE day = '{$data['date']}'");
+    			$this->db->query("UPDATE astro_acharya_branch SET request_service_id = '$service_id', purpose = '1',full = full + '1' WHERE day = '{$data['date']}'");
     		}  
     		return TRUE;  		
     	}

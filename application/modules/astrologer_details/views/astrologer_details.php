@@ -1,55 +1,46 @@
-<style>
-table { 
-color: #333;
-font-family: Helvetica, Arial, sans-serif;
-width: 70%; 
-border-collapse: 
-collapse; border-spacing: 0; 
-}
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/list-astrologer/pannelled" class="font13">Astrologer</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13"><?php echo $all_data->name; ?></span>
+                    </li>
 
-td, th { 
-border: 1px solid transparent; /* No more visible border */
-height: 30px; 
-transition: all 0.3s;  /* Simple transition for hover effect */
-}
-
-th {
-background: #DFDFDF;  /* Darken header a bit */
-font-weight: bold;
-}
-
-td {
-background: #FAFAFA;
-text-align: center;
-}
-
-/* Cells in even rows (2,4,6...) are one color */ 
-tr:nth-child(even) td { background: #F1F1F1;}   
-
-/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */ 
-tr:nth-child(odd) td { background: #FEFEFE; }  
-
-tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
-#showHide{display: none;}
-</style>
-
-	<!-- #/ Director's Section -->
-	<div id="shop">
-		<div class="container padding-top padding-bottom">
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+	
+	<div class="container">
+		<div class="row">
 			<div class="row section-title text-center">				
 			</div>	
 			<div class="products">				
-				<div class="tab-content">
+				<div style="padding-top: 20px;">
 					<div class="tab-pane fade in active" id="product1">						
 						<div class="row">
 							<div class="col-sm-6">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/astrologer/<?php echo $all_data->image; ?>" width="600px" height="400px" alt="" />
+								<img class="img-responsive" src="<?php echo base_url(); ?>assets/astrologer/<?php echo $all_data->image; ?>" width="100%" alt="" />
 							</div>
 							<div class="col-sm-6">
 								<div class="product-details">
-									<h3 class="product-name" style="color:#a704a5"><?php echo $all_data->name; ?></h3>									
+									<h3 class="product-name" style="margin-left: 20px;"><?php echo $all_data->name; ?></h3>									
 									<div class="product-info">
-										<h4 class="product-price"><i class="fa fa-phone"></i> <?php echo $all_data->phone; ?></h4>	
+										<h4 class="product-price" style="margin-left: 20px;"><i class="fa fa-phone"></i> <?php echo $all_data->phone; ?></h4>	
 										<ul>
 											<li style="color:#000"><i class="fa fa-angle-double-right"></i> <strong>Description:</strong> <?php echo $all_data->details; ?></li>
 											<hr>
@@ -69,13 +60,13 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
 										<span class='st_email_large' displayText='Email'></span>
 										<span class='st_sharethis_large' displayText='ShareThis'></span>
 										<br/>
-										<a href="javascript:void(0)" class="btn btn-default" onclick="showAppointment()">Book An Appoinment</a> <a href="#" class="btn btn-default">1 Like</a> <a href="#" class="btn btn-default">10 Comments</a>
+										<a href="javascript:void(0)" class="btn btn-primary" onclick="showAppointment()">Book An Appoinment</a> <a href="#" class="btn btn-primary">1 Like</a> <a href="#" class="btn btn-primary">10 Comments</a>
 										<br/>										
 									</div>
 								</div>
 							</div>
-							<div class="col-md-12" style="margin-top:15px" id="showHide">
-								<table style="width:100%">
+							<div class="col-md-12" style="margin-top:15px;display: none;" id="showHide">
+								<table class="table table-bordered">
 									<tr>
 									    <th style="text-align:center;">#</th>
 									    <th style="text-align:center;">Chamber Name</th>
@@ -100,7 +91,7 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
 									<?php } ?>
 									<?php } else{?>
 									<tr>
-										<td colspan="7" style="color:red;">No Appointment Available</td>
+										<td colspan="7" style="color:red;text-align: center;">No Appointment Available</td>
 									</tr>
 									<?php } ?>
 								</table>
@@ -109,66 +100,61 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
 					</div>					
 			</div>
 		</div>
-	</div><!-- #/ Director's Section -->
+	</div>
 		
-	<div id="team"><!-- OUR ASTROLOGERS  -->
+	<div id="team">
 		<div class="container padding-bottom">
 			<div class="row text-center">
-				<div class="col-sm-8 col-sm-offset-2 section-title-two">
-					<h2>OUR RANDOM ASTROLOGERS</h2>
-					<p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur aliquet quam id dui posuere.</p>
+				<div class="col-sm-12 section-title-two">
+					<h2>OUR RANDOM ASTROLOGERS</h2>					
 				</div>								
-				
-				<?php foreach($astrologers as $ast){ ?>				
-				<div class="col-sm-3">
-					<div class="team-member">
-						<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" width="263px" height="263px;" alt="<?php echo $ast->name; ?>" style="width:263px !important;height:263px !important;" />
-						<div class="member-text">							
-							<h5><?php echo $ast->name; ?></h5>
-							<h6><a href="">TIPS</a></h6>
-							<h6><a href="">PREDICTION</a></h6>
-							<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">VIEW DETAILS</a></h6>
-							<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">PRODUTCS</a></h6>
-							<ul class="social-icons">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							</ul>
-						</div>						
-					</div>
+				<div style="margin-top: 35px;">
+					<?php foreach($astrologers as $ast){ ?>				
+					<div class="col-md-2" style="margin-bottom: 10px;">
+								<div class="team-member">
+									<div class="col-md-12" style="margin-bottom: 15px;">
+										<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+									</div>
+									<div class="member-text">			
+										<h5><?php echo $ast->name; ?></h5>
+										<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+									</div>						
+								</div>
+							</div>
+					<?php } ?>	
 				</div>
-				<?php } ?>
-				
 			</div>
 		</div>
-	</div><!-- #/ Team  -->
+	</div>
 	
 	
 
-	<!-- #/ Product's Section -->
+	
 	<div id="shop">
 		<div class="container padding-top padding-bottom">
 			<div class="row section-title text-center">
-				<div class="col-sm-8 col-sm-offset-2">
-					<h2><small>Our Products</small>PRODUCT'S BRAND</h2>
-					<p>Curabitur non nulla sit amet nisl tempus convallis quis lectus. Praesent sapien massa, convallis a pellen tesque nec, egestas non nisi. Mauris blandit aliquet elit, eget tincidunt ni dictum porta</p>
+				<div class="col-sm-12">
+					<h2>Our Products</h2>					
 				</div>
 			</div>	
-			<div class="products">
-				<ul id="product-list" class="row nav nav-tabs" role="tablist">
+			<div class="products" style="margin-top: 35px;">
+				
 					<?php foreach($products as $prod){ ?>
 					<?php $product_image = $this->db->limit(1)->get_where('product_images',array('product_id'=>$prod->id))->row()->image; ?>
-					<li class="col-sm-3">
-						<a class="product-image" href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>">							
-							<img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" width="231px" height="231px;" alt="<?php echo $prod->name; ?>" style="width:231px !important;height:231px !important;" />
-						</a>
-						<div class="product-name">
-							<p><?php echo $prod->name ?> <span><i class="fa fa-rupee"></i> <?php echo $prod->price ?></span></p>
+					<div class="col-sm-3" style="margin-bottom:25px;">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>"><img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/></a>
+										<h2><i class="fa fa-rupee"></i> <?php echo $prod->price ?></h2>
+										<p><?php echo $prod->name; ?></p>
+										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>" class="btn btn-primary add-to-cart"><i class="fa fa-view"></i>View Details</a>
+									</div>									
+								</div>							
+							</div>
 						</div>
-					</li>
 					<?php } ?>					
-				</ul>
+				
 				<?php if(count($products)> 4){ ?>
 				<div id="loadMore">
 					<span>Load more</span>
@@ -176,7 +162,7 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
 				<?php } ?>
 			</div>
 		</div>
-	</div><!-- #/ Product's Section -->
+	</div>
 
 <script>
 var i = 0;
@@ -184,12 +170,12 @@ function showAppointment()
 {
 	if(i == 0)
 	{
-		$('#showHide').css('display','block');
+		$('#showHide').slideDown();
 		i++
 	}
 	else
 	{
-		$('#showHide').css('display','none');
+		$('#showHide').slideUp();
 		i = 0;
 	}
 }

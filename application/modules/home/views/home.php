@@ -414,7 +414,7 @@
                     <div class="row m-t-20">
                     <?php } ?>
                         <div class="col-xs-6" style="margin-bottom: 10px">
-                            <img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/>
+                            <a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>"><img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/></a>
                         </div>                        
                     <?php if($i/2 == 0){ ?>
                     </div>
@@ -431,7 +431,7 @@
                     <div class="row m-t-20">
                     <?php } ?>
                         <div class="col-xs-6" style="margin-bottom: 10px">
-                            <img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/>
+                            <a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>"><img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/></a>
                         </div>                        
                     <?php $i++; if($i/2 == 0){ ?>
                     </div>

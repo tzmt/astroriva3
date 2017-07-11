@@ -204,7 +204,7 @@ class Astrologer_details extends MX_Controller {
 		if($this->input->post())
 		{
 			$place = $this->input->post('place');
-			$query = $this->db->query("SELECT day FROM acharya_branch WHERE place = '$place' AND status = '0'")->result();
+			$query = $this->db->query("SELECT day FROM astro_acharya_branch WHERE place = '$place' AND status = '0'")->result();
 	    	$data = '[';
 	    	foreach($query as $q)
 	    	{

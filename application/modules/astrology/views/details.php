@@ -35,7 +35,7 @@
             <div class="clearfix visible-xs-block"></div>  
 
             <div class="row wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                <div class="col-xs-12">
+                <div class="col-xs-12" style="margin-top: -60px;">
                     <div class="row">                       
                         <div class="col-sm-12 col-xs-12 single_slide text-right button_margin">
                             <a href="#">
@@ -62,63 +62,20 @@
                     <br/>
                     <hr>
                     <div class="tab-content tab_singlepost">
-                        <div class="tab-pane active" id="tab1">
-                            <div class="row">                                
-                                <div class="col-xs-6 text-right elements_desc pull-right">
-                                    <a href="#">
-                                        <i class="fa fa-facebook-square header_icons fa-lg"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-twitter-square header_icons fa-lg"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-google-plus-square header_icons fa-lg" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: -10px !important;">
-                                <div class="col-xs-12">
-                                    <p class="elements_desc">
-                                        You'll find that things are slipping nicely into place for you today, Leo. Your
-                                        persuasive
-                                        manner
-                                        and gentle nudges are just enough to get people where you want them. Control is
-                                        all yours if you
-                                        want it. Remember that you need to be willing to accept the blame for failure as
-                                        well as praise
-                                        for
-                                        success. Any risks you take today, however, are likely to work out in your
-                                        favor.
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="tab-pane active">                            
+                            <?php foreach($all_data as $all): ?>
+                                <div class="row" style="margin-top: -10px !important;">
+                                    <h1 style="margin-left: 18px;"><?php echo $this->db->get_where("rashi_topic_list",array('id'=>$all->topic_id))->row()->name; ?></h1>
+                                    <div class="col-xs-12" style="margin-top: -25px;">
+                                        <p class="elements_desc" style="text-align: justify;"><?php echo $all->description; ?></p>
+                                    </div>
+                                </div>  
+                            <?php endforeach; ?>
                         </div>
                     
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <img src="<?php echo URL; ?>assets/site_assets/images/signsingle_image.png" class="img-responsive" alt="Image missing"/>
-                    <div class="singleimage_text">
-                        <h4 class="text-white">Read July Forecast For Leo</h4>
-                        <div class="hello">
-                            <a href="#" class="single_arrow">
-                                <div class="signsingle_circle bg-primary aries_bg">
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 m-t-26">
-                    <i class="fa fa-envelope header_icons" aria-hidden="true"></i>
-                    <span class="text-info"> Send me horoscope by email</span>
-                </div>
-            </div>
-
 
             <?php
                 $this->db->limit(10);

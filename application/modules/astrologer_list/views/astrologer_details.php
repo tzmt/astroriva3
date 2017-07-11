@@ -80,8 +80,8 @@
 	
 
 	<!-- #/ Product's Section -->
-	<div id="shop">
-		<div class="container padding-top padding-bottom">
+	<div id="shop" class="bg-info">
+		<div class="container padding-top padding-bottom bg-info">
 			<div class="row section-title text-center">
 				<div class="col-sm-8 col-sm-offset-2">
 					<h2><small>Our Products</small>PRODUCT'S BRAND</h2>

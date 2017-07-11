@@ -107,6 +107,7 @@ class Astrology_model extends CI_Model{
     		return FALSE;
     	}
     }
+
     public function getYogaDetails($slug)
     {
     	$slug = str_replace('-',' ',$slug);
@@ -120,20 +121,9 @@ class Astrology_model extends CI_Model{
     		return FALSE;
     	}
     }
+
     public function getTips()
 	{
 		return $this->db->get('tips')->result();
 	}
-
-    
-
-	
-
-	
-
-	
-
-	
-
-
 }
