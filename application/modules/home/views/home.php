@@ -49,108 +49,7 @@
 
         	</div>
             <div class="col-sm-9 home_margin">
-                <h2 class="text-white font35" style="margin-top: -22px">Meet The Acharya</h2>
-                <!-- <div class="row">
-                    <div class="col-md-3 col-sm-3 elements_desc">
-                        <label class="text-white font18" for="name">Name:</label>
-                        <input type="text" id="name" class="bg-white form-control"
-                               placeholder="Enter your name..">
-                    </div>                    
-                    <div class="col-md-3 home_dob col-sm-6 elements_desc">
-                        <label class="text-white font18">Date of Birth:</label>
-                        <select class="home_select form-control bg-white">
-                            <option value="">Choose</option>
-                            <option>January</option>
-                            <option>February</option>
-                            <option>March</option>
-                            <option>April</option>
-                            <option>May</option>
-                            <option>June</option>
-                            <option>July</option>
-                            <option>August</option>
-                            <option>September</option>
-                            <option>October</option>
-                            <option>November</option>
-                            <option>December</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2 col-sm-2 home_dob elements_desc home_date">                        
-                        <select class="home_select1 form-control bg-white">
-                            <option value="">Choose</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>
-                            <option>31</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2 col-sm-2 home_dob elements_desc home_date">
-                        <select class="home_select2 form-control bg-white">
-                            <option value="">Choose</option>
-                            <option>1990</option>
-                            <option>1991</option>
-                            <option>1992</option>
-                            <option>1993</option>
-                            <option>1994</option>
-                            <option>1995</option>
-                            <option>1996</option>
-                            <option>1997</option>
-                            <option>1998</option>
-                            <option>1999</option>
-                            <option>2000</option>
-                            <option>2001</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 col-sm-6 elements_desc">
-                        <label class="text-white font18" for="zip">Time of Birth:</label>
-                        <input type="text" id="zip" class="bg-white form-control">
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 elements_desc">
-                        <label class="text-white font18" for="zip">Place of Birth:</label>
-                        <input type="text" id="zip" class="bg-white form-control">
-                    </div>
-                    <div class="col-md-4 col-sm-6 elements_desc">
-                        <label class="text-white font18" for="zip">Email Id:</label>
-                        <input type="text" id="zip" class="bg-white form-control">
-                    </div>
-
-                    <div class="col-md-5 col-sm-6 elements_desc">
-                        <label class="text-white font18" for="zip">City:</label>
-                        <input type="text" id="zip" class="bg-white form-control">
-                    </div>
-
-                    <div class="col-md-5 col-sm-6 elements_desc">
-                        <label class="text-white font18" for="zip">Phone Number:</label>
-                        <input type="text" id="zip" class="bg-white form-control">
-                    </div>
-                </div> -->
+                <h2 class="text-white font35" style="margin-top: -22px">Meet The Acharya</h2>                
                 <div class="row">
                     <p class="text-white"><?php echo $acharya->details1; ?></p>
                     <p class="text-white"><?php echo $acharya->details2; ?></p>
@@ -177,35 +76,37 @@
             <div class="col-md-4 m-t-40">
                 <h1 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">Tips</h1>
                 <hr class="hr_margin">
-                <div class="row common_margin">
+                <div class="row common_margin"  style="height: 500px;">
                     <div class="col-xs-12 font16">
-                    <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start()">
-                        <?php foreach($tips as $tip){ ?>
-                        <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div><img src="<?php echo base_url().'assets/tips/'.$tip->image?>" width="100%"/> &nbsp;</div>
-                            <span class="text-libra"><?php echo $this->db->get_where('rashi_list',array('id'=>$tip->rashi_id))->row()->name; ?></span>:
-                            <span class="text-info"><?php echo strip_tags($tip->description); ?></span>
-                        </p>
-                        <hr class="hr_margin">
+                    <?php foreach($tips1 as $tip){ ?>
+	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
+	                            <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+	                            <div class="col-md-9">
+	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
+	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
+	                            	<span><?php echo $tip->description; ?></span>
+	                            </div>
+	                        </div>
+
                         <?php } ?>
-                    </marquee>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 m-t-40">
                 <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.1s">Market Prediction</h1>
                 <hr>
-                <div class="row common_margin">
-                    <marquee behavior="scroll" direction="down" onmouseover="this.stop();" onmouseout="this.start()">
+                <div class="row common_margin" style="height: 500px;">                    
                         <?php foreach($tips as $tip){ ?>
-                        <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div><img src="<?php echo base_url().'assets/tips/'.$tip->image?>" width="100%"/> &nbsp;</div>
-                            <span class="text-libra"><?php echo $this->db->get_where('rashi_list',array('id'=>$tip->rashi_id))->row()->name; ?></span>:
-                            <span class="text-info"><?php echo strip_tags($tip->description); ?></span>
-                        </p>
-                        <hr class="hr_margin">
+	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
+	                            <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+	                            <div class="col-md-9">
+	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
+	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
+	                            	<span><?php echo $tip->description; ?></span>
+	                            </div>
+	                        </div>
+
                         <?php } ?>
-                    </marquee>
                 </div>
             </div>
             <div class="col-md-4 m-t-40">
@@ -289,13 +190,14 @@
         <div class="row btn_footer">
             <div class="home_margin">
             	<div class="col-xs-3">
-            		<img src="http://www.astroriva.com/assets/products/146961653962494.jpg"/>
+            		<?php $img = $this->db->get_where('product_images',array('product_id'=>$shop->id))->row()->image; ?>
+            		<img src="<?php echo base_url(); ?>assets/products/<?php echo $img; ?>" width="100%"/>
             	</div>
                 <div class="col-xs-9">
                     <h4 class="text-white">Today's Deal</h4>
-                    <h1 class="font35 text-white games_content_align m-b-25">Six Mukhi Rudraksh</h1>
-                    <p class="text-white btn_footer"> 6 Mukhi Rudraksha protects the wearer from all problematic situations. 6 Mukhi (Six Face) Rudraksha is ruled by Lord Kartikeya who is the second son of Maa Parvati (Shakti) and Lord Shiva and is also the chief of the celestial army.</p>
-                    <a href="#" class="btn btn-primary btn-lg">Buy This Now !!</a>
+                    <h1 class="font35 text-white games_content_align m-b-25"><?php echo $shop->name;?></h1>
+                    <p class="text-white btn_footer"><?php echo $shop->details;?></p>
+                    <a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$shop->name); ?>" class="btn btn-primary btn-lg">Buy This Now !!</a>
                 </div>                
             </div>
         </div>
@@ -313,30 +215,40 @@
                 <iframe width="100%" height="215" src="https://www.youtube.com/embed/-F6ML4zTVaA?autoplay=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
             <div class="col-md-4 m-t-40 button_margin wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
-                <h1 class="text-primary text-center">What 2016 Brings You</h1>
+                <h1 class="text-primary text-center">What <?php echo date("Y"); ?> Brings You</h1>
                 <hr>
-                <p class="text-info">Discover what 2016 holds for you & what should you start planning for:</p>
+                <p class="text-info">Discover what <?php echo date("Y"); ?> holds for you &amp; what should you start planning for:</p>
                 <div class="row">
                     <div class="col-sm-6">
                         <ul class="footer_text_height">
-                            <li><a href="signs_single_post.html" class="text-info">Aries</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Taurus</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Gemini</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Cancer</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Leo</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Virgo</a></li>
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[0]->name."/details"; ?>" class="text-info"><?php echo $rashi[0]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[1]->name."/details"; ?>" class="text-info"><?php echo $rashi[1]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[2]->name."/details"; ?>" class="text-info"><?php echo $rashi[2]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[3]->name."/details"; ?>" class="text-info"><?php echo $rashi[3]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[4]->name."/details"; ?>" class="text-info"><?php echo $rashi[4]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[5]->name."/details"; ?>" class="text-info"><?php echo $rashi[5]->name; ?></a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6">
                         <ul class="footer_text_height">
-                            <li><a href="signs_single_post.html" class="text-info">Libra</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Scorpio</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Sagittarius</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Capricorn</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Aquarius</a></li>
-                            <li><a href="signs_single_post.html" class="text-info">Pisces</a></li>
-                        </ul>
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[6]->name."/details"; ?>" class="text-info"><?php echo $rashi[6]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[7]->name."/details"; ?>" class="text-info"><?php echo $rashi[7]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[8]->name."/details"; ?>" class="text-info"><?php echo $rashi[8]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[9]->name."/details"; ?>" class="text-info"><?php echo $rashi[9]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[10]->name."/details"; ?>" class="text-info"><?php echo $rashi[10]->name; ?></a></li>
+
+                            <li><a href="<?php echo base_url()."astrology/".$rashi[11]->name."/details"; ?>" class="text-info"><?php echo $rashi[11]->name; ?></a></li>                        </ul>
                     </div>
+
                 </div>
             </div>
             <div class="col-md-4 m-t-40 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">
@@ -392,16 +304,10 @@
                 <h5>OUR SERVICES</h5>
                 <hr>
                 <ul>
-                    <li><a href="#">My Daily Horoscope </a></li>
-                    <li><a href="#">My Weekly Horoscope</a></li>
-                    <li><a href="#">My Monthly Horoscope</a></li>
-                    <li><a href="#">My Love Horoscope</a></li>
-                    <li><a href="#">My Career Horoscope</a></li>
-                    <li><a href="#">My Wellness Horoscope</a></li>
-                    <li><a href="#">My Money Horoscope</a></li>
-                    <li><a href="#">My Food Horoscope</a></li>
-                    <li><a href="#">My Pet Horoscope</a></li>
-                    <li><a href="love_compatibility_result.html">My Love Compatibility</a></li>
+                	<?php foreach($service as $ser){ ?>
+                    	<li><a href="<?php echo base_url(); ?>services/<?php echo $ser->id ?>/<?php echo strtolower(str_replace(" ", "-", $ser->name)); ?>"><?php echo $ser->name; ?></a></li>
+                	<?php } ?>
+                    
                 </ul>
                 
             </div>

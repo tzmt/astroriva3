@@ -455,15 +455,24 @@ class Astrology extends MX_Controller{
 			}
 			else
 			{				
-				$dir = '../assets/service/';
+				$dir = '../assets/services/';
 				$ext = end(explode('.',$_FILES['file']['name']));
 				$files = time().rand(00000,99999).'.'.$ext;
 				move_uploaded_file($_FILES['file']['tmp_name'], $dir.$files);
+
+				$dir = '../assets/services/image/';
+				$ext = end(explode('.',$_FILES['file1']['name']));
+				$files1 = str_replace(" ","-",$_FILES['file1']['name']).rand(00000,99999).'.'.$ext;
+				move_uploaded_file($_FILES['file1']['tmp_name'], $dir.$files1);
+
+
+
 				$post_data['name'] = $this->input->post('name');
 				$post_data['service_type'] = $this->input->post('service_type');
 				$post_data['amount'] = $this->input->post('amount');
 				$post_data['discount'] = $this->input->post('discount');
-				$post_data['sample_pdf'] = $this->input->post('discount');
+				$post_data['sample_pdf'] = $files;
+				$post_data['image'] = $files1;
 				
 				if($id = $this->astrology_model->addService($post_data))
 				{

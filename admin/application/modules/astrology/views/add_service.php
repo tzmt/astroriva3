@@ -38,7 +38,7 @@
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>
 					</div>
 				<?php } ?>		
-				<div class="col-md-5">		
+				<div class="col-md-4">		
 					<div class="col-md-12">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Service</div>
@@ -80,8 +80,16 @@
 										<label class="control-label col-lg-2">Upload</label>
 										<div class="col-lg-10">								
 												<input name="file" type="file" class="form-control input-sm" multiple />
-										  </div>													
-										</div><!-- /.col -->
+									  	</div>													
+									</div><!-- /.col -->
+
+									<div class="form-group">
+										<label class="control-label col-lg-2">Image</label>
+										<div class="col-lg-10">								
+												<input name="file1" type="file" class="form-control input-sm" multiple />
+									  	</div>													
+									</div><!-- /.col -->
+
 																					
 
 									<div class="form-group">
@@ -95,7 +103,7 @@
 					</div><!-- /.col -->					
 				</div>
 
-				<div class="col-md-7">		
+				<div class="col-md-8">		
 					<div class="col-md-12">						
 						<div class="panel panel-default">
 							<div class="panel-heading">List Service</div>
@@ -105,6 +113,7 @@
 									<tr>
 										<th>#</th>
 										<th>Name</th>
+										<th>Image</th>
 										<th>Type</th>
 										<th>Amount</th>
 										<th>Price</th>
@@ -118,10 +127,11 @@
 									<tr>
 										<td><?php echo $key+1; ?></td>
 										<td><?php echo $list->name; ?></td>
+										<td><img src="<?php echo SITE_URL; ?>assets/services/image/<?php echo $list->image; ?>" width="50px"/></td>
 										<td><?php if($list->service_type == 1) echo "Horoscope"; else echo "Match Making"; ?></td>	
 										<td><?php echo $list->amount; ?></td>
 										<td><?php echo $list->discount; ?></td>	
-										<td><a href="<?php echo SITE_URL; ?>assets/service/<?php echo $list->sample_pdf; ?>" target="blank">Download</a></td>										
+										<td><a href="<?php echo SITE_URL; ?>assets/services/<?php echo $list->sample_pdf; ?>" target="blank">Download</a></td>										
 										<td><a href="#EditModal<?php echo $list->id; ?>" role="button" data-toggle="modal"><span class="badge badge-warning">Edit</span></a>
 											<a href="#deleteModal<?php echo $list->id; ?>" role="button" data-toggle="modal"><span class="badge badge-danger">Delete</span></a></td>
 									</tr>

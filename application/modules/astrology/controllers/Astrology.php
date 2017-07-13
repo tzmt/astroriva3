@@ -197,4 +197,19 @@ class Astrology extends MX_Controller {
 			redirect($this->input->post('current_url'));
 		}
 	}
+
+	public function services()
+	{
+		$data['all_data'] = $this->db->get('astrology_service')->result();		
+		$this->layout->view('services',$data,'home1');
+	}
+
+	public function services_details($id,$name)
+	{
+		$data['service_name'] = ucwords(str_replace("-"," ", $name));
+		$data['all_data'] = $this->db->get_where('astrology_service',array('id'=>$id))->row();
+		$data['news'] = $this->astrology_model->getNews();	
+		$data['tips'] = $this->astrology_model->getTips();	
+		$this->layout->view('service_details',$data,'home1');
+	}
 }
