@@ -1,12 +1,16 @@
+
+
 <div class="col-sm-3">
 				<div class="left-sidebar">
 					<h2></h2>
 					<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 						<div>
-                            <?php $image = $this->db->select('image')->get_where('astrologer',array('id'=>$this->session->userdata('user')->id))->row()->image; ?>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#profile" ><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $image; ?>" width="100%" height="250px" style="width:100%;height:250px"/></a>
+                            <?php $image = $this->db->select('image')->get_where('astrologer',array('id'=>$this->session->userdata('astro_astrologer')->id))->row()->image; ?>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#profile" ><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $image; ?>" id="dpimage" width="100%" height="250px" style="width:100%;height:250px"/></a>
+
                             <p style="text-align:center;font-size:12px;"><a href="javascript:void(0)" data-toggle="modal" data-target="#profile" style="color:blue !important">Click the Image to Change</a></p>
-                            <p><div style="width:100%;height:30px;background:<?php if($this->session->userdata('user')->status == 1) {echo '#1ecbf0';} else if($this->session->userdata('user')->status == 2){echo "#fa68f5";} else {echo "#eddf07";} ?>;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;color:#fff;text-align:center;font-weight:bold;padding-top: 4px;">Type: Pannelled</div></p>
+
+                            <p><div style="width:100%;height:30px;background:<?php if($this->session->userdata('astro_astrologer')->status == 1) {echo '#1ecbf0';} else if($this->session->userdata('astro_astrologer')->status == 2){echo "#fa68f5";} else {echo "#eddf07";} ?>;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;color:#fff;text-align:center;font-weight:bold;padding-top: 4px;">Type: Pannelled</div></p>
                         </div>
 						
 						<div class="panel panel-default">	
@@ -24,7 +28,7 @@
 
 	                            <li <?php if($page == "add_market_prediction") echo "style='background:#eee'"; ?>><a href="<?php echo base_url(); ?>astrologer/add_market_prediction/">Add Market Prediction</a></li>
 
-	                            <?php if($this->session->userdata('user')->status == 1 || $this->session->userdata('user')->status == 2){ ?>
+	                            <?php if($this->session->userdata('astro_astrologer')->status == 1 || $this->session->userdata('astro_astrologer')->status == 2){ ?>
 
 	                            <li <?php if($page == "upload_products") echo "style='background:#eee'"; ?>><a href="<?php echo base_url(); ?>astrologer/upload_products/">Upload Products <img src="<?php echo base_url(); ?>assets/images/new.gif" /></a></li>
 
@@ -42,7 +46,7 @@
 											
 					</div><!--/category-productsr-->
 				</div>
-				<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:20%">
+				<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -50,14 +54,28 @@
 				        <h4 class="modal-title" id="myModalLabel">Upload Profile Picture</h4>
 				      </div>
 				      <div class="modal-body">        
-				        <form id="contact-form" name="contact-form" method="post" action="<?php echo base_url(); ?>astrologer/changePhoto/" enctype="multipart/form-data">
+				        <form id="cropimage" name="contact-form" method="post" action="<?php echo base_url(); ?>astrologer/changePhoto/" enctype="multipart/form-data">
 				            <div class="col-sm-12 form-group">
-				                <input type="file" name="userfile" class="form-control" required="required" >                
+				                <input type="file" name="userfile" id="profile-pic" class="form-control" required="required" >
 				                <p>Maximum Size Allowed: 200 Kb</p>
+
+				                <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
+								<input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
+								<input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
+								<input type="hidden" name="hdn-x2-axis" value="" id="hdn-x2-axis" />
+								<input type="hidden" name="hdn-y2-axis" value="" id="hdn-y2-axis" />
+								<input type="hidden" name="hdn-thumb-width" id="hdn-thumb-width" value="250" />
+								<input type="hidden" name="hdn-thumb-height" id="hdn-thumb-height" value="250" />
+								<input type="hidden" name="action" value="" id="action" />
+								<input type="hidden" name="image_name" value="" id="image_name" />
+
+								<div id='preview-profile-pic'></div>
+								<div id="thumbs" style="padding:5px; width:600px"></div>
+
 				            </div>                   
 				      </div>
 				      <div class="modal-footer" style="border-top: none">       
-				        <button type="submit" class="btn btn-success">Upload</button>        
+				        <button type="submit" class="btn btn-success" id="save_crop">Crop &amp; Upload</button>        
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>        
 				      </div>
 				      </form>
@@ -65,4 +83,5 @@
 				  </div>
 				</div>
 				
-			</div>	
+			</div>
+			

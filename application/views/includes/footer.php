@@ -42,6 +42,12 @@
 	<script src="<?php echo base_url(); ?>assets/site_assets/vendors/gmap3/js/gmap3.min.js"></script>
 <?php } ?>
 
+<?php if($this->uri->segment(1) == 'astrologer'){ ?>
+<script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.imgareaselect.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.form.js"></script>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/imgareaselect.css">
+<script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop.js"></script>
+<?php } ?>
 <!--=============== Custom Js Start ===============-->
 
 <script src="<?php echo URL; ?>assets/site_assets/js/custom.js"></script>

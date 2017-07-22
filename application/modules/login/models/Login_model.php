@@ -52,15 +52,17 @@ class Login_model extends CI_MODEL {
     	if($q->num_rows() > 0)
     	{
     		$q1 = $q->row();
+            if($data['type'] == 1)
+            {
+                $this->session->set_userdata('astro_astrologer',$q1);
+            } 
+            
             if($data['type'] == 2)
             {
                 $this->session->set_userdata('astro_student',$q1);
             }  
-            if($data['type'] == 1)
-            {
-                $this->session->set_userdata('user',$q1);
-            }  
-            if($data['type'] == 2)
+             
+            if($data['type'] == 3)
             {
                 $this->session->set_userdata('astro_client',$q1);
             }    		

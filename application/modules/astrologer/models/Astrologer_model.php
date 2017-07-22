@@ -22,12 +22,12 @@ class Astrologer_model extends CI_Model{
 
     public function getAstrologerData()
     {
-    	return $this->db->get_where('astrologer',array('id'=>$this->session->userdata('user')->id))->row();
+    	return $this->db->get_where('astrologer',array('id'=>$this->session->userdata('astro_astrologer')->id))->row();
     }
 
     public function updateProfile($data)
     {
-    	$this->db->where('id',$this->session->userdata('user')->id);
+    	$this->db->where('id',$this->session->userdata('astro_astrologer')->id);
     	return $this->db->update('astrologer',$data);
     }
 
@@ -40,7 +40,7 @@ class Astrologer_model extends CI_Model{
     {
     	$data['type'] = 2;  
         $data['purpose'] = 1;  	
-    	$data['astrologers_id'] = $this->session->userdata('user')->id;
+    	$data['astrologers_id'] = $this->session->userdata('astro_astrologer')->id;
     	return $this->db->insert('tips',$data);
     }
 
@@ -48,18 +48,18 @@ class Astrologer_model extends CI_Model{
     {
         $data['type'] = 2;   
         $data['purpose'] = 2;    
-        $data['astrologers_id'] = $this->session->userdata('user')->id;
+        $data['astrologers_id'] = $this->session->userdata('astro_astrologer')->id;
         return $this->db->insert('tips',$data);
     }
 
     public function getTips()
     {
-        return $this->db->get_where('tips',array('astrologers_id'=>$this->session->userdata('user')->id,'purpose'=>1))->result();
+        return $this->db->get_where('tips',array('astrologers_id'=>$this->session->userdata('astro_astrologer')->id,'purpose'=>1))->result();
     }
 
     public function getMarket()
     {
-        return $this->db->get_where('tips',array('astrologers_id'=>$this->session->userdata('user')->id,'purpose'=>2))->result();
+        return $this->db->get_where('tips',array('astrologers_id'=>$this->session->userdata('astro_astrologer')->id,'purpose'=>2))->result();
     }
 
     
@@ -67,18 +67,18 @@ class Astrologer_model extends CI_Model{
 
     public function getPrediction()
     {
-        return $this->db->get_where('rashi_prediction',array('astrologer_id'=>$this->session->userdata('user')->id))->result();
+        return $this->db->get_where('rashi_prediction',array('astrologer_id'=>$this->session->userdata('astro_astrologer')->id))->result();
     }
 
     public function changePassword($data)
     {
-        $oldpass = $this->db->select('password')->get_where('astrologer',array('id'=>$this->session->userdata('user')->id))->row()->password;
+        $oldpass = $this->db->select('password')->get_where('astrologer',array('id'=>$this->session->userdata('astro_astrologer')->id))->row()->password;
         $data['new_password'] = sha1(md5($data['new_password']));
         $data['old_password'] = sha1(md5($data['old_password']));
         if($oldpass == $data['old_password'])
         {
             $arr = array('password'=>$data['new_password']);
-            $this->db->where('id',$this->session->userdata('user')->id);
+            $this->db->where('id',$this->session->userdata('astro_astrologer')->id);
             $this->db->update('astrologer',$arr);
             return TRUE;
         }
@@ -106,7 +106,7 @@ class Astrologer_model extends CI_Model{
                 'price'=>$data['price'],
                 'quantity'=>$data['quantity'],
                 'type'=>2,
-                'astrologers_id'=>$this->session->userdata('user')->id,
+                'astrologers_id'=>$this->session->userdata('astro_astrologer')->id,
                 'details'=>$data['details']
             );
         $this->db->insert('shop_product',$arr);
@@ -116,7 +116,7 @@ class Astrologer_model extends CI_Model{
     public function AddPrediction($data)
     {
         $data['type'] = 2;             
-        $data['astrologer_id'] = $this->session->userdata('user')->id;
+        $data['astrologer_id'] = $this->session->userdata('astro_astrologer')->id;
         return $this->db->insert('rashi_prediction',$data);    
     }
     
@@ -133,13 +133,13 @@ class Astrologer_model extends CI_Model{
 
     public function getUserProduct()
     {
-        return $this->db->get_where('shop_product',array('astrologers_id'=>$this->session->userdata('user')->id))->result();
+        return $this->db->get_where('shop_product',array('astrologers_id'=>$this->session->userdata('astro_astrologer')->id))->result();
     }
 
     public function AddBranch($data)
     {
         $arr = array(
-                'astrologers_id'=>$this->session->userdata('user')->id,
+                'astrologers_id'=>$this->session->userdata('astro_astrologer')->id,
                 'branch_name'=>$data['branch_name'],
                 'place'=>$data['place'],
                 'time'=>$data['time_from'].":".$data['time_from_day']." to ".$data['time_to'].":".$data['time_to_day'],
@@ -156,7 +156,7 @@ class Astrologer_model extends CI_Model{
 
     public function getBranchList()
     {
-        return $this->db->get_where('astrologer_branch',array('astrologers_id'=>$this->session->userdata('user')->id))->result();
+        return $this->db->get_where('astrologer_branch',array('astrologers_id'=>$this->session->userdata('astro_astrologer')->id))->result();
     }
 
     public function updateProducts($data,$id)
@@ -172,7 +172,7 @@ class Astrologer_model extends CI_Model{
                 'price'=>$data['price'],
                 'quantity'=>$data['quantity'],
                 'type'=>2,
-                'astrologers_id'=>$this->session->userdata('user')->id
+                'astrologers_id'=>$this->session->userdata('astro_astrologer')->id
             );
         $this->db->where('id',$id);
         return $this->db->update('shop_product',$arr);
@@ -180,7 +180,7 @@ class Astrologer_model extends CI_Model{
 
     public function getAstrologerDetails()
     {
-        return $this->db->get_where('astrologer',array('id'=>$this->session->userdata('user')->id))->row();
+        return $this->db->get_where('astrologer',array('id'=>$this->session->userdata('astro_astrologer')->id))->row();
     }
 	
 
