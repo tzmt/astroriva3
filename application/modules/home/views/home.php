@@ -45,9 +45,9 @@
                 <h2 class="text-white font35" style="margin-top: -22px">Meet The Acharya</h2>                
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="text-white"><?php echo $acharya->details1; ?></p>
-                        <p class="text-white"><?php echo $acharya->details2; ?></p>
-                        <p class="text-white"><?php echo $acharya->details3; ?></p>
+                        <p class="text-white" style="text-align: justify;"><?php echo $acharya->details1; ?></p>
+                        <p class="text-white" style="text-align: justify;"><?php echo $acharya->details2; ?></p>
+                        <p class="text-white" style="text-align: justify;"><?php echo $acharya->details3; ?></p>
                         <!-- <p class="text-white"><?php echo $acharya->details4; ?></p> -->
                         <!-- <p class="text-white"><?php echo $acharya->details5; ?></p> -->
                     </div>
