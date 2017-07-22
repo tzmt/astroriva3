@@ -11,22 +11,15 @@
                     <div class="row home_align">
                         <?php foreach($rashi as $ras){ ?>
                             <div class="col-md-2 col-sm-4 col-xs-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.1s">
-                                <div class="sign_circle bg-aries">
+                                
+                                <div class="sign_circle bg-<?php echo strtolower($ras->name); ?>">
                                     <img src="<?php echo ASSETS; ?>rashi_image/<?php echo $ras->image; ?>" width="45px" alt="image-missing" class="rotate">
                                 </div>
                                 
                                     <div class="sign_card text-center signs_bg" rashi_id= "<?php echo $ras->id;?>">
-                                        <div class="show123<?php echo $ras->id;?>">
-                                            <span class="text-aries signs_clr font16"><?php echo $ras->name; ?></span><br>
-                                            <span class="signtext_clr font12">Mar 21 - Apr 19</span><br/>
-                                        </div>
-                                        <div class="show1234<?php echo $ras->id;?>" style="display: none">
-                                            <div class="sign_card text-center signs_bg">
-                                                <span class="signtext_clr font12"><a href="<?php echo base_url(); ?>astrology/<?php echo $ras->name; ?>/details/" class="text-white">Details</a></span><br/>
+                                            <a href="<?php echo base_url(); ?>astrology/<?php echo $ras->name; ?>/details/"><span class="text-<?php echo strtolower($ras->name); ?> signs_clr font16 "><?php echo $ras->name; ?></span></a><br>
 
-                                                <span class="signtext_clr font12"><a href="<?php echo base_url(); ?>astrology/<?php echo $ras->name; ?>/prediction/">Prediction</a></span><br/>                                                
-                                            </div>
-                                        </div>
+                                            <a href="<?php echo base_url(); ?>astrology/<?php echo $ras->name; ?>/prediction/"><span class="signtext_clr font16">Prediction</span></a><br/>
                                     </div>
                                
                             </div>
@@ -76,11 +69,11 @@
             <div class="col-md-4 m-t-40">
                 <h1 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">Tips</h1>
                 <hr class="hr_margin">
-                <div class="row common_margin"  style="height: 500px;">
+                <div class="row common_margin">
                     <div class="col-xs-12 font16">
                     <?php foreach($tips1 as $tip){ ?>
 	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
-	                            <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
@@ -95,10 +88,10 @@
             <div class="col-md-4 m-t-40">
                 <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.1s">Market Prediction</h1>
                 <hr>
-                <div class="row common_margin" style="height: 500px;">                    
+                <div class="row common_margin">                    
                         <?php foreach($tips as $tip){ ?>
 	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
-	                            <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
@@ -251,6 +244,7 @@
 
                 </div>
             </div>
+
             <div class="col-md-4 m-t-40 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">
                 <h1 class="text-primary text-center">Match Making?</h1>
                 <hr>
@@ -260,6 +254,7 @@
                     <div class="blog_text blog_text1"></div>
                     <span class="text_image text-white">Read more</span></a>
             </div>
+            
         </div>
     </div>
 </section>

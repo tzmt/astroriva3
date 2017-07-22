@@ -92,11 +92,11 @@
                     </a>
                 </div>
                 <div class="col-sm-2 col-xs-2 text-center head_signs">
-                    <a href="<?php echo base_url(); ?>astrologer/list-astrologer/pannelled">
+                    <a href="<?php echo base_url(); ?>shiksha/">
                         <div class="bg-info header_bg center-block">
                             <img src="<?php echo URL; ?>assets/site_assets/images/calendar.png" alt="Image missing">
                         </div>
-                        <div class="text-center info1 font13 hidden-xs">Astrologers</div>
+                        <div class="text-center info1 font13 hidden-xs">Siksha</div>
                     </a>
                 </div>
             </div>
@@ -107,7 +107,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="row">
-                <div class="navbar-header col-md-4 col-sm-5 col-xs-12 nav_head">
+                <div class="navbar-header col-md-3 col-sm-3 col-xs-12 nav_head">
                     <button type="button" class="navbar-toggle m-t-20 font18" data-toggle="collapse"
                             data-target="#myNavbar">
                         <span>
@@ -129,10 +129,7 @@
                         </li>
                         <li class="header_li">
                             <a href="<?php echo base_url(); ?>Jyotish/" class="text-info">Jyotish</a>
-                        </li>
-                        <li class="header_li">
-                            <a href="<?php echo base_url(); ?>shiksha/" class="text-info">Siksha</a>
-                        </li>
+                        </li>                       
 
                         <li class="header_li">
                             <a href="<?php echo base_url(); ?>ayurved/" class="text-info">Ayurved</a>
@@ -143,20 +140,20 @@
                         <li class="header_li">
                             <a href="<?php echo base_url(); ?>contact/" class="text-info">Contact Us</a>
                         </li>
-                        <!-- <li class="dropdown dropdown_modified">
-                            <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle">Pages <span
+                        <li class="dropdown dropdown_modified">
+                            <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle">Astrologers <span
                                     class="caret"></span></a>
                             <ul class="dropdown-menu dropdown_mod" data-dropdown-in="fadeInUp"
                                 data-dropdown-out="fadeOut">
-                                <li><a href="index2.html">Home Page2</a></li>
-                                <li><a href="blog_single.html">Blog Single Post</a></li>
-                                <li><a href="blog_category.html">Blog Category</a></li>
-                                <li><a href="signs_single_post.html">Signs Single Page</a></li>
-                                <li><a href="gemstones_single.html">Gemstones Single Page</a></li>
-                                <li><a href="love_compatibility_result.html">Love Compatibility Result</a></li>
-                                <li><a href="elements.html">Elements</a></li>
+                                <li><a href="<?php echo base_url(); ?>astrologer/list-astrologer/premium">Premium Astrologers</a></li>
+                                <li><a href="<?php echo base_url(); ?>astrologer/list-astrologer/pannelled">Panneled Astrologers</a></li>                                
                             </ul>
-                        </li> -->
+                        </li>                       
+                        
+                        <li class="header_li">
+                            <a href="<?php echo base_url(); ?>shop/cart/" class="text-info" style="color:#e36480;font-weight: bold;">Cart [ <?php echo count($this->cart->contents()); ?> ]</a>
+                        </li>
+
                         <li class="header_li">
                             <?php
                                 if($this->session->userdata('astro_student') != "" || $this->session->userdata('user') != "" || $this->session->userdata('astro_client') != ""){?>
@@ -164,10 +161,6 @@
                             <?php } else {?>
                                 <a href="<?php echo base_url(); ?>login/" class="text-info">Login / Signup</a>
                             <?php } ?>
-                        </li>
-                        
-                        <li class="header_li">
-                            <a href="<?php echo base_url(); ?>shop/cart/" class="text-info" style="color:#e36480;font-weight: bold;">Cart [ <?php echo count($this->cart->contents()); ?> ]</a>
                         </li>
                         
                         <!-- <li class="header_li">

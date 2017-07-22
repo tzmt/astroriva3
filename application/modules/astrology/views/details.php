@@ -161,7 +161,7 @@
                         $q = $this->db->get_where('shop_product',array('type'=>1))->row();
                     ?>
                     <div class="games_content sign_single row">
-                        <div class="col-md-3"><img src="http://www.astroriva.com/assets/products/<?php echo $this->db->get_where("product_images",array('product_id'=>$q->id))->row()->image; ?>" width="100%" height="auto"/></div>
+                        <div class="col-md-3"><img src="<?php echo base_url(); ?>/assets/products/<?php echo $this->db->get_where("product_images",array('product_id'=>$q->id))->row()->image; ?>" width="100%" height="auto"/></div>
                         <div class="col-md-9">
                             <h4 class="text-white">Today's Deal</h4>
                             <h1 class="font35 text-white games_content_align m-b-25"><?php echo $q->name; ?></h1>

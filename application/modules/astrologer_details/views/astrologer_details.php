@@ -126,11 +126,11 @@
 			</div>
 		</div>
 	</div>
-	
+</div>
 	
 
 	
-	<div id="shop">
+	<div id="shop" class="bg-info">
 		<div class="container padding-top padding-bottom">
 			<div class="row section-title text-center">
 				<div class="col-sm-12">
@@ -147,7 +147,7 @@
 									<div class="productinfo text-center">
 										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>"><img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/></a>
 										<h2><i class="fa fa-rupee"></i> <?php echo $prod->price ?></h2>
-										<p><?php echo $prod->name; ?></p>
+										<p style="color:white"><?php echo $prod->name; ?></p>
 										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>" class="btn btn-primary add-to-cart"><i class="fa fa-view"></i>View Details</a>
 									</div>									
 								</div>							

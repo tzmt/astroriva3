@@ -1,4 +1,29 @@
-<section class="home_bg">
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="font13">Astrologers</span>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13"><?php echo ucwords($this->uri->segment(3)); ?></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
 	<div class="container">
 		<div id="team" style="margin-top:50px;">
 
@@ -6,9 +31,7 @@
 				<div class="row text-center">
 					<div class="col-sm-12 section-title-two">
 
-						<h2>OUR <?php echo strtoupper($this->uri->segment(3)); ?> ASTROLOGERS</h2>
-
-						<p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur aliquet quam id dui posuere.</p>
+						<h2>OUR <?php echo strtoupper($this->uri->segment(3)); ?> ASTROLOGERS</h2>					
 
 					</div>				
 					<div class='row'>

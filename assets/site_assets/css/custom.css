@@ -649,6 +649,10 @@ label {
   border-radius: 5px;
   border-bottom: 5px solid #E5E5E5; }
 
+  .sign_card:hover {
+    color: #fff;
+ }
+
 .sign_btnpadding {
   padding: 12px 0;
   border-radius: 5px;

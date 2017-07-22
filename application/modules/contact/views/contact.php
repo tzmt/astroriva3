@@ -1,4 +1,23 @@
-<section class="home_bg">
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Contact</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
 	<div class="container">
     <form action="http://dev.lorvent.com/astrology/contact.php" method="post">
         <div class="row">

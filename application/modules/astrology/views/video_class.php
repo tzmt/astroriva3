@@ -22,7 +22,7 @@
     </div>
 </section>
 
-<section class="home_bg">
+<section>
 	<div class="container">
 		<div id="our-work">
 			<div class="container padding-top">

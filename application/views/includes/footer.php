@@ -48,6 +48,11 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/imgareaselect.css">
 <script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop.js"></script>
 <?php } ?>
+
+<?php if($this->uri->segment(1) == 'gallery'){ ?>
+<script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.fancybox.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/jquery.fancybox.min.css">
+<?php } ?>
 <!--=============== Custom Js Start ===============-->
 
 <script src="<?php echo URL; ?>assets/site_assets/js/custom.js"></script>

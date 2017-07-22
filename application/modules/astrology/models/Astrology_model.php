@@ -57,9 +57,9 @@ class Astrology_model extends CI_Model{
 	public function getRashiPrediction($rashi)
 	{
 		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;
-		$date = date("Y-m-d").' 00:00:00';
-		return $q = $this->db->query("SELECT * FROM rashi_prediction WHERE '$date' BETWEEN date_to AND date_from AND rashi_id = '$id'")->result();
-		 // echo $this->db->last_query();
+		$date = date("Y-m-d");
+		return $q = $this->db->query("SELECT * FROM astro_rashi_prediction WHERE date_from >= '$date' AND date_to <= '$date' AND rashi_id = '$id'")->result();
+		 //echo $this->db->last_query();
 		 //echo "<pre>";print_r($q);exit();
 	}
 
@@ -67,7 +67,7 @@ class Astrology_model extends CI_Model{
 	{
 		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;
 		$date = date("Y-m-d").' 00:00:00';
-		return $q = $this->db->query("SELECT * FROM tips WHERE '$date' BETWEEN date_to AND date_from AND rashi_id = '$id'")->result();
+		return $q = $this->db->query("SELECT * FROM astro_tips WHERE '$date' BETWEEN date_to AND date_from AND rashi_id = '$id'")->result();
 		 // echo $this->db->last_query();
 		 //echo "<pre>";print_r($q);exit();
 	}
@@ -75,7 +75,8 @@ class Astrology_model extends CI_Model{
 	public function getRashiPredictionByAstrologers($rashi)
 	{
 		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;		
-		return $this->db->get_where('rashi_prediction',array('rashi_id'=>$id,'type'=>2))->result();
+		$this->db->limit(20);
+		return $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->where(array('tips.purpose'=>'2','rashi_id'=>$id))->get()->result();
 	}
 
 	public function getRashiTipsByAstrologers($rashi)

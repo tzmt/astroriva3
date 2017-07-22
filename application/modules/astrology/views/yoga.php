@@ -1,4 +1,23 @@
-<section class="home_bg">
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Yoga</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
 	<div class="container">
 			<div class="container padding-bottom">
 				<div class="row text-center">
@@ -8,7 +27,7 @@
 					<?php foreach($all_data as $dat){ ?>
 					<div class="col-md-4" style="border-radius: 5px;padding:5px;">
 						<div class="entry-header" style="text-align: left;background: #fff;">
-							<a href="<?php echo base_url(); ?>yoga/details/<?php echo strtolower(str_replace(" ", "-", $dat->topic)); ?>"><img class="img-responsive" src="http://www.astroriva.com/assets/yoga/<?php echo $dat->image; ?>" width="100%" alt="<?php echo $dat->topic; ?>" /></a>							
+							<a href="<?php echo base_url(); ?>yoga/details/<?php echo strtolower(str_replace(" ", "-", $dat->topic)); ?>"><img class="img-responsive" src="<?php echo base_url(); ?>assets/yoga/<?php echo $dat->image; ?>" width="100%" alt="<?php echo $dat->topic; ?>" /></a>							
 						</div>
 						<div class="entry-body">
 							<h4><?php echo $dat->topic; ?></h4>		

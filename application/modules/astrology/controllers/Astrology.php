@@ -27,13 +27,13 @@ class Astrology extends MX_Controller {
 			$this->get_your_prediction();
 		}
 		else if($type == 'prediction')
-		{
+		{			
 			$data['pannelled_astrologers'] = $this->astrology_model->getPannelledAstrologers();	
 			$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();	
 			$data['news'] = $this->astrology_model->getNews();
 			$data['all_data'] = $this->astrology_model->getRashiPrediction($rashi);
 			$data['prediction'] = $this->astrology_model->getRashiPredictionByAstrologers($rashi);
-			$this->layout->view('prediction',$data,'normal1');						
+			$this->layout->view('prediction',$data,'normal');						
 		}
 		else if($type == 'tips-and-remedy')
 		{
@@ -49,7 +49,7 @@ class Astrology extends MX_Controller {
 			$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();				
 			$data['news'] = $this->astrology_model->getNews();
 			$data['all_data'] = $this->astrology_model->getRashiDetails($rashi);
-			$this->layout->view('details',$data,'home1');
+			$this->layout->view('details',$data,'normal');
 		}
 	}
 
@@ -58,7 +58,7 @@ class Astrology extends MX_Controller {
 		$data['pannelled_astrologers'] = $this->astrology_model->getPannelledAstrologers();	
 		$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();	
 		$data['news'] = $this->astrology_model->getNews();	
-		$this->layout->view('my_prediction',$data,'normal1');
+		$this->layout->view('my_prediction',$data,'normal');
 				
 	}
 

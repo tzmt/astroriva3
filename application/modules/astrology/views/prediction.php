@@ -1,15 +1,32 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( ".datepicker" ).datepicker();    
-  } );
-  </script>
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>                    
+                    <li>
+                        <span class="font13"><?php echo $this->uri->segment(2); ?></span>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Prediction</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="blog-details">
 		<div class="container">
 			<div class="row blog-item">								
-				<div class="col-md-9 col-sm-7 blog-content">
+				<div class="col-md-12 col-sm-12 blog-content">				
 					<?php foreach($all_data as $dat){ ?>
 					<div class="entry-header">
 						<h3><?php echo $this->uri->segment(2);?> Prediction</h3>
@@ -22,31 +39,26 @@
 					</div>
 					<hr/>
 					<?php } ?>
-
+				</div>
+				<div class="col-md-6"> 
 					<div class="comments-area">
 						<h3>ASTROLOGERS PREDICTION</h3>
-						<ul class="media-list">
-							<?php foreach($prediction as $pred){ ?>
-							<?php $q = $this->db->get_where('astrologer',array('id'=>$pred->astrologer_id))->row(); ?>
-							<li class="media">
-								<div class="post-comment">
-									<a class="pull-left" href="#">
-										<img class="media-object" src="<?php echo ASSETS; ?>astrologer/<?php echo $q->image ?>" alt="">
-									</a>
-									<div class="media-body">
-										<h3><?php echo $q->name ?> says:</h3>	
-										<p><strong>From: </strong><?php echo date("d M, y",strtotime($pred->date_from)); ?> <strong>To: </strong><?php echo date("d M, y",strtotime($pred->date_to)); ?></p>									
-										<p><?php echo $pred->description ?></p>										
-									</div>
-								</div>						
-							</li>
-							<hr/>
-							<?php } ?>
-						</ul>					
+							<?php foreach($prediction as $tip){ ?>
+		                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
+		                            <div class="col-xs-2"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+		                            <div class="col-md-9">
+		                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
+		                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
+		                            	<span><?php echo $tip->description; ?></span>
+		                            </div>
+		                        </div>
+
+	                        <?php } ?>	
 					</div><!--/comments-area-->
-					
-					
-					<div class="replay-box" style="border:2px solid yellow;padding:10px;">
+				</div>
+				</div>
+				<div class="col-md-12">
+					<div class="replay-box" style="padding:10px;">
 						<div class="row">
 							<div class="col-md-12">
 								<h3>GET MORE DETAILS ABOUT YOU</h3>
@@ -183,66 +195,57 @@
 						</div>
 					</div><!--/Repaly Box-->
 
-					<div id="team" style="background:#fff !important"><!-- OUR ASTROLOGERS  -->
-
-						<div class="container padding-bottom">
-
-							<div class="row">
-
-								<div class="section-title-two">
-
-									<h2>OUR PANNELLED ASTROLOGERS</h2>										
-									</div>				
-									<?php foreach($pannelled_astrologers as $ast){ ?>				
-									<div class="col-sm-3">
-										<div class="team-member text-center">
-											<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" width="263px" height="263px;" alt="<?php echo $ast->name; ?>" style="width:263px !important;height:263px !important;" />						
-											<div class="member-text">							
-												<h5><?php echo $ast->name; ?></h5>
-												<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">VIEW DETAILS</a></h6>
-												<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">PRODUTCS</a></h6>
-												<h6><?php echo $ast->phone; ?></h6>
-											</div>						
-										</div>
-									</div>
-									<?php } ?>														
-
-							</div>
-
-						</div>
-
-					</div><!-- #/ Team  -->
-					<div id="team" style="background:#fff !important"><!-- OUR ASTROLOGERS  -->
-
-						<div class="container padding-bottom">
-
-							<div class="row">
-
-								<div class="section-title-two">
-
-									<h2>OUR PREMIUM ASTROLOGERS</h2>										
-									</div>				
-									<?php foreach($premium_astrologers as $ast){ ?>				
-										<div class="col-sm-3">
-											<div class="team-member text-center">
-												<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" width="263px" height="263px;" alt="<?php echo $ast->name; ?>" style="width:263px !important;height:263px !important;" />						
-												<div class="member-text">							
+					<div id="team">
+					<div class="container padding-bottom">
+						<div class="row text-center">
+							<div class="col-sm-12 section-title-two">
+								<h2>OUR RANDOM ASTROLOGERS</h2>					
+							</div>								
+							<div style="margin-top: 35px;">
+								<?php foreach($pannelled_astrologers as $ast){ ?>				
+								<div class="col-md-2" style="margin-bottom: 10px;">
+											<div class="team-member">
+												<div class="col-md-12" style="margin-bottom: 15px;">
+													<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+												</div>
+												<div class="member-text">			
 													<h5><?php echo $ast->name; ?></h5>
-													<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">VIEW DETAILS</a></h6>
-													<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">PRODUTCS</a></h6>
-													<h6><?php echo $ast->phone; ?></h6>
+													<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
 												</div>						
 											</div>
 										</div>
-										<?php } ?>	
-										<div class="col-sm-8 col-sm-offset-2 section-title-two text-center">					
-											<p><br/><a href="<?php echo base_url(); ?>astrologer/list-astrologer/premium"><img src="<?php echo base_url(); ?>assets/images/view_more.jpg"/></a></p>
-										</div>												
-
+								<?php } ?>	
 							</div>
-
 						</div>
-
 					</div>
 				</div>
+
+				<div id="team">
+					<div class="container padding-bottom">
+						<div class="row text-center">
+							<div class="col-sm-12 section-title-two">
+								<h2>OUR RANDOM ASTROLOGERS</h2>					
+							</div>								
+							<div style="margin-top: 35px;">
+								<?php foreach($premium_astrologers as $ast){ ?>				
+								<div class="col-md-2" style="margin-bottom: 10px;">
+											<div class="team-member">
+												<div class="col-md-12" style="margin-bottom: 15px;">
+													<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+												</div>
+												<div class="member-text">			
+													<h5><?php echo $ast->name; ?></h5>
+													<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+												</div>						
+											</div>
+										</div>
+								<?php } ?>	
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+</section>
 				
