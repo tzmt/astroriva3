@@ -49,6 +49,8 @@ class Astrology_model extends CI_Model{
 	public function getRashiDetails($rashi)
 	{
 		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;
+		$this->db->order_by('id','ASC');
+		$this->db->limit(1);
 		return $q = $this->db->get_where('rashi_topic_details',array('rashi_id'=>$id))->result();
 		// echo $this->db->last_query();
 		// print_r($q);exit();

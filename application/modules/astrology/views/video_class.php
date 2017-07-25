@@ -34,9 +34,9 @@
 			</div>
 			<div class="portfolio-menu text-center" style="margin-bottom: 20px;">
 				<ul>				
-					<li class="active filter"  data-filter="all"><a><strong>All</strong></a></li>				
+					<li class="active filter vidfilter" onclick="showHideVideo('all')"><a><strong>All</strong></a></li>				
 					<?php foreach($video_category as $cat){ ?>
-					<li class="filter"  data-filter="<?php echo $cat->id; ?>"><a><strong><?php echo $cat->name; ?></strong></a></li>
+					<li class="filter vidfilter<?php echo $cat->id; ?>" onclick="showHideVideo(<?php echo $cat->id; ?>)"  ><a><strong><?php echo $cat->name; ?></strong></a></li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -44,7 +44,7 @@
 				<div class="portfolio-item padding-bottom portfolio_contents" style="margin-top: 50px;">
 					<div id="portfolio_filter">	
 						<?php foreach($video_list as $list){ ?>							
-							<div class="col-md-3" style="border-radius: 5px;padding:5px;">
+							<div class="col-md-3 vid<?php echo $list->id; ?> showhide123" style="border-radius: 5px;padding:5px;">
 								<div class="entry-header" style="text-align: left;background: #fff;">
 
 
@@ -96,3 +96,28 @@
 		</div>
 	</div>
 </section>
+<style>
+	.activevid{background: #e36480;
+    padding: 5px 10px 5px 10px;
+    color: #fff;
+    border-radius: 10px;
+    color: #fff;
+}
+</style>
+<script type="text/javascript">
+	function showHideVideo(id)
+	{
+		$('.filter').removeClass('activevid');
+		$('.vidfilter'+id).addClass('activevid');
+		if(id == 'all')
+		{
+			$('.showhide123').show();
+		}
+		else
+		{
+			$('.showhide123').hide();
+			$('.vid'+id).animate().show();;
+		}
+		
+	}
+</script>

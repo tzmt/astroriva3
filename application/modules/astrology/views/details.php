@@ -62,7 +62,7 @@
                     <br/>
                     <hr>
                     <div class="tab-content tab_singlepost">
-                        <div class="tab-pane active">                            
+                        <div class="tab-pane active" id="rashiajaxdetails">                            
                             <?php foreach($all_data as $all): ?>
                                 <div class="row" style="margin-top: -10px !important;">
                                     <h1 style="margin-left: 18px;"><?php echo $this->db->get_where("rashi_topic_list",array('id'=>$all->topic_id))->row()->name; ?></h1>
@@ -193,8 +193,9 @@
                         foreach($q as $q1){
                     ?>
                     <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
-                        <a href="#" class="insight-color">
-                            <i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;<?php echo $this->db->get_where("rashi_topic_list",array('id'=>$q1->topic_id))->row()->name; ?>
+                    <?php $name =  $this->db->get_where("rashi_topic_list",array('id'=>$q1->topic_id))->row()->name; ?>
+                        <a href="javascript:void(0)" class="insight-color" onclick="getAjaxRashiDetails(<?php echo $rashi_id; ?>,'<?php echo $name; ?>')">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;<?php echo $name; ?>
                         </a>
                     </p>
                     <hr class="hr_margin">
@@ -333,3 +334,29 @@
         </div>
     </div>
 </div>
+
+<script>
+    function getAjaxRashiDetails(rashi_id,slug)
+    {
+        $.ajax({
+            type: 'POST',
+            url: "<?php echo base_url(); ?>astrologyajax/getajaxrashi/",
+            data: {rashi:rashi_id,slug:slug},
+            beforeSend: function() {
+                // setting a timeout
+                $('#rashiajaxdetails').html('<img src="<?php echo URL; ?>assets/site_assets/images/preloader.gif" alt="loader-missing">');
+            },
+            success: function(data) {
+                $('#rashiajaxdetails').html(data);
+            },
+            error: function(xhr) { // if error occured
+                
+            },
+            complete: function() {
+                //$('#rashiajaxdetails').html("");
+            },
+            dataType: 'html'
+        });
+        
+    }
+</script>

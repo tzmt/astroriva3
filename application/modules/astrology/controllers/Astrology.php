@@ -212,4 +212,17 @@ class Astrology extends MX_Controller {
 		$data['tips'] = $this->astrology_model->getTips();	
 		$this->layout->view('service_details',$data,'home1');
 	}
+
+	public function getajaxrashi()
+	{
+		$rashi_id = $this->input->post('rashi');
+		$slug = $this->input->post('slug');
+		$q = $this->db->select('rashi_topic_details.description')->from('astro_rashi_topic_details')->join('astro_rashi_topic_list','astro_rashi_topic_list.id = rashi_topic_details.topic_id','left')->where(array('astro_rashi_topic_details.rashi_id'=>$rashi_id,'astro_rashi_topic_list.name'=>$slug))->get()->row();
+		echo '<div class="row" style="margin-top: -10px !important;">
+            <h1 style="margin-left: 18px;">'.$slug.'</h1>
+            <div class="col-xs-12" style="margin-top: -25px;">
+                <p class="elements_desc" style="text-align: justify;">'.$q->description.'</p>
+            </div>
+        </div>';
+	}
 }

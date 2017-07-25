@@ -11,7 +11,7 @@
         }        
     ?>
         <div class="row home_alignment">  
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center" id="loginhide">
                 <div class="bg-white button_margin pic_margin">
                     <h1 class="text-primary font35 home_padding">Login</h1>
                     <div class="home_head center-block"></div>
@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="col-md-6 center-block">
-                                <button type="submit" class="btn btn-warning col-md-12">Forgot Password</button>
+                                <button type="button" onclick="showForgot('forgot')" class="btn btn-warning col-md-12">Forgot Password</button>
                             </div>
                             <br/><br/>
                         </p>  
@@ -75,7 +75,20 @@
         </div>
     </div>
 </section>
-
+<script>
+    function showForgot(type)
+    {
+        if(type == 'forgot')
+        {
+            var html = '<div class="bg-white button_margin pic_margin"><h1 class="text-primary font35 home_padding">Forgot Password</h1><div class="home_head center-block"></div><form method="POST" action="<?php echo base_url(); ?>login/forgot"><p class="elements_desc" style="padding:20px;"><input type="text" name="email" class="form-control" placeholder="Your Email" /><br/><select name="type" id="login_type" required="required" class="form-control"><option value="">[Select]</option><option value="1">Astrologer</option><option value="3">Member</option><option value="2">Student</option></select><div class="col-md-6 center-block"><button type="submit" class="btn btn-success col-md-12">Reset Password</button></div><div class="col-md-6 center-block"><button type="button" onclick="showForgot(\'login\')" class="btn btn-warning col-md-12">Back To Login</button></div><br/><br/></p></form></div>';
+            $('#loginhide').html(html);
+        }
+        else
+        {
+            location.reload();
+        }
+    }
+</script>
 <section class="footer_bg">
     <div class="container footer_align">
         
