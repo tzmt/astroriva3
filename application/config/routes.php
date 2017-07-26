@@ -78,3 +78,7 @@ $route['services'] = 'astrology/services';
 $route['services/(:num)/(:any)'] = 'astrology/services_details/$1/$2';
 
 $route['astrologyajax/getajaxrashi'] = 'astrology/getajaxrashi';
+
+$route['shop/(:num)'] = 'shop/index/$1';
+
+$route['astrologer/search'] = 'astrologer_list/search';

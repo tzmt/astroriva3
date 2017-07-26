@@ -17,18 +17,125 @@ class Shop extends MX_Controller {
 		define('PARALLAX3',$query->parallax3);
 	}
 
-	public function index()
-	{		
-		$data['category'] = $this->shop_model->getCategory();		
-		$data['products'] = $this->shop_model->getProducts();
+	public function index($id = "")
+	{	
+		$data['category'] = $this->shop_model->getCategory();
+
+		$this->load->library('pagination');
+
+		$config['base_url'] = base_url().'shop/';
+		$config['total_rows'] = $this->db->get_where('shop_product',array('type'=>1))->num_rows();
+		$config['per_page'] = 15;
+		$config['uri_segment'] = 2;
+		$config['num_links'] = 2;
+		$config['use_page_numbers'] = TRUE;
+
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+
+		$config['first_link'] = 'First';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+
+		$config['last_link'] = 'Last';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+
+		$config['next_link'] = '&gt;';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+
+		$config['prev_link'] = '&lt;';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+
+		$config['cur_tag_open'] = '<li class="active"><a href="">';
+		$config['cur_tag_close'] = '</a></li>';
+
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+
+		$limit_from = $this->uri->segment(2);
+	
+
+		$page = ($limit_from) ? $limit_from : 0;
+        $per_page = $config["per_page"];
+        $start = 0;
+        if ($page > 0)
+        {
+            for ($i = 1; $i < $page; $i++)
+            {
+                $start = $start + $per_page;
+            }
+        }	
+		$data['products'] = $this->shop_model->getProducts($config['per_page'], $start);
+		$this->load->library('pagination');		
+		$this->pagination->initialize($config);
+		$data['links'] = $this->pagination->create_links();
 		$this->layout->view('shop',$data,'home1');
 	}
 
 	public function category()
 	{		
+
 		$cat = $this->uri->Segment(3);
-		$data['category'] = $this->shop_model->getCategory();		
-		$data['products'] = $this->shop_model->getProducts($cat);
+		$slug = $this->uri->Segment(4);
+
+		$this->load->library('pagination');
+
+		$id = $this->db->get_where('shop_category',array('name'=>$cat))->row()->id;
+
+		$config['base_url'] = base_url().'shop/category/'.$cat."/".$slug."/";
+		$config['total_rows'] = $this->db->get_where('shop_product',array('type'=>1,'category_id'=>$id))->num_rows();
+		$config['per_page'] = 1;
+		$config['uri_segment'] = 5;
+		$config['num_links'] = 2;
+		$config['use_page_numbers'] = TRUE;
+
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+
+		$config['first_link'] = 'First';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+
+		$config['last_link'] = 'Last';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+
+		$config['next_link'] = '&gt;';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+
+		$config['prev_link'] = '&lt;';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+
+		$config['cur_tag_open'] = '<li class="active"><a href="">';
+		$config['cur_tag_close'] = '</a></li>';
+
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+
+		$limit_from = $this->uri->segment(5);
+	
+
+		$page = ($limit_from) ? $limit_from : 0;
+        $per_page = $config["per_page"];
+        $start = 0;
+        if ($page > 0)
+        {
+            for ($i = 1; $i < $page; $i++)
+            {
+                $start = $start + $per_page;
+            }
+        }	
+
+		$data['category'] = $this->shop_model->getCategory();	
+		$this->load->library('pagination');		
+		$this->pagination->initialize($config);
+		$data['links'] = $this->pagination->create_links();	
+		$data['products'] = $this->shop_model->getProducts($config['per_page'], $start,$cat);
 		$this->layout->view('shop',$data,'home1');
 	}
 
@@ -40,6 +147,17 @@ class Shop extends MX_Controller {
 		$data['related_products'] = $this->shop_model->getRelatedProducts($product_name);
 		//echo "<pre>";print_r($data['related_products']);exit();
 		$this->layout->view('details',$data,'home1');
+	}
+
+
+	public function search()
+	{
+		$search = $_GET['search'];
+
+        $data['category'] = $this->shop_model->getCategory(); 
+        $data['links'] = "";     
+		$data['products'] = $this->shop_model->getProductsSearch($search);
+		$this->layout->view('shop',$data,'home1');
 	}
 
 	public function addReview($id,$product)

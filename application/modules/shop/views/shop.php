@@ -64,37 +64,39 @@
 			</div>
 			
 			<div class="col-sm-9 padding-right" style="margin-top: 20px;">
-				<div class="features_items"><!--features_items-->
-					<?php if(count($products) == 0){ ?>
-					<h2 class="title text-center">No Products Available</h2>
-					<?php } ?>
-					<?php if(count($products) > 0){ ?>
-					<?php foreach($products as $prod){ ?>
-					<?php $product_image = $this->db->limit(1)->get_where('product_images',array('product_id'=>$prod->id))->row()->image; ?>
-						<div class="col-sm-4" style="margin-bottom:25px;">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>"><img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/></a>
-										<h2><i class="fa fa-rupee"></i> <?php echo $prod->price ?></h2>
-										<p><?php echo $prod->name; ?></p>
-										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>" class="btn btn-primary add-to-cart"><i class="fa fa-view"></i>View Details</a>
-									</div>									
-								</div>							
+				<div class="col-md-12 pull-right" style="margin-bottom: 30px;">
+					<form method="GET" action="<?php echo base_url(); ?>shop/search/">
+						<input type="text" name="search" class="contact_name form-control" placeholder="Enter your search item..">
+					</form>
+				</div>
+
+				<div class="col-md-12">
+					<div class="features_items"><!--features_items-->
+						<?php if(count($products) == 0){ ?>
+						<h2 class="title text-center">No Products Available</h2>
+						<?php } ?>
+						<?php if(count($products) > 0){ ?>
+						<?php foreach($products as $prod){ ?>
+						<?php $product_image = $this->db->limit(1)->get_where('product_images',array('product_id'=>$prod->id))->row()->image; ?>
+							<div class="col-sm-4" style="margin-bottom:25px;">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>"><img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/></a>
+											<h2><i class="fa fa-rupee"></i> <?php echo $prod->price ?></h2>
+											<p><?php echo $prod->name; ?></p>
+											<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>" class="btn btn-primary add-to-cart"><i class="fa fa-view"></i>View Details</a>
+										</div>									
+									</div>							
+								</div>
 							</div>
+						<?php } ?>
+						<div class="row col-md-12 text-center">							
+							<?php echo $links; ?>
 						</div>
-					<?php } ?>
-					<div class="row col-md-12 text-center">
-						<ul class="pagination">
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">&raquo;</a></li>
-						</ul>
+						<?php }  ?>							
 					</div>
-					<?php }  ?>
-						
-				</div><!--features_items-->
+				</div>
 			</div>
 		</div>
 	</div>

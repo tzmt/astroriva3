@@ -12,17 +12,26 @@ class Shop_model extends CI_Model{
         return $this->db->get_where('shop_category',array('category_id'=>0))->result();
     }
 
-    public function getProducts($cat="")
+    public function getProducts($lim_to,$lim_from,$cat="")
     {
         if($cat == "")
         {
+            $this->db->limit($lim_to,$lim_from); 
             return $q = $this->db->get_where('shop_product',array('type'=>1))->result();
         }
         else
-        {            
+        {  
             $id = $this->db->get_where('shop_category',array('name'=>$cat))->row()->id;
+
+            $this->db->limit($lim_to,$lim_from); 
             return $q = $this->db->get_where('shop_product',array('category_id'=>$id,'type'=>'1'))->result();            
         }
+    }
+
+    public function getProductsSearch($search="")
+    {        
+        $this->db->like('name',$search);
+        return $q = $this->db->get_where('shop_product',array('type'=>'1'))->result();        
     }
 
     public function getProductDetails($name)

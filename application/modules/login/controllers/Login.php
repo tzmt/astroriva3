@@ -137,8 +137,9 @@ class Login extends MX_Controller {
 			$this->form_validation->set_rules('type','Type of Member','required');
 
 			if($this->form_validation->run() == FALSE)
-			{				
-				echo validation_errors();				
+			{	
+				$this->session->set_flashdata('error',validation_errors());
+				redirect("login/");				
 			}
 			else
 			{				
@@ -157,12 +158,21 @@ class Login extends MX_Controller {
 					
 					$this->email->message($msg);	
 
-					$this->email->send();
-					echo "A recovery mail has been sent to your email. Please check it.";									
+					if($this->email->send())
+					{
+						$this->session->set_flashdata('success',"A recovery mail has been sent to your email. Please check it.");
+						redirect("login/");	
+					}
+					else
+					{
+						$this->session->set_flashdata('error',"Please try again");
+						redirect("login/");	
+					}														
 				}
 				else
 				{
-					echo "No Email id found.";	
+					$this->session->set_flashdata('error',"No Email id found");
+					redirect("login/");	
 				}
 			}
 		}

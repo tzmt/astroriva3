@@ -49,4 +49,11 @@ class Astrologer_list extends MX_Controller {
 			redirect('home/');
 		}
 	}
+
+	public function search()
+	{
+		$search = $_GET['search'];
+		$data['astrologers'] = $this->astrologer_list_model->getAstrologerSearch($search);
+		$this->layout->view('astrologer_list',$data,'normal');
+	}
 }

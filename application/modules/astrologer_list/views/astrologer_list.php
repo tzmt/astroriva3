@@ -29,6 +29,13 @@
 
 			<div class="container padding-bottom">
 				<div class="row text-center">
+
+					<div class="col-md-12">
+						<form method="GET" action="<?php echo base_url(); ?>astrologer/search">
+							<input type="text" name="search" class="form-control" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" placeholder="Search Astrologer" style="text-align: center;font-size: 20px" />
+						</form>
+					</div>
+
 					<div class="col-sm-12 section-title-two">
 
 						<h2>OUR <?php echo strtoupper($this->uri->segment(3)); ?> ASTROLOGERS</h2>					
