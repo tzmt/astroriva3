@@ -11,10 +11,6 @@ class Astrologer_details extends MX_Controller {
 		$query = $this->db->get_where('settings',array('id'=>1))->row();
 		define('LOGO',$query->logo);
 		define('FAVICON',$query->favicon);
-		define('BANNER',$query->banner_image);
-		define('PARALLAX1',$query->parallax1);
-		define('PARALLAX2',$query->parallax2);
-		define('PARALLAX3',$query->parallax3);
 	}
 
 	public function index()

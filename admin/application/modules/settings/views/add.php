@@ -83,39 +83,24 @@
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
+									
+
+									
+
 									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Banner Image</label>
-										<div class="col-lg-10">	
-										<p><img src="<?php echo SITE_URL; ?>assets/slider/<?php echo $all_data->banner_image; ?>" width="100px"></p>
-											<input type="file" name="banner" class="form-control input-sm"/>
-											<input type="hidden" name="banner_image" value="<?php echo $all_data->banner_image; ?>"/>
+										<label for="inputEmail1" class="col-lg-2 control-label">Form</label>
+										<div class="col-lg-10">											
+											<input type="file" name="form" class="form-control input-sm"/>
+											<input type="hidden" name="form_old" value="<?php echo $all_data->form; ?>"/>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
 									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Astro News Background (Parallax 1)</label>
+										<label for="inputEmail1" class="col-lg-2 control-label">Add Brochure</label>
 										<div class="col-lg-10">	
-										<p><img src="<?php echo SITE_URL; ?>assets/parallax-bg/<?php echo $all_data->parallax1; ?>" width="100px"></p>
-											<input type="file" name="parallax1" class="form-control input-sm"/>
-											<input type="hidden" name="parallax1_image" value="<?php echo $all_data->parallax1; ?>"/>
-										</div><!-- /.col -->
-									</div><!-- /form-group -->
-
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Tips Background (Parallax 2)</label>
-										<div class="col-lg-10">	
-										<p><img src="<?php echo SITE_URL; ?>assets/parallax-bg/<?php echo $all_data->parallax2; ?>" width="100px"></p>
-											<input type="file" name="parallax2" class="form-control input-sm"/>
-											<input type="hidden" name="parallax2_image" value="<?php echo $all_data->parallax2; ?>"/>
-										</div><!-- /.col -->
-									</div><!-- /form-group -->
-
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Happy Background (Parallax 3)</label>
-										<div class="col-lg-10">	
-										<p><img src="<?php echo SITE_URL; ?>assets/parallax-bg/<?php echo $all_data->parallax3; ?>" width="100px"></p>
-											<input type="file" name="parallax3" class="form-control input-sm"/>
-											<input type="hidden" name="parallax3_image" value="<?php echo $all_data->parallax3; ?>"/>
+										
+											<input type="file" name="brochure" class="form-control input-sm"/>
+											<input type="hidden" name="brochure_old" value="<?php echo $all_data->brochure; ?>"/>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 

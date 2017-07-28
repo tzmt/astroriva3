@@ -9,11 +9,7 @@ class Astrologer_list extends MX_Controller {
 		$this->load->model('astrologer_list_model');
 		$query = $this->db->get_where('settings',array('id'=>1))->row();
 		define('LOGO',$query->logo);
-		define('FAVICON',$query->favicon);
-		define('BANNER',$query->banner_image);
-		define('PARALLAX1',$query->parallax1);
-		define('PARALLAX2',$query->parallax2);
-		define('PARALLAX3',$query->parallax3);
+		define('FAVICON',$query->favicon);		
 	}
 
 	public function index()
@@ -77,7 +73,7 @@ class Astrologer_list extends MX_Controller {
 						<div class="member-text">			
 							<h5>'.$ast->name.'</h5>
 							<h6>
-							<a href="'.base_url().'astrologer-details/'.strtolower(str_replace(" ","-",$ast->name)).'">View</a> 
+							<a href="'.base_url().'astrologer-details/'.$ast->id.'/'.strtolower(str_replace(" ","-",$ast->name)).'">View</a> 
 							| 
 							<a href="'.base_url().'astrologer-details/'.$ast->id.'/'.strtolower(str_replace(" ","-",$ast->name)).'/products/">Products</a></h6>																
 						</div>						
@@ -115,7 +111,7 @@ class Astrologer_list extends MX_Controller {
 						<div class="member-text">			
 							<h5>'.$ast->name.'</h5>
 							<h6>
-							<a href="'.base_url().'astrologer-details/'.strtolower(str_replace(" ","-",$ast->name)).'">View</a> 
+							<a href="'.base_url().'astrologer-details/'.$ast->id.'/'.strtolower(str_replace(" ","-",$ast->name)).'">View</a> 
 							| 
 							<a href="'.base_url().'astrologer-details/'.$ast->id.'/'.strtolower(str_replace(" ","-",$ast->name)).'/products/">Products</a></h6>																
 						</div>						

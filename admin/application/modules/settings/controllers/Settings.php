@@ -65,69 +65,39 @@ class Settings extends MX_Controller{
 					$post_data['logo'] = $files.'.'.$ext;
 				}
 
-				if($_FILES['banner']['error'] !=4)
+				if($_FILES['form']['error'] !=4)
 				{
-					$image = $this->input->post('banner_image');
-					if(file_exists("../assets/slider/'.$image"))
+					$image = $this->input->post('form');
+					if(file_exists("../assets/siksha/form/'.$image"))
 					{
-						unlink('../assets/slider/'.$image);
+						unlink('../assets/siksha/form/'.$image);
 					}
-					unlink('../assets/slider/'.$image);
-					$dir = '../assets/slider/';
-					$ext1 = explode('.',$_FILES['banner']['name']);
+					unlink('../assets/siksha/form/'.$image);
+					$dir = '../assets/siksha/form/';
+					$ext1 = explode('.',$_FILES['form']['name']);
 					$ext = end($ext1);
 					$files = time().rand(00000,99999);
-					move_uploaded_file($_FILES['banner']['tmp_name'], $dir.$files.'.'.$ext);
-					$post_data['banner_image'] = $files.'.'.$ext;
+					move_uploaded_file($_FILES['form']['tmp_name'], $dir.$files.'.'.$ext);
+					$post_data['form'] = $files.'.'.$ext;
 				}
 
-				if($_FILES['parallax1']['error'] !=4)
+				if($_FILES['brochure']['error'] !=4)
 				{
-					$image = $this->input->post('parallax1_image');
-					if(file_exists("../assets/parallax-bg/'.$image"))
+					$image = $this->input->post('brochure');
+					if(file_exists("../assets/siksha/brochure/'.$image"))
 					{
-						unlink('../assets/parallax-bg/'.$image);
+						unlink('../assets/siksha/brochure/'.$image);
 					}
-					unlink('../assets/parallax-bg/'.$image);
-					$dir = '../assets/parallax-bg/';
-					$ext1 = explode('.',$_FILES['parallax1']['name']);
+					unlink('../assets/siksha/brochure/'.$image);
+					$dir = '../assets/siksha/brochure/';
+					$ext1 = explode('.',$_FILES['brochure']['name']);
 					$ext = end($ext1);
 					$files = time().rand(00000,99999);
-					move_uploaded_file($_FILES['parallax1']['tmp_name'], $dir.$files.'.'.$ext);
-					$post_data['parallax1'] = $files.'.'.$ext;
+					move_uploaded_file($_FILES['brochure']['tmp_name'], $dir.$files.'.'.$ext);
+					$post_data['brochure'] = $files.'.'.$ext;
 				}
 
-				if($_FILES['parallax2']['error'] !=4)
-				{
-					$image = $this->input->post('parallax1_image');
-					if(file_exists("../assets/parallax-bg/'.$image"))
-					{
-						unlink('../assets/parallax-bg/'.$image);
-					}
-					unlink('../assets/parallax-bg/'.$image);
-					$dir = '../assets/parallax-bg/';
-					$ext1 = explode('.',$_FILES['parallax2']['name']);
-					$ext = end($ext1);
-					$files = time().rand(00000,99999);
-					move_uploaded_file($_FILES['parallax2']['tmp_name'], $dir.$files.'.'.$ext);
-					$post_data['parallax2'] = $files.'.'.$ext;
-				}
-
-				if($_FILES['parallax3']['error'] !=4)
-				{
-					$image = $this->input->post('parallax1_image');
-					if(file_exists("../assets/parallax-bg/'.$image"))
-					{
-						unlink('../assets/parallax-bg/'.$image);
-					}
-					unlink('../assets/parallax-bg/'.$image);
-					$dir = '../assets/parallax-bg/';
-					$ext1 = explode('.',$_FILES['parallax3']['name']);
-					$ext = end($ext1);
-					$files = time().rand(00000,99999);
-					move_uploaded_file($_FILES['parallax3']['tmp_name'], $dir.$files.'.'.$ext);
-					$post_data['parallax3'] = $files.'.'.$ext;
-				}
+				
 				
 				if($last_id = $this->settings_model->updateSettings($post_data))
 				{					

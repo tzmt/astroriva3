@@ -32,6 +32,7 @@
 
 					<div class="col-md-3">
 						<form method="GET" action="<?php echo base_url(); ?>astrologer/search" autocomplete="off">
+							<label>Search By Name</label>
 							<input type="text" name="search" class="form-control" onkeyup="astro_search(this.value)" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" placeholder="Search Astrologer" style="text-align: center;font-size: 20px" />
 						</form>
 					</div>
@@ -51,7 +52,9 @@
 							array_unique($arr);
 						?>
 						<form autocomplete="off">
+							<label>Search By Place</label>
 							<select class="form-control" onchange="astro_search1(this.value)" style="text-align: center;font-size: 20px">
+								<option value="">--Select--</option>
 								<?php foreach($arr as $ar){ ?>
 									<option value="<?php echo $ar; ?>"><?php echo $ar; ?></option>
 									

@@ -902,3 +902,10 @@ label {
 .success{color:green;padding:10px;text-align:center;border:1px solid green;margin-top:10px;margin-bottom:-10px}
 
 .error{color:red;padding:10px;text-align:center;border:1px solid red;margin-top:10px;margin-bottom:-10px}
+
+.scroll {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar; }
+  

@@ -23,7 +23,16 @@
 				<div class="row text-center">
 					<div class="col-sm-12 section-title-two">
 						<h2>SHIKSHA</h2>
-					</div>		
+					</div>	
+					<div class="col-md-4 pull-right" style="margin-bottom: 20px;">
+						<div class="row">
+							<?php
+								$q = $this->db->select('form,brochure')->get_where('settings',array('id'=>1))->row();
+							?>
+							<div class="col-md-6"><a href="<?php echo base_url(); ?>assets/siksha/form/<?php echo $q->form; ?>" class="btn btn-primary">Download Form</a></div>
+							<div class="col-md-6"><a href="<?php echo base_url(); ?>assets/siksha/brochure/<?php echo $q->brochure; ?>" class="btn btn-warning">Download Brochure</a></div>
+						</div>
+					</div>	
             		<table class="table table-bordered">					
 						<tr class="bg-info" style="color: #fff">
 						    <th style="text-align:center;">#</th>

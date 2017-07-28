@@ -33,12 +33,20 @@
 				</div>			
 			</div>
 			<div class="portfolio-menu text-center" style="margin-bottom: 20px;">
-				<ul>				
+				<!-- <div class="scroll">				  
+				  <nav>
+				  	<?php //foreach($video_category as $cat){ ?>
+					    <a class="vidfilter<?php //echo $cat->id; ?>" onclick="showHideVideo(<?php //echo $cat->id; ?>)" href=""><?php //echo $cat->name; ?></a>	
+				    <?php //} ?>				    
+				    </nav>
+				  </nav>
+				</div> -->
+				 <ul>				
 					<li class="active filter vidfilter" onclick="showHideVideo('all')"><a><strong>All</strong></a></li>				
 					<?php foreach($video_category as $cat){ ?>
 					<li class="filter vidfilter<?php echo $cat->id; ?>" onclick="showHideVideo(<?php echo $cat->id; ?>)"  ><a><strong><?php echo $cat->name; ?></strong></a></li>
 					<?php } ?>
-				</ul>
+				</ul> 
 			</div>
 			<div class="row">
 				<div class="portfolio-item padding-bottom portfolio_contents" style="margin-top: 50px;">
