@@ -106,74 +106,24 @@
             </div>
             <div class="col-md-4 m-t-40">
                 <div>
-                    <h1 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">Popular Quizes</h1>
-                </div>
-                <div class="arrows_align">
-                    <a href="#"><i class="fa fa-long-arrow-left previous-arrow text-info" aria-hidden="true"></i></a>
-                    &nbsp;&nbsp;<a href="#"><i class="fa fa-long-arrow-right next-arrow text-info" aria-hidden="true"></i></a>
-                </div>
+                    <h1 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">News &amp; Events</h1>
+                </div>               
                 <hr class="hr_margin">
                 <div class="row common_margin">
                     <div class="col-xs-12 first-set">
-                        <div class="swiper-container love-swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <p class="font16 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
-                                        <a href="#" class="text-info color-info">What Sign Should You Date?</a><br>
-                                        <small class="text-cancer font13">10 Questions</small>
-                                    </p>
-                                    <hr class="hr_margin">
-                                    <p class="font16 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
-                                        <a href="#" class="text-info color-info">What intuitive power do You Have?</a><br>
-                                        <small class="text-cancer font13">12 Questions</small>
-                                    </p>
-
-                                    <hr class="hr_margin">
-                                    <p class="font16 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s">
-                                        <a href="#" class="text-info color-info">What element are you?</a><br>
-                                        <small class="text-cancer font13">8 Questions</small>
-                                    </p>
-                                    <hr class="hr_margin">
-
-                                    <p class="font16 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                                        <a href="#" class="text-info color-info">What's your real top priority in life?</a><br>
-                                        <small class="text-cancer font13">11 Questions</small>
-                                    </p>
-                                    <hr class="hr_margin">
-                                    <p class="font16 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s">
-                                        <a href="#" class="text-info color-info">What's In Your Immediate Future?</a><br>
-                                        <small class="text-cancer font13">15 Questions</small>
-                                    </p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <p class="font16">
-                                        <a href="#" class="text-info color-info">What Sign Should You Date?</a><br>
-                                        <small class="text-cancer font13">12 Questions</small>
-                                    </p>
-                                    <hr class="hr_margin">
-                                    <p class="font16">
-                                        <a href="#" class="text-info color-info">What intuitive power do You Have?</a><br>
-                                        <small class="text-cancer font13">8 Questions</small>
-                                    </p>
-
-                                    <hr class="hr_margin">
-                                    <p class="font16">
-                                        <a href="#" class="text-info color-info">What element are you?</a><br>
-                                        <small class="text-cancer font13">10 Questions</small>
-                                    </p>
-                                    <hr class="hr_margin">
-                                    <p class="font16">
-                                        <a href="#" class="text-info color-info">What's your real top priority in life?</a><br>
-                                        <small class="text-cancer font13">15 Questions</small>
-                                    </p>
-                                    <hr class="hr_margin">
-                                    <p class="font16">
-                                        <a href="#" class="text-info color-info">What's In Your Immediate Future?</a><br>
-                                        <small class="text-cancer font13">11 Questions</small>
-                                    </p>
+                       <?php
+                       $this->db->limit(5);
+                        $q = $this->db->get_where('events',array('date_from <= '=>date("Y-m-d"),'date_to >=' => date("Y-m-d")))->result();                        
+                        foreach($q as $q1){ ?>
+                            <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
+                                <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/events/<?php echo $q1->image; ?>" width="100%" class="img-circle"></div>
+                                <div class="col-md-9">
+                                    <span style="color:#e36480"><?php echo $q1->title; ?></span><br/>
+                                    <span><?php echo substr($q1->description,0,120)." &nbsp;<a href=''>Read More...</a>"; ?></span>
                                 </div>
                             </div>
-                        </div>
+
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -248,13 +198,18 @@
             </div>
 
             <div class="col-md-4 m-t-40 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">
-                <h1 class="text-primary text-center">Match Making?</h1>
-                <hr>
-                <p class="text-info">Are your Sun Signs a perfect match, or will it take effort to make it work?</p>
-                <a href="love_compatibility.html">
-                    <img src="https://i.ytimg.com/vi/xPNc4_dNIY4/maxresdefault.jpg" class="img-responsive home_pic1" alt="Image missing"/>
-                    <div class="blog_text blog_text1"></div>
-                    <span class="text_image text-white">Read more</span></a>
+                <?php                 
+                    $this->db->order_by('id','RANDOM');   
+                    $this->db->limit(1);
+                    $q = $this->db->get('astrology_service')->row();                   
+                ?>
+                <h1 class="text-primary text-center"><?php echo $q->name; ?></h1>
+                <hr>   
+                <p class="text-info">Here are some of our best chosen services for you.</p>           
+                <a href="<?php echo base_url(); ?>services/<?php echo $q->id; ?>/<?php echo strtolower(str_replace(" ", "-", $q->name)); ?>">
+                    <img src="<?php echo base_url(); ?>assets/services/image/<?php echo $q->image; ?>" alt="<?php echo $q->name; ?>" width="100%" height="220"/>
+                    <div class="blog_text blog_text1">asdasdasdsad</div>
+                    <span class="text_image text-white btn btn-primary">Read more</span></a>
             </div>
                 
         </div>
@@ -317,7 +272,7 @@
                     <div class="row m-t-20">
                     <?php } ?>
                         <div class="col-xs-6" style="margin-bottom: 10px">
-                            <a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>"><img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/></a>
+                            <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>"><img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/></a>
                         </div>                        
                     <?php if($i/2 == 0){ ?>
                     </div>
@@ -334,7 +289,7 @@
                     <div class="row m-t-20">
                     <?php } ?>
                         <div class="col-xs-6" style="margin-bottom: 10px">
-                            <a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>"><img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/></a>
+                            <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>"><img src="<?php echo URL; ?>assets/astrologer/<?php echo $ast->image; ?>" width="100%" height="130px"/></a>
                         </div>                        
                     <?php $i++; if($i/2 == 0){ ?>
                     </div>

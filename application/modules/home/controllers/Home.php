@@ -35,7 +35,7 @@ class Home extends MX_Controller {
 		$data['banner'] = $this->db->get('banners')->result();
 		$data['shop'] = $this->home_model->getProducts();	
 		$data['service'] = $this->db->get('astrology_service')->result();	
-		$this->home_model->updateStatistics();
+		$this->home_model->updateStatistics();		
 		$data['title'] = "Rrishibani Institute for Vedic Astrology - The Ultimate Way of Traditional Astrological Research";
 		$data['description'] = 'Know about your Rashi Retails, General Characters, Positive and Negative aspects, The predictions made by our Astrologers for you, And exclusive Remedies and Tips for your Rashi.';
 		//$data['image'] ="/assets/slider/".$this->db->limit(1)->get_where('settings',array('id'=>1))->row()->banner_image;

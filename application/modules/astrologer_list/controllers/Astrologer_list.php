@@ -56,4 +56,79 @@ class Astrologer_list extends MX_Controller {
 		$data['astrologers'] = $this->astrologer_list_model->getAstrologerSearch($search);
 		$this->layout->view('astrologer_list',$data,'normal');
 	}
+
+	public function getajaxastrologer()
+	{
+		$astro = $this->security->xss_clean($this->input->post('slug'));
+		if(strlen($astro) > 0)
+		{
+			$html = '<div class="row">';
+			$i = 1;
+						
+			$this->db->like('name',$astro,'after');
+			$q = $this->db->get('astrologer')->result();
+			foreach($q as $ast)
+			{
+				$html .= '<div class="col-md-2" style="margin-bottom: 10px;">
+					<div class="team-member">
+						<div class="col-md-12" style="margin-bottom: 15px;">;
+							<img src="'.ASSETS.'astrologer/'.$ast->image.'" alt="'.$ast->name.'" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+						</div>
+						<div class="member-text">			
+							<h5>'.$ast->name.'</h5>
+							<h6>
+							<a href="'.base_url().'astrologer-details/'.strtolower(str_replace(" ","-",$ast->name)).'">View</a> 
+							| 
+							<a href="'.base_url().'astrologer-details/'.$ast->id.'/'.strtolower(str_replace(" ","-",$ast->name)).'/products/">Products</a></h6>																
+						</div>						
+					</div>
+				</div>';
+
+				if($i%6 == 0){ echo '</div><div class="row">';}
+
+				$i++;
+			}
+
+			echo $html;
+		}
+
+	}
+
+	public function getajaxastrologer1()
+	{
+		$astro = $this->security->xss_clean($this->input->post('slug'));
+		if(strlen($astro) > 0)
+		{
+			$html = '<div class="row">';
+			$i = 1;
+						
+			$this->db->limit(15);
+			 $q = $this->db->select('astrologer.name,astrologer.id,astrologer.image')->from('astrologer')->join('astrologer_branch','astrologer.id = astrologer_branch.astrologers_id')->like('astrologer_branch.place',$astro)->get()->result();
+			
+			foreach($q as $ast)
+			{
+				$html .= '<div class="col-md-2" style="margin-bottom: 10px;">
+					<div class="team-member">
+						<div class="col-md-12" style="margin-bottom: 15px;">;
+							<img src="'.ASSETS.'astrologer/'.$ast->image.'" alt="'.$ast->name.'" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+						</div>
+						<div class="member-text">			
+							<h5>'.$ast->name.'</h5>
+							<h6>
+							<a href="'.base_url().'astrologer-details/'.strtolower(str_replace(" ","-",$ast->name)).'">View</a> 
+							| 
+							<a href="'.base_url().'astrologer-details/'.$ast->id.'/'.strtolower(str_replace(" ","-",$ast->name)).'/products/">Products</a></h6>																
+						</div>						
+					</div>
+				</div>';
+
+				if($i%6 == 0){ echo '</div><div class="row">';}
+
+				$i++;
+			}
+
+			echo $html;
+		}
+
+	}
 }

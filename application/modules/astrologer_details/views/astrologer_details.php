@@ -33,7 +33,7 @@
 				<div style="padding-top: 20px;">
 					<div class="tab-pane fade in active" id="product1">						
 						<div class="row">
-							<div class="col-sm-6">
+							<div class="col-sm-2">
 								<img class="img-responsive" src="<?php echo base_url(); ?>assets/astrologer/<?php echo $all_data->image; ?>" width="100%" alt="" />
 							</div>
 							<div class="col-sm-6">
@@ -64,6 +64,28 @@
 										<br/>										
 									</div>
 								</div>
+							</div>
+
+							<div class="col-md-4">
+								<h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.1s">Tips &amp; Market Prediction</h1>
+					                <hr>
+					                <div class="row common_margin">   
+					                	<?php
+					                		$this->db->limit(5);
+					                		$this->db->order_by('tips.id','DESC');
+											$tips = $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->where('astrologer.id',$this->uri->segment(2))->get()->result();
+					                	?>                 
+					                        <?php foreach($tips as $tip){ ?>
+						                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
+						                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+						                            <div class="col-md-9">						                            	
+						                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
+						                            	<span><?php echo $tip->description; ?></span>
+						                            </div>
+						                        </div>
+
+					                        <?php } ?>
+					                </div>
 							</div>
 							<div class="col-md-12" style="margin-top:15px;display: none;" id="showHide">
 								<table class="table table-bordered">
@@ -117,7 +139,7 @@
 									</div>
 									<div class="member-text">			
 										<h5><?php echo $ast->name; ?></h5>
-										<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+										<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
 									</div>						
 								</div>
 							</div>

@@ -7,7 +7,7 @@
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="product1">						
 						<div class="row">
-							<div class="col-sm-6">
+							<div class="col-sm-3">
 								<img class="img-responsive" src="<?php echo base_url(); ?>assets/astrologer/<?php echo $all_data->image; ?>" width="600px" height="400px" alt="" />
 							</div>
 							<div class="col-sm-6">

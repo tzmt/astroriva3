@@ -7,16 +7,15 @@ class Astrologer_model extends CI_Model{
         return parent::__construct();
 	}
 
-	public function getAstrologerDetails($name)
-	{
-		$name = str_replace('-',' ',$name);
-		return $this->db->get_where('astrologer',array('name'=>$name))->row();
+	public function getAstrologerDetails($id)
+	{		
+		return $this->db->get_where('astrologer',array('id'=>$id))->row();
 	}
 
-	public function getAstrologers($name)
-	{
-		$name = str_replace("-", ' ', $name);
-		return $this->db->limit(4)->get_where('astrologer',array('name!='=>$name))->result();
+	public function getAstrologers($id)
+	{		
+        $this->db->order_by('id','RANDOM');
+		return $this->db->limit(6)->get_where('astrologer',array('id!='=>$id))->result();
 		//echo $this->db->last_query();exit();
 	}
 

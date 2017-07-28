@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
-$route['astrologer-details/(:any)'] = 'astrologer_details/index/$1';
+$route['astrologer-details/(:num)/(:any)'] = 'astrologer_details/index/$1';
 $route['astrologer-details/(:any)/(:any)/products'] = 'astrologer_details/show_products/$1';
 $route['astrologer-details/(:any)/(:any)/products/(:any)/(:any)'] = 'astrologer_details/product_details/$1';
 
