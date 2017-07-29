@@ -132,7 +132,7 @@
 
                 <div class="row m-t-26">
                     <div class="col-xs-12 hr_bottom_align">
-                        <h1>Bastu Ideas</h1>
+                        <h1>Vastu Ideas</h1>
                         <hr>
                         <div class="row">
                             <div class="col-sm-2 col-xs-4 m-t-40">
