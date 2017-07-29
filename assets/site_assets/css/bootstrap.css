@@ -1187,6 +1187,14 @@ a {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
+.swiper-slide.active12.swiper-slide-active > a {
+    color: #fff !important;
+}
+
+.swiper-slide.active12> a > span {
+    color: #fff !important;
+}
+
 figure {
   margin: 0; }
 
