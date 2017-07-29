@@ -92,11 +92,11 @@
                     </a>
                 </div>
                 <div class="col-sm-2 col-xs-2 text-center head_signs">
-                    <a href="<?php echo base_url(); ?>shiksha/">
+                    <a href="<?php echo base_url(); ?>contact/">
                         <div class="bg-info header_bg center-block">
                             <img src="<?php echo URL; ?>assets/site_assets/images/calendar.png" alt="Image missing">
                         </div>
-                        <div class="text-center info1 font13 hidden-xs">Siksha</div>
+                        <div class="text-center info1 font13 hidden-xs">Contact Us</div>
                     </a>
                 </div>
             </div>
@@ -137,9 +137,15 @@
                         <li class="header_li">
                             <a href="<?php echo base_url(); ?>yoga/" class="text-info">Yoga</a>
                         </li>
-                        <li class="header_li">
-                            <a href="<?php echo base_url(); ?>contact/" class="text-info">Contact Us</a>
-                        </li>
+                        <li class="dropdown dropdown_modified">
+                            <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle">Siksha <span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown_mod" data-dropdown-in="fadeInUp"
+                                data-dropdown-out="fadeOut">
+                                <li><a href="<?php echo base_url(); ?>shiksha">Courses</a></li>
+                                <li><a href="<?php echo base_url(); ?>">Branches</a></li>                                
+                            </ul>
+                        </li>     
                         <li class="dropdown dropdown_modified">
                             <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle">Astrologers <span
                                     class="caret"></span></a>

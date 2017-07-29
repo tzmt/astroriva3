@@ -1,5 +1,5 @@
 <style>
-	.filter{list-style: none;float: left;text-align: center;margin: 0px 20px 0px 20px;}
+	.filter{list-style: none;float: left;text-align: center;margin: 0px 15px 0px 15px;}
 </style>
 
 <section class="index_center card_text">
@@ -32,15 +32,7 @@
 					</div>
 				</div>			
 			</div>
-			<div class="portfolio-menu text-center" style="margin-bottom: 20px;">
-				<!-- <div class="scroll">				  
-				  <nav>
-				  	<?php //foreach($video_category as $cat){ ?>
-					    <a class="vidfilter<?php //echo $cat->id; ?>" onclick="showHideVideo(<?php //echo $cat->id; ?>)" href=""><?php //echo $cat->name; ?></a>	
-				    <?php //} ?>				    
-				    </nav>
-				  </nav>
-				</div> -->
+			<div class="portfolio-menu text-center" style="margin-bottom: 20px;">				
 				 <ul>				
 					<li class="active filter vidfilter" onclick="showHideVideo('all')"><a><strong>All</strong></a></li>				
 					<?php foreach($video_category as $cat){ ?>

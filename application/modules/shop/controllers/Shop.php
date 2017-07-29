@@ -75,11 +75,11 @@ class Shop extends MX_Controller {
 	{		
 
 		$cat = $this->uri->Segment(3);
-		$slug = $this->uri->Segment(4);
+		$slug = str_replace("%20"," ",$this->uri->Segment(4));
 
 		$this->load->library('pagination');
 
-		$id = $this->db->get_where('shop_category',array('name'=>$cat))->row()->id;
+		echo $id = $this->db->get_where('shop_category',array('name'=>$slug))->row()->id;
 
 		$config['base_url'] = base_url().'shop/category/'.$cat."/".$slug."/";
 		$config['total_rows'] = $this->db->get_where('shop_product',array('type'=>1,'category_id'=>$id))->num_rows();
@@ -131,7 +131,7 @@ class Shop extends MX_Controller {
 		$this->load->library('pagination');		
 		$this->pagination->initialize($config);
 		$data['links'] = $this->pagination->create_links();	
-		$data['products'] = $this->shop_model->getProducts($config['per_page'], $start,$cat);
+		$data['products'] = $this->shop_model->getProducts($config['per_page'], $start,$id);
 		$this->layout->view('shop',$data,'home1');
 	}
 
