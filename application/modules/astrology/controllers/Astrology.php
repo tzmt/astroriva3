@@ -148,8 +148,7 @@ class Astrology extends MX_Controller {
 	}
 	public function shiksha()
 	{
-		$data['course_list'] = $this->db->get('course')->result();
-		$data['news'] = $this->astrology_model->getNews();	
+		$data['course_list'] = $this->db->get('course')->result();		
 		$this->layout->view('shiksha',$data,'home1');
 	}
 
@@ -176,7 +175,9 @@ class Astrology extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrology_model->addServiceRequest($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->astrology_model->addServiceRequest($post_data))
 				{
 					$this->session->set_flashdata('success','Prediction Request Received Successfully');
 					redirect(current_url());
@@ -220,5 +221,11 @@ class Astrology extends MX_Controller {
                 <p class="elements_desc" style="text-align: justify;">'.$q->description.'</p>
             </div>
         </div>';
+	}
+
+	public function branches1()
+	{
+		$data['course_list'] = $this->db->get('astrology_branches')->result();		
+		$this->layout->view('astro_branches',$data,'home1');
 	}
 }

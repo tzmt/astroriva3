@@ -53,6 +53,13 @@
 					<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 					<?php } ?>
 
+					<?php
+						$csrf = array(
+						        'name' => $this->security->get_csrf_token_name(),
+						        'hash' => $this->security->get_csrf_hash()
+						);
+					?>	
+
 					<div class="row">
 
 						<div class="col-md-12">
@@ -67,6 +74,7 @@
 										</div>
 										<div class="col-md-12">
 											<input type="text" name="name1" class="form-control" required="required" placeholder="Enter Name">
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 											<input type="hidden" name="current_url" value="<?php echo current_url(); ?>" />
 										</div>
 

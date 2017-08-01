@@ -34,6 +34,9 @@ class Gallery extends MX_Controller{
 		$files = time().rand(00000,99999).'.'.$ext;
 		move_uploaded_file($_FILES['file']['tmp_name'], $dir.$files);
 		$arr = array('image'=>$id,'image'=>$files);
+
+		$arr = $this->security->xss_clean($arr);
+		
 		$this->db->insert('gallery',$arr);
 	}
 

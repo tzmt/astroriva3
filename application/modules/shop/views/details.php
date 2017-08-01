@@ -91,10 +91,18 @@
                 <div class="swiper-button-prev swiper-button-white"></div>
                 <div class="swiper-button-next swiper-button-white"></div>
             </div>
+            <?php
+                $csrf = array(
+                        'name' => $this->security->get_csrf_token_name(),
+                        'hash' => $this->security->get_csrf_hash()
+                );
+            ?>  
+                
                 <span>
                     <form method="POST" action="<?php echo base_url(); ?>shop/add/">
                         <h2><span><i class="fa fa-rupee"></i> <?php echo $product_details->price; ?></span></h2>
                         <label>Quantity:</label>
+                        <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
                         <input type="number" value="1" name="quantity" min="0" max="<?php echo $product_details->quantity; ?>"/>
                         <input type="hidden" name="name" value="<?php echo $product_details->name; ?>"/>
                         <input type="hidden" name="dimension" value="<?php echo $product_details->dimension; ?>"/>

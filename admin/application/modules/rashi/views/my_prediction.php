@@ -37,7 +37,15 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>
+
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>	
+								
 					<div class="col-md-12">						
 						<div class="panel panel-default table-responsive">
 					<div class="panel-heading">
@@ -104,6 +112,8 @@
 														<option value="<?php echo $rashi->id; ?>" ><?php echo $rashi->name; ?></option>
 													<?php } ?>
 													</select>
+
+													<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
 

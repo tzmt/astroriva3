@@ -46,6 +46,9 @@ class Classes extends MX_Controller{
 				$post_data['place'] = $this->input->post('place');
 				$post_data['time'] = strtotime($this->input->post('time'));
 				//echo "<pre>";print_r($post_data);exit();
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($last_id = $this->classes_model->addClass($post_data))
 				{					
 					$this->session->set_flashdata('success',"Class Added Successfully");
@@ -79,6 +82,8 @@ class Classes extends MX_Controller{
 			$post_data['place'] = $this->input->post('place');
 			$post_data['time'] = strtotime($this->input->post('time'));
 			//echo "<pre>";print_r($post_data);exit();
+			
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($this->classes_model->updateClass($post_data,$id))
 			{					

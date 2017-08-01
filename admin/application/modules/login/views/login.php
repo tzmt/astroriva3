@@ -1,3 +1,9 @@
+<?php
+	$csrf = array(
+	        'name' => $this->security->get_csrf_token_name(),
+	        'hash' => $this->security->get_csrf_hash()
+	);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,6 +51,7 @@
 						<div class="form-group">
 							<label>Password</label>
 							<input type="password" name="password" placeholder="Password" class="form-control input-sm bounceIn animation-delay4" required>
+							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 						</div>		
 						<div class="seperator"></div>
 						<div class="form-group">

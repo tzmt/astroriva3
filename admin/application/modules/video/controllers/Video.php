@@ -38,6 +38,7 @@ class Video extends MX_Controller{
 				$post_data['cat_id'] = $this->input->post('cat_id');
 				$post_data['link'] = $this->input->post('link');
 
+				$post_data = $this->security->xss_clean($post_data);
 				
 				if($last_id = $this->video_model->AddBanner($post_data))
 				{					
@@ -119,6 +120,7 @@ class Video extends MX_Controller{
 				$post_data['cat_id'] = $this->input->post('cat_id');
 				$post_data['link'] = $this->input->post('link');
 
+				$post_data = $this->security->xss_clean($post_data);
 				
 				if($last_id = $this->video_model->updateLink($post_data,$id))
 				{					
@@ -152,7 +154,10 @@ class Video extends MX_Controller{
 			}
 			else
 			{	
-				$post_data['name'] = $this->input->post('name');				
+				$post_data['name'] = $this->input->post('name');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($last_id = $this->video_model->AddCategory($post_data))
 				{					
 					$this->session->set_flashdata('success',"Category Added Successfully");
@@ -209,7 +214,10 @@ class Video extends MX_Controller{
 			else			{	
 				
 				$id = $this->input->post('id');
-				$post_data['name'] = $this->input->post('name');				
+				$post_data['name'] = $this->input->post('name');
+
+				$post_data = $this->security->xss_clean($post_data);
+								
 				if($last_id = $this->video_model->updateCategory($post_data,$id))
 				{					
 					$this->session->set_flashdata('success',"Category Updated Successfully");

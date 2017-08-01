@@ -37,7 +37,15 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>
 					</div>
-				<?php } ?>		
+				<?php } ?>	
+
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>	
+					
 				<div class="col-md-9">		
 					<div class="col-md-12">						
 						<div class="panel panel-default">
@@ -53,6 +61,7 @@
 											<form action="<?php echo base_url(); ?>shop/upload_pictures/<?php echo $this->uri->Segment(4); ?>" class="dropzone">
 												  <div class="fallback">
 													<input name="file" type="file" multiple />
+													<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 												  </div>
 											</form>
 										</div><!-- /.col -->

@@ -31,6 +31,13 @@
 								<?php if($this->session->flashdata('success')){ ?>
 								<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 								<?php } ?>
+
+								<?php
+									$csrf = array(
+									        'name' => $this->security->get_csrf_token_name(),
+									        'hash' => $this->security->get_csrf_hash()
+									);
+								?>
 								
 								<div class="row">
 									<?php foreach($products as $prod){ ?>
@@ -68,6 +75,7 @@
 									            <div class="form-group">
 											<label>Name</label>
 											<input type="text" name="name" class="form-control" value="<?php echo $prod->name; ?>" required="required" placeholder="Product name goes here..">
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 											<input type="hidden" name="id" value="<?php echo $prod->id ?>"/>
 										</div>
 

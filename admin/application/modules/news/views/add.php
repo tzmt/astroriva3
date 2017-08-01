@@ -37,7 +37,14 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>
+
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>
 					<div class="col-md-6">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Category</div>
@@ -47,6 +54,7 @@
 										<label for="inputEmail1" class="col-lg-2 control-label">Name</label>
 										<div class="col-lg-10">
 											<input type="text" name="name" class="form-control input-sm" id="inputEmail1" placeholder="Name" required>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 									<div class="form-group">

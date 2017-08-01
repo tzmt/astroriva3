@@ -31,6 +31,13 @@
 								<?php if($this->session->flashdata('success')){ ?>
 								<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 								<?php } ?>
+								<?php
+									$csrf = array(
+									        'name' => $this->security->get_csrf_token_name(),
+									        'hash' => $this->security->get_csrf_hash()
+									);
+								?>	
+								
 								<form id="comment-form" class="row" name="comment-form" method="post" action="" enctype="multipart/form-data">
 
 									<div class="col-md-12">
@@ -38,6 +45,7 @@
 										<div class="form-group">
 											<label>Name</label>
 											<input type="text" name="name" class="form-control" required="required" placeholder="Product name goes here..">
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div>
 
 										<div class="form-group">

@@ -37,7 +37,13 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>	
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>			
 					<div class="col-md-8">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add News</div>
@@ -71,6 +77,7 @@
 										<div class="col-lg-10">
 											<div class="input-group">
 												<input type="text" name="date_from" value="<?php echo date("Y-m-d"); ?>" class="datepicker form-control">
+												<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 												<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 											</div>
 										</div><!-- /.col -->

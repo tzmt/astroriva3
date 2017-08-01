@@ -31,6 +31,7 @@ class Login extends MX_Controller {
 				$post_data['email'] = $this->input->post('email');
 				$post_data['password'] = $this->input->post('password');
 				$post_data['type'] = $this->input->post('type');
+				$post_data = $this->security->xss_clean($post_data);
 				if($this->login_model->login_check($post_data))
 				{	
 					if($post_data['type'] == 1)
@@ -93,6 +94,9 @@ class Login extends MX_Controller {
 				$post_data['phone'] = $this->input->post('phone');
 				$post_data['type'] = $this->input->post('type');
 				$post_data['image'] = "user.png";
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				$q = $this->login_model->register($post_data);
 				if($q)
 				{
@@ -143,6 +147,9 @@ class Login extends MX_Controller {
 				$password = rand(00000000,99999999);
 				$post_data['password'] = sha1(md5($this->input->post('password')));				
 				$post_data['type'] = $this->input->post('type');
+
+				$post_data = $this->security->xss_clean($post_data);
+				
 				if($this->login_model->forgot($post_data))
 				{
 					$this->email->from('info@astroriva.com', 'AstroRiva');

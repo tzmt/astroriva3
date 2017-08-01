@@ -31,6 +31,12 @@
 								<?php if($this->session->flashdata('success')){ ?>
 								<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 								<?php } ?>
+								<?php
+									$csrf = array(
+									        'name' => $this->security->get_csrf_token_name(),
+									        'hash' => $this->security->get_csrf_hash()
+									);
+								?>	
 								<form id="comment-form" class="row" name="comment-form" method="post" action="">
 
 									<div class="col-md-12">	
@@ -38,6 +44,7 @@
 										<div class="form-group">
 											<label>Old Password</label>
 											<input type="password" name="old_password" class="form-control" required="required" placeholder="Enter your old password..">
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div>
 
 										<div class="form-group">

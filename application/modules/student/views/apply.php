@@ -30,7 +30,13 @@
 								<?php } ?>
 								<?php if($this->session->flashdata('success')){ ?>
 								<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
-								<?php } ?>								
+								<?php } ?>	
+								<?php
+									$csrf = array(
+									        'name' => $this->security->get_csrf_token_name(),
+									        'hash' => $this->security->get_csrf_hash()
+									);
+								?>								
 									<div class="col-md-12">	
 										<?php $user = $this->db->get_where('student',array('id'=>$this->session->userdata('astro_student')->id))->row(); ?>
 										<?php if($user->course_id == 0){ ?>
@@ -65,6 +71,7 @@
 									<div class="col-md-12">								
 										
 										<div class="form-group">
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 											<button type="submit" class="btn btn-default pull-right">Apply</button>
 										</div>
 									</div>

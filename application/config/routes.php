@@ -72,6 +72,7 @@ $route['ayurved/details/(:any)'] = 'astrology/ayurved_details/$1';
 $route['yoga'] = 'astrology/yoga';
 $route['yoga/details/(:any)'] = 'astrology/yoga_details/$1';
 $route['shiksha'] = 'astrology/shiksha';
+$route['branches'] = 'astrology/branches1';
 $route['astrology/getDetailsAboutYou'] = 'astrology/getDetailsAboutYou';
 
 $route['services'] = 'astrology/services';

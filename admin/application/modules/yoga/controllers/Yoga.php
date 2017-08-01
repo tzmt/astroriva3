@@ -57,6 +57,9 @@ class Yoga extends MX_Controller{
 				$post_data['topic'] = $this->input->post('topic');				
 				$post_data['image'] = $image;				
 				//echo "<pre>";print_r($post_data);exit();
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->yoga_model->addyoga($post_data))
 				{
 					$this->session->set_flashdata('success',"Yoga Added Successfully");
@@ -102,6 +105,8 @@ class Yoga extends MX_Controller{
 				}
 				$post_data['image'] = $image;	
 				$old_image = $this->input->post('old_image');
+
+
 				if(file_exists('../assets/yoga/'.$old_image))
 				{
 					unlink('../assets/yoga/'.$old_image);
@@ -115,6 +120,8 @@ class Yoga extends MX_Controller{
 			
 			$post_data['id'] = $this->input->post('id');
 			//echo "<pre>";print_r($post_data);exit();
+
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($this->yoga_model->updateyoga($post_data))
 			{

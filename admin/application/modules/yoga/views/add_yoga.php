@@ -37,7 +37,14 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>
+
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>					
 					<div class="col-md-8">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Yoga</div>
@@ -66,7 +73,8 @@
 									<div class="form-group">
 										<label class="col-lg-2 control-label">Description</label>
 										<div class="col-lg-10">
-											<textarea id="wysihtml5-textarea" name="details" placeholder="Enter your text ..." class="form-control" rows="10"></textarea>					
+											<textarea id="wysihtml5-textarea" name="details" placeholder="Enter your text ..." class="form-control" rows="10"></textarea>	
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />				
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 

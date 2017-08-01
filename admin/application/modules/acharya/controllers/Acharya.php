@@ -54,6 +54,9 @@ class Acharya extends MX_Controller{
 				$post_data['details3'] = $this->input->post('details3');
 				$post_data['details4'] = $this->input->post('details4');
 				$post_data['details5'] = $this->input->post('details5');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->acharya_model->UpdateDetails($post_data))
 				{
 					$this->session->set_flashdata('success',"Updated Successfully");
@@ -94,8 +97,8 @@ class Acharya extends MX_Controller{
 				redirect('acharya/branch');
 			}
 			else
-			{					
-				if($this->acharya_model->AddBranch($this->input->post()))
+			{		
+				if($this->acharya_model->AddBranch($this->security->xss_clean($this->input->post())))
 				{
 					$this->session->set_flashdata('success','Branch Added Successfully');
 					redirect('acharya/branch');
@@ -177,6 +180,7 @@ class Acharya extends MX_Controller{
 				$arr['answers'] = $this->input->post('answers');
 				$arr['status'] = 1;
 				$this->db->where('id',$id);
+				$arr = $this->security->xss_clean($arr)
 				if($this->db->update('request_service',$arr))
 				{
 					$this->load->library('email');

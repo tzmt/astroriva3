@@ -37,7 +37,16 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>
+
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>
+
+
 					<div class="col-md-5">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Video</div>
@@ -52,6 +61,8 @@
 												<option value="<?php echo $cat->id; ?>"><?php echo $cat->name; ?></option>
 												<?php } ?>
 											</select>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
@@ -145,6 +156,7 @@
 																<option value="<?php echo $cate->id; ?>" <?php if($cate->id == $cat->cat_id ){echo "selected";} ?>><?php echo $cate->name; ?></option>
 																<?php } ?>
 															</select>
+															<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 														</div><!-- /.col -->
 													</div><!-- /form-group --><br/>
 

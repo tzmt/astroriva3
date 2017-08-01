@@ -37,10 +37,17 @@
 									      </div>
 									      <div class="modal-body">        
 									        <form id="contact-form" name="contact-form" method="post" action="" enctype="multipart/form-data">
+									        <?php
+												$csrf = array(
+												        'name' => $this->security->get_csrf_token_name(),
+												        'hash' => $this->security->get_csrf_hash()
+												);
+											?>
 									            <div class="form-group">
 											<label>Name</label>
 											<input type="text" name="name" class="form-control" value="<?php echo $prod->name; ?>" required="required" placeholder="Product name goes here..">
 											<input type="hidden" name="id" value="<?php echo $prod->id ?>"/>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div>
 
 										<div class="form-group">

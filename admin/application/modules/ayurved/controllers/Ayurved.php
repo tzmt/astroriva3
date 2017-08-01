@@ -103,6 +103,10 @@ class Ayurved extends MX_Controller{
 				$post_data['topic'] = $this->input->post('topic');				
 				$post_data['image'] = $image;				
 				//echo "<pre>";print_r($post_data);exit();
+
+				$post_data = $this->security->xss_clean($post_data);
+
+
 				if($this->ayurved_model->addAyurved($post_data))
 				{
 					$this->session->set_flashdata('success',"Ayurved Added Successfully");
@@ -161,6 +165,8 @@ class Ayurved extends MX_Controller{
 			
 			$post_data['id'] = $this->input->post('id');
 			//echo "<pre>";print_r($post_data);exit();
+			
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($this->ayurved_model->updateTips($post_data))
 			{

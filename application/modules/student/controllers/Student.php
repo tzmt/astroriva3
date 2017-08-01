@@ -49,7 +49,8 @@ class Student extends MX_Controller {
 			}
 			else
 			{
-				if($this->student_model->updateProfile($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->student_model->updateProfile($post_data))
 				{
 					$this->session->set_flashdata('success','Profile Updated Successfully');
 					redirect('student/profile');
@@ -114,7 +115,9 @@ class Student extends MX_Controller {
 			}
 			else
 			{
-				if($this->student_model->AddTips($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->student_model->AddTips($post_data))
 				{
 					$this->session->set_flashdata('success','Tips Added Successfully');
 					redirect('astrologer/add_tips');
@@ -152,7 +155,9 @@ class Student extends MX_Controller {
 			}
 			else
 			{
-				if($this->student_model->AddPrediction($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->student_model->AddPrediction($post_data))
 				{
 					$this->session->set_flashdata('success','Prediction Added Successfully');
 					redirect('astrologer/add_prediction');
@@ -190,7 +195,9 @@ class Student extends MX_Controller {
 			}
 			else
 			{
-				if($this->student_model->AddMarket($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->student_model->AddMarket($post_data))
 				{
 					$this->session->set_flashdata('success','Tips Added Successfully');
 					redirect('astrologer/add_market_prediction');
@@ -339,7 +346,8 @@ class Student extends MX_Controller {
 			}
 			else
 			{
-				if($this->student_model->changePassword($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->student_model->changePassword($post_data))
 				{
 					$this->session->set_flashdata('success','Password Changed Successfully');
 					redirect('student/change_password');
@@ -390,6 +398,9 @@ class Student extends MX_Controller {
 						$files = time().rand(00000,99999);
 						move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$files.'.'.$ext);
 						$file_name = $files.'.'.$ext;
+
+						$post_data = $this->security->xss_clean($post_data);
+
 						$this->student_model->addProductImages($id,$file_name);
 						
 					}
@@ -414,6 +425,7 @@ class Student extends MX_Controller {
 	public function getSubCategory()
 	{
 		$id = $this->input->post('id');
+		$id = $this->security->xss_clean($id);
 		$sub = $this->db->get_where('shop_category',array('category_id'=>$id))->result();
 		$html = '';
 		foreach($sub as $sub1)
@@ -440,7 +452,8 @@ class Student extends MX_Controller {
 			}
 			else
 			{			
-				if($id = $this->student_model->updateProducts($this->input->post(),$id))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($id = $this->student_model->updateProducts($post_data,$id))
 				{
 					if($_FILES['file']['name'][0] != "")
 					{
@@ -502,7 +515,8 @@ class Student extends MX_Controller {
 			}
 			else
 			{
-				if($this->student_model->AddCourse($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->student_model->AddCourse($post_data))
 				{
 					$this->session->set_flashdata('success','Course Added Successfully');
 					redirect('student/apply');

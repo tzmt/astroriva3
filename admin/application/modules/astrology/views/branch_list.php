@@ -123,6 +123,12 @@
 							<?php } ?>
 						</tbody>
 					</table>
+					<?php
+						$csrf = array(
+						        'name' => $this->security->get_csrf_token_name(),
+						        'hash' => $this->security->get_csrf_hash()
+						);
+					?>	
 					<?php foreach($all_data as $key=> $prid){ ?>
 					<div class="modal fade" id="simpleEditModal<?php echo $prid->id; ?>">
 								<div class="modal-dialog">
@@ -139,6 +145,7 @@
 										<div class="col-lg-10">
 											<input type="text" name="name" value="<?php echo $prid->name;?>" class="form-control input-sm" id="inputEmail1" placeholder="Enter your branch name" required>
 											<input type="hidden" name="id" value="<?php echo $prid->id; ?>"/>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group -->	
 

@@ -22,6 +22,9 @@ class Login extends MX_Controller{
 			{	
 				$post_data['username'] = $this->input->post('username');
 				$post_data['password'] = $this->input->post('password');
+
+				$post_data = $this->security->xss_clean($post_data);
+				
 				if($this->login_model->loginCheck($post_data))
 				{
 					redirect('dashboard/');

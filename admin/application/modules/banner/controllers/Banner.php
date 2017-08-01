@@ -30,7 +30,8 @@ class Banner extends MX_Controller{
 				$post_data['heading'] = $this->input->post('heading');
 				$post_data['description'] = $this->input->post('description');
 
-				
+				$post_data = $this->security->xss_clean($post_data);
+					
 				if($last_id = $this->banner_model->AddBanner($post_data))
 				{					
 					$this->session->set_flashdata('success',"Banner Text Added Successfully");

@@ -91,9 +91,16 @@
 								<h2><?php echo $product_details->name; ?></h2>
 								<p>Product Type: <?php if($product_details->product_type==1) echo "Certified"; else echo "Not Certified";  ?></p>								
 								<span>
+								<?php
+									$csrf = array(
+									        'name' => $this->security->get_csrf_token_name(),
+									        'hash' => $this->security->get_csrf_hash()
+									);
+								?>
 									<form method="POST" action="<?php echo base_url(); ?>shop/add/">
 									<span><i class="fa fa-rupee"></i><?php echo $product_details->price; ?></span>
 									<label>Quantity:</label>
+									<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 									<input type="number" value="1" name="quantity" min="0" max="<?php echo $product_details->quantity; ?>"/>
 									<input type="hidden" name="name" value="<?php echo $product_details->name; ?>"/>
 									<input type="hidden" name="dimension" value="<?php echo $product_details->dimension; ?>"/>

@@ -21,19 +21,7 @@
 <section class="backgroundclr">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-xs-12 tpbanner_align">
-                <a href="<?php echo base_url(); ?>about_us" class="header_border1 hidden-xs font12">About Us</a>
-                <div class="header_border hidden-xs font12">Language:
-                    <ul>
-                        <li class="dropdown lang_dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">EN <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Hindi</a></li>
-                                <li><a href="#">English</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="col-md-12 col-xs-12 tpbanner_align">                              
                 <div class="clearfix visible-xs-block"></div>
                 <span class="header_border header_text hidden-xs font12">Follow Us</span>
                 <span class="head_icons"><a href="#"><i class="fa fa-facebook-square header_icons fa-lg"></i></a>
@@ -143,7 +131,7 @@
                             <ul class="dropdown-menu dropdown_mod" data-dropdown-in="fadeInUp"
                                 data-dropdown-out="fadeOut">
                                 <li><a href="<?php echo base_url(); ?>shiksha">Courses</a></li>
-                                <li><a href="<?php echo base_url(); ?>">Branches</a></li>                                
+                                <li><a href="<?php echo base_url(); ?>branches">Branches</a></li>                                
                             </ul>
                         </li>     
                         <li class="dropdown dropdown_modified">

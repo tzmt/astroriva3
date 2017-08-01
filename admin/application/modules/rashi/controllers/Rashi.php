@@ -38,6 +38,9 @@ class Rashi extends MX_Controller{
 				$files = time().rand(00000,99999).'.'.$ext;
 				move_uploaded_file($_FILES['file']['tmp_name'], $dir.$files);
 				$post_data['image'] = $files;
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->rashi_model->addRashi($post_data))
 				{
 					$this->session->set_flashdata('success',"Rashi Added Successfully");
@@ -85,6 +88,9 @@ class Rashi extends MX_Controller{
 			else
 			{	
 				$post_data['name'] = $this->input->post('name');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->rashi_model->addRashiTopic($post_data))
 				{
 					$this->session->set_flashdata('success',"Topic Added Successfully");
@@ -156,6 +162,10 @@ class Rashi extends MX_Controller{
 				$post_data['topic_id'] = $this->input->post('topic_id');
 				$post_data['image'] = $image;
 				$post_data['description'] = $this->input->post('description');
+
+				$post_data = $this->security->xss_clean($post_data);
+
+
 				if($this->rashi_model->addRashiTopicDetails($post_data))
 				{
 					$this->session->set_flashdata('success',"Rashi Details Added Successfully");
@@ -231,6 +241,9 @@ class Rashi extends MX_Controller{
 				$old_image = $this->input->post('image');
 
 				unlink('../assets/rashi_details/'.$old_image);
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->rashi_model->UpdateRashiTopicDetails($post_data,$id))
 				{
 					$this->session->set_flashdata('success',"Rashi Details Updated Successfully");
@@ -292,6 +305,9 @@ class Rashi extends MX_Controller{
 				$post_data['type'] = 1;
 				$post_data['image'] = $image;
 				$post_data['description'] = $this->input->post('description');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->rashi_model->addRashiPrediction($post_data))
 				{
 					$this->session->set_flashdata('success',"Rashi Prediction Added Successfully");
@@ -344,6 +360,9 @@ class Rashi extends MX_Controller{
 			$old_image = $this->input->post('old_image');
 			$post_data['id'] = $this->input->post('pred_id');
 			unlink('../assets/rashi_prediction/'.$old_image);
+
+			$post_data = $this->security->xss_clean($post_data);
+
 			if($this->rashi_model->updateRashiPrediction($post_data))
 			{
 				$this->session->set_flashdata('success',"Rashi Prediction Updated Successfully");
@@ -439,6 +458,9 @@ class Rashi extends MX_Controller{
 			$old_image = $this->input->post('old_image');
 			$post_data['id'] = $this->input->post('pred_id');
 			unlink('../assets/rashi_prediction/'.$old_image);
+
+			$post_data = $this->security->xss_clean($post_data);
+
 			if($this->rashi_model->updateRashiPrediction($post_data))
 			{
 				$this->session->set_flashdata('success',"Rashi Prediction Updated Successfully");
@@ -538,6 +560,9 @@ class Rashi extends MX_Controller{
 				$post_data['remedy_type'] = $this->input->post('remedy_type');
 				$post_data['specification'] = $this->input->post('specification');
 				$post_data['price'] = $this->input->post('price');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->rashi_model->addRemedy($post_data))
 				{
 					$this->session->set_flashdata('success',"Remedy Added Successfully");
@@ -579,6 +604,9 @@ class Rashi extends MX_Controller{
 				$post_data['specification'] = $this->input->post('specification');
 				$post_data['price'] = $this->input->post('price');
 				$post_data['id'] = $this->input->post('id');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->rashi_model->updateRemedy($post_data))
 				{
 					$this->session->set_flashdata('success',"Remedy Updated Successfully");
@@ -640,6 +668,8 @@ class Rashi extends MX_Controller{
 					move_uploaded_file($_FILES['userfile']['tmp_name'], $dir.$files.'.'.$ext);
 					$file_name = $files.'.'.$ext;
 					$post_data['image'] = $file_name;
+
+					$post_data = $this->security->xss_clean($post_data);
 				}
 				if($this->rashi_model->updateRashi($post_data,$id))
 				{

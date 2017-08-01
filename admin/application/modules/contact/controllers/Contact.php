@@ -35,6 +35,8 @@ class Contact extends MX_Controller{
 			$this->email->send();
 			$id = $this->input->post('id');		
 			
+			$id = $this->security->xss_clean($id);
+
 			if($this->contact_model->updateContact($id))
 			{
 				$this->session->set_flashdata('success',"Email Sent Successfully");

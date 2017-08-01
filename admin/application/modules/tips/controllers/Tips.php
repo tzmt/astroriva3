@@ -33,6 +33,9 @@ class Tips extends MX_Controller{
 			else
 			{	
 				$post_data['name'] = $this->input->post('name');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->news_model->addCategory($post_data))
 				{
 					$this->session->set_flashdata('success',"Category Added Successfully");
@@ -112,6 +115,9 @@ class Tips extends MX_Controller{
 				$post_data['topic'] = $this->input->post('topic');
 				$post_data['type'] = $this->input->post('type');
 				//echo "<pre>";print_r($post_data);exit();
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->tips_model->addTips($post_data))
 				{
 					$this->session->set_flashdata('success',"Tips Added Successfully");
@@ -170,6 +176,9 @@ class Tips extends MX_Controller{
 			$old_image = $this->input->post('old_image');
 			$post_data['id'] = $this->input->post('pred_id');
 			//echo "<pre>";print_r($post_data);exit();
+
+			$post_data = $this->security->xss_clean($post_data);
+			
 			unlink('../assets/tips/'.$old_image);
 			if($this->tips_model->updateTips($post_data))
 			{

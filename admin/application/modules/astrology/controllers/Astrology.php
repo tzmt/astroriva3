@@ -38,6 +38,8 @@ class Astrology extends MX_Controller{
 				$post_data['name'] = $this->input->post('name');
 				$post_data['details'] = $this->input->post('details');				
 				//echo "<pre>";print_r($post_data);exit();
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($last_id = $this->astrology_model->addBranch($post_data))
 				{					
 					$this->session->set_flashdata('success',"Branch Added Successfully");
@@ -66,7 +68,8 @@ class Astrology extends MX_Controller{
 			$post_data['name'] = $this->input->post('name');
 			$post_data['details'] = $this->input->post('details');	
 			//echo "<pre>";print_r($post_data);exit();
-			
+			$post_data = $this->security->xss_clean($post_data);
+
 			if($this->astrology_model->updateBranch($post_data,$id))
 			{					
 				$this->session->set_flashdata('success',"Branch Updated Successfully");
@@ -182,6 +185,8 @@ class Astrology extends MX_Controller{
 				$post_data['details'] = $this->input->post('details');
 				$post_data['status'] = $this->input->post('status');
 				$post_data['image'] = $files.'_thumb.'.$ext;
+
+				$post_data = $this->security->xss_clean($post_data);
 				
 				if($id = $this->astrology_model->AddAstrologers($post_data))
 				{
@@ -234,7 +239,9 @@ class Astrology extends MX_Controller{
 			$post_data['status'] = $this->input->post('status');
 			$id = $this->input->post('id');
 			//echo "<pre>";print_r($post_data);exit();
-			
+
+			$post_data = $this->security->xss_clean($post_data);
+
 			if($this->astrology_model->updateAstrologer($post_data,$id))
 			{					
 				$this->session->set_flashdata('success',"Astrologers Updated Successfully");
@@ -324,6 +331,8 @@ class Astrology extends MX_Controller{
 				$post_data['price'] = $this->input->post('price');
 				$post_data['image'] = $files;
 				
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($id = $this->astrology_model->addPublicRemedy($post_data))
 				{
 					$this->session->Set_flashdata('success','Remedy Added Successfully');
@@ -375,6 +384,7 @@ class Astrology extends MX_Controller{
 
 			//echo "<pre>";print_r($post_data);exit();
 			
+			$post_data = $this->security->xss_clean($post_data);
 
 			if($this->astrology_model->updateRemedy($post_data,$id))
 			{					
@@ -474,6 +484,8 @@ class Astrology extends MX_Controller{
 				$post_data['sample_pdf'] = $files;
 				$post_data['image'] = $files1;
 				
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($id = $this->astrology_model->addService($post_data))
 				{
 					$this->session->Set_flashdata('success','Service Added Successfully');
@@ -511,6 +523,8 @@ class Astrology extends MX_Controller{
 			$post_data['amount'] = $this->input->post('amount');
 			$post_data['discount'] = $this->input->post('discount');
 			$id = $this->input->post('id');
+
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($id = $this->astrology_model->UpdateService($post_data,$id))
 			{
@@ -549,6 +563,8 @@ class Astrology extends MX_Controller{
 			$id = $this->input->post('id');
 			$post_data['quantity'] = $this->input->post('quantity');
 			//echo "<pre>";print_r($post_data);exit();
+
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($this->astrology_model->updateProducts($post_data,$id))
 			{					
@@ -618,6 +634,9 @@ class Astrology extends MX_Controller{
 		$id = $this->input->post('id');
 		$post_data['name'] = $this->input->post('name');
 		$this->db->where('id',$id);
+
+		$post_data = $this->security->xss_clean($post_data);
+
 		if($this->db->update('shop_category',$post_data))
 		{					
 			$this->session->set_flashdata('success',"Category Updated Successfully");
@@ -805,6 +824,8 @@ class Astrology extends MX_Controller{
 				$post_data['image'] = $files;
 				$post_data['rashi'] = $this->input->post('rashi');
 				$post_data['file'] = $pdf;
+
+				$post_data = $this->security->xss_clean($post_data);
 
 				if($this->db->insert("books",$post_data))
 				{

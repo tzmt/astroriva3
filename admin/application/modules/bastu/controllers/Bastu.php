@@ -57,6 +57,8 @@ class Bastu extends MX_Controller{
 				$post_data['description'] = $this->input->post('description');
 				$post_data['title'] = $this->input->post('title');
 				//echo "<pre>";print_r($post_data);exit();
+				$post_data = $this->security->xss_clean($post_data);
+				
 				if($this->bastu_model->addbastu($post_data))
 				{
 					$this->session->set_flashdata('success',"bastu Added Successfully");

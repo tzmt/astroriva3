@@ -166,6 +166,9 @@ class Shop extends MX_Controller {
 			$data['subject'] = $this->input->post('subject1');
 			$data['comments'] = $this->input->post('comments1');
 			$data['datetime'] = time();
+
+			$data = $this->security->xss_clean($data);
+
 			$this->db->insert('product_reviews',$data);
 			$this->session->set_flashdata('success1','Reviews Added Successfully');
 			redirect('shop/details/'.$product);
@@ -195,6 +198,9 @@ class Shop extends MX_Controller {
 							'quantity'=>$this->input->post('quantity1')
 						)
 				);
+
+			$arr = $this->security->xss_clean($arr);
+
 			$this->cart->insert($arr);
 			//echo "<pre>";print_r($this->cart->contents());exit();
 			$this->session->set_flashdata('success','Product added successfully');	
@@ -251,6 +257,11 @@ class Shop extends MX_Controller {
 					}
 					$post_data1['products'] = $products_id;
 					$post_data1['price'] = $this->cart->total();
+
+					$post_data1 = $this->security->xss_clean($post_data1);
+
+					$post_data = $this->security->xss_clean($post_data);
+
 					if($post_data['password'] == $post_data['cpassword'])
 					{
 						if($this->shop_model->register($post_data,$post_data1))
@@ -311,6 +322,7 @@ class Shop extends MX_Controller {
                'rowid' => $rowid,
                'qty'   => $qty
             );
+		$data = $this->security->xss_clean($data);
 		$this->cart->update($data); 
 
 	}
@@ -320,6 +332,7 @@ class Shop extends MX_Controller {
                'rowid' => $rowid,
                'qty'   => 0
             );
+		$data = $this->security->xss_clean($data);
 		$this->cart->update($data); 
 		redirect('shop/cart/');
 	}
@@ -327,6 +340,7 @@ class Shop extends MX_Controller {
 	public function getStates()
 	{
 		$id = $this->input->post('id');
+		$id = $this->security->xss_clean($id);
 		$states = $this->shop_model->getStates($id);
 		$html = '<option value="">-- State / Province / Region --</option>';
 		foreach($states as $st)
@@ -339,6 +353,7 @@ class Shop extends MX_Controller {
 	public function getCities()
 	{
 		$id = $this->input->post('id');
+		$id = $this->security->xss_clean($id);
 		$states = $this->shop_model->getCities($id);
 		$html = '<option value="">-- City --</option>';
 		foreach($states as $st)

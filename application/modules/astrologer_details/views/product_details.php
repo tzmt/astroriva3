@@ -1,4 +1,9 @@
-
+<?php
+	$csrf = array(
+	        'name' => $this->security->get_csrf_token_name(),
+	        'hash' => $this->security->get_csrf_hash()
+	);
+?>	
 	<!-- #/ Director's Section -->
 	<div id="shop">
 		<div class="container padding-top padding-bottom">
@@ -79,6 +84,7 @@
                 <input type="text" name="fname" class="form-control" required="required" placeholder="Enter First Name...">
                 <input type="hidden" name="id" value="<?php echo $all_data->id; ?>" />
                 <input type="hidden" name="price" value="<?php echo $all_data->price; ?>" />
+                <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
             </div>
             <div class="col-sm-12 form-group">
                 <input type="text" name="lname" class="form-control" required="required" placeholder="Enter Last Name...">

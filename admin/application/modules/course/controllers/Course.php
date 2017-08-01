@@ -37,6 +37,7 @@ class Course extends MX_Controller{
 			}
 			else
 			{	
+
 				$image = '';                
 				$dir = '../assets/syllabus/';
 				$ext = end(explode('.',$_FILES['syllabus']['name']));				
@@ -49,6 +50,7 @@ class Course extends MX_Controller{
 				$post_data['fee'] = $this->input->post('fee');
 				$post_data['total_class'] = $this->input->post('total_class');
 				//echo "<pre>";print_r($post_data);exit();
+				$post_data = $this->security->xss_clean($post_data);
 				if($last_id = $this->course_model->addCourse($post_data))
 				{
 					$total_books = count($_FILES['book']['name']);
@@ -165,7 +167,7 @@ class Course extends MX_Controller{
 			$post_data['fee'] = $this->input->post('fee');
 			$post_data['total_class'] = $this->input->post('total_class');
 			//echo "<pre>";print_r($post_data);exit();
-			
+			$post_data = $this->security->xss_clean($post_data);
 			if($this->course_model->updateCourse($post_data))
 			{					
 				$this->session->set_flashdata('success',"Course Updated Successfully");
@@ -265,6 +267,107 @@ class Course extends MX_Controller{
 		{
 			$this->session->set_flashdata('error',"delete_course Not Deleted");
 			redirect('course/lists/');
+		}
+	}
+
+	public function branches($limit_from = '')
+	{
+		if($this->input->post())
+		{	
+			$this->form_validation->set_rules('name','Name','required');	
+			$this->form_validation->set_rules('owner_name','Owner Name','required');	
+			$this->form_validation->set_rules('phone','Phone Number','required');
+			$this->form_validation->set_rules('address','Address','required');		
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->session->set_flashdata('error',validation_errors());
+				redirect('course/branches/');
+			}
+			else
+			{								
+				$post_data['name'] = $this->input->post('name');
+				$post_data['owner_name'] = $this->input->post('owner_name');
+				$post_data['phone'] = $this->input->post('phone');	
+				$post_data['address'] = $this->input->post('address');
+
+				$post_data = $this->security->xss_clean($post_data);
+
+				if($this->course_model->addBranches($post_data))
+				{					
+					$this->session->set_flashdata('success',"Branch Added Successfully");
+					redirect('course/branches/');
+				}
+				else
+				{
+					$this->session->set_flashdata('error',"Please try again");
+					redirect('course/branches/');
+				}
+			}			
+		}
+		else
+		{
+			if(is_numeric($this->uri->segment(3)))
+			{
+				$s_key =  "";
+				$limit_from = $this->uri->segment(3);
+			}
+			else
+			{
+				$s_key =  $this->uri->segment(3);
+				$limit_from = $this->uri->segment(4);
+			}	
+			$config = array();        	
+	    	$config["base_url"] = base_url().'course/lists/';
+	    	$config["uri_segment"] = 3;
+	    	$config["total_rows"] = $this->course_model->record_count();
+		    	
+	        $config["per_page"] = 10;
+	        $config['use_page_numbers'] = TRUE;
+
+	        $config['full_tag_open'] = '<div class="panel-footer clearfix"><ul class="pagination pagination-xs m-top-none pull-right">';
+	        
+	        $config['first_tag_open'] = '<li class="disabled">';
+	        $config['first_tag_close'] = '</li>';
+	        $config['cur_tag_open'] = '<li class="active">';
+	        $config['cur_tag_close'] = '</li>';
+	        $config['prev_link'] = '<<Previous ';
+	        $config['prev_tag_open'] = '<li><a href="#">';
+	        $config['prev_tag_open'] = '</a></li>';
+	        $config['full_tag_close'] = '</ul></div>';
+
+
+
+	        $this->pagination->initialize($config);
+
+	        $page = ($limit_from) ? $limit_from : 0;
+	        $per_page = $config["per_page"];
+	        $start = 0;
+	        if ($page > 0)
+	        {
+	            for ($i = 1; $i < $page; $i++)
+	            {
+	                $start = $start + $per_page;
+	            }
+	        }
+	        $data["links"] = $this->pagination->create_links();
+			//$data['rashi_list'] = $this->course_model->getRashiList();
+			$data['all_data'] = $this->course_model->getBranches($config['per_page'], $start);
+			$this->layout->view('add_branch',$data,'normal');
+		}
+	}
+
+	public function delete_astrology_branch($id)
+	{
+		$this->db->where('id',$id);
+		if($this->db->delete('astrology_branches'))
+		{
+			$this->session->set_flashdata('success',"Branch Deleted Successfully");
+			redirect('course/branches');
+		}
+		else
+		{
+			$this->session->set_flashdata('success',"Please try again");
+			redirect('course/branches');
 		}
 	}
 	

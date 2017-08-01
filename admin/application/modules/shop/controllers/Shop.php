@@ -35,7 +35,9 @@ class Shop extends MX_Controller{
 				else
 				{	
 					
-					$post_data['name'] = $this->input->post('name');				
+					$post_data['name'] = $this->input->post('name');	
+
+					$post_data = $this->security->xss_clean($post_data);			
 					//echo "<pre>";print_r($post_data);exit();
 					if($last_id = $this->shop_model->addCategory($post_data))
 					{					
@@ -70,7 +72,10 @@ class Shop extends MX_Controller{
 				else
 				{	
 					$post_data['category_id'] = $this->input->post('category_id');
-					$post_data['name'] = $this->input->post('name');				
+					$post_data['name'] = $this->input->post('name');
+
+					$post_data = $this->security->xss_clean($post_data);
+
 					//echo "<pre>";print_r($post_data);exit();
 					if($last_id = $this->shop_model->addCategory($post_data))
 					{					
@@ -106,6 +111,8 @@ class Shop extends MX_Controller{
 			$post_data['place'] = $this->input->post('place');
 			$post_data['time'] = strtotime($this->input->post('time'));
 			//echo "<pre>";print_r($post_data);exit();
+
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($this->shop_model->updateClass($post_data,$id))
 			{					
@@ -196,6 +203,9 @@ class Shop extends MX_Controller{
 				$post_data['product_type'] = $this->input->post('product_type');
 				$post_data['type'] = 1;
 				$post_data['quantity'] = $this->input->post('quantity');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($id = $this->shop_model->addProducts($post_data))
 				{
 					$this->session->Set_flashdata('success','Product Added Successfully');
@@ -239,6 +249,8 @@ class Shop extends MX_Controller{
 			$id = $this->input->post('id');
 			$post_data['quantity'] = $this->input->post('quantity');
 			//echo "<pre>";print_r($post_data);exit();
+
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($this->shop_model->updateProducts($post_data,$id))
 			{					
@@ -319,6 +331,8 @@ class Shop extends MX_Controller{
 			$id = $this->input->post('id');
 			$post_data['quantity'] = $this->input->post('quantity');
 			//echo "<pre>";print_r($post_data);exit();
+
+			$post_data = $this->security->xss_clean($post_data);
 			
 			if($this->shop_model->updateProducts($post_data,$id))
 			{					
@@ -388,6 +402,9 @@ class Shop extends MX_Controller{
 		$id = $this->input->post('id');
 		$post_data['name'] = $this->input->post('name');
 		$this->db->where('id',$id);
+
+		$post_data = $this->security->xss_clean($post_data);
+		
 		if($this->db->update('shop_category',$post_data))
 		{					
 			$this->session->set_flashdata('success',"Category Updated Successfully");

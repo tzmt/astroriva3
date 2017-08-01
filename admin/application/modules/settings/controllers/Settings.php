@@ -97,7 +97,7 @@ class Settings extends MX_Controller{
 					$post_data['brochure'] = $files.'.'.$ext;
 				}
 
-				
+				$post_data = $this->security->xss_clean($post_data);
 				
 				if($last_id = $this->settings_model->updateSettings($post_data))
 				{					

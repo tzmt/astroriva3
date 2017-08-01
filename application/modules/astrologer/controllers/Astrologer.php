@@ -23,9 +23,7 @@ class Astrologer extends MX_Controller {
 	}
 
 	public function dashboard()
-	{
-		// $data['total_comments'] = $this->db->count_all('acharya_comments');
-		//print_r($data['tips']);			
+	{		
 		$data['all_data'] = $this->astrologer_model->getAstrologerDetails();			
 		$this->layout->view('dashboard',$data,'astrologer');
 	}
@@ -50,7 +48,8 @@ class Astrologer extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->updateProfile($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->astrologer_model->updateProfile($post_data))
 				{
 					$this->session->set_flashdata('success','Profile Updated Successfully');
 					redirect('astrologer/profile');
@@ -269,7 +268,9 @@ class Astrologer extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->AddTips($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->astrologer_model->AddTips($post_data))
 				{
 					$this->session->set_flashdata('success','Tips Added Successfully');
 					redirect('astrologer/add_tips');
@@ -307,7 +308,9 @@ class Astrologer extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->AddPrediction($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->astrologer_model->AddPrediction($post_data))
 				{
 					$this->session->set_flashdata('success','Prediction Added Successfully');
 					redirect('astrologer/add_prediction');
@@ -345,7 +348,8 @@ class Astrologer extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->AddMarket($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->astrologer_model->AddMarket($post_data))
 				{
 					$this->session->set_flashdata('success','Tips Added Successfully');
 					redirect('astrologer/add_market_prediction');
@@ -494,7 +498,8 @@ class Astrologer extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->changePassword($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->astrologer_model->changePassword($post_data))
 				{
 					$this->session->set_flashdata('success','Password Changed Successfully');
 					redirect('astrologer/change_password');
@@ -535,8 +540,10 @@ class Astrologer extends MX_Controller {
 			else
 			{				
 				$count = count($_FILES['file']['name']);
+
+				$post_data = $this->security->xss_clean($this->input->post());
 				
-				if($id = $this->astrologer_model->AddProducts($this->input->post()))
+				if($id = $this->astrologer_model->AddProducts($post_data))
 				{
 					for($i = 0; $i < $count; $i++)
 					{						
@@ -571,6 +578,7 @@ class Astrologer extends MX_Controller {
 	public function getSubCategory()
 	{
 		$id = $this->input->post('id');
+		$id = $this->security->xss_clean($id);
 		$sub = $this->db->get_where('shop_category',array('category_id'=>$id))->result();
 		$html = '';
 		foreach($sub as $sub1)
@@ -597,7 +605,8 @@ class Astrologer extends MX_Controller {
 			}
 			else
 			{			
-				if($id = $this->astrologer_model->updateProducts($this->input->post(),$id))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($id = $this->astrologer_model->updateProducts($post_data,$id))
 				{
 					if($_FILES['file']['name'][0] != "")
 					{
@@ -668,7 +677,8 @@ class Astrologer extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->AddBranch($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->astrologer_model->AddBranch($post_data))
 				{
 					$this->session->set_flashdata('success','Branch Added Successfully');
 					redirect('astrologer/add_branch');

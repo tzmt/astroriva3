@@ -44,6 +44,14 @@ tr:nth-child(odd) td { background: #FEFEFE; }
 								<?php if($this->session->flashdata('success')){ ?>
 								<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 								<?php } ?>
+
+								<?php
+									$csrf = array(
+									        'name' => $this->security->get_csrf_token_name(),
+									        'hash' => $this->security->get_csrf_hash()
+									);
+								?>
+								
 								<form id="comment-form" class="row" name="comment-form" method="post" action="">
 
 									<div class="col-md-12">
@@ -56,6 +64,7 @@ tr:nth-child(odd) td { background: #FEFEFE; }
 													<option value="<?php echo $rashi->id ?>"><?php echo $rashi->name; ?></option>
 												<?php } ?>
 											</select>	
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div>
 
 										<div class="form-group">

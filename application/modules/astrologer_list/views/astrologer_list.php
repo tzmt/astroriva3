@@ -1,3 +1,9 @@
+<?php
+	$csrf = array(
+	        'name' => $this->security->get_csrf_token_name(),
+	        'hash' => $this->security->get_csrf_hash()
+	);
+?>
 <section class="index_center card_text">
     <div class="container">
         <div class="row">
@@ -34,6 +40,7 @@
 						<form method="GET" action="<?php echo base_url(); ?>astrologer/search" autocomplete="off">
 							<label>Search By Name</label>
 							<input type="text" name="search" class="form-control" onkeyup="astro_search(this.value)" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" placeholder="Search Astrologer" style="text-align: center;font-size: 20px" />
+							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 						</form>
 					</div>
 

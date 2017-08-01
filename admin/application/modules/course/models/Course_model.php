@@ -57,11 +57,24 @@ class Course_model extends CI_Model{
         return $rs->result();
     }
 
+    public function getBranches($lim_to,$lim_from,$s_key="")
+    {         
+        $this->db->limit($lim_to,$lim_from);  
+        $rs = $this->db->get_where("astrology_branches");   
+        //echo $this->db->last_query();exit();         
+        return $rs->result();
+    }
+
     
 
     public function getAstrologerNameFromId($id)
     {
         return $this->db->get_where('astrologer',array('id'=>$id))->row()->name;
+    }
+
+    public function addBranches($data)
+    {
+        return $this->db->insert('astrology_branches',$data);
     }
 
 

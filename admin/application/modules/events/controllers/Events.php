@@ -33,6 +33,9 @@ class Events extends MX_Controller{
 			else
 			{	
 				$post_data['name'] = $this->input->post('name');
+
+				$post_data = $this->security->xss_clean($post_data);
+
 				if($this->news_model->addCategory($post_data))
 				{
 					$this->session->set_flashdata('success',"Category Added Successfully");
@@ -106,6 +109,8 @@ class Events extends MX_Controller{
 				$post_data['date_to'] = $this->input->post('date_to');				
 				$post_data['image'] = $image;
 				$post_data['description'] = $this->input->post('description');
+
+				$post_data = $this->security->xss_clean($post_data);
 				
 				//echo "<pre>";print_r($post_data);exit();
 				if($this->events_model->addEvents($post_data))
@@ -158,6 +163,8 @@ class Events extends MX_Controller{
 			$post_data['description'] = $this->input->post('description');
 			$old_image = $this->input->post('old_image');
 			$post_data['id'] = $this->input->post('pred_id');
+
+			$post_data = $this->security->xss_clean($post_data);
 			
 			//echo "<pre>";print_r($post_data);exit();
 			@unlink('../assets/events/'.$old_image);

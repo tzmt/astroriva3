@@ -26,7 +26,8 @@ class Contact extends MX_Controller {
 			}
 			else
 			{				
-				if($this->db->insert('contact',$this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+				if($this->db->insert('contact',$post_data))
 				{
 					$this->session->set_flashdata('success',"Thank you for contacting us. You will be replied soon.");
 					redirect('contact');

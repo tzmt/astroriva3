@@ -10,6 +10,12 @@
             echo "<div class='success'>".$this->session->flashdata('success')."</div>";
         }        
     ?>
+    <?php
+        $csrf = array(
+                'name' => $this->security->get_csrf_token_name(),
+                'hash' => $this->security->get_csrf_hash()
+        );
+    ?>  
         <div class="row home_alignment">  
             <div class="col-md-6 text-center" id="loginhide">
                 <div class="bg-white button_margin pic_margin">
@@ -27,6 +33,8 @@
                                 <option value="3">Member</option>
                                 <option value="2">Student</option>
                             </select>
+
+                            <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
                             <div class="col-md-6 center-block">
                                 <button type="submit" class="btn btn-success col-md-12">Login</button>

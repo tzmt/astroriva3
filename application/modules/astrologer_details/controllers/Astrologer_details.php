@@ -50,7 +50,9 @@ class Astrologer_details extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->addHoroscope($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->astrologer_model->addHoroscope($post_data))
 				{
 					$this->session->set_flashdata('success','Horoscope Request Submitted Successfully');
 					redirect('astrologer-details/appointment/santanu-sashtri/');
@@ -96,7 +98,9 @@ class Astrologer_details extends MX_Controller {
 			}
 			else
 			{
-				if($this->astrologer_model->addMatchmaking($this->input->post()))
+				$post_data = $this->security->xss_clean($this->input->post());
+
+				if($this->astrologer_model->addMatchmaking($post_data))
 				{
 					$this->session->set_flashdata('success','Match Making Request Submitted Successfully');
 					redirect('astrologer-details/appointment/santanu-sashtri/');
@@ -149,6 +153,9 @@ class Astrologer_details extends MX_Controller {
 				$post_data1['products'] = "(".$this->input->post('id').",1)";
 				$post_data1['price'] = $this->input->post('price');		
 				$post_data1['astrologers_id'] = $this->uri->segment(2);		
+
+				$post_data1 = $this->security->xss_clean($post_data1);
+
 				if($this->astrologer_model->guestRegister($post_data1))
 				{
 					$this->session->set_flashdata('success','Thank your. Your order has been successfully received by us.');
@@ -174,6 +181,9 @@ class Astrologer_details extends MX_Controller {
 	public function getStates()
 	{
 		$id = $this->input->post('id');
+
+		$id = $this->security->xss_clean($id);
+
 		$states = $this->astrologer_model->getStates($id);
 		$html = '<option value="">-- State / Province / Region --</option>';
 		foreach($states as $st)
@@ -186,6 +196,9 @@ class Astrologer_details extends MX_Controller {
 	public function getCities()
 	{
 		$id = $this->input->post('id');
+
+		$id = $this->security->xss_clean($id);
+
 		$states = $this->astrologer_model->getCities($id);
 		$html = '<option value="">-- City --</option>';
 		foreach($states as $st)
@@ -200,6 +213,9 @@ class Astrologer_details extends MX_Controller {
 		if($this->input->post())
 		{
 			$place = $this->input->post('place');
+
+			$place = $this->security->xss_clean($place);
+
 			$query = $this->db->query("SELECT day FROM astro_acharya_branch WHERE place = '$place' AND status = '0'")->result();
 	    	$data = '[';
 	    	foreach($query as $q)

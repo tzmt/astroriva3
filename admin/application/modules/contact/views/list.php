@@ -125,20 +125,8 @@
 							<?php } ?>
 						</tbody>
 					</table>
-					<?php echo $links; ?>	
-
-
-					<!-- <div class="panel-footer clearfix">
-						<ul class="pagination pagination-xs m-top-none pull-right">
-							<li class="disabled"><a href="#">Previous</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">Next</a></li>
-						</ul>
-					</div> -->
+					<?php echo $links; ?>
+					
 				</div><!-- /panel -->
 					</div><!-- /.col -->					
 				</div>

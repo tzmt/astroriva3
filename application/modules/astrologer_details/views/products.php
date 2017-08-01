@@ -29,6 +29,12 @@
         </div>
     </div>
 </section>
+<?php
+	$csrf = array(
+	        'name' => $this->security->get_csrf_token_name(),
+	        'hash' => $this->security->get_csrf_hash()
+	);
+?>	
 	<!-- #/ Product's Section -->
 	<div id="shop">
 		<div class="container padding-top padding-bottom">

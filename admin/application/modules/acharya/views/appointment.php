@@ -96,6 +96,12 @@
 								    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 													<h4>Predict Service Request</h4>
 								  				</div>
+								  				<?php
+													$csrf = array(
+													        'name' => $this->security->get_csrf_token_name(),
+													        'hash' => $this->security->get_csrf_hash()
+													);
+												?>
 											    <div class="modal-body">
 											        <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
 														<div class="form-group">
@@ -104,6 +110,7 @@
 																<input type="text" name="email" class="form-control input-sm" id="inputEmail1" value="<?php echo $list->email; ?>" required>
 																<input type="hidden" name="id" value="<?php echo $list->id; ?>"/>
 																<input type="hidden" name="purpose" value="<?php echo $list->purpose; ?>"/>
+																<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 															</div><!-- /.col -->
 														</div><!-- /form-group --><br/>
 

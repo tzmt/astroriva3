@@ -44,11 +44,20 @@
 				<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 
 				<?php } ?>
+
+                <?php
+                    $csrf = array(
+                            'name' => $this->security->get_csrf_token_name(),
+                            'hash' => $this->security->get_csrf_hash()
+                    );
+                ?>  
+
 	            <div class="col-md-4 contact_block">
 	                <div>  
 
 	                    <label for="contact_name" class="text-info label_align">Name:</label>
 	                    <input type="text" name="name" id="contact_name" class="contact_name form-control" required="required" placeholder="Your Name">
+                        <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 	                    <label for="contact_email" class="text-info label_align">Email:</label>
 	                    <input type="email" name="email" id="contact_email" class="contact_email form-control" required="required" placeholder="Your Email">

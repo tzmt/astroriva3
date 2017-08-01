@@ -49,7 +49,13 @@
 							<?php } ?>
 							<?php if($this->session->flashdata('success')){ ?>
 							<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
-							<?php } ?>						
+							<?php } ?>	
+							<?php
+								$csrf = array(
+								        'name' => $this->security->get_csrf_token_name(),
+								        'hash' => $this->security->get_csrf_hash()
+								);
+							?>						
 							<div class="col-sm-6">
 									<div class="col-sm-12 form-group">  
 										<label>Select Branch/Place</label>   
@@ -63,6 +69,7 @@
 							                    <option value="<?php echo $q1->place; ?>"><?php echo $q1->place; ?></option>
 						                    <?php } ?>
 						                </select>
+						                <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 						            </div>
 
 									<div class="col-sm-12 form-group" id="showPurpose">  

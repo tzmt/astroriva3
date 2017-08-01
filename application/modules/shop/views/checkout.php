@@ -34,6 +34,13 @@
 				<h2 class="heading">Checkout options</h2>
 			</div>
 			<?php //echo "<pre>";print_r($this->cart->contents()); ?>
+			<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>	
+
 			<?php if(!isset($this->session->userdata('user')->id)){ ?>
 			<div class="checkout-options" style="background: #eee;padding:5px;">	
 				<form method="post" action="<?php echo base_url(); ?>shop/checkout/">
@@ -43,6 +50,7 @@
 					</li>
 					<li>
 						<label><input type="radio" name="checkout" id="guest" value="2" onclick="showOrHideForms(0)"> Guest Checkout</label>
+						<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 					</li>					
 				</ul>
 			</div><!--/checkout-options-->
@@ -60,6 +68,15 @@
 					<?php if($this->session->flashdata('success')){ ?>
 					<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 					<?php } ?>
+
+					<?php
+						$csrf = array(
+						        'name' => $this->security->get_csrf_token_name(),
+						        'hash' => $this->security->get_csrf_hash()
+						);
+					?>
+
+				
 					<?php if(!isset($this->session->userdata('user')->id)){ ?>
 					<div class="col-sm-5">
 						<div class="shopper-info">
@@ -118,6 +135,7 @@
 
 									<label class="text-info label_align">Phone</label>	
 									<input type="number" class="contact_name form-control"  name="phone" placeholder="Phone *" required><br/>
+									<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 									<label class="text-info label_align"></label>	
 									<button class="btn btn-primary pull-right" type="submit">Proceed To Pay</button>	

@@ -37,7 +37,13 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>	
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>				
 					<div class="col-md-6">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Rashi</div>
@@ -54,6 +60,7 @@
 										<label class="control-label col-lg-2">Upload</label>
 										<div class="col-lg-10">								
 												<input name="file" type="file" class="form-control input-sm" />
+												<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										  </div>													
 									</div>
 

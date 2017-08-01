@@ -37,7 +37,14 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>	
+
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>			
 					<div class="col-md-4">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Branch</div>
@@ -49,7 +56,8 @@
 											<label>Name</label>
 										</div>
 										<div class="col-md-10">
-											<input type="text" name="branch_name" class="form-control" required="required" placeholder="Branch name goes here..">                  
+											<input type="text" name="branch_name" class="form-control" required="required" placeholder="Branch name goes here..">  
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />                
 										</div>
 					                </div>
 

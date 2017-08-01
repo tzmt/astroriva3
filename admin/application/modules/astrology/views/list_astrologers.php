@@ -92,6 +92,12 @@
 								</div><!-- /.modal-dialog -->
 							</div><!-- /.modal -->
 
+							<?php
+								$csrf = array(
+								        'name' => $this->security->get_csrf_token_name(),
+								        'hash' => $this->security->get_csrf_hash()
+								);
+							?>	
 							<div class="modal fade" id="addBranch<?php echo $prid->id; ?>">
 								<div class="modal-dialog">
 									<div class="modal-content">
@@ -108,6 +114,7 @@
 															<div class="col-lg-10">
 																<input type="text" name="name" class="form-control input-sm"  id="inputEmail1" required>
 																<input type="hidden" name="id" value="<?php echo $prid->id; ?>"/>
+																<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 															</div><!-- /.col -->
 														</div><!-- /form-group --><br/>
 

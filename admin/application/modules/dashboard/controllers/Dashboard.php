@@ -29,6 +29,10 @@ class Dashboard extends MX_Controller{
 	{
 		$date = array(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31);
 		$date1 = "2016-07-".$date[array_rand($date)];
+
+		$date = $this->security->xss_clean($date);
+		$date1 = $this->security->xss_clean($date1);
+		
 		$vis = rand(000,999);
 		if($this->db->get_where('website_traffic',array('date'=>$date1))->num_rows() > 0)
 		{

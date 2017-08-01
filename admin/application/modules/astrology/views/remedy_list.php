@@ -37,7 +37,13 @@
 					<div class="alert alert-danger">
 						<strong>Oh snap!</strong> <?php echo $this->session->flashdata('error'); ?>.
 					</div>
-				<?php } ?>				
+				<?php } ?>
+				<?php
+					$csrf = array(
+					        'name' => $this->security->get_csrf_token_name(),
+					        'hash' => $this->security->get_csrf_hash()
+					);
+				?>					
 					<div class="col-md-12">						
 						<div class="panel panel-default table-responsive">
 					<div class="panel-heading">
@@ -108,6 +114,7 @@
 											<input type="text" name="problem_name" value="<?php echo $prid->problem_name; ?>" class="form-control input-sm" id="inputEmail1" placeholder="Enter problem name" required>
 											<input type="hidden" name="id" value="<?php echo $prid->id; ?>" />
 											<input type="hidden" name="image" value="<?php echo $prid->image; ?>" />
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group --> 
 
