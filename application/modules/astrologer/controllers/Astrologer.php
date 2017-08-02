@@ -191,7 +191,15 @@ class Astrologer extends MX_Controller {
 			$nw = ceil($w1 * $ratio);
 			$nh = ceil($h1 * $ratio);
 			$nimg = imagecreatetruecolor($nw,$nh);
-			$im_src = imagecreatefromjpeg($imagePath);
+			$exp = end(explode(".",$_POST['image_name']));
+			if($exp == 'jpg' || $exp == 'jpeg')
+			{
+				$im_src = imagecreatefromjpeg($imagePath);
+			}
+			if($exp == 'png')
+			{
+				$im_src = imagecreatefrompng($imagePath);
+			}
 			imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
 			imagejpeg($nimg,$imagePath,90);
 		}
