@@ -269,6 +269,7 @@
 											<input type="text" name="name" class="form-control input-sm" value="<?php echo $prid->name; ?>" id="inputEmail1" placeholder="Enter astrologer name" required>
 											<input type="hidden" name="id" value="<?php echo $prid->id; ?>"/>
 											<input type="hidden" name="image" value="<?php echo $prid->image; ?>"/>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
