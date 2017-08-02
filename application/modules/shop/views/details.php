@@ -202,6 +202,7 @@
 
                                 <label for="contact_name" class="text-info label_align">Subject:</label>
                                 <input type="text" name="subject1" id="contact_name" class="contact_name form-control" required>
+                                <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
                             </div>
                         </div>
                         <div class="col-md-8 contact_block">

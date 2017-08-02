@@ -5,7 +5,7 @@
         <div class="row home_alignment">
             <div class="col-md-12 text-center">
                 <div class="bg-white button_margin pic_margin">
-                    <h1 class="text-primary font35 home_padding">Free Daily Horoscopes</h1>
+                    <h1 class="text-primary font35 home_padding">Signs of Zodiac</h1>
                     <div class="home_head center-block"></div>
                     <p class="elements_desc" style="padding:20px;">Know about your Rashi Retails, General Characters, Positive and Negative aspects, The predictions made by our Premium Astrologers for you.</br/> And exclusive Remedies and Tips for your Rashi.</p>
                     <div class="row home_align">
