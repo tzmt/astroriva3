@@ -60,6 +60,7 @@
                             <input type="email" name="email" class="form-control" placeholder="Enter your Email.." /><br/>
                             <input type="password" name="password" class="form-control" placeholder="Enter your password.." /><br/>
                             <input type="text" name="phone" class="form-control" placeholder="Enter your phone number.." maxlength="10" minlength="10" /><br/>
+                            <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
                             <select name="type" id="login_type" required="required" class="form-control">
                                 <option value="">[Select]</option>

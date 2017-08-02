@@ -31,7 +31,9 @@ class Login extends MX_Controller {
 				$post_data['email'] = $this->input->post('email');
 				$post_data['password'] = $this->input->post('password');
 				$post_data['type'] = $this->input->post('type');
+
 				$post_data = $this->security->xss_clean($post_data);
+				
 				if($this->login_model->login_check($post_data))
 				{	
 					if($post_data['type'] == 1)
