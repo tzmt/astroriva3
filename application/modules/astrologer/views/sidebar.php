@@ -53,7 +53,13 @@
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				        <h4 class="modal-title" id="myModalLabel">Upload Profile Picture</h4>
 				      </div>
-				      <div class="modal-body">        
+				      <div class="modal-body">   
+				      <?php
+							$csrf = array(
+							        'name' => $this->security->get_csrf_token_name(),
+							        'hash' => $this->security->get_csrf_hash()
+							);
+						?>	     
 				        <form id="cropimage" name="contact-form" method="post" action="<?php echo base_url(); ?>astrologer/changePhoto/" enctype="multipart/form-data">
 				            <div class="col-sm-12 form-group">
 				                <input type="file" name="userfile" id="profile-pic" class="form-control" required="required" >
@@ -68,6 +74,7 @@
 								<input type="hidden" name="hdn-thumb-height" id="hdn-thumb-height" value="250" />
 								<input type="hidden" name="action" value="" id="action" />
 								<input type="hidden" name="image_name" value="" id="image_name" />
+								<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 								<div id='preview-profile-pic'></div>
 								<div id="thumbs" style="padding:5px; width:600px"></div>
