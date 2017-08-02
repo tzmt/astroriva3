@@ -138,7 +138,6 @@ class Astrology extends MX_Controller{
 	{
 		if($this->input->post())
 		{
-
 			$this->form_validation->set_rules('name','Product Name','required');
 			$this->form_validation->set_rules('email','Email','required|valid_email');
 			$this->form_validation->set_rules('password','Password ','required');
@@ -185,6 +184,7 @@ class Astrology extends MX_Controller{
 				$post_data['details'] = $this->input->post('details');
 				$post_data['status'] = $this->input->post('status');
 				$post_data['image'] = $files.'_thumb.'.$ext;
+				$post_data['email_verify'] = 1;
 
 				$post_data = $this->security->xss_clean($post_data);
 				
