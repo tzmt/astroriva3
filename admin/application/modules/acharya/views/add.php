@@ -53,7 +53,7 @@
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Name</label>
 										<div class="col-lg-10">
-											<input type="text" name="name" class="form-control input-sm" id="inputEmail1" value="<?php echo $all_data->name; ?>" placeholder="Name" required>
+											<input type="text" name="name" class="form-control input-sm" id="inputEmail1" value="<?php if(isset($all_data->name)) echo $all_data->name; ?>" placeholder="Name" required>
 											<input type="hidden" name="image" value="<?php echo $all_data->image; ?>"/>
 											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
@@ -62,42 +62,42 @@
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Phone Number</label>
 										<div class="col-lg-10">
-											<input type="number" name="phone" class="form-control input-sm" id="inputEmail1" value="<?php echo $all_data->phone; ?>" placeholder="Phone Number" maxlength="10" required>
+											<input type="number" name="phone" class="form-control input-sm" id="inputEmail1" value="<?php if(isset($all_data->name)) echo $all_data->phone; ?>" placeholder="Phone Number" maxlength="10" required>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Details 1</label>
 										<div class="col-lg-10">
-											<textarea name="details1" class="form-control input-sm" rows="5" required><?php echo $all_data->details1; ?></textarea>
+											<textarea name="details1" class="form-control input-sm" rows="5" required><?php if(isset($all_data->name)) echo $all_data->details1; ?></textarea>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Details 2</label>
 										<div class="col-lg-10">
-											<textarea name="details2" class="form-control input-sm" rows="5" required><?php echo $all_data->details2 ?></textarea>
+											<textarea name="details2" class="form-control input-sm" rows="5" required><?php if(isset($all_data->name)) echo $all_data->details2; ?></textarea>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Details 3</label>
 										<div class="col-lg-10">
-											<textarea name="details3" class="form-control input-sm" rows="5" required><?php echo $all_data->details3; ?></textarea>
+											<textarea name="details3" class="form-control input-sm" rows="5" required><?php if(isset($all_data->name)) echo $all_data->details3; ?></textarea>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Details 4</label>
 										<div class="col-lg-10">
-											<textarea name="details4" class="form-control input-sm" rows="5" required><?php echo $all_data->details4; ?></textarea>
+											<textarea name="details4" class="form-control input-sm" rows="5" required><?php if(isset($all_data->name)) echo $all_data->details4; ?></textarea>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Details 5</label>
 										<div class="col-lg-10">
-											<textarea name="details5" class="form-control input-sm" rows="5" required><?php echo $all_data->details5; ?></textarea>
+											<textarea name="details5" class="form-control input-sm" rows="5" required><?php if(isset($all_data->name)) echo $echo $all_data->details5; ?></textarea>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
