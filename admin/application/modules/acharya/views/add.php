@@ -54,7 +54,7 @@
 										<label for="inputEmail1" class="col-lg-2 control-label">Name</label>
 										<div class="col-lg-10">
 											<input type="text" name="name" class="form-control input-sm" id="inputEmail1" value="<?php if(isset($all_data->name)) echo $all_data->name; ?>" placeholder="Name" required>
-											<input type="hidden" name="image" value="<?php echo $all_data->image; ?>"/>
+											<input type="hidden" name="image" value="<?php  if(isset($all_data->name)) echo $all_data->image; ?>"/>
 											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
@@ -62,7 +62,7 @@
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Phone Number</label>
 										<div class="col-lg-10">
-											<input type="number" name="phone" class="form-control input-sm" id="inputEmail1" value="<?php if(isset($all_data->name)) echo $all_data->phone; ?>" placeholder="Phone Number" maxlength="10" required>
+											<input type="number" name="phone" class="form-control input-sm" id="inputEmail1" value="<?php if(isset($all_data->phone)) echo $all_data->phone; ?>" placeholder="Phone Number" maxlength="10" required>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
