@@ -161,6 +161,7 @@
 														<option value="<?php echo $rashi->id; ?>" ><?php echo $rashi->name; ?></option>
 													<?php } ?>
 													</select>
+													<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
 
