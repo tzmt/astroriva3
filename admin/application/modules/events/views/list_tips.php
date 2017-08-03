@@ -157,7 +157,7 @@
 									        <p>Are you sure you want to delete this item?</p>	        
 									    </div>
 									    <div class="modal-footer">
-									        <a href="<?php echo base_url(); ?>tips/delete_events/<?php echo $prid->id; ?>/<?php echo $prid->image; ?>"><button class="btn btn-sm btn-success" aria-hidden="true">Yes</button></a>	
+									        <a href="<?php echo base_url(); ?>events/delete_events/<?php echo $prid->id; ?>/<?php echo $prid->image; ?>"><button class="btn btn-sm btn-success" aria-hidden="true">Yes</button></a>	
 									        <button class="btn btn-sm btn-danger" data-dismiss="modal" aria-hidden="true">No</button>
 									    </div>
 								  	</div><!-- /.modal-content -->
