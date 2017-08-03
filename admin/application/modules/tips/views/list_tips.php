@@ -108,7 +108,7 @@
 										<h4>Edit Tips</h4>
 					  				</div>
 								    <div class="modal-body">
-								       <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>tips/lists/" enctype="multipart/form-data">
+								       <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>tips/lists/" enctype="multipart/form-data">
 											<div class="form-group">
 												<label for="inputEmail1" class="col-lg-2 control-label">Rashi</label>
 												<div class="col-lg-10">									

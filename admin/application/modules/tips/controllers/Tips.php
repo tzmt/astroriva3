@@ -141,24 +141,27 @@ class Tips extends MX_Controller{
 	public function lists($limit_from = '')
 	{
 		if($this->input->post())
-		{		
-			$image = '';
-            $config['file_name'] = time();
-			$config['upload_path'] = '../assets/tips/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$this->load->library('upload', $config);
-			$uploaded = $this->upload->do_upload();
-			$upload_data = $this->upload->data();
-			
-			$image = $upload_data['file_name'];
-			$configs['image_library'] = 'gd2';
-			$configs['source_image']	= '../assets/tips/'.$image;
-			echo $this->upload->display_errors();exit();
-			if (!$uploaded AND $image == '') 
+		{					
+			if($_FILES['userfile']['error'] != 4)
 			{
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('error', $error['error']);
-				redirect(base_url() . 'tips/list');
+				$image = '';
+	            $config['file_name'] = time();
+				$config['upload_path'] = '../assets/tips/';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
+				$this->load->library('upload', $config);
+				$uploaded = $this->upload->do_upload();
+				$upload_data = $this->upload->data();
+				
+				$image = $upload_data['file_name'];
+				$configs['image_library'] = 'gd2';
+				$configs['source_image']	= '../assets/tips/'.$image;				
+				if (!$uploaded AND $image == '') 
+				{
+					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_flashdata('error', $error['error']);
+					redirect(base_url() . 'tips/list');
+				}
+				$post_data['image'] = $image;
 			}
 			
 
@@ -169,8 +172,7 @@ class Tips extends MX_Controller{
 			if($post_data['type'] == 2)
 			{
 				$post_data['astrologers_id'] = $this->input->post('astrologers_id');
-			}
-			$post_data['image'] = $image;
+			}			
 			$post_data['topic'] = $this->input->post('topic');
 			$post_data['description'] = $this->input->post('description');
 			$old_image = $this->input->post('old_image');
@@ -179,7 +181,7 @@ class Tips extends MX_Controller{
 
 			$post_data = $this->security->xss_clean($post_data);
 			
-			unlink('../assets/tips/'.$old_image);
+			@unlink('../assets/tips/'.$old_image);
 			if($this->tips_model->updateTips($post_data))
 			{
 				$this->session->set_flashdata('success',"Tips Updated Successfully");
