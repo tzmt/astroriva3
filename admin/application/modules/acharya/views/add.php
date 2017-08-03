@@ -97,7 +97,7 @@
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Details 5</label>
 										<div class="col-lg-10">
-											<textarea name="details5" class="form-control input-sm" rows="5" required><?php if(isset($all_data->name)) echo $echo $all_data->details5; ?></textarea>
+											<textarea name="details5" class="form-control input-sm" rows="5" required><?php if(isset($all_data->name)) echo $all_data->details5; ?></textarea>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
