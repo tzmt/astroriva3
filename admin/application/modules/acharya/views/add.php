@@ -104,7 +104,7 @@
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Upload Picture</label>
 										<div class="col-lg-10">
-											<img src="<?php echo SITE_URL; ?>assets/acharya/<?php echo $all_data->image; ?>" width="50px"/>
+											<img src="<?php echo SITE_URL; ?>assets/acharya/<?php if(isset($all_data->name)) echo $all_data->image; ?>" width="50px"/>
 											<input type="file" name="file" class="form-control input-sm">	
 
 										</div><!-- /.col -->
