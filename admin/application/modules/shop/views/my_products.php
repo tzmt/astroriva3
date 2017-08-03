@@ -160,6 +160,7 @@
 											<div class="col-lg-10">
 												<input type="text" name="name" class="form-control input-sm" id="inputEmail1" value="<?php echo $prid->name; ?>" placeholder="Enter your course name" required>
 												<input type="hidden" name="id" value="<?php echo $prid->id ?>"/>
+												<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 											</div><!-- /.col -->
 										</div><!-- /form-group -->
 
