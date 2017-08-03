@@ -443,7 +443,7 @@ $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array('shop/getSubcategory','shop/upload_pictures/[0-9]+','shop/ajaxDeleteImage','astrology/upload_pictures/[0-9]+');
+$config['csrf_exclude_uris'] = array('shop/getSubcategory','shop/upload_pictures/[0-9]+','shop/ajaxDeleteImage','astrology/upload_pictures/[0-9]+','gallery/upload_pictures');
 
 /*
 |--------------------------------------------------------------------------
