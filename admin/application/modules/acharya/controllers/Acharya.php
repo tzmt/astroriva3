@@ -180,7 +180,7 @@ class Acharya extends MX_Controller{
 				$arr['answers'] = $this->input->post('answers');
 				$arr['status'] = 1;
 				$this->db->where('id',$id);
-				$arr = $this->security->xss_clean($arr)
+				$arr = $this->security->xss_clean($arr);
 				if($this->db->update('request_service',$arr))
 				{
 					$this->load->library('email');
