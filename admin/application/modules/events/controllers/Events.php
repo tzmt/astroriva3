@@ -136,29 +136,33 @@ class Events extends MX_Controller{
 	{
 		if($this->input->post())
 		{		
-			$image = '';
-            $config['file_name'] = time();
-			$config['upload_path'] = '../assets/events/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$this->load->library('upload', $config);
-			$uploaded = $this->upload->do_upload();
-			$upload_data = $this->upload->data();
-			
-			$image = $upload_data['file_name'];
-			$configs['image_library'] = 'gd2';
-			$configs['source_image']	= '../assets/events/'.$image;			
-			if (!$uploaded AND $image == '') 
+			if($_FILES['userfile']['error'] != 4)
 			{
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('error', $error['error']);
-				redirect(base_url() . 'events/list');
-			}		
+				$image = '';
+	            $config['file_name'] = time();
+				$config['upload_path'] = '../assets/events/';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
+				$this->load->library('upload', $config);
+				$uploaded = $this->upload->do_upload();
+				$upload_data = $this->upload->data();
+				
+				$image = $upload_data['file_name'];
+				$configs['image_library'] = 'gd2';
+				$configs['source_image']	= '../assets/events/'.$image;			
+				if (!$uploaded AND $image == '') 
+				{
+					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_flashdata('error', $error['error']);
+					redirect(base_url() . 'events/list');
+				}	
+				$post_data['image'] = $image;	
+			}
 
 			
 			$post_data['date_from'] = $this->input->post('date_from');
 			$post_data['date_to'] = $this->input->post('date_to');			
 			
-			$post_data['image'] = $image;
+			
 			$post_data['title'] = $this->input->post('title');
 			$post_data['description'] = $this->input->post('description');
 			$old_image = $this->input->post('old_image');
