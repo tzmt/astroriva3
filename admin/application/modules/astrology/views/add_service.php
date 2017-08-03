@@ -185,6 +185,7 @@
 										<div class="col-lg-10">
 											<input type="text" name="name" value="<?php echo $prid->name; ?>" class="form-control input-sm" id="inputEmail1" placeholder="Enter name" required>
 											<input type="hidden" name="id" value="<?php echo $prid->id; ?>" />
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group --> 
 
