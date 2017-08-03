@@ -119,6 +119,7 @@
 														<div class="col-lg-10">
 															<input type="text" name="name" class="form-control input-sm" id="inputEmail1" placeholder="Site Name goes here..." value="<?php echo $cat->name; ?>" required>
 															<input type="hidden" name="id" value="<?php echo $cat->id; ?>" />
+															<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 														</div><!-- /.col -->
 													</div><!-- /form-group --><br/>														        
 										    </div>
