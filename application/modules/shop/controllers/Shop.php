@@ -64,7 +64,7 @@ class Shop extends MX_Controller {
                 $start = $start + $per_page;
             }
         }	
-		$data['products'] = $this->shop_model->getProducts($config['per_page'], $start);
+		$data['products'] = $this->shop_model->getProducts($config['per_page'], $start,"");
 		$this->load->library('pagination');		
 		$this->pagination->initialize($config);
 		$data['links'] = $this->pagination->create_links();
