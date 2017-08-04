@@ -32,17 +32,13 @@
             </div>
         </div>
         <div class="row content_margin con_pad">
-	        <form id="contact-form" name="contact-form" method="post" action="<?php echo base_url(); ?>contact/">   
+	        <form name="contact-form" method="post" action="<?php echo base_url(); ?>contact/">   
 	        <?php if($this->session->flashdata('error')){ ?>
-
 				<div style="padding:10px;background:#f8dcdc;color:red;margin-bottom:10px;text-align:center;border:1px solid red"><?php echo $this->session->flashdata('error'); ?></div>
-
 				<?php } ?>
 
 				<?php if($this->session->flashdata('success')){ ?>
-
 				<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
-
 				<?php } ?>
 
                 <?php
@@ -56,24 +52,23 @@
 	                <div>  
 
 	                    <label for="contact_name" class="text-info label_align">Name:</label>
-	                    <input type="text" name="name" id="contact_name" class="contact_name form-control" required="required" placeholder="Your Name">
+	                    <input type="text" name="name" class="contact_name form-control" required="required" placeholder="Your Name">
                         <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 	                    <label for="contact_email" class="text-info label_align">Email:</label>
-	                    <input type="email" name="email" id="contact_email" class="contact_email form-control" required="required" placeholder="Your Email">
+	                    <input type="email" name="email" class="contact_email form-control" required="required" placeholder="Your Email">
 
 	                    <label for="contact_email" class="text-info label_align">Subject:</label>
-	                    <input type="email" name="email" id="contact_email" class="contact_email form-control" required="required" placeholder="Your Subject">
+	                    <input type="email" name="email" class="contact_email form-control" required="required" placeholder="Your Subject">
 	                </div>
 	            </div>
 	            <div class="col-md-8 contact_block">
 	                <div>
 	                    <label for="contact_text" class="text-info content_margin">Message:</label>
-	                    <textarea name="message" id="contact_text" cols="30" rows="8" class="form-control"
+	                    <textarea name="message" cols="30" rows="8" class="form-control"
 	                              placeholder="Your message comes here.."></textarea>
 	                </div>
-	            </div>
-	        </form>
+	            </div>	        
         </div>
         <div class="row">
             <div class="col-xs-12">
