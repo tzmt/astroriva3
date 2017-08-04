@@ -68,9 +68,9 @@ $route['astrologer/list-astrologer/(:any)'] = 'astrologer_list/list_astrologer/$
 $route['astrologer-details/appointment/(:any)'] ='astrologer_details/appointment/$1';
 
 $route['ayurved'] = 'astrology/ayurved';
-$route['ayurved/details/(:any)'] = 'astrology/ayurved_details/$1';
+$route['ayurved/details/(:num)/(:any)'] = 'astrology/ayurved_details/$1/$2';
 $route['yoga'] = 'astrology/yoga';
-$route['yoga/details/(:any)'] = 'astrology/yoga_details/$1';
+$route['yoga/details/(:num)/(:any)'] = 'astrology/yoga_details/$1/$2';
 $route['shiksha'] = 'astrology/shiksha';
 $route['branches'] = 'astrology/branches1';
 $route['astrology/getDetailsAboutYou'] = 'astrology/getDetailsAboutYou';

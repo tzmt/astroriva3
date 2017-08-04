@@ -97,10 +97,9 @@ class Astrology_model extends CI_Model{
        return $this->db->get_where('branch',array('name'=>$branch))->row();        
     }
 
-    public function getAyurvedDetails($slug)
-    {
-    	$slug = str_replace('-',' ',$slug);
-    	$q = $this->db->get_where('ayurved',array('topic'=>$slug));
+    public function getAyurvedDetails($id)
+    {    	
+    	$q = $this->db->get_where('ayurved',array('id'=>$id));
     	if($q->num_rows() > 0)
     	{
     		return $q->row();
@@ -111,10 +110,9 @@ class Astrology_model extends CI_Model{
     	}
     }
 
-    public function getYogaDetails($slug)
-    {
-    	$slug = str_replace('-',' ',$slug);
-    	$q = $this->db->get_where('yoga',array('topic'=>$slug));
+    public function getYogaDetails($id)
+    {    	
+    	$q = $this->db->get_where('yoga',array('id'=>$id));
     	if($q->num_rows() > 0)
     	{
     		return $q->row();

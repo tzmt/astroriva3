@@ -98,15 +98,15 @@ class Astrology extends MX_Controller {
 		$this->layout->view('ayurved',$data,'home1');
 	}
 
-	public function ayurved_details($slug = "")
+	public function ayurved_details($id = "",$slug ="")
 	{
-		if(!$slug)
+		if(!$id)
 		{
 			redirect('ayurved/');
 		}
 		else
 		{
-			if($data['all_data'] = $this->astrology_model->getAyurvedDetails($slug))
+			if($data['all_data'] = $this->astrology_model->getAyurvedDetails($id))
 			{
 				$data['news'] = $this->astrology_model->getNews();	
 				$data['tips'] = $this->astrology_model->getTips();
@@ -126,15 +126,15 @@ class Astrology extends MX_Controller {
 		$this->layout->view('yoga',$data,'home1');
 	}
 
-	public function yoga_details($slug = "")
+	public function yoga_details($id = "", $slug ="")
 	{
-		if(!$slug)
+		if(!$id)
 		{
 			redirect('ayurved/');
 		}
 		else
 		{
-			if($data['all_data'] = $this->astrology_model->getYogaDetails($slug))
+			if($data['all_data'] = $this->astrology_model->getYogaDetails($id))
 			{
 				$data['news'] = $this->astrology_model->getNews();	
 				$data['tips'] = $this->astrology_model->getTips();	
