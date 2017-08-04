@@ -408,6 +408,33 @@ class Astrologer extends MX_Controller {
 		}
 	}
 
+	public function delete_market($id,$image)
+	{
+		if($id)
+		{
+			if(file_exists("../assets/tips/'.$image"))
+			{
+				unlink('../assets/tips/'.$image);				
+			}
+			
+			$this->db->where('id',$id);
+			if($this->db->delete('tips'))
+			{
+				$this->session->set_flashdata('success','Market Prediction Deleted Successfully');
+				redirect('astrologer/add_market_prediction');
+			}
+			else
+			{
+				$this->session->set_flashdata('error','Please try again');
+				redirect('astrologer/add_market_prediction');
+			}
+		}
+		else
+		{
+			redirect('astrologer/add_market_prediction/');
+		}
+	}
+
 	public function delete_prediction($id,$image)
 	{
 		if($id)

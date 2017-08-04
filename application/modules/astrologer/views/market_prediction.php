@@ -115,7 +115,7 @@
 											<td><?php echo date("d-m-Y",(strtotime($tip->date_from)))." to ".date("d-m-Y",strtotime($tip->date_to)); ?></td>
 											<td><?php echo $tip->topic; ?></td>
 											<td><?php echo $tip->description; ?></td>
-											<td><a href="<?php echo base_url(); ?>astrologer/delete_tips/<?php echo $tip->id; ?>/<?php echo $tip->image; ?>"><button type="button" class="btn btn-danger">Delete</button></a></td>
+											<td><a href="<?php echo base_url(); ?>astrologer/delete_market/<?php echo $tip->id; ?>/<?php echo $tip->image; ?>"><button type="button" class="btn btn-danger">Delete</button></a></td>
 										</tr>	
 										<?php } ?>
 									</table>
