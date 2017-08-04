@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="row content_margin con_pad">
-	        <form id="contact-form" name="contact-form" method="post" action="#">   
+	        <form id="contact-form" name="contact-form" method="post" action="<?php echo base_url(); ?>contact/">   
 	        <?php if($this->session->flashdata('error')){ ?>
 
 				<div style="padding:10px;background:#f8dcdc;color:red;margin-bottom:10px;text-align:center;border:1px solid red"><?php echo $this->session->flashdata('error'); ?></div>
