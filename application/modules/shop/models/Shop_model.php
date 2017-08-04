@@ -34,10 +34,8 @@ class Shop_model extends CI_Model{
         return $q = $this->db->get_where('shop_product',array('type'=>'1'))->result();        
     }
 
-    public function getProductDetails($name)
-    {        
-        $name = str_replace('_',' ',$name);
-        $id = $this->db->get_where('shop_product',array('name'=>$name))->row()->id;
+    public function getProductDetails($id)
+    {               
             $this->db->where('shop_product.id',$id);
             return $q = $this->db->select('shop_product.name,shop_product.price,shop_product.quantity,product_images.image,shop_product.dimension,shop_product.weight,shop_product.refractive_index,shop_product.specific_gravity,shop_product.product_type,shop_product.id')->from('shop_product')->join('product_images','product_images.product_id = shop_product.id')->get()->row();
     }
@@ -52,10 +50,9 @@ class Shop_model extends CI_Model{
         return $this->db->get_where('product_reviews',array('product_id'=>$id,'status'=>'1'))->num_rows();
     }
 
-    public function getRelatedProducts($name)
-    {
-        $name = str_replace('_',' ',$name);
-        return $this->db->limit(3)->get_where('shop_product',array('name!='=>$name))->result();
+    public function getRelatedProducts($id)
+    {        
+        return $this->db->limit(3)->get_where('shop_product',array('id!='=>$id))->result();
         
     }
 

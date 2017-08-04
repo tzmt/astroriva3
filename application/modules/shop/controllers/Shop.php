@@ -135,12 +135,12 @@ class Shop extends MX_Controller {
 		$this->layout->view('shop',$data,'home1');
 	}
 
-	public function details($product_name)
+	public function details($product_id)
 	{
 		$data['category'] = $this->shop_model->getCategory();		
-		$data['product_details'] = $this->shop_model->getProductDetails($product_name);
-		$data['product_reviews'] = $this->shop_model->getProductReviews($product_name);
-		$data['related_products'] = $this->shop_model->getRelatedProducts($product_name);
+		$data['product_details'] = $this->shop_model->getProductDetails($product_id);
+		$data['product_reviews'] = $this->shop_model->getProductReviews($product_id);
+		$data['related_products'] = $this->shop_model->getRelatedProducts($product_id);
 		//echo "<pre>";print_r($data['related_products']);exit();
 		$this->layout->view('details',$data,'home1');
 	}
