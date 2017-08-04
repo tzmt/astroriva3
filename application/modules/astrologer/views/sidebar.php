@@ -10,7 +10,36 @@
 
                             <p style="text-align:center;font-size:12px;"><a href="javascript:void(0)" data-toggle="modal" data-target="#profile" style="color:blue !important">Click the Image to Change</a></p>
 
-                            <p><div style="width:100%;height:30px;background:<?php if($this->session->userdata('astro_astrologer')->status == 1) {echo '#1ecbf0';} else if($this->session->userdata('astro_astrologer')->status == 2){echo "#fa68f5";} else {echo "#eddf07";} ?>;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;color:#fff;text-align:center;font-weight:bold;padding-top: 4px;">Type: Pannelled</div></p>
+                            <p><div style="width:100%;height:30px;background:
+                            <?php
+	                            if($this->session->userdata('astro_astrologer')->status == 1)
+	                            {
+	                            	echo '#1ecbf0';
+	                        	}
+	                        	else if($this->session->userdata('astro_astrologer')->status == 2)
+	                    		{
+	                    			echo "#fa68f5";
+	                    		}
+	                			else
+	                			{
+	                				echo "#eddf07";
+	            				}
+            				?>;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;color:#fff;text-align:center;font-weight:bold;padding-top: 4px;">Type:
+            				<?php
+	                            if($this->session->userdata('astro_astrologer')->status == 0)
+	                            {
+	                            	echo 'Normal';
+	                        	}
+	                        	else if($this->session->userdata('astro_astrologer')->status == 1)
+	                    		{
+	                    			echo "Premium";
+	                    		}
+	                			else
+	                			{
+	                				echo "Panneled";
+	            				}
+            				?>;
+            				</div></p>
                         </div>
 						
 						<div class="panel panel-default">	
