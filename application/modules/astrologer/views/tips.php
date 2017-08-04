@@ -111,7 +111,7 @@
 										<?php foreach($tips as $key=> $tip){ ?>
 										<tr>
 											<td><?php echo $key+1; ?></td>
-											<td><?php echo date("d-m-Y",(strtotime($tip->date_from)))." to ".date("d-m-Y",strtotime($tip->date_to))); ?></td>
+											<td><?php echo date("d-m-Y",(strtotime($tip->date_from)))." to ".date("d-m-Y",strtotime($tip->date_to)); ?></td>
 											<td><?php echo $tip->topic; ?></td>
 											<td><?php echo $tip->description; ?></td>
 											<td><a href="<?php echo base_url(); ?>astrologer/delete_tips/<?php echo $tip->id; ?>/<?php echo $tip->image; ?>"><button type="button" class="btn btn-danger">Delete</button></a></td>
