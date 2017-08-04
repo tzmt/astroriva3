@@ -221,7 +221,7 @@
 								</div>
 								<div class="member-text">			
 									<h5><?php echo $ast->name; ?></h5>
-									<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+									<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
 								</div>						
 							</div>
 						</div>
@@ -248,7 +248,7 @@
 								</div>
 								<div class="member-text">			
 									<h5><?php echo $ast->name; ?></h5>
-									<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+									<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
 								</div>						
 							</div>
 						</div>
@@ -277,10 +277,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>"><img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/></a>
+										<a href="<?php echo base_url(); ?>shop/details/<?php echo $prod->id; ?>/<?php echo str_replace(" ","-",$prod->name); ?>"><img src="<?php echo ASSETS; ?>products/<?php echo $product_image; ?>" alt="<?php echo str_replace(" ","-",$prod->name); ?>" width="152px" height="152px"/></a>
 										<h2><i class="fa fa-rupee"></i> <?php echo $prod->price ?></h2>
 										<p style="color:white"><?php echo $prod->name; ?></p>
-										<a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$prod->name); ?>" class="btn btn-primary add-to-cart"><i class="fa fa-view"></i>View Details</a>
+										<a href="<?php echo base_url(); ?>shop/details/<?php echo $prod->id; ?>/<?php echo str_replace(" ","-",$prod->name); ?>" class="btn btn-primary add-to-cart"><i class="fa fa-view"></i>View Details</a>
 									</div>									
 								</div>							
 							</div>
