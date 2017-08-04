@@ -19,13 +19,27 @@
 </section>
 <section>
 	<div class="container">
-    <form action="http://dev.lorvent.com/astrology/contact.php" method="post">
-        <div class="row">
+            <div class="row">
             <div class="col-md-12 m-t-26">
                 <h1 class="text-primary">Send a Message</h1>
                 <hr>
             </div>
         </div>
+                <?php if($this->session->flashdata('error')){ ?>
+                <div style="padding:10px;background:#f8dcdc;color:red;margin-bottom:10px;text-align:center;border:1px solid red"><?php echo $this->session->flashdata('error'); ?></div>
+                <?php } ?>
+
+                <?php if($this->session->flashdata('success')){ ?>
+                <div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
+                <?php } ?>
+
+                <?php
+                    $csrf = array(
+                            'name' => $this->security->get_csrf_token_name(),
+                            'hash' => $this->security->get_csrf_hash()
+                    );
+                ?> 
+
         <div class="row m-t-20">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>assets/site_assets/images/Contact-Line-Stripe.jpg" alt="loading" class="img-responsive">
@@ -33,20 +47,7 @@
         </div>
         <div class="row content_margin con_pad">
 	        <form name="contact-form" method="post" action="<?php echo base_url(); ?>contact/">   
-	        <?php if($this->session->flashdata('error')){ ?>
-				<div style="padding:10px;background:#f8dcdc;color:red;margin-bottom:10px;text-align:center;border:1px solid red"><?php echo $this->session->flashdata('error'); ?></div>
-				<?php } ?>
-
-				<?php if($this->session->flashdata('success')){ ?>
-				<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
-				<?php } ?>
-
-                <?php
-                    $csrf = array(
-                            'name' => $this->security->get_csrf_token_name(),
-                            'hash' => $this->security->get_csrf_hash()
-                    );
-                ?>  
+	            
 
 	            <div class="col-md-4 contact_block">
 	                <div>  
@@ -59,7 +60,7 @@
 	                    <input type="email" name="email" class="contact_email form-control" required="required" placeholder="Your Email">
 
 	                    <label for="contact_email" class="text-info label_align">Subject:</label>
-	                    <input type="email" name="email" class="contact_email form-control" required="required" placeholder="Your Subject">
+	                    <input type="email" name="subject" class="contact_email form-control" required="required" placeholder="Your Subject">
 	                </div>
 	            </div>
 	            <div class="col-md-8 contact_block">
