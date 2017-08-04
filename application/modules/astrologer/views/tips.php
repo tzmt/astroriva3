@@ -78,7 +78,7 @@
 									<div class="col-md-12">									
 										
 										<div class="form-group">
-											<button type="submit" class="btn btn-default pull-right">Submit</button>
+											<button type="submit" class="btn btn-primary pull-right">Submit</button>
 										</div>
 									</div>
 									
