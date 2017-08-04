@@ -142,7 +142,7 @@
                     <h4 class="text-white">Today's Deal</h4>
                     <h1 class="font35 text-white games_content_align m-b-25"><?php echo $shop->name;?></h1>
                     <p class="text-white btn_footer"><?php echo $shop->details;?></p>
-                    <a href="<?php echo base_url(); ?>shop/details/<?php echo str_replace(" ","-",$shop->name); ?>" class="btn btn-primary btn-lg">Buy This Now !!</a>
+                    <a href="<?php echo base_url(); ?>shop/details/<?php echo $shop->id;?>/<?php echo str_replace(" ","-",$shop->name); ?>" class="btn btn-primary btn-lg">Buy This Now !!</a>
                 </div>                
             </div>
         </div>
