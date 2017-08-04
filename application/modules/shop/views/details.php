@@ -16,7 +16,7 @@
                         <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
                     </li>
                     <li>
-                        <span class="active text-primary font13"><?php echo str_replace("-", " ", $this->uri->segment(3)); ?></span>
+                        <span class="active text-primary font13"><?php echo str_replace("-", " ", $this->uri->segment(4)); ?></span>
                     </li>
                 </ul>
             </div>
@@ -76,7 +76,7 @@
 						<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
 						<?php } ?>
 
-						<h1><?php echo str_replace("-", " ", $this->uri->segment(3)); ?></h1>
+						<h1><?php echo str_replace("-", " ", $this->uri->segment(4)); ?></h1>
             <hr>
             <div class="swiper-container m-t-40 gemstone_swiper">
                 <div class="swiper-wrapper">
