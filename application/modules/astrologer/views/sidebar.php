@@ -38,7 +38,7 @@
 	                			{
 	                				echo "Panneled";
 	            				}
-            				?>;
+            				?>
             				</div></p>
                         </div>
 						
