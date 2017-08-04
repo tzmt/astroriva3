@@ -492,9 +492,9 @@ class Astrologer extends MX_Controller {
 			$q = $this->db->get_where('product_images',array('product_id'=>$id))->result();
 			foreach($q as $q1)
 			{
-				if(file_exists("../assets/products/'.$q1->image"))
+				if(file_exists("assets/products/'.$q1->image"))
 				{
-					unlink('../assets/products/'.$q1->image);				
+					unlink('assets/products/'.$q1->image);				
 				}								
 			}
 			$this->db->where('product_id',$id);
