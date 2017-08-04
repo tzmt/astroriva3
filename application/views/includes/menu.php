@@ -1,4 +1,3 @@
-
 <body>
 <!--=============== Preloader Section Start ===============-->
 <div class="preloader" style="position: fixed;
@@ -24,9 +23,14 @@
             <div class="col-md-12 col-xs-12 tpbanner_align">                              
                 <div class="clearfix visible-xs-block"></div>
                 <span class="header_border header_text hidden-xs font12">Follow Us</span>
-                <span class="head_icons"><a href="#"><i class="fa fa-facebook-square header_icons fa-lg"></i></a>
-                      <a href="#"><i class="fa fa-twitter-square header_icons fa-lg"></i></a>
-                      <a href="#"><i class="fa fa-google-plus-square header_icons fa-lg" aria-hidden="true"></i></a>
+                <span class="head_icons">
+                <?php
+                    $q = $this->db->select('youtube_url,twitter_url,facebook_url')->get_where("settings",array('id'=>1))->row();
+                ?>
+                    <a href="<?php echo $q->facebook_url; ?>" target="_blank"><i class="fa fa-facebook-square header_icons fa-lg"></i></a>
+                    <a href="<?php echo $q->twitter_url; ?>" target="_blank"><i class="fa fa-twitter-square header_icons fa-lg"></i></a>
+                    <a href="<?php echo $q->youtube_url; ?>" target="_blank"><i class="fa fa-youtube-square header_icons fa-lg" aria-hidden="true"></i></a>
+
                 </span>
             </div>
         </div>
