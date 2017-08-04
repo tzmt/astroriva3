@@ -81,7 +81,7 @@
 
 										<div class="form-group">
 											<label>Select Category</label>
-											<select class="form-control" required="required" name="category_id<?php echo $prod->id ?>" onchange="getSubcat(this.value,<?php echo $prod->id ?>)">
+											<select class="form-control" required="required" name="category_id" onchange="getSubcat(this.value,<?php echo $prod->id ?>)">
 												<option value="">[select]</option>
 												<?php foreach($category as $cat){ ?>
 													<option value="<?php echo $cat->id ?>" <?php if($cat->id == $prod->category_id) echo "selected"; ?>><?php echo $cat->name; ?></option>
