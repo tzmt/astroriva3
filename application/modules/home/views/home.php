@@ -75,7 +75,7 @@
                     <div class="col-xs-12 font16">
                     <?php foreach($tips1 as $tip){ ?>
 	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
-	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"  width="53px" height="53px"></div>
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
@@ -93,7 +93,7 @@
                 <div class="row common_margin">                    
                         <?php foreach($tips as $tip){ ?>
 	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
-	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle" width="53px" height="53px"></div>
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
@@ -116,7 +116,7 @@
                         $q = $this->db->get_where('events',array('date_from <= '=>date("Y-m-d"),'date_to >=' => date("Y-m-d")))->result();                        
                         foreach($q as $q1){ ?>
                             <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
-                                <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/events/<?php echo $q1->image; ?>" width="100%" class="img-circle"></div>
+                                <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/events/<?php echo $q1->image; ?>" width="100%" class="img-circle"  width="53px" height="53px"></div>
                                 <div class="col-md-9">
                                     <span style="color:#e36480"><?php echo $q1->title; ?></span><br/>
                                     <span><?php echo substr($q1->description,0,120)." &nbsp;<a href=''>Read More...</a>"; ?></span>

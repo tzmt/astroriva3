@@ -22,6 +22,18 @@
         <div class="row">
             <div class="col-md-12 col-xs-12 tpbanner_align">                              
                 <div class="clearfix visible-xs-block"></div>
+                <a href="#" class="header_border1 hidden-xs font12">About Us</a>
+                <div class="header_border hidden-xs font12">Language:
+                    <ul>
+                        <li class="dropdown lang_dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">EN <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Hindi</a></li>
+                                <li><a href="#">English</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
                 <span class="header_border header_text hidden-xs font12">Follow Us</span>
                 <span class="head_icons">
                 <?php

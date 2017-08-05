@@ -43,16 +43,29 @@
 <?php } ?>
 
 <?php if($this->uri->segment(1) == 'astrologer'){ ?>
-<script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.imgareaselect.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.form.js"></script>
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/imgareaselect.css">
-<script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop.js"></script>
+    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.imgareaselect.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.form.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/imgareaselect.css">
+    <script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop.js"></script>
 <?php } ?>
 
 <?php if($this->uri->segment(1) == 'gallery'){ ?>
-<script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.fancybox.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/jquery.fancybox.min.css">
+    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.fancybox.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/jquery.fancybox.min.css">
 <?php } ?>
+
+<?php if($this->uri->segment(2) == 'add_tips' || $this->uri->segment(2) == 'add_prediction' || $this->uri->segment(2) == 'add_market_prediction'){ ?>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  } );
+</script>
+<?php } ?>
+
+
 <!--=============== Custom Js Start ===============-->
 
 <script src="<?php echo URL; ?>assets/site_assets/js/custom.js"></script>

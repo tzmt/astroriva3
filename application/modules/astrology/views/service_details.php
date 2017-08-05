@@ -29,14 +29,27 @@
 	<div class="container">
 		<div class="container padding-bottom">
 			<div class="row">
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<div class="col-sm-12 section-title-two">
 						<h2><?php echo $service_name; ?></h2>
 					</div>										
-					<div class="col-md-12 col-sm-12 blog-content">										
-						<div class="entry-header">							
-							<img class="img-responsive" src="<?php echo base_url(); ?>assets/services/image/<?php echo $all_data->image; ?>" width="100%" alt="<?php echo $service_name; ?>" />					
-										
+					<div class="col-md-12 col-sm-12 blog-content">	
+						<div class="row">
+							<div class="col-md-8">									
+								<div class="entry-header">							
+									<img class="img-responsive" src="<?php echo base_url(); ?>assets/services/image/<?php echo $all_data->image; ?>" width="100%" alt="<?php echo $service_name; ?>" />	
+								</div>
+							</div>
+
+							<div class="col-md-4">									
+								<div class="entry-header">							
+									<img class="img-responsive" src="<?php echo base_url(); ?>assets/images/pay.png" width="100%" alt="<?php echo $service_name; ?>" />	
+								</div>
+							</div>
+						</div>
+
+						<div class="entry-post" style="margin-top: 25px;">															
+							<p><?php echo $all_data->description;?></p>	
 						</div>
 						<div class="entry-post">															
 							<h3>Rs: <i class="fa fa-rupee"></i><?php echo $all_data->amount;?></h3>	
@@ -44,23 +57,24 @@
 						<hr/>					
 					</div>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 
 					<div class="col-md-12">
 		                <h1 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">Tips</h1>
 		                <hr class="hr_margin">
 		                <div class="row common_margin">
 		                    <div class="col-xs-12 font16">
-		                    <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start()">
-		                        <?php foreach($tips as $tip){ ?>
-		                        <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">
-		                            <div><img src="<?php echo base_url().'assets/tips/'.$tip->image?>" width="100%"/> &nbsp;</div>
-		                            <span class="text-libra"><?php echo $this->db->get_where('rashi_list',array('id'=>$tip->rashi_id))->row()->name; ?></span>:
-		                            <span class="text-info"><?php echo strip_tags($tip->description); ?></span>
-		                        </p>
-		                        <hr class="hr_margin">
+		                    <?php foreach($tips as $tip){ ?>
+			                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
+			                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+			                            <div class="col-md-9">
+			                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
+			                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
+			                            	<span><?php echo substr($tip->description,0,30); ?></span>
+			                            </div>
+			                        </div>
+
 		                        <?php } ?>
-		                    </marquee>
 		                    </div>
 		                </div>
 		            </div>

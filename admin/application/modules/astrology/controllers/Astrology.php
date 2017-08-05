@@ -455,6 +455,7 @@ class Astrology extends MX_Controller{
 		{
 
 			$this->form_validation->set_rules('name','Name','required');
+			$this->form_validation->set_rules('description','Description','required');
 			$this->form_validation->set_rules('service_type','Type Of Service','required');
 			$this->form_validation->set_rules('amount','Amount ','required');
 			$this->form_validation->set_rules('discount','Discount','required');
@@ -483,6 +484,8 @@ class Astrology extends MX_Controller{
 				$post_data['discount'] = $this->input->post('discount');
 				$post_data['sample_pdf'] = $files;
 				$post_data['image'] = $files1;
+
+				$post_data['description'] = $this->input->post('description');
 				
 				$post_data = $this->security->xss_clean($post_data);
 

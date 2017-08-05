@@ -48,10 +48,10 @@
 								<div class="entry-header" style="text-align: left;background: #fff;">
 
 
-									<?php if(isset($this->session->userdata('user')->id)){ ?>
+									<?php if(isset($this->session->userdata('astro_student')->id) || isset($this->session->userdata('astro_client')->id) || isset($this->session->userdata('astro_astrologer')->id)){ ?>
 										<a href="javascript:void(0)" data-toggle="modal" data-target="#myModal<?php echo $list->id ?>">
 									<?php } else {?>
-										 <a href="<?php echo base_url(); ?>login/"> 
+										 <a href="#popupmodal" role="button" data-toggle="modal"> 
 	 								<?php } ?>
 
 
@@ -67,7 +67,8 @@
 
 							    <!-- Modal content-->
 							    <?php
-							    	$exp = end(explode("/", $list->link));
+							    	$link = $list->link;
+							    	$exp = end(explode("/", $link));
 							    	$video = str_replace('watch?v=', "", $exp);
 
 							    ?>
@@ -96,6 +97,20 @@
 		</div>
 	</div>
 </section>
+<div class="modal fade" id="popupmodal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4>You need to login before watching this video.</h4>
+				</div>
+		    <div class="modal-body">
+		    </div>
+	       
+	  	</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <style>
 	.activevid{background: #e36480;
     padding: 5px 10px 5px 10px;

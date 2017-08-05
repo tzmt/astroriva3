@@ -59,6 +59,13 @@
 									</div><!-- /form-group --> 
 
 									<div class="form-group">
+										<label for="inputEmail1" class="col-lg-2 control-label">Description</label>
+										<div class="col-lg-10">
+											<textarea name="description" class="form-control input-sm" id="inputEmail1" placeholder="Enter description" rows="7" required></textarea>											
+										</div><!-- /.col -->
+									</div><!-- /form-group --> 
+
+									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Type</label>
 										<div class="col-lg-10">									
 											<select name="service_type" class="form-control input-sm" required>											
@@ -84,14 +91,14 @@
 									</div><!-- /form-group -->	
 
 									<div class="form-group">
-										<label class="control-label col-lg-2">Upload</label>
+										<label class="control-label col-lg-2">Image</label>
 										<div class="col-lg-10">								
 												<input name="file" type="file" class="form-control input-sm" multiple />
 									  	</div>													
 									</div><!-- /.col -->
 
 									<div class="form-group">
-										<label class="control-label col-lg-2">Image</label>
+										<label class="control-label col-lg-2">Sample</label>
 										<div class="col-lg-10">								
 												<input name="file1" type="file" class="form-control input-sm" multiple />
 									  	</div>													
@@ -142,6 +149,7 @@
 										<td><a href="#EditModal<?php echo $list->id; ?>" role="button" data-toggle="modal"><span class="badge badge-warning">Edit</span></a>
 											<a href="#deleteModal<?php echo $list->id; ?>" role="button" data-toggle="modal"><span class="badge badge-danger">Delete</span></a></td>
 									</tr>
+									<tr><td colspan="8"><?php echo $list->description; ?></td></tr>
 
 									<div class="modal fade" id="deleteModal<?php echo $list->id; ?>">
 										<div class="modal-dialog">
@@ -171,8 +179,8 @@
 						</div><!-- /panel -->
 
 						<?php foreach($service as $key=> $prid){ ?>
-					<div class="modal fade" id="EditModal<?php echo $prid->id; ?>">
-								<div class="modal-dialog">
+						<div class="modal fade" id="EditModal<?php echo $prid->id; ?>">
+							<div class="modal-dialog">
 								<div class="modal-content">
 					  				<div class="modal-header">
 					    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -187,7 +195,14 @@
 											<input type="hidden" name="id" value="<?php echo $prid->id; ?>" />
 											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
-									</div><!-- /form-group --> 
+									</div><!-- /form-group -->
+
+									<div class="form-group">
+										<label for="inputEmail1" class="col-lg-2 control-label">Description</label>
+										<div class="col-lg-10">
+											<textarea name="description" class="form-control input-sm" id="inputEmail1" placeholder="Enter description" rows="7" required><?php echo $prid->description; ?></textarea>											
+										</div><!-- /.col -->
+									</div><!-- /form-group -->  
 
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Type</label>
@@ -238,22 +253,3 @@
 		</div>
 	</div><!-- /main-container -->
 </div><!-- /wrapper -->
-
-
-	<script src="<?php echo ASSETS; ?>js/jquery-1.10.2.min.js"></script>
-	
-	<!-- Bootstrap -->
-    <script src="<?php echo ASSETS; ?>bootstrap/js/bootstrap.min.js"></script>
-	<!-- Mask-input -->
-
-	<script>
-		$('.dblclick').dblclick(function(){
-			var name = $(this).attr('name');
-			var id = $(this).attr('id');
-			$(this).html(name);
-			$(this).html('<input type="text" id="new_value" value="'+name+'"/><i');
-			//alert(name + id);
-			
-		});
-	</script>
-	

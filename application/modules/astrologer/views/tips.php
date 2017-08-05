@@ -1,3 +1,4 @@
+
 <section class="index_center card_text">
     <div class="container">
         <div class="row">
@@ -17,6 +18,7 @@
         </div>
     </div>
 </section>
+
 	<div class="container">
 		<div class="row">
 			<?php require "sidebar.php"; ?>						
@@ -129,4 +131,3 @@
 				</div>
 		</div>
 	</section>
-				

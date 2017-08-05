@@ -125,6 +125,7 @@ class Astrology_model extends CI_Model{
 
     public function getTips()
 	{
-		return $this->db->get('tips')->result();
+		$this->db->limit(5);
+		return $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->where('tips.purpose','1')->get()->result();
 	}
 }
