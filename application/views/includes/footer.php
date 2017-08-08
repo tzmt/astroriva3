@@ -65,6 +65,17 @@
 </script>
 <?php } ?>
 
+<?php if($this->uri->segment(1) == 'astrology-video-class'){ ?>
+<script>
+$('.close').click(function(){      
+    $('iframe').attr('src', $('iframe').attr('src'));
+});
+
+$('.modal12534').on('hidden.bs.modal', function () {
+  $('iframe').attr('src', $('iframe').attr('src'));
+});
+</script>
+<?php } ?>
 
 <!--=============== Custom Js Start ===============-->
 

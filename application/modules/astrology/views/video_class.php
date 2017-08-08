@@ -62,7 +62,7 @@
 								</div>
 							</div>
 
-							<div id="myModal<?php echo $list->id ?>" class="modal fade" role="dialog">
+							<div id="myModal<?php echo $list->id ?>" class="modal fade modal12534" role="dialog">
 							  <div class="modal-dialog">
 
 							    <!-- Modal content-->
@@ -82,7 +82,7 @@
 							        <iframe width="100%" height="315" src="https://www.youtube.com/embed/<?php echo $video; ?>" frameborder="0" allowfullscreen></iframe>
 							      </div>
 							      <div class="modal-footer">
-							        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary close" data-dismiss="modal">Close</button>
 							      </div>
 							    </div>
 

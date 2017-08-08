@@ -79,7 +79,7 @@
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-	                            	<span><?php echo $tip->description; ?></span>
+	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
 	                            </div>
 	                        </div>
 
@@ -97,7 +97,7 @@
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-	                            	<span><?php echo $tip->description; ?></span>
+	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
 	                            </div>
 	                        </div>
 
@@ -119,7 +119,7 @@
                                 <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/events/<?php echo $q1->image; ?>" width="100%" class="img-circle"  width="53px" height="53px"></div>
                                 <div class="col-md-9">
                                     <span style="color:#e36480"><?php echo $q1->title; ?></span><br/>
-                                    <span><?php echo substr($q1->description,0,120)." &nbsp;<a href=''>Read More...</a>"; ?></span>
+                                    <span><?php echo substr($q1->description,0,120)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
                                 </div>
                             </div>
 

@@ -166,8 +166,17 @@
 
                         <li class="header_li">
                             <?php
-                                if($this->session->userdata('astro_student') != "" || $this->session->userdata('user') != "" || $this->session->userdata('astro_astrologer') != ""){?>
-                                <a href="<?php echo base_url(); ?>login/logout/" class="text-info" style="color:#fff;font-weight: bold;background: #ed5e5e;">Logout</a>
+                                if($this->session->userdata('astro_student') != "" || $this->session->userdata('user') != "" || $this->session->userdata('astro_astrologer') != ""){?>                                
+                                <li class="dropdown dropdown_modified">
+                                    <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle"><?php echo $this->session->userdata('astro_astrologer')->name; ?> <span
+                                            class="caret"></span></a>
+                                    <ul class="dropdown-menu dropdown_mod" data-dropdown-in="fadeInUp"
+                                        data-dropdown-out="fadeOut">
+                                        <li><a href="<?php echo base_url(); ?>astrologer/dashboard/" class="text-info" >Dashboard</a></li>
+                                        <li><a href="<?php echo base_url(); ?>login/logout/" class="text-info" style="color:red;font-weight: bold;">Logout</a></li>                               
+                                    </ul>
+                                </li> 
+
                             <?php } else {?>
                                 <a href="<?php echo base_url(); ?>login/" class="text-info">Login / Signup</a>
                             <?php } ?>

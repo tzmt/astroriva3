@@ -443,7 +443,7 @@ $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array('astrologyajax/getajaxrashi','shop/updateProducts','astrologer/changePhoto1','astrologer/getSubCategory','astrologer_list/getajaxastrologer','astrologer_list/getajaxastrologer1');
+$config['csrf_exclude_uris'] = array('astrologyajax/getajaxrashi','shop/updateProducts','astrologer/changePhoto1','astrologer/getSubCategory','astrologer_list/getajaxastrologer','astrologer_list/getajaxastrologer1','astrologer/dashboard/changePhoto1');
 
 /*
 |--------------------------------------------------------------------------

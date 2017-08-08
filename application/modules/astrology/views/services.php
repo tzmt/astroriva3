@@ -31,7 +31,7 @@
 						</div>
 						<div class="entry-body">
 							<h4><?php echo $dat->name; ?></h4>		
-							<p><a href="<?php echo base_url(); ?>ayurved/details/<?php echo strtolower(str_replace(" ", "-", $dat->name)); ?>"><button class="btn btn-primary text-center">Read More</button></a></p>
+							<p><a href="<?php echo base_url(); ?>ayurved/details/<?php echo $dat->id; ?>/<?php echo strtolower(str_replace(" ", "-", $dat->name)); ?>"><button class="btn btn-primary text-center">Read More</button></a></p>
 						</div>
 					</div>
 					<?php } ?>

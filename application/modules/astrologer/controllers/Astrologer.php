@@ -760,4 +760,51 @@ class Astrologer extends MX_Controller {
 			redirect('astrologer/orders/');
 		}
 	}
+
+	public function upgrade()
+	{
+		if($this->input->post())
+		{
+			$this->form_validation->set_rules('membership','Membership Type','required');
+			
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->session->set_flashdata('error',validation_errors());
+				redirect('astrologer/upgrade');
+			}
+			else
+			{
+				$post_data['astrology_id'] = $this->session->userdata('astro_astrologer')->id;
+				$post_data['type'] = $this->input->post('membership');				
+				$post_data = $this->security->xss_clean($post_data);
+
+				$q = $this->db->get_where('membership_apply',array('astrology_id'=>$post_data['astrology_id']));
+				if($q->num_rows() > 0)
+				{
+					$q1 = $q->row();
+					$this->session->set_flashdata('error','You have already applied at '.$q1->time);
+					redirect('astrologer/upgrade');
+
+				}
+				else
+				{
+					if($this->db->insert('membership_apply',$post_data))
+					{
+						$this->session->set_flashdata('success','Thank you for applying.');
+						redirect('astrologer/upgrade');
+					}
+					else
+					{
+						$this->session->set_flashdata('error','Please try again');
+						redirect('astrologer/upgrade');
+					}
+				}
+			}
+		}
+		else
+		{
+			$data['data'] = $this->db->get_where('membership_apply',array('astrology_id'=>$this->session->userdata('astro_astrologer')->id))->row();
+			$this->layout->view('upgrade',$data,'astrologer');
+		}
+	}
 }
