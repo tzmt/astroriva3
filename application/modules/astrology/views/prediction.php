@@ -26,20 +26,20 @@
 <section id="blog-details">
 		<div class="container">
 			<div class="row blog-item">								
-				<div class="col-md-12 col-sm-12 blog-content">				
-					<?php foreach($all_data as $dat){ ?>
+				<!-- <div class="col-md-12 col-sm-12 blog-content">				
+					<?php //foreach($all_data as $dat){ ?>
 					<div class="entry-header">
-						<h3><?php echo $this->uri->segment(2);?> Prediction</h3>
-						<img class="img-responsive" src="<?php echo base_url(); ?>assets/rashi_prediction/<?php echo $dat->image; ?>" alt="" />					
+						<h3><?php //echo $this->uri->segment(2);?> Prediction</h3>
+						<img class="img-responsive" src="<?php //echo base_url(); ?>assets/rashi_prediction/<?php //echo $dat->image; ?>" alt="" />					
 						<h3>Descrption</h3>						
 					</div>
 					<div class="entry-post">						
-						<p><strong>Description:</strong> <?php echo $dat->description; ?></p>
+						<p><strong>Description:</strong> <?php //echo $dat->description; ?></p>
 						
 					</div>
 					<hr/>
-					<?php } ?>
-				</div>
+					<?php //} ?>
+				</div> -->
 				<div class="col-md-6"> 
 					<div class="comments-area">
 						<h3>ASTROLOGERS PREDICTION</h3>
@@ -48,7 +48,6 @@
 		                            <div class="col-xs-2"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
 		                            <div class="col-md-9">
 		                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
-		                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
 		                            	<span><?php echo $tip->description; ?></span>
 		                            </div>
 		                        </div>

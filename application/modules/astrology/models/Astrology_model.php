@@ -69,7 +69,7 @@ class Astrology_model extends CI_Model{
 	{
 		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;
 		$date = date("Y-m-d").' 00:00:00';
-		return $q = $this->db->query("SELECT * FROM astro_tips WHERE '$date' BETWEEN date_to AND date_from AND rashi_id = '$id'")->result();
+		return $q = $this->db->query("SELECT * FROM astro_tips WHERE '$date' BETWEEN date_to AND date_from AND rashi_id = '$id' AND purpose = '1'")->result();
 		 // echo $this->db->last_query();
 		 //echo "<pre>";print_r($q);exit();
 	}
@@ -78,13 +78,21 @@ class Astrology_model extends CI_Model{
 	{
 		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;		
 		$this->db->limit(20);
-		return $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->where(array('tips.purpose'=>'2','rashi_id'=>$id))->get()->result();
+		return $this->db->select('rashi_prediction.astrologer_id,rashi_prediction.description,astrologer.name,astrologer.image')->from('rashi_prediction')->join('astrologer','rashi_prediction.astrologer_id = astrologer.id','left')->where(array('rashi_id'=>$id))->get()->result();
 	}
 
 	public function getRashiTipsByAstrologers($rashi)
 	{
-		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;		
-		return $this->db->get_where('tips',array('rashi_id'=>$id,'type'=>2))->result();
+		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;	
+		$date = date("Y-m-d g:i:s");	
+		return $this->db->get_where('tips',array('rashi_id'=>$id,'type'=>1,'date_from<='=>$date,'date_to>='=>$date))->result();
+	}
+	
+	public function getRashiMarketByAstrologers($rashi)
+	{
+		$id = $this->db->get_where('rashi_list',array('name'=>$rashi))->row()->id;	
+		$date = date("Y-m-d g:i:s");	
+		return $this->db->get_where('tips',array('rashi_id'=>$id,'type'=>2,'date_from<='=>$date,'date_to>='=>$date))->result();
 	}
 
 	public function getBranchList()

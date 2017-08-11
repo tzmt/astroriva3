@@ -9,7 +9,7 @@
                     <li>
                         <img src="<?php echo URL; ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
                     </li>
-                    <li><a href="signs.html" class="font13 text-info">Signs</a>
+                    <li><a href="" class="font13 text-info">Signs</a>
                     </li>
                     <li>
                         <img src="<?php echo URL; ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">

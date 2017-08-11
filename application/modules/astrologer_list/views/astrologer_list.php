@@ -77,23 +77,23 @@
 					</div>		
 					<div  id="results">		
 						<div class='row'>
-						<?php $i = 1; foreach($astrologers as $ast){ ?>				
-						
-							<div class="col-md-2" style="margin-bottom: 10px;">
-								<div class="team-member">
-									<div class="col-md-12" style="margin-bottom: 15px;">
-										<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+							<?php $i = 1; foreach($astrologers as $ast){ ?>				
+							
+								<div class="col-md-2" style="margin-bottom: 10px;">
+									<div class="team-member">
+										<div class="col-md-12" style="margin-bottom: 15px;">
+											<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+										</div>
+										<div class="member-text">			
+											<h5><?php echo $ast->name; ?></h5>
+											<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+										</div>						
 									</div>
-									<div class="member-text">			
-										<h5><?php echo $ast->name; ?></h5>
-										<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
-									</div>						
 								</div>
-							</div>
-						<?php if($i%6 == 0){ echo "</div><div class='row'>";} ?>
+							<?php if($i%6 == 0){ echo "</div><div class='row'>";} ?>
 
-						<?php $i++; } ?>	
-					</div>
+							<?php $i++; } ?>	
+						</div>
 
 					
 

@@ -26,14 +26,19 @@ class Astrology extends MX_Controller {
 		{			
 			$data['pannelled_astrologers'] = $this->astrology_model->getPannelledAstrologers();	
 			$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();	
-			$data['news'] = $this->astrology_model->getNews();
-			$data['all_data'] = $this->astrology_model->getRashiPrediction($rashi);
+			//$data['news'] = $this->astrology_model->getNews();
+			//$data['all_data'] = $this->astrology_model->getRashiPrediction($rashi);
 			$data['prediction'] = $this->astrology_model->getRashiPredictionByAstrologers($rashi);
+			//echo "<pre>";print_r($data['prediction']);exit();
 			$this->layout->view('prediction',$data,'normal');						
 		}
 		else if($type == 'tips-and-remedy')
 		{
 			$this->tips_and_remedy($rashi);
+		}
+		else if($type == 'market-prediction')
+		{
+			$this->market_prediction($rashi);
 		}
 		else if($rashi == 'getDetailsAboutYou')
 		{
@@ -62,10 +67,24 @@ class Astrology extends MX_Controller {
 	{		
 		$data['pannelled_astrologers'] = $this->astrology_model->getPannelledAstrologers();	
 		$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();	
-		$data['news'] = $this->astrology_model->getNews();
-		$data['all_data'] = $this->astrology_model->getRashiTips($rashi);
+		//$data['news'] = $this->astrology_model->getNews();
+		//$data['all_data'] = $this->astrology_model->getRashiTips($rashi);
+
 		$data['prediction'] = $this->astrology_model->getRashiTipsByAstrologers($rashi);
-		$this->layout->view('tips',$data,'normal1');			
+		//echo "<pre>";print_r($data['prediction']);exit();
+		$this->layout->view('tips',$data,'normal');			
+	}
+
+	public function market_prediction($rashi)
+	{		
+		$data['pannelled_astrologers'] = $this->astrology_model->getPannelledAstrologers();	
+		$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();	
+		//$data['news'] = $this->astrology_model->getNews();
+		//$data['all_data'] = $this->astrology_model->getRashiTips($rashi);
+
+		$data['prediction'] = $this->astrology_model->getRashiMarketByAstrologers($rashi);
+		//echo "<pre>";print_r($data['prediction']);exit();
+		$this->layout->view('tips',$data,'normal');			
 	}
 
 	public function video_class()

@@ -1,197 +1,76 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( ".datepicker" ).datepicker();    
-  } );
-  </script>
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo URL; ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li><a href="<?php echo base_url(); ?>astrology/<?php echo ucwords($this->uri->segment(2)); ?>/details" class="font13 text-info"><?php echo ucwords($this->uri->segment(2)); ?></a>
+                    </li>
+                    <li>
+                        <img src="<?php echo URL; ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li><span class="active text-primary font13"><?php echo ucwords(str_replace("-"," ",$this->uri->segment(3))); ?></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=============== Header Section End ===============-->
 <section id="blog-details">
 		<div class="container">
 			<div class="row blog-item">								
-				<div class="col-md-9 col-sm-7 blog-content">
-					<?php foreach($all_data as $dat){ ?>
+				<div class="col-md-8 col-sm-7 blog-content">
+					<!-- <?php //foreach($all_data as $dat){ ?>
 					<div class="entry-header">
-						<h3><?php echo $this->uri->segment(2);?> Prediction</h3>
-						<img class="img-responsive" src="<?php echo base_url(); ?>assets/rashi_prediction/<?php echo $dat->image; ?>" alt="" />					
+						<h3><?php //echo $this->uri->segment(2);?> Prediction</h3>
+						<img class="img-responsive" src="<?php //echo base_url(); ?>assets/rashi_prediction/<?php //echo $dat->image; ?>" alt="" />					
 						<h3>Descrption</h3>						
 					</div>
 					<div class="entry-post">						
-						<p><strong>Description:</strong> <?php echo $dat->description; ?></p>
+						<p><strong>Description:</strong> <?php //echo $dat->description; ?></p>
 						
 					</div>
 					<hr/>
-					<?php } ?>
+					<?php //} ?> -->
 
-					<div class="comments-area">
-						<h3>ASTROLOGERS TIPS AND REMEDY</h3>
-						<ul class="media-list">
-							<?php foreach($prediction as $pred){ ?>
-							<?php $q = $this->db->get_where('astrologer',array('id'=>$pred->astrologers_id))->row(); ?>
-							<li class="media">
-								<div class="post-comment">
-									<a class="pull-left" href="#">
-										<img class="media-object" src="<?php echo ASSETS; ?>astrologer/<?php echo $q->image ?>" alt="">
-									</a>
-									<div class="media-body">
-										<h3><?php echo $q->name ?> says:</h3>	
-										<p><strong>From: </strong><?php echo date("d M, y",strtotime($pred->date_from)); ?> <strong>To: </strong><?php echo date("d M, y",strtotime($pred->date_to)); ?></p>									
-										<p><?php echo $pred->description ?></p>										
-									</div>
-								</div>						
-							</li>
-							<hr/>
-							<?php } ?>
-						</ul>					
+					<div class="comments-area">		
+						<div class="section-title-two">
+							<h2><?php echo ucwords(str_replace("-"," ",$this->uri->segment(3))); ?></h2>										
+						</div>			
+						
+						<div class="clearfix visible-xs-block"></div>  
+						<div class="row wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="margin-top: 30px;">
+							<ul class="media-list" >
+								<?php foreach($prediction as $pred){ ?>
+								<?php $q = $this->db->get_where('astrologer',array('id'=>$pred->astrologers_id))->row(); ?>
+								<li class="media">
+									<div class="post-comment">
+										<div class="col-md-2">
+											<a class="pull-left" href="#">
+												<img class="media-object img-circle" src="<?php echo ASSETS; ?>astrologer/<?php echo $q->image ?>" alt="<?php echo $q->name ?>" width="50px" height="50px">
+											</a>
+										</div>
+										<div class="col-md-10">
+											<div class="media-body">
+												<h3 style="margin: 0;margin-bottom: 11px;"><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $q->id; ?>/<?php echo strtolower(str_replace(" ", "-",$q->name)); ?>"><?php echo $q->name ?></a></h3>
+												<p><?php echo $pred->description ?></p>										
+											</div>
+										</div>
+									</div>						
+								</li>
+								<hr/>
+								<?php } ?>
+							</ul>		
+						</div>			
 					</div><!--/comments-area-->
-					
-					
-					<div class="replay-box" style="border:2px solid yellow;padding:10px;">
-						<div class="row">
-							<div class="col-md-12">
-								<h3>GET MORE DETAILS ABOUT YOU</h3>
-								<?php if($this->session->flashdata('error')){ ?>
-								<div style="padding:10px;background:#f8dcdc;color:red;margin-bottom:10px;text-align:center;border:1px solid red"><?php echo $this->session->flashdata('error'); ?></div>
-								<?php } ?>
-								<?php if($this->session->flashdata('success')){ ?>
-								<div style="padding:10px;background:#c1f8c6;color:green;margin-bottom:10px;text-align:center;border:1px solid green"><?php echo $this->session->flashdata('success'); ?></div>
-								<?php } ?>
-								<?php
-									$csrf = array(
-									        'name' => $this->security->get_csrf_token_name(),
-									        'hash' => $this->security->get_csrf_hash()
-									);
-								?>	
 
-								<form id="comment-form" class="row" name="comment-form" method="post" action="<?php echo base_url(); ?>astrology/getDetailsAboutYou/">
-
-									<div class="col-md-6">
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label>Name</label>											
-											</div>
-											<div class="col-md-12">
-												<input type="text" name="name1" class="form-control" required="required" placeholder="Enter Name">
-												<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-												<input type="hidden" name="current_url" value="<?php echo current_url(); ?>" />
-											</div>
-
-										</div>
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label>Date of Birth</label>											
-											</div>
-											<div class="col-md-4">
-												<select name="day" class="form-control" required="required">
-													<option value="">Day</option>
-													<?php for($i=1;$i<=31; $i++){ ?>
-													<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-													<?php } ?>
-												</select>
-											</div>
-											<div class="col-md-4">
-												<select name="month" class="form-control" required="required">
-													<option value="">Month</option>
-													<?php for($i=1;$i<=12; $i++){ ?>
-													<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-													<?php } ?>
-												</select>
-											</div>
-											<div class="col-md-4">
-												<select name="year" class="form-control" required="required">
-													<option value="">Year</option>
-													<?php for($i=date("Y");$i>=1965; $i--){ ?>
-													<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-													<?php } ?>
-												</select>
-											</div>
-
-										</div>
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label>Place of Birth</label>											
-											</div>
-											<div class="col-md-12">
-												<input type="text" name="pob1" class="form-control" required="required" placeholder="Enter Place Of Birth">											
-											</div>
-										</div>
-
-									</div>
-
-									<div class="col-md-6">
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label>Time of Birth</label>											
-											</div>
-											<div class="col-md-4">
-												<select name="hour" class="form-control" required="required">
-													<option value="">Hour</option>
-													<?php for($i=1;$i<=12; $i++){ ?>
-													<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-													<?php } ?>
-												</select>
-											</div>
-											<div class="col-md-4">
-												<select name="minute" class="form-control" required="required">
-													<option value="">Minute</option>
-													<?php for($i=1;$i<=60; $i++){ ?>
-													<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-													<?php } ?>
-												</select>
-											</div>
-											<div class="col-md-4">
-												<select name="format" class="form-control" required="required">
-													<option value="">AM/PM</option>													
-													<option value="AM">AM</option>
-													<option value="PM">PM</option>
-												</select>
-											</div>
-
-										</div>
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label>City</label>											
-											</div>
-											<div class="col-md-12">
-												<input type="text" name="city1" class="form-control" required="required" placeholder="Enter City">
-											</div>
-										</div>
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label>Phone Number</label>											
-											</div>
-											<div class="col-md-12">
-												<input type="number" name="phone1" class="form-control" required="required" placeholder="Enter Phone Number" maxlength="10">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<div class="col-md-12">
-												<label>Email</label>											
-											</div>
-											<div class="col-md-12">
-												<input type="email" name="email" class="form-control" required="required" placeholder="Enter Email id">
-											</div>
-										</div>
-										<div class="form-group">
-											<button type="submit" class="btn btn-default pull-right">Submit</button>
-										</div>
-									</div>
-									
-
-								</form>
-							</div>
-						</div>
-					</div><!--/Repaly Box-->
-
-					<div id="team" style="background:#fff !important"><!-- OUR ASTROLOGERS  -->
+					<div id="team" style="background:#fff !important">
 
 						<div class="container padding-bottom">
 
@@ -200,20 +79,27 @@
 								<div class="section-title-two">
 
 									<h2>OUR PANNELLED ASTROLOGERS</h2>										
-									</div>				
-									<?php foreach($pannelled_astrologers as $ast){ ?>				
-									<div class="col-sm-3">
-										<div class="team-member text-center">
-											<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" width="263px" height="263px;" alt="<?php echo $ast->name; ?>" style="width:263px !important;height:263px !important;" />						
-											<div class="member-text">							
-												<h5><?php echo $ast->name; ?></h5>
-												<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">VIEW DETAILS</a></h6>
-												<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">PRODUTCS</a></h6>
-												<h6><?php echo $ast->phone; ?></h6>
-											</div>						
-										</div>
-									</div>
-									<?php } ?>														
+								</div>			
+										
+
+									<div class='row' style="text-align: center;">
+										<?php $i = 1; foreach($pannelled_astrologers as $ast){ ?>				
+										
+											<div class="col-md-2" style="margin-bottom: 10px;">
+												<div class="team-member">
+													<div class="col-md-12" style="margin-bottom: 15px;">
+														<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+													</div>
+													<div class="member-text">			
+														<h5><?php echo $ast->name; ?></h5>
+														<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
+													</div>						
+												</div>
+											</div>
+										<?php if($i%6 == 0){ echo "</div><div class='row'>";} ?>
+
+										<?php $i++; } ?>	
+									</div>												
 
 							</div>
 
@@ -229,23 +115,27 @@
 								<div class="section-title-two">
 
 									<h2>OUR PREMIUM ASTROLOGERS</h2>										
-									</div>				
-									<?php foreach($premium_astrologers as $ast){ ?>				
-										<div class="col-sm-3">
-											<div class="team-member text-center">
-												<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" width="263px" height="263px;" alt="<?php echo $ast->name; ?>" style="width:263px !important;height:263px !important;" />						
-												<div class="member-text">							
+									</div>		
+									
+
+									<div class='row' style="text-align: center;">
+									<?php $i = 1; foreach($premium_astrologers as $ast){ ?>				
+									
+										<div class="col-md-2" style="margin-bottom: 10px;">
+											<div class="team-member">
+												<div class="col-md-12" style="margin-bottom: 15px;">
+													<img src="<?php echo ASSETS; ?>astrologer/<?php echo $ast->image; ?>" alt="<?php echo $ast->name; ?>" width="100%" style="padding: 5px;background: #eee; height: 100%"/>	
+												</div>
+												<div class="member-text">			
 													<h5><?php echo $ast->name; ?></h5>
-													<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">VIEW DETAILS</a></h6>
-													<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">PRODUTCS</a></h6>
-													<h6><?php echo $ast->phone; ?></h6>
+													<h6><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>">View</a> | <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $ast->id; ?>/<?php echo strtolower(str_replace(" ","-",$ast->name)); ?>/products/">Products</a></h6>																
 												</div>						
 											</div>
 										</div>
-										<?php } ?>
-										<div class="col-sm-8 col-sm-offset-2 section-title-two text-center">					
-											<p><br/><a href="<?php echo base_url(); ?>astrologer/list-astrologer/premium"><img src="<?php echo base_url(); ?>assets/images/view_more.jpg"/></a></p>
-										</div>													
+									<?php if($i%6 == 0){ echo "</div><div class='row'>";} ?>
+
+									<?php $i++; } ?>	
+								</div>															
 
 							</div>
 
@@ -253,4 +143,4 @@
 
 					</div>
 				</div>
-				
+</section>

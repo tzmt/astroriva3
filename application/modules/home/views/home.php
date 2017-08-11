@@ -69,7 +69,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 m-t-40">
-                <h1 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">Tips</h1>
+                <h1 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">Tips &amp; Remedy</h1>
                 <hr class="hr_margin">
                 <div class="row common_margin">
                     <div class="col-xs-12 font16">
@@ -79,7 +79,7 @@
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
+	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/tips-and-remedy'><strong>Read More...</strong></a>"; ?></span>
 	                            </div>
 	                        </div>
 
@@ -97,7 +97,7 @@
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
+	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/market-prediction'><strong>Read More...</strong></a>"; ?></span>
 	                            </div>
 	                        </div>
 
@@ -205,7 +205,7 @@
                 ?>
                 <h1 class="text-primary text-center"><?php echo $q->name; ?></h1>
                 <hr>   
-                <p class="text-info">Here are some of our best chosen services for you.</p>           
+                <p class="text-info"><?php echo substr($q->description, 0,100)."..."; ?></p>           
                 <a href="<?php echo base_url(); ?>services/<?php echo $q->id; ?>/<?php echo strtolower(str_replace(" ", "-", $q->name)); ?>">
                     <img src="<?php echo base_url(); ?>assets/services/image/<?php echo $q->image; ?>" alt="<?php echo $q->name; ?>" width="100%" height="220"/>
                     <div class="blog_text blog_text1">asdasdasdsad</div>
@@ -277,7 +277,8 @@
                     <?php if($i/2 == 0){ ?>
                     </div>
                     <?php } ?>
-                <?php $i++; } ?>             
+                <?php $i++; } ?>  
+                <a href="<?php echo base_url(); ?>astrologer/list-astrologer/premium" class="btn btn-primary btn-lg pull-right">View All</a>           
             </div>
             <div class="clearfix visible-sm-block"></div>
 
@@ -294,7 +295,8 @@
                     <?php $i++; if($i/2 == 0){ ?>
                     </div>
                     <?php } ?>
-                <?php  } ?>                
+                <?php  } ?>
+                <a href="<?php echo base_url(); ?>astrologer/list-astrologer/pannelled" class="btn btn-primary btn-lg pull-right">View All</a>                
             </div>
         </div>
             

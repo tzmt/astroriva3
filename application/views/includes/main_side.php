@@ -1,5 +1,5 @@
 <div class="col-md-3 col-sm-6 col-xs-12 m-t-40">
-    <h5>ADVERTISEMENT</h5>
+    <h5>OUR PRODUCTS</h5>
     <hr>    
         <div class="row m-t-20">
             <?php
@@ -14,7 +14,8 @@
                 <a href="<?php echo base_url(); ?>shop/details/<?php echo $q1->id; ?>/<?php echo strtolower(str_replace(' ', '-', $q1->name)); ?>"><img src="<?php echo URL; ?>assets/products/<?php echo $image; ?>" class="img-responsive center-block" width="100%" height="150px"/></a>
             </div>
             <?php } ?>
-        </div>        
+        </div>   
+        <a href="<?php echo base_url(); ?>shop" class="btn btn-primary btn-lg pull-right">View All</a>       
     </div>
 </div>
 <div class="elements_desc">
