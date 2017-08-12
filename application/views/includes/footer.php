@@ -49,6 +49,18 @@
     <script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop.js"></script>
 <?php } ?>
 
+<?php if($this->uri->segment(1) == 'student'){ ?>
+    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.imgareaselect.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.form.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/imgareaselect.css">
+    <script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop1.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.5.0/croppie.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.5.0/croppie.min.js"></script>
+
+    <script src="https://foliotek.github.io/Croppie/demo/demo.js"></script>
+<?php } ?>
+
 <?php if($this->uri->segment(1) == 'gallery'){ ?>
     <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.fancybox.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/jquery.fancybox.min.css">

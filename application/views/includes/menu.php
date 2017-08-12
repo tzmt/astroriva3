@@ -168,7 +168,20 @@
                             <?php
                                 if($this->session->userdata('astro_student') != "" || $this->session->userdata('user') != "" || $this->session->userdata('astro_astrologer') != ""){?>                                
                                 <li class="dropdown dropdown_modified">
-                                    <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle"><?php echo $this->session->userdata('astro_astrologer')->name; ?> <span
+                                <?php
+                                    if(isset($this->session->userdata('astro_astrologer')->name))
+                                    {
+                                ?>
+                                    <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle"><?php echo $this->session->userdata('astro_astrologer')->name; ?> 
+                                    
+                                <?php } elseif(isset($this->session->userdata('astro_student')->name)){?>
+                                <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle"><?php echo $this->session->userdata('astro_student')->name; ?> 
+
+                                <?php } elseif(isset($this->session->userdata('astro_client')->name)){?>
+                                <a data-toggle="dropdown" href="#" class="text-info dropdown-toggle"><?php echo $this->session->userdata('astro_client')->name; ?> 
+
+                                <?php } ?>
+                                    <span
                                             class="caret"></span></a>
                                     <ul class="dropdown-menu dropdown_mod" data-dropdown-in="fadeInUp"
                                         data-dropdown-out="fadeOut">

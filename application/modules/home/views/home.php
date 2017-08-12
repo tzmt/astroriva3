@@ -112,14 +112,15 @@
                 <div class="row common_margin">
                     <div class="col-xs-12 first-set">
                        <?php
-                       $this->db->limit(5);
+                       $this->db->limit(4);
+                       $this->db->order_by('id','DESC');
                         $q = $this->db->get_where('events',array('date_from <= '=>date("Y-m-d"),'date_to >=' => date("Y-m-d")))->result();                        
                         foreach($q as $q1){ ?>
                             <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
                                 <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/events/<?php echo $q1->image; ?>" width="100%" class="img-circle"  width="53px" height="53px"></div>
                                 <div class="col-md-9">
                                     <span style="color:#e36480"><?php echo $q1->title; ?></span><br/>
-                                    <span><?php echo substr($q1->description,0,120)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
+                                    <span><?php echo substr($q1->description,0,50)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
                                 </div>
                             </div>
 

@@ -32,14 +32,16 @@ class Home_model extends CI_Model{
 	public function getTips()
 	{
 		$date = date("Y-m-d g:i:s");	
-		$this->db->limit(5);
+		$this->db->limit(4);
+		$this->db->order_by('tips.id','DESC');
 		return $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image,rashi_list.name as rashi_name')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->join('rashi_list','tips.rashi_id = rashi_list.id','left')->where(array('tips.purpose'=>'1','date_from<='=>$date,'date_to>='=>$date))->get()->result();
 	}
 
 	public function getTips1()
 	{
 		$date = date("Y-m-d g:i:s");	
-		$this->db->limit(5);
+		$this->db->limit(4);
+		$this->db->order_by('tips.id','DESC');
 		return $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image,rashi_list.name as rashi_name')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->join('rashi_list','tips.rashi_id = rashi_list.id','left')->where(array('tips.purpose'=>'2','date_from<='=>$date,'date_to>='=>$date))->get()->result();
 	}
 

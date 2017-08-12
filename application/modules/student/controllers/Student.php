@@ -74,28 +74,188 @@ class Student extends MX_Controller {
 	{
 		$config['upload_path'] = './assets/student/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '200';		
+		//$config['max_size']	= '200';		
 		$config['encrypt_name'] = TRUE;
 		$this->load->library('upload', $config);
 
 		if ( ! $this->upload->do_upload())
 		{						
-			$this->session->set_flashdata('error',$this->upload->display_errors());
-			redirect('student/profile');
+			// $this->session->set_flashdata('error',$this->upload->display_errors());
+			// redirect('student/profile');
+			echo "<span style='color:red'>".$this->upload->display_errors()."</span>";
 		}
 		else
 		{
-			$q = $this->db->select('image')->get_where('student',array('id'=>$this->session->userdata('astro_student')->id))->row()->image;
-			unlink('./assets/student/'.$q);
+			// $q = $this->db->select('image')->get_where('student',array('id'=>$this->session->userdata('astro_student')->id))->row()->image;
+			// unlink('./assets/student/'.$q);
 
 			$data = $this->upload->data();
-			$this->db->where('id',$this->session->userdata('astro_student')->id);
-			$arr = array('image'=>$data['file_name']);
-			$this->db->update('student',$arr);
+			// $this->db->where('id',$this->session->userdata('astro_student')->id);
+			// $arr = array('image'=>$data['file_name']);
+			// $this->db->update('student',$arr);
 
-			$this->session->set_flashdata('success','Profile Picture Updated Successfully');
-			redirect('student/profile');
+			// $this->session->set_flashdata('success','Profile Picture Updated Successfully');
+			// redirect('student/profile');
+
+			$config1['source_image'] = "./assets/student/".$data['file_name'];
+			$config1['create_thumb'] = FALSE;
+			$config1['maintain_ratio'] = TRUE;
+			$config1['width']         = 538;
+			$config1['height']       = 404;
+
+			$this->load->library('image_lib', $config1);
+
+			$this->image_lib->resize();
+
+			echo "<img id='photo' file-name='".$data['file_name']."' class='' src='".base_url()."assets/student/".$data['file_name']."' class='preview'/>";
 		}
+	}
+
+	public function changePhoto1()
+	{
+		$post = isset($_POST) ? $_POST: array();
+		switch($post['action']) {
+			case 'save' :
+			//$this->saveProfilePic();
+			$this->saveProfilePicTmp();
+			break;
+			default:
+			$this->changeProfilePic();
+		}
+	}
+
+	function saveProfilePic()
+	{		
+		$post = isset($_POST) ? $_POST: array();		
+		if($post['id'])
+		{
+			$sql_query = "SELECT * FROM users WHERE uid = '".mysqli_escape_string($conn, $post['id'])."'";
+			$resultset = mysqli_query($conn, $sql_query) or die("database error:". mysqli_error($conn));
+			if(mysqli_num_rows($resultset))
+			{
+				$sql_update = "UPDATE users set profile_photo='".mysqli_escape_string($conn,$post['image_name'])."' WHERE uid = '".mysqli_escape_string($conn, $post['id'])."'";
+				mysqli_query($conn, $sql_update) or die("database error:". mysqli_error($conn));
+			}
+		}
+	}
+
+	public function changeProfilePic()
+	{
+		$post = isset($_POST) ? $_POST: array();
+		$max_width = "500";
+		$userId = isset($post['hdn-profile-id']) ? intval($post['hdn-profile-id']) : 0;
+		$path = './assets/tmp';
+		$valid_formats = array("jpg", "png", "gif", "jpeg");
+		$name = $_FILES['profile-pic']['name'];
+		$size = $_FILES['profile-pic']['size'];
+		if(strlen($name)) {
+		list($txt, $ext) = explode(".", $name);
+		if(in_array($ext,$valid_formats))
+		{
+			if($size < (1024*1024)) { $actual_image_name = 'avatar' .'_'.$userId .'.'.$ext; $filePath = $path .'/'.$actual_image_name; $tmp = $_FILES['profile-pic']['tmp_name']; if(move_uploaded_file($tmp, $filePath)) 
+			{
+				 $width = $this->getWidth($filePath); $height = $this->getHeight($filePath); //Scale the image if it is greater than the width set above if ($width > $max_width){
+				$scale = $max_width/$width;
+				$uploaded = $this->resizeImage($filePath,$width,$height,$scale, $ext);
+			} else
+			{
+				$scale = 1;
+				$uploaded = $this->resizeImage($filePath,$width,$height,$scale, $ext);
+			}
+			echo "<img id='photo' file-name='".$actual_image_name."' class='' src='".$filePath.'?'.time()."' class='preview'/>";
+			}
+			else
+			echo "failed";
+		}
+		else
+		echo "Image file size max 1 MB";
+		}
+		else
+		echo "Invalid file format..";
+	}
+
+	public function saveProfilePicTmp()
+	{		
+		$post = isset($_POST) ? $_POST: array();
+		$userId = isset($post['id']) ? intval($post['id']) : 0;
+		$path ='.\images\tmp';
+		$t_width = 300; // Maximum thumbnail width
+		$t_height = 300; // Maximum thumbnail height
+		if(isset($_POST['t']) and $_POST['t'] == "ajax")
+		{
+			extract($_POST);
+			$imagePath = 'assets/student/'.$_POST['image_name'];
+			$ratio = ($t_width/$w1);
+			$nw = ceil($w1 * $ratio);
+			$nh = ceil($h1 * $ratio);
+			$nimg = imagecreatetruecolor($nw,$nh);
+			$exp1 = explode(".",$_POST['image_name']);
+			$exp = end($exp1);
+			if($exp == 'jpg' || $exp == 'jpeg')
+			{
+				$im_src = imagecreatefromjpeg($imagePath);
+			}
+			if($exp == 'png')
+			{
+				$im_src = imagecreatefrompng($imagePath);
+			}
+			imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
+			imagejpeg($nimg,$imagePath,90);
+		}
+
+		$q = $this->db->select('image')->get_where('student',array('id'=>$this->session->userdata('astro_student')->id))->row()->image;
+		@unlink('./assets/student/'.$q);
+
+		$this->db->where('id',$this->session->userdata('astro_student')->id);
+		$arr = array('image'=>$_POST['image_name']);
+		$this->db->update('student',$arr);
+
+		echo base_url().$imagePath.'?'.time();
+
+
+		exit(0);
+	}
+
+	public function resizeImage($image,$width,$height,$scale)
+	{
+		$newImageWidth = ceil($width * $scale);
+		$newImageHeight = ceil($height * $scale);
+		$newImage = imagecreatetruecolor($newImageWidth,$newImageHeight);
+		switch ($ext)
+		{
+			case 'jpg':
+			case 'jpeg':
+				$source = imagecreatefromjpeg($image);
+				break;
+			case 'gif':
+				$source = imagecreatefromgif($image);
+				break;
+			case 'png':
+				$source = imagecreatefrompng($image);
+				break;
+			default:
+
+			$source = false;
+			break;
+		}
+		imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
+		imagejpeg($newImage,$image,90);
+		chmod($image, 0777);
+		return $image;
+	}
+
+	public function getHeight($image)
+	{
+		$sizes = getimagesize($image);
+		$height = $sizes[1];
+		return $height;
+	}
+
+	public function getWidth($image)
+	{
+		$sizes = getimagesize($image);
+		$width = $sizes[0];
+		return $width;
 	}
 
 	public function add_tips()

@@ -73,7 +73,7 @@ class Astrologer extends MX_Controller {
 	{		
 		$config['upload_path'] = './assets/astrologer/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '200';		
+		//$config['max_size']	= '200';		
 		$config['encrypt_name'] = TRUE;
 
 		$config['image_library'] = 'gd2';

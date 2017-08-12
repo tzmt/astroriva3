@@ -33,8 +33,8 @@
 						<?php $menu = $this->db->order_by('weight','ASC')->get_where('menu',array('parent_id'=>0))->result(); ?>
 						<?php foreach($menu as $mem){
 							$sub = $this->db->order_by('weight','ASC')->get_where('menu',array('parent_id'=>$mem->id));
-						?>
-						<li <?php if($sub->num_rows() > 0) echo "class='openable'"; ?>>
+						?>						
+						<li class="<?php if($sub->num_rows() > 0) echo "openable"; ?>">
 							<a href="<?php if($mem->url != '#'){echo base_url().$mem->url; }else {echo '#';} ?>">
 								<span class="menu-icon">
 									<i class="<?php echo $mem->icon; ?>"></i> 
