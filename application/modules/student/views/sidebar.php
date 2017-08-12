@@ -35,29 +35,17 @@
 				        <h4 class="modal-title" id="myModalLabel">Upload Profile Picture</h4>
 				      </div>
 				      <div class="modal-body">        
-				        <form id="cropimage" name="contact-form" method="post" action="<?php echo base_url(); ?>student/changePhoto/" enctype="multipart/form-data">
+				        <form id="cropimage" name="contact-form" onsubmit="return cropImage()" enctype="multipart/form-data">
 				            <div class="col-sm-12 form-group">
-				                <input type="file" name="userfile" id="profile-pic" class="form-control" required="required" > 
-				                <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />               
+				                <input type="file" name="userfile" id="upload" class="form-control" required="required" > 				                             
 				                <p>Maximum Size Allowed: 200 Kb</p>
 
-				                <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
-								<input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
-								<input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
-								<input type="hidden" name="hdn-x2-axis" value="" id="hdn-x2-axis" />
-								<input type="hidden" name="hdn-y2-axis" value="" id="hdn-y2-axis" />
-								<input type="hidden" name="hdn-thumb-width" id="hdn-thumb-width" value="250" />
-								<input type="hidden" name="hdn-thumb-height" id="hdn-thumb-height" value="250" />
-								<input type="hidden" name="action" value="" id="action" />
-								<input type="hidden" name="image_name" value="" id="image_name" />
-
-				                <div id='preview-profile-pic'></div>
-								<div id="thumbs" style="padding:5px; width:600px"></div>
+				                <div id="upload-demo" style="margin-bottom: 50px;"></div>	
 
 				            </div>                   
 				      </div>
 				      <div class="modal-footer" style="border-top: none">       
-				        <button type="submit" class="btn btn-success" id="save_crop">Upload</button>        
+				        <button type="submit" class="btn btn-success upload-result">Upload</button>        
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>        
 				      </div>
 				      </form>
@@ -65,4 +53,62 @@
 				  </div>
 				</div>
 				
-			</div>	
+			</div>		
+
+<script src="<?php echo URL; ?>assets/site_assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/site_assets/cropping/croppie.js"></script>
+
+<script type="text/javascript">
+
+function readFile(input)
+{
+	if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+			$('.upload-demo').addClass('ready');
+        	$uploadCrop.croppie('bind', {
+        		url: e.target.result
+        	}).then(function(){
+        		$('.cr-slider').show();
+        		$('.croppie-container').css('width','100%').css('height','250px');
+        	});
+        	
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+    else {
+        swal("Sorry - you're browser doesn't support the FileReader API");
+    }
+}
+
+$uploadCrop = $('#upload-demo').croppie({
+	viewport: {
+		width: 200,
+		height: 200,
+		type: 'square'
+	},
+	enableExif: true
+});
+
+
+$('#upload').on('change', function () { readFile(this); });
+
+function cropImage(){
+	$('.upload-result').on('click', function (ev) {
+
+		$uploadCrop.croppie('result', {
+
+			type: 'canvas',
+			size: 'viewport'
+		}).then(function (resp) {			
+			$.post('<?php echo base_url(); ?>student/changePhoto',{image:resp},function(data){
+				$('#dpimage').attr('src',resp);
+				$('#profile').modal('toggle');
+			});
+		});
+	});
+	return false;
+}
+</script>

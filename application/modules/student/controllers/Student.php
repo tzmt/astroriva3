@@ -72,43 +72,22 @@ class Student extends MX_Controller {
 
 	public function changePhoto()
 	{
-		$config['upload_path'] = './assets/student/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		//$config['max_size']	= '200';		
-		$config['encrypt_name'] = TRUE;
-		$this->load->library('upload', $config);
+		$q = $this->db->select('image')->get_where('student',array('id'=>$this->session->userdata('astro_student')->id))->row()->image;
+		@unlink('./assets/student/'.$q);
 
-		if ( ! $this->upload->do_upload())
-		{						
-			// $this->session->set_flashdata('error',$this->upload->display_errors());
-			// redirect('student/profile');
-			echo "<span style='color:red'>".$this->upload->display_errors()."</span>";
-		}
-		else
-		{
-			// $q = $this->db->select('image')->get_where('student',array('id'=>$this->session->userdata('astro_student')->id))->row()->image;
-			// unlink('./assets/student/'.$q);
+		$image = $this->input->post('image');
 
-			$data = $this->upload->data();
-			// $this->db->where('id',$this->session->userdata('astro_student')->id);
-			// $arr = array('image'=>$data['file_name']);
-			// $this->db->update('student',$arr);
+		$data = $image;
 
-			// $this->session->set_flashdata('success','Profile Picture Updated Successfully');
-			// redirect('student/profile');
+		list($type, $data) = explode(';', $data);
+		list(, $data)      = explode(',', $data);
+		$data = base64_decode($data);
+		$name = $this->session->userdata('astro_student')->id.'.png';
 
-			$config1['source_image'] = "./assets/student/".$data['file_name'];
-			$config1['create_thumb'] = FALSE;
-			$config1['maintain_ratio'] = TRUE;
-			$config1['width']         = 538;
-			$config1['height']       = 404;
+		file_put_contents('./assets/student/'.$name, $data);
 
-			$this->load->library('image_lib', $config1);
-
-			$this->image_lib->resize();
-
-			echo "<img id='photo' file-name='".$data['file_name']."' class='' src='".base_url()."assets/student/".$data['file_name']."' class='preview'/>";
-		}
+		$this->db->where('id',$this->session->userdata('astro_student')->id);
+		$this->db->update('student',array('image'=>$name));
 	}
 
 	public function changePhoto1()

@@ -71,46 +71,24 @@ class Astrologer extends MX_Controller {
 
 	public function changePhoto()
 	{		
-		$config['upload_path'] = './assets/astrologer/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		//$config['max_size']	= '200';		
-		$config['encrypt_name'] = TRUE;
-
-		$config['image_library'] = 'gd2';
-
 		
+		$q = $this->db->select('image')->get_where('astrologer',array('id'=>$this->session->userdata('astro_astrologer')->id))->row()->image;
+		@unlink('./assets/astrologer/'.$q);
 
-		$this->load->library('upload', $config);
+		$image = $this->input->post('image');
 
-		if ( ! $this->upload->do_upload())
-		{						
-			// $this->session->set_flashdata('error',$this->upload->display_errors());
-			echo "<span style='color:red'>".$this->upload->display_errors()."</span>";
-			//redirect('astrologer/profile');
-		}
-		else
-		{						
-			$data = $this->upload->data();
-			// $this->db->where('id',$this->session->userdata('astro_astrologer')->id);
-			// $arr = array('image'=>$data['file_name']);
-			// $this->db->update('astrologer',$arr);
+		$data = $image;
 
-			$config1['source_image'] = "./assets/astrologer/".$data['file_name'];
-			$config1['create_thumb'] = FALSE;
-			$config1['maintain_ratio'] = TRUE;
-			$config1['width']         = 538;
-			$config1['height']       = 404;
+		list($type, $data) = explode(';', $data);
+		list(, $data)      = explode(',', $data);
+		$data = base64_decode($data);
+		$name = $this->session->userdata('astro_astrologer')->id.'.png';
 
-			$this->load->library('image_lib', $config1);
+		file_put_contents('./assets/astrologer/'.$name, $data);
 
-			$this->image_lib->resize();
-
-
-
-			echo "<img id='photo' file-name='".$data['file_name']."' class='' src='".base_url()."assets/astrologer/".$data['file_name']."' class='preview'/>";
-			//$this->session->set_flashdata('success','Profile Picture Updated Successfully');
-			//redirect('astrologer/profile');
-		}
+		$this->db->where('id',$this->session->userdata('astro_astrologer')->id);
+		$this->db->update('astrologer',array('image'=>$name));
+		
 	}
 
 	public function changePhoto1()

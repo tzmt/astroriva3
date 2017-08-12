@@ -89,12 +89,12 @@
 							        'hash' => $this->security->get_csrf_hash()
 							);
 						?>	     
-				        <form id="cropimage" name="contact-form" method="post" action="<?php echo base_url(); ?>astrologer/changePhoto/" enctype="multipart/form-data">
+				        <form name="contact-form" method="post" onsubmit="return cropImage()" enctype="multipart/form-data">
 				            <div class="col-sm-12 form-group">
-				                <input type="file" name="userfile" id="profile-pic" class="form-control" required="required" >
+				                <input type="file" name="userfile" id="upload"  class="form-control" required="required" >
 				                <p>Maximum Size Allowed: 200 Kb</p>
 
-				                <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
+				                <!-- <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
 								<input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
 								<input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
 								<input type="hidden" name="hdn-x2-axis" value="" id="hdn-x2-axis" />
@@ -106,12 +106,16 @@
 								<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 								<div id='preview-profile-pic'></div>
-								<div id="thumbs" style="padding:5px; width:600px"></div>
+								<div id="thumbs" style="padding:5px; width:600px"></div> -->
+
+								<div id="upload-demo" style="margin-bottom: 50px;"></div>								
+								   
 
 				            </div>                   
 				      </div>
-				      <div class="modal-footer" style="border-top: none">       
-				        <button type="submit" class="btn btn-success" id="save_crop">Crop &amp; Upload</button>        
+				      <div class="modal-footer" style="border-top: none;margin-top: 50px;">   
+				      <br/><br/><br/>    
+				        <button type="submit" class="btn btn-success upload-result">Crop &amp; Upload</button>        
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>        
 				      </div>
 				      </form>
@@ -120,4 +124,61 @@
 				</div>
 				
 			</div>
-			
+
+<script src="<?php echo URL; ?>assets/site_assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/site_assets/cropping/croppie.js"></script>
+
+<script type="text/javascript">
+
+function readFile(input)
+{
+	if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+			$('.upload-demo').addClass('ready');
+        	$uploadCrop.croppie('bind', {
+        		url: e.target.result
+        	}).then(function(){
+        		$('.cr-slider').show();
+        		$('.croppie-container').css('width','100%').css('height','250px');
+        	});
+        	
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+    else {
+        swal("Sorry - you're browser doesn't support the FileReader API");
+    }
+}
+
+$uploadCrop = $('#upload-demo').croppie({
+	viewport: {
+		width: 200,
+		height: 200,
+		type: 'square'
+	},
+	enableExif: true
+});
+
+
+$('#upload').on('change', function () { readFile(this); });
+
+function cropImage(){
+	$('.upload-result').on('click', function (ev) {
+
+		$uploadCrop.croppie('result', {
+
+			type: 'canvas',
+			size: 'viewport'
+		}).then(function (resp) {			
+			$.post('<?php echo base_url(); ?>astrologer/changePhoto',{image:resp},function(data){
+				$('#dpimage').attr('src',resp);
+				$('#profile').modal('toggle');
+			});
+		});
+	});
+	return false;
+}
+</script>

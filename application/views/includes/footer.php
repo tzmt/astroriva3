@@ -34,31 +34,22 @@
 
 <script src="<?php echo URL; ?>assets/site_assets/vendors/sweetalert2/js/sweetalert2.min.js"></script>
 
-<script src="<?php echo URL; ?>assets/site_assets/vendors/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
-
-<script src="<?php echo URL; ?>assets/site_assets/vendors/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
 <?php if($this->uri->segment(1) == 'contact'){ ?>
 	<script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
 	<script src="<?php echo base_url(); ?>assets/site_assets/vendors/gmap3/js/gmap3.min.js"></script>
 <?php } ?>
 
-<?php if($this->uri->segment(1) == 'astrologer'){ ?>
-    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.imgareaselect.js" type="text/javascript"></script>
-    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.form.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/imgareaselect.css">
-    <script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop.js"></script>
-<?php } ?>
-
-<?php if($this->uri->segment(1) == 'student'){ ?>
-    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.imgareaselect.js" type="text/javascript"></script>
-    <script src="<?php echo base_url(); ?>assets/site_assets/js/jquery.form.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/site_assets/css/imgareaselect.css">
-    <script src="<?php echo base_url(); ?>assets/site_assets/js/image_crop1.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.5.0/croppie.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.5.0/croppie.min.js"></script>
-
-    <script src="https://foliotek.github.io/Croppie/demo/demo.js"></script>
+<?php if($this->uri->segment(1) == 'astrologer' || $this->uri->segment(1) == 'student'){ ?>
+<script src="<?php echo base_url(); ?>assets/site_assets/cropping/croppie.js"></script>
+<link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/site_assets/cropping/demo/prism.css" />        
+<link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/site_assets/cropping/croppie.css" />
+<script src="<?php echo base_url(); ?>assets/site_assets/cropping/demo/prism.js"></script>
+<link rel="stylesheet" type="text/css" href="https://foliotek.github.io/Croppie/bower_components/sweetalert/dist/sweetalert.css" />
+<script src="https://foliotek.github.io/Croppie/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('.cr-slider').css('display','none');
+    $('input[type="range"]').hide();
+</script>
 <?php } ?>
 
 <?php if($this->uri->segment(1) == 'gallery'){ ?>
