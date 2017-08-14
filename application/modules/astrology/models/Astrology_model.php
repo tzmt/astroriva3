@@ -102,7 +102,7 @@ class Astrology_model extends CI_Model{
 
 	public function getBranchDetails($branch)
     {
-       return $this->db->get_where('branch',array('name'=>$branch))->row();        
+       return $this->db->get_where('branch',array('id'=>$branch))->row();        
     }
 
     public function getAyurvedDetails($id)
@@ -133,7 +133,9 @@ class Astrology_model extends CI_Model{
 
     public function getTips()
 	{
-		$this->db->limit(5);
-		return $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->where('tips.purpose','1')->get()->result();
+		$date = date("Y-m-d g:i:s");	
+		$this->db->limit(4);
+		$this->db->order_by('tips.id','DESC');
+		return $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image,rashi_list.name as rashi_name')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->join('rashi_list','tips.rashi_id = rashi_list.id','left')->where(array('tips.purpose'=>'1','date_from<='=>$date,'date_to>='=>$date))->get()->result();
 	}
 }

@@ -63,14 +63,14 @@
 		                <h1 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">Tips</h1>
 		                <hr class="hr_margin">
 		                <div class="row common_margin">
-		                    <div class="col-xs-12 font16">
+		                    <div class="col-xs-12">
 		                    <?php foreach($tips as $tip){ ?>
 			                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
 			                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
 			                            <div class="col-md-9">
 			                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 			                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-			                            	<span><?php echo substr($tip->description,0,30); ?></span>
+			                            	<span><?php echo substr($tip->description,0,30); ?> &nbsp; <a href="<?php echo base_url(); ?>/astrology/<?php echo $tip->rashi_name; ?>/tips-and-remedy"><strong>Read More...</strong></a></span>
 			                            </div>
 			                        </div>
 

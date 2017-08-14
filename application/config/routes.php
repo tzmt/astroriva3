@@ -56,8 +56,8 @@ $route['astrologer-details/(:num)/(:any)'] = 'astrologer_details/index/$1';
 $route['astrologer-details/(:any)/(:any)/products'] = 'astrologer_details/show_products/$1';
 $route['astrologer-details/(:any)/(:any)/products/(:any)/(:any)'] = 'astrologer_details/product_details/$1';
 
-$route['astrology/branches/list'] = 'astrology/branches';
-$route['astrology/branches/(:any)/details'] = 'astrology/branches_details/$1;';
+$route['astrology/branches'] = 'astrology/branches';
+$route['astrology/branches/(:num)/(:any)/details'] = 'astrology/branches_details/$1;';
 
 $route['astrology/(:any)'] = 'astrology/index/$1';
 $route['astrology/(:any)/(:any)'] = 'astrology/index/$1';

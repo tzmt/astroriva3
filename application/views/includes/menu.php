@@ -132,7 +132,7 @@
                             </a>
                         </li>
                         <li class="header_li">
-                            <a href="<?php echo base_url(); ?>Jyotish/" class="text-info">Jyotish</a>
+                            <a href="<?php echo base_url(); ?>astrology/branches/" class="text-info">Jyotish</a>
                         </li>                       
 
                         <li class="header_li">

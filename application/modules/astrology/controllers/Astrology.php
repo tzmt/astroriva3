@@ -106,7 +106,7 @@ class Astrology extends MX_Controller {
 	public function branches_details()
 	{
 		$data['all_data'] = $this->astrology_model->getBranchDetails($this->uri->segment(3));
-		$data['news'] = $this->astrology_model->getNews();		
+		$data['tips'] = $this->astrology_model->getTips();			
 		$this->layout->view('branch_details',$data,'home1');
 	}
 

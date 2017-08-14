@@ -1,28 +1,43 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( ".datepicker" ).datepicker();    
-  } );
-  </script>
-<section id="blog-details">
-		<div class="container">
-			<div class="row blog-item">								
-				<div class="col-md-9 col-sm-7 blog-content">					
-					<div class="entry-header">
-						<h3>ASTROLOGY BRANCHES</h3>
+<section class="index_center card_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="m-t-20 bg-white breadcrumb text-center">
+                    <li>
+                        <a href="<?php echo base_url(); ?>astrologer/" class="font13">Home</a>
+                    </li>
+                    <li>
+                        <img src="<?php echo base_url(); ?>assets/site_assets/images/right-arrow1.png" alt="arrow" class="blog_right_arrow">
+                    </li>
+                    <li>
+                        <span class="active text-primary font13">Branches</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+	<div class="container">
+			<div class="container padding-bottom">
+				<div class="row text-center">
+					<div class="col-sm-12 section-title-two">
+						<h2>SERVICES</h2>
+					</div>	
+					<?php foreach($branch_list as $bran){ ?>
+					<?php $image = $this->db->get_where('branch_image',array('branch_id'=>$bran->id))->row()->image;?>	
+					<div class="col-md-4" style="border-radius: 5px;padding:5px;">
+						<div class="entry-header" style="text-align: left;background: #fff;">
+							<a href="<?php echo base_url(); ?>astrology/branches/<?php echo $bran->id; ?>/<?php echo strtolower($bran->name); ?>/details/"><img class="img-responsive" src="<?php echo base_url(); ?>assets/branch/<?php echo $image; ?>" width="100%" alt="<?php echo $bran->name; ?>" /></a>
+							<h4><?php echo $bran->name; ?></h4>		
+							<p><a href="<?php echo base_url(); ?>astrology/branches/<?php echo $bran->id; ?>/<?php echo strtolower(str_replace(" ", "-", $bran->name)); ?>/details"><button class="btn btn-primary text-center">Read More</button></a></p>						
+						</div>						
 					</div>
-					<div>	
-						<?php foreach($branch_list as $bran){ ?>
-						<?php $image = $this->db->get_where('branch_image',array('branch_id'=>$bran->id))->row()->image;?>	
-						<div class="col-md-4">
-							<a href="<?php echo base_url(); ?>astrology/branches/<?php echo strtolower($bran->name); ?>/details/"><img src="<?php echo base_url(); ?>assets/branch/<?php echo $image; ?>" width="100%"/></a>
-							<p style="text-align:center;margin-top:10px;margin-bottom:10px"><strong>Name:</strong> <?php echo $bran->name; ?></p>
-						</div>	
-						<?php } ?>		
-					</div>
-					
-					
+					<?php } ?>
 				</div>
+			</div>
+	</div>
+</section>
+				
 				
