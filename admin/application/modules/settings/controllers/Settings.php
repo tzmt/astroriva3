@@ -96,8 +96,13 @@ class Settings extends MX_Controller{
 					move_uploaded_file($_FILES['brochure']['tmp_name'], $dir.$files.'.'.$ext);
 					$post_data['brochure'] = $files.'.'.$ext;
 				}
+				$post_data['facebook_url'] = $this->input->post('facebook_url');
+				$post_data['twitter_url'] = $this->input->post('twitter_url');
+				$post_data['youtube_url'] = $this->input->post('youtube_url');
 
 				$post_data = $this->security->xss_clean($post_data);
+
+				//print_r($post_data);exit();
 				
 				if($last_id = $this->settings_model->updateSettings($post_data))
 				{					
