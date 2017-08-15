@@ -112,7 +112,7 @@
                 </div>               
                 <hr class="hr_margin">
                 <div class="row common_margin">
-                    <div class="col-xs-12 first-set">
+                    <div class="col-xs-12">
                        <?php
                        $this->db->limit(4);
                        $this->db->order_by('id','DESC');
