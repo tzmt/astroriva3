@@ -23,7 +23,7 @@
 			<div class="container padding-bottom">
 				<div class="row text-center">
 					<div class="col-sm-12 section-title-two">
-						<h2>SERVICES</h2>
+						<h2>Branches</h2>
 					</div>	
 					<?php foreach($branch_list as $bran){ ?>
 					<?php $image = $this->db->get_where('branch_image',array('branch_id'=>$bran->id))->row()->image;?>	
