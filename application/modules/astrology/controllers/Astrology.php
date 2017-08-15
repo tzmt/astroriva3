@@ -55,6 +55,11 @@ class Astrology extends MX_Controller {
 			$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();				
 			$data['news'] = $this->astrology_model->getNews();
 			$data['all_data'] = $this->astrology_model->getRashiDetails($rashi);
+			//echo "<pre>";print_r($data['all_data'] );exit();
+			$data['title'] = $rashi." Astrology - Astroriva.com";
+			$data['description'] = substr($data['all_data'][0]->description, 0,120);
+
+
 			$this->layout->view('details',$data,'normal');
 		}
 	}
