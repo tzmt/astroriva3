@@ -44,8 +44,6 @@
 <link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/site_assets/cropping/demo/prism.css" />        
 <link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/site_assets/cropping/croppie.css" />
 <script src="<?php echo base_url(); ?>assets/site_assets/cropping/demo/prism.js"></script>
-<link rel="stylesheet" type="text/css" href="https://foliotek.github.io/Croppie/bower_components/sweetalert/dist/sweetalert.css" />
-<script src="https://foliotek.github.io/Croppie/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $('.cr-slider').css('display','none');
     $('input[type="range"]').hide();

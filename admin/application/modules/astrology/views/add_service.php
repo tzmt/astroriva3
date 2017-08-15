@@ -93,7 +93,27 @@
 									<div class="form-group">
 										<label class="control-label col-lg-2">Image</label>
 										<div class="col-lg-10">								
-												<input name="file" type="file" class="form-control input-sm" multiple />
+												<input name="file" type="file" role="button" data-toggle="modal" id="upload" class="form-control input-sm" multiple />	<br/>
+												<img src="" id="imggg" width="100%" height="auto" />
+												<input type="hidden" name="popimage" id="popimage" />
+
+												<div class="modal fade" id="EnSureModal" role="dialog">
+												    <div class="modal-dialog">
+												        <div class="modal-content">
+												            <div class="modal-header">
+												                <button type="button" class="close" data-dismiss="modal">&times;</button>
+												                <h4 class="modal-title">Upload Image </h4>
+												            </div>
+												            <div class="modal-body">
+												                <div class="upload-demo" style="margin-bottom: 50px;width: 100%;height: auto;"></div>	
+												            </div>
+												            <div class="modal-footer">
+												                <button type="button" class="btn btn-default upload-result" data-dismiss="modal" >Upload</button>
+												                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												            </div>
+												        </div>
+												    </div>
+												</div>
 									  	</div>													
 									</div><!-- /.col -->
 
@@ -168,6 +188,93 @@
 										  	</div><!-- /.modal-content -->
 										</div><!-- /.modal-dialog -->
 									</div><!-- /.modal -->
+										
+									<div class="modal fade" id="EditModal<?php echo $list->id; ?>">
+										<div class="modal-dialog">
+											<div class="modal-content">
+								  				<div class="modal-header">
+								    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4>Edit Service</h4>
+								  				</div>
+											    <div class="modal-body">
+										       <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>astrology/edit_service/" enctype="multipart/form-data">	
+													<div class="form-group">
+													<label for="inputEmail1" class="col-lg-2 control-label">Name</label>
+													<div class="col-lg-10">
+														<input type="text" name="name" value="<?php echo $list->name; ?>" class="form-control input-sm" id="inputEmail1" placeholder="Enter name" required>
+														<input type="hidden" name="id" value="<?php echo $list->id; ?>" />
+														<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+													</div><!-- /.col -->
+												</div><!-- /form-group -->
+
+												<div class="form-group">
+													<label for="inputEmail1" class="col-lg-2 control-label">Description</label>
+													<div class="col-lg-10">
+														<textarea name="description" class="form-control input-sm" id="inputEmail1" placeholder="Enter description" rows="7" required><?php echo $list->description; ?></textarea>											
+													</div><!-- /.col -->
+												</div><!-- /form-group -->  
+
+												<div class="form-group">
+													<label for="inputEmail1" class="col-lg-2 control-label">Type</label>
+													<div class="col-lg-10">									
+														<select name="service_type" class="form-control input-sm" required>											
+															<option value="">[select]</option>
+															<option value="1" <?php if($list->service_type == 1){echo "selected";} ?>>Horoscope</option>
+															<option value="2" <?php if($list->service_type == 2){echo "selected";} ?>>Match Making</option>
+														</select>
+													</div><!-- /.col -->
+												</div><!-- /form-group -->	
+
+												<div class="form-group">
+													<label for="inputEmail1" class="col-lg-2 control-label">Amount</label>
+													<div class="col-lg-10">
+														<input type="text" name="amount" value="<?php echo $list->amount; ?>" class="form-control input-sm" id="inputEmail1" placeholder="Enter amount" max="10" required>
+													</div><!-- /.col -->
+												</div><!-- /form-group -->	
+
+												<div class="form-group">
+													<label for="inputEmail1" class="col-lg-2 control-label">Discount</label>
+													<div class="col-lg-10">
+														<input type="text" name="discount" class="form-control input-sm" value="<?php echo $list->discount; ?>" id="inputEmail1" placeholder="Enter discount" required>
+													</div><!-- /.col -->
+												</div><!-- /form-group -->	
+
+												<div class="form-group">
+													<label class="control-label col-lg-2">Upload</label>
+													<div class="col-lg-10">								
+														<input name="file" type="file" atr="<?php echo $list->id; ?>" class="form-control input-sm upload1" multiple />
+														<input type="hidden" name="oldimage" value="<?php echo $list->image; ?>" />
+														<img src="" class="imggg1" width="100%" height="auto" />
+														<input type="hidden" name="popimage1" class="popimage1" />
+													</div>													
+												</div>
+
+												    
+												    <div class="modal-footer">
+												        <button class="btn btn-sm btn-success upload-result1" type="submit" aria-hidden="true">Save Changes</button>
+												        <button class="btn btn-sm btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>	
+											    	</div>
+									    		</form>
+										  	</div><!-- /.modal-content -->
+										</div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 									<?php } } else { ?>
 									<tr>
 										<td colspan="6" style="color:red;text-align:center">No records found</td>										
@@ -178,78 +285,86 @@
 							</div>
 						</div><!-- /panel -->
 
-						<?php foreach($service as $key=> $prid){ ?>
-						<div class="modal fade" id="EditModal<?php echo $prid->id; ?>">
-							<div class="modal-dialog">
-								<div class="modal-content">
-					  				<div class="modal-header">
-					    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h4>Edit Service</h4>
-					  				</div>
-								    <div class="modal-body">
-							       <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>astrology/edit_service/" enctype="multipart/form-data">	
-										<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Name</label>
-										<div class="col-lg-10">
-											<input type="text" name="name" value="<?php echo $prid->name; ?>" class="form-control input-sm" id="inputEmail1" placeholder="Enter name" required>
-											<input type="hidden" name="id" value="<?php echo $prid->id; ?>" />
-											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-										</div><!-- /.col -->
-									</div><!-- /form-group -->
-
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Description</label>
-										<div class="col-lg-10">
-											<textarea name="description" class="form-control input-sm" id="inputEmail1" placeholder="Enter description" rows="7" required><?php echo $prid->description; ?></textarea>											
-										</div><!-- /.col -->
-									</div><!-- /form-group -->  
-
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Type</label>
-										<div class="col-lg-10">									
-											<select name="service_type" class="form-control input-sm" required>											
-												<option value="">[select]</option>
-												<option value="1" <?php if($prid->service_type == 1){echo "selected";} ?>>Horoscope</option>
-												<option value="2" <?php if($prid->service_type == 2){echo "selected";} ?>>Match Making</option>
-											</select>
-										</div><!-- /.col -->
-									</div><!-- /form-group -->	
-
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Amount</label>
-										<div class="col-lg-10">
-											<input type="text" name="amount" value="<?php echo $prid->amount; ?>" class="form-control input-sm" id="inputEmail1" placeholder="Enter amount" max="10" required>
-										</div><!-- /.col -->
-									</div><!-- /form-group -->	
-
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Discount</label>
-										<div class="col-lg-10">
-											<input type="text" name="discount" class="form-control input-sm" value="<?php echo $prid->discount; ?>" id="inputEmail1" placeholder="Enter discount" required>
-										</div><!-- /.col -->
-									</div><!-- /form-group -->	
-
-									<div class="form-group">
-										<label class="control-label col-lg-2">Upload</label>
-										<div class="col-lg-10">								
-											<input name="file" type="file" class="form-control input-sm" multiple />
-										</div>													
-									</div>
-
-									    
-									    <div class="modal-footer">
-									        <button class="btn btn-sm btn-success" type="submit" aria-hidden="true">Save Changes</button>
-									        <button class="btn btn-sm btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>	
-								    	</div>
-						    		</form>
-							  	</div><!-- /.modal-content -->
-							</div><!-- /.modal-dialog -->
-						</div><!-- /.modal -->
-
-						<?php } ?>
+						
 					</div><!-- /.col -->					
 				</div>							
 			</div>
 		</div>
 	</div><!-- /main-container -->
 </div><!-- /wrapper -->
+
+
+<script src="<?php echo SITE_URL; ?>assets/site_assets/js/jquery.min.js"></script>
+<script src="<?php echo SITE_URL; ?>assets/site_assets/cropping/croppie.js"></script>
+
+<script type="text/javascript">
+
+function readFile(input)
+{
+	if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+			$('.upload-demo').addClass('ready');
+        	$uploadCrop.croppie('bind', {
+        		url: e.target.result
+        	}).then(function(){
+        		$('.cr-slider').show();
+        		$('.croppie-container').css('width','100%').css('height','250px');
+        	});
+        	
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+    else {
+        alert("Sorry - you're browser doesn't support the FileReader API");
+    }
+}
+
+$uploadCrop = $('.upload-demo').croppie({
+	viewport: {
+		width: 300,
+		height: 200,
+		type: 'rectangle'
+	},
+	enableExif: true
+});
+
+var abce = null;
+$('#upload').on('change', function () { $('#EnSureModal').modal();readFile(this); });
+
+$('.upload1').on('change', function () { 
+
+	var id = $(this).attr('atr');
+	abce = id;
+	$('#EditModal'+id).modal('hide');
+	$('#EnSureModal').modal();
+	readFile(this);
+
+ });
+
+$('.upload-result').on('click', function (ev) {
+
+	$uploadCrop.croppie('result', {
+
+		type: 'canvas',
+		size: 'viewport'
+	}).then(function (resp) {		
+		if(abce  == null)
+		{	
+			$('#imggg').attr('src',resp);
+			$('#popimage').val(resp);
+			$('#EnSureModal').modal('toggle');
+		}
+		else
+		{
+			$('.imggg1').attr('src',resp);
+			$('.popimage1').val(resp);		
+			$('#EnSureModal').modal('hide');
+			$('#EditModal'+abce).modal('show');
+		}
+	});
+});
+
+</script>

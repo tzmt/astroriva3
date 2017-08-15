@@ -272,5 +272,16 @@
 	<script src="<?php echo ASSETS; ?>js/app/app.js"></script>
 	<?php } ?>
 	
+
+<?php if($this->uri->segment(1) == 'astrology'){ ?>
+<script src="<?php echo SITE_URL; ?>assets/site_assets/cropping/croppie.js"></script>
+<link rel="Stylesheet" type="text/css" href="<?php echo SITE_URL; ?>assets/site_assets/cropping/demo/prism.css" />        
+<link rel="Stylesheet" type="text/css" href="<?php echo SITE_URL; ?>assets/site_assets/cropping/croppie.css" />
+<script src="<?php echo SITE_URL; ?>assets/site_assets/cropping/demo/prism.js"></script>
+<script>
+    $('.cr-slider').css('display','none');
+    $('input[type="range"]').hide();
+</script>
+<?php } ?>
   </body>
 </html>

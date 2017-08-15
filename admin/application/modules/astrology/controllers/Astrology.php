@@ -471,10 +471,22 @@ class Astrology extends MX_Controller{
 				$files = time().rand(00000,99999).'.'.$ext;
 				move_uploaded_file($_FILES['file']['tmp_name'], $dir.$files);
 
-				$dir = '../assets/services/image/';
-				$ext = end(explode('.',$_FILES['file1']['name']));
-				$files1 = str_replace(" ","-",$_FILES['file1']['name']).rand(00000,99999).'.'.$ext;
-				move_uploaded_file($_FILES['file1']['tmp_name'], $dir.$files1);
+				// $dir = '../assets/services/image/';
+				// $ext = end(explode('.',$_FILES['file1']['name']));
+				// $files1 = str_replace(" ","-",$_FILES['file1']['name']).rand(00000,99999).'.'.$ext;
+				// move_uploaded_file($_FILES['file1']['tmp_name'], $dir.$files1);
+
+
+				$data = $this->input->post('popimage');			
+
+				list($type, $data) = explode(';', $data);
+				list(, $data)      = explode(',', $data);
+				$data = base64_decode($data);
+				$image = rand(00000,99999).time();
+
+				file_put_contents('../assets/services/image/'.$image, $data);
+
+
 
 
 
@@ -483,7 +495,7 @@ class Astrology extends MX_Controller{
 				$post_data['amount'] = $this->input->post('amount');
 				$post_data['discount'] = $this->input->post('discount');
 				$post_data['sample_pdf'] = $files;
-				$post_data['image'] = $files1;
+				$post_data['image'] = $image;
 
 				$post_data['description'] = $this->input->post('description');
 				
@@ -512,19 +524,31 @@ class Astrology extends MX_Controller{
 	{
 		if($this->input->post())
 		{
-			if($_FILES['file']['error'] != 4)
+			if(isset($_POST['popimage1']) && $_POST['popimage1'] != "")
 			{
-				$dir = '../assets/service/';
-				$ext = end(explode('.',$_FILES['file']['name']));
-				$files = time().rand(00000,99999).'.'.$ext;
-				move_uploaded_file($_FILES['file']['tmp_name'], $dir.$files);
-				$post_data['sample_pdf'] = $files;
+				// $dir = '../assets/service/image/';
+				// $ext = end(explode('.',$_FILES['file']['name']));
+				// $files = time().rand(00000,99999).'.'.$ext;
+				// move_uploaded_file($_FILES['file']['tmp_name'], $dir.$files);
+				// $post_data['sample_pdf'] = $files;
+
+				$data = $this->input->post('popimage1');			
+
+				list($type, $data) = explode(';', $data);
+				list(, $data)      = explode(',', $data);
+				$data = base64_decode($data);
+				$image = rand(00000,99999).time();
+
+				file_put_contents('../assets/services/image/'.$image, $data);
+
+				@unlink('../assets/services/image/'.$_POST['oldimage']);
 			}
 			
 			$post_data['name'] = $this->input->post('name');
 			$post_data['service_type'] = $this->input->post('service_type');
 			$post_data['amount'] = $this->input->post('amount');
 			$post_data['discount'] = $this->input->post('discount');
+			$post_data['image'] = $image;
 			$id = $this->input->post('id');
 
 			$post_data = $this->security->xss_clean($post_data);
