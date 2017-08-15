@@ -13,16 +13,14 @@ class Shop_model extends CI_Model{
     }
 
     public function getProducts($lim_to,$lim_from,$cat="")
-    {
+    {       
         if($cat == "")
         {            
             $this->db->limit($lim_to,$lim_from); 
             return $q = $this->db->get_where('shop_product',array('type'=>1))->result();
         }
         else
-        {              
-            $id = $this->db->get_where('shop_category',array('name'=>$cat))->row()->id;
-
+        {
             $this->db->limit($lim_to,$lim_from); 
             return $q = $this->db->get_where('shop_product',array('sub_category_id'=>$cat,'type'=>'1'))->result();
         }
@@ -37,7 +35,7 @@ class Shop_model extends CI_Model{
     public function getProductDetails($id)
     {               
             $this->db->where('shop_product.id',$id);
-            return $q = $this->db->select('shop_product.name,shop_product.price,shop_product.quantity,product_images.image,shop_product.dimension,shop_product.weight,shop_product.refractive_index,shop_product.specific_gravity,shop_product.product_type,shop_product.id')->from('shop_product')->join('product_images','product_images.product_id = shop_product.id')->get()->row();
+            return $q = $this->db->select('shop_product.details,shop_product.name,shop_product.price,shop_product.quantity,product_images.image,shop_product.dimension,shop_product.weight,shop_product.refractive_index,shop_product.specific_gravity,shop_product.product_type,shop_product.id')->from('shop_product')->join('product_images','product_images.product_id = shop_product.id')->get()->row();
     }
 
     public function getProductReviews($id)

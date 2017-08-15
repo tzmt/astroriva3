@@ -73,14 +73,14 @@
 					                	<?php
 					                		$this->db->limit(5);
 					                		$this->db->order_by('tips.id','DESC');
-											$tips = $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->where('astrologer.id',$this->uri->segment(2))->get()->result();
+											$tips = $this->db->select('tips.astrologers_id,tips.topic,tips.description,astrologer.name,astrologer.image,rashi_list.name as rashi_name')->from('tips')->join('astrologer','tips.astrologers_id = astrologer.id','left')->join('rashi_list','tips.rashi_id = rashi_list.id','left')->where('astrologer.id',$this->uri->segment(2))->get()->result();
 					                	?>                 
 					                        <?php foreach($tips as $tip){ ?>
 						                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
-						                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
+						                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="50px" height="50px" class="img-circle"></div>
 						                            <div class="col-md-9">						                            	
 						                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-						                            	<span><?php echo $tip->description; ?></span>
+						                            	<span><?php echo substr($tip->description,0,50); ?>&nbsp; <a href="<?php echo base_url(); ?>astrology/<?php echo $tip->rashi_name; ?>/tips-and-remedy"><strong>Read More</strong></a></span>
 						                            </div>
 						                        </div>
 

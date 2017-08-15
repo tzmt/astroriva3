@@ -42,6 +42,9 @@ class Contact extends MX_Controller {
 		else
 		{
 			$data = array();
+			$data['title'] = "Contact Us - Astroriva.com";
+			$data['description'] = "If you ever have any problem related to any thing, don't hesitate to contact us. We will reply within 1 business days.";
+
 			$this->layout->view('contact',$data,'normal');
 		}		
 	}

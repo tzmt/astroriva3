@@ -26,18 +26,31 @@ class Astrologer_list extends MX_Controller {
 		{			
 			$data['astrologers'] = $this->astrologer_list_model->getAstrologersList(1);	
 			//$data['products'] = $this->astrologer_model->getRelatedProducts();
+
+			$data['title'] = "Premium Astrologers - Astroriva.com";
+			$data['description'] = "Below are the list of premium astrologers of astroriva.com";
+
 			$this->layout->view('astrologer_list',$data,'normal');
 		}
 		else if($type == 'pannelled')
 		{
 			$data['astrologers'] = $this->astrologer_list_model->getAstrologersList(2);	
 			//$data['products'] = $this->astrologer_model->getRelatedProducts();
+
+			$data['title'] = "Panelled Astrologers - Astroriva.com";
+			$data['description'] = "Below are the list of panelled astrologers of astroriva.com";
+
 			$this->layout->view('astrologer_list',$data,'normal');
 		}
 		else if($type == 'normal')
 		{
 			$data['astrologers'] = $this->astrologer_list_model->getAstrologersList(0);	
 			//$data['products'] = $this->astrologer_model->getRelatedProducts();
+
+			$data['title'] = "Normal Astrologers - Astroriva.com";
+			$data['description'] = "Below are the list of normal astrologers of astroriva.com";
+
+
 			$this->layout->view('astrologer_list',$data,'normal');
 		}
 		else

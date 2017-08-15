@@ -14,6 +14,9 @@ class Gallery extends MX_Controller {
 	public function index()
 	{
 		$data['gallery'] = $this->db->get('gallery')->result();
+
+		$data['title'] = "Gallery - Astroriva.com";
+		$data['description'] = "Here contains some of the precious moments captured in our photo.";
 		$this->layout->view('gallery',$data,'normal');				
 	}
 }

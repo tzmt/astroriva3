@@ -62,7 +62,8 @@ class Login extends MX_Controller {
 		}
 		else
 		{
-			$data = array();
+			$data['title'] = "Login - Astroriva";
+			$data['description'] = "Login to your account and explore the awesomeness.";			
 			$this->layout->view('home',$data,'home1');			
 		}
 	}

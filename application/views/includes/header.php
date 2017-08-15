@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Homepage | Astrology</title>
+    <meta name="description" content="<?php echo $description; ?>">
+    <meta name="author" content="RRishibani">
+    <title><?php echo $title; ?></title>
     <!--=============== Global Css Start ===============-->
     <link href="<?php echo URL; ?>assets/site_assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo URL; ?>assets/site_assets/css/font-awesome.min.css" rel="stylesheet">

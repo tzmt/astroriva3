@@ -47,10 +47,10 @@
 							</td>
 							<td class="cart_description">
 								<h4><a href="#"><?php echo $cart['name']; ?></a></h4>		
-								<p>Dimension: <?php echo $cart['options']['dimension']; ?></p>															
-								<p>Specifiv Gravity: <?php echo $cart['options']['specific_gravity']; ?></p>	
-								<p>Refractive Index: <?php echo $cart['options']['refractive_index']; ?></p>	
-								<p>Weight: <?php echo $cart['options']['weight']; ?></p>	
+								Dimension: <?php echo $cart['options']['dimension']; ?><br/>															
+								Specifiv Gravity: <?php echo $cart['options']['specific_gravity']; ?><br/>
+								Refractive Index: <?php echo $cart['options']['refractive_index']; ?><br/>
+								Weight: <?php echo $cart['options']['weight']; ?><br/>	
 							</td>
 							<td class="cart_price">
 								<p><i class="fa fa-rupee"></i><?php echo $cart['price']; ?></p>

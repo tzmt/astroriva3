@@ -30,6 +30,11 @@ class Astrology extends MX_Controller {
 			//$data['all_data'] = $this->astrology_model->getRashiPrediction($rashi);
 			$data['prediction'] = $this->astrology_model->getRashiPredictionByAstrologers($rashi);
 			//echo "<pre>";print_r($data['prediction']);exit();
+
+			$data['title'] = "Astrology Prediction - Astroriva.com";
+			$data['description'] = "Below are the list of prediction made by our astrologers of astroriva.com";
+
+
 			$this->layout->view('prediction',$data,'normal');						
 		}
 		else if($type == 'tips-and-remedy')
@@ -59,6 +64,10 @@ class Astrology extends MX_Controller {
 		$data['pannelled_astrologers'] = $this->astrology_model->getPannelledAstrologers();	
 		$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();	
 		$data['news'] = $this->astrology_model->getNews();	
+
+		$data['title'] = "Get Your Prediction - Astroriva.com";
+		$data['description'] = "Get your prediction made by our experts astrologers of Astroriva.com";
+
 		$this->layout->view('my_prediction',$data,'normal');
 				
 	}
@@ -72,6 +81,11 @@ class Astrology extends MX_Controller {
 
 		$data['prediction'] = $this->astrology_model->getRashiTipsByAstrologers($rashi);
 		//echo "<pre>";print_r($data['prediction']);exit();
+
+		$data['title'] = "Tips & Remedy - Astroriva.com";
+		$data['description'] = "List of Tips & Remedy made by our astrolgers of Astroriva.com";
+
+
 		$this->layout->view('tips',$data,'normal');			
 	}
 
@@ -83,6 +97,11 @@ class Astrology extends MX_Controller {
 		//$data['all_data'] = $this->astrology_model->getRashiTips($rashi);
 
 		$data['prediction'] = $this->astrology_model->getRashiMarketByAstrologers($rashi);
+
+		$data['title'] = "Market Prediction - Astroriva.com";
+		$data['description'] = "List of Market Prediction made by our astrolgers of Astroriva.com";
+
+
 		//echo "<pre>";print_r($data['prediction']);exit();
 		$this->layout->view('tips',$data,'normal');			
 	}
@@ -91,6 +110,10 @@ class Astrology extends MX_Controller {
 	{
 		$data['video_category'] = $this->db->get('video_category')->result();
 		$data['video_list'] = $this->db->get('video')->result();
+
+		$data['title'] = "Video Class - Astroriva.com";
+		$data['description'] = "List of Premium astology videos to help you learn astrology at the peace of your home.";
+
 		$this->layout->view('video_class',$data,'home1');
 	}
 
@@ -99,14 +122,24 @@ class Astrology extends MX_Controller {
 		$data['branch_list'] = $this->astrology_model->getBranchList();
 		$data['pannelled_astrologers'] = $this->astrology_model->getPannelledAstrologers();	
 		$data['premium_astrologers'] = $this->astrology_model->getPremiumAstrologers();	
-		$data['news'] = $this->astrology_model->getNews();		
+		$data['news'] = $this->astrology_model->getNews();	
+
+		$data['title'] = "Astrology Branch - Astroriva.com";
+		$data['description'] = "List of Premium astology videos to help you learn astrology at the peace of your home.";
+
+
 		$this->layout->view('branch',$data,'home1');
 	}
 
 	public function branches_details()
 	{
 		$data['all_data'] = $this->astrology_model->getBranchDetails($this->uri->segment(3));
-		$data['tips'] = $this->astrology_model->getTips();			
+		$data['tips'] = $this->astrology_model->getTips();	
+
+		$data['title'] = $data['all_data']->name." - Astroriva.com";
+		$data['description'] = substr($data['all_data']->details,0,120);
+
+
 		$this->layout->view('branch_details',$data,'home1');
 	}
 
@@ -114,6 +147,10 @@ class Astrology extends MX_Controller {
 	{
 		$data['all_data'] = $this->db->order_by('id','DESC')->get('ayurved')->result();
 		$data['news'] = $this->astrology_model->getNews();	
+
+		$data['title'] = "Ayurved - Astroriva.com";
+		$data['description'] = "List of ayurved topics to help you stay life for life.";
+
 		$this->layout->view('ayurved',$data,'home1');
 	}
 
@@ -129,6 +166,10 @@ class Astrology extends MX_Controller {
 			{
 				$data['news'] = $this->astrology_model->getNews();	
 				$data['tips'] = $this->astrology_model->getTips();
+
+				$data['title'] = $data['all_data']->topic." - Astroriva.com";
+				$data['description'] = substr($data['all_data']->details,0,120);
+
 				$this->layout->view('ayurved_details',$data,'home1');
 			}
 			else
@@ -142,6 +183,11 @@ class Astrology extends MX_Controller {
 	{
 		$data['all_data'] = $this->db->order_by('id','DESC')->get('yoga')->result();
 		$data['news'] = $this->astrology_model->getNews();	
+
+		$data['title'] = "Yoga - Astroriva.com";
+		$data['description'] = "List of Yoga topics to help you stay life for life.";
+
+
 		$this->layout->view('yoga',$data,'home1');
 	}
 
@@ -157,6 +203,10 @@ class Astrology extends MX_Controller {
 			{
 				$data['news'] = $this->astrology_model->getNews();	
 				$data['tips'] = $this->astrology_model->getTips();	
+
+				$data['title'] = $data['all_data']->topic." - Astroriva.com";
+				$data['description'] = substr($data['all_data']->details,0,120);
+				
 				$this->layout->view('yoga_details',$data,'home1');
 			}
 			else
@@ -168,6 +218,10 @@ class Astrology extends MX_Controller {
 	public function shiksha()
 	{
 		$data['course_list'] = $this->db->get('course')->result();		
+
+		$data['title'] = "Shiksha - Astroriva.com";
+		$data['description'] = "We provide various astrological courses for out customers and students to help them learn astrology.";
+
 		$this->layout->view('shiksha',$data,'home1');
 	}
 
@@ -216,7 +270,11 @@ class Astrology extends MX_Controller {
 
 	public function services()
 	{
-		$data['all_data'] = $this->db->get('astrology_service')->result();		
+		$data['all_data'] = $this->db->get('astrology_service')->result();
+
+		$data['title'] = "Astrologucal Services - Astroriva.com";
+		$data['description'] = "Astroriva provides various services at a very cheap price to solve our customers problems.";
+
 		$this->layout->view('services',$data,'home1');
 	}
 
@@ -226,6 +284,10 @@ class Astrology extends MX_Controller {
 		$data['all_data'] = $this->db->get_where('astrology_service',array('id'=>$id))->row();
 		$data['news'] = $this->astrology_model->getNews();	
 		$data['tips'] = $this->astrology_model->getTips();	
+
+		$data['title'] = $data['all_data']->name." - Astroriva.com";
+		$data['description'] = substr($data['all_data']->description,0,120);
+
 		$this->layout->view('service_details',$data,'home1');
 	}
 
@@ -244,7 +306,10 @@ class Astrology extends MX_Controller {
 
 	public function branches1()
 	{
-		$data['course_list'] = $this->db->get('astrology_branches')->result();		
+		$data['course_list'] = $this->db->get('astrology_branches')->result();	
+
+		$data['title'] = "Astrology Centers - Astroriva.com";
+		$data['description'] = "There are various astrology branches to help you learn more about astrology.";	
 		$this->layout->view('astro_branches',$data,'home1');
 	}
 }

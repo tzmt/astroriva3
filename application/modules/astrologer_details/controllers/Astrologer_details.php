@@ -18,6 +18,10 @@ class Astrologer_details extends MX_Controller {
 		$data['all_data'] = $this->astrologer_model->getAstrologerDetails($this->uri->segment(2));
 		$data['astrologers'] = $this->astrologer_model->getAstrologers($this->uri->segment(2));	
 		$data['products'] = $this->astrologer_model->getRelatedProducts();
+
+		$data['title'] = $data['all_data']->name." - Astrologers - Astroriva.com";
+		$data['description'] = $data['all_data']->details;
+
 		$this->layout->view('astrologer_details',$data,'normal');
 	}
 
@@ -26,7 +30,12 @@ class Astrologer_details extends MX_Controller {
 		$id = $this->uri->segment(2);
 		$data['pannelled_astrologers'] = $this->astrologer_model->getPannelledAstrologers();	
 		$data['premium_astrologers'] = $this->astrologer_model->getPremiumAstrologers();	
-		$data['products'] = $this->db->get_where('shop_product',array('astrologers_id'=>$id))->result();		
+		$data['products'] = $this->db->get_where('shop_product',array('astrologers_id'=>$id))->result();
+
+		$data['title'] = "Products - Astrologers - Astroriva.com";
+		$data['description'] = "Below are the products from our different astrologers of astroriva.com";
+
+
 		$this->layout->view('products',$data,'normal');
 	}
 
@@ -69,6 +78,10 @@ class Astrologer_details extends MX_Controller {
 			$data['pannelled_astrologers'] = $this->astrologer_model->getPannelledAstrologers();	
 			$data['premium_astrologers'] = $this->astrologer_model->getPremiumAstrologers();	
 			$data['products'] = $this->astrologer_model->getRelatedProducts();
+
+			$data['title'] = "Santanu Shastri - The Acharya - Astroriva.com";
+			$data['description'] = "Book appointment of Santanu Shastri online.";
+
 			$this->layout->view('appointment',$data,'normal');
 		}		
 	}
@@ -114,6 +127,9 @@ class Astrologer_details extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = " Santanu Shastri - The Acharya - Astroriva.com";
+			$data['description'] = "Book appointment of Santanu Shastri online.";
+
 			$data['dates'] = $this->astrologer_model->getAppointmentDates();		
 			$data['astrologers'] = $this->astrologer_model->getAstrologers($this->uri->segment(2));	
 			$data['products'] = $this->astrologer_model->getRelatedProducts();
@@ -173,6 +189,11 @@ class Astrologer_details extends MX_Controller {
 			$id = $this->uri->segment(5);
 			$data['all_data'] = $this->db->get_where('shop_product',array('id'=>$id))->row();
 			$data['countries'] = $this->astrologer_model->getCountries();
+
+			$data['title'] = $data['all_data']->name." - Products - Astroriva.com";
+			$data['description'] = $data['all_data']->description;
+
+
 			$this->layout->view('product_details',$data,'normal');
 		}
 		

@@ -31,7 +31,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<?php if($q->num_rows() > 0){ ?>
-									<a data-toggle="collapse" data-parent="#accordian" href="#<?php echo strtolower($cat->name); ?>">
+									<a data-toggle="collapse" data-parent="#accordian" href="#<?php echo str_replace(" ","_",strtolower($cat->name)); ?>" >
 										<span class="badge pull-right"><i class="fa fa-plus"></i></span>
 										<?php echo $cat->name; ?>
 									</a>
@@ -41,7 +41,7 @@
 								</h4>
 							</div>
 							<?php if($q->num_rows() > 0){ ?>
-							<div id="<?php echo strtolower($cat->name); ?>" class="panel-collapse collapse">
+							<div id="<?php echo str_replace(" ","_",strtolower($cat->name)); ?>" class="panel-collapse collapse">
 								<div class="panel-body">
 									<ul>
 										<?php $q1 = $q->result(); ?>
@@ -101,3 +101,11 @@
 		</div>
 	</div>
 </section>
+
+<script>
+	function showhideToggle(value)
+	{
+		alert();
+		$('#'+value).show().slideDown();
+	}
+</script>

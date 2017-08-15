@@ -271,7 +271,6 @@
 	<script src="<?php echo ASSETS; ?>js/app/app_form.js"></script>
 	<script src="<?php echo ASSETS; ?>js/app/app.js"></script>
 	<?php } ?>
-
 	
   </body>
 </html>

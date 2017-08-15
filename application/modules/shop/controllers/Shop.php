@@ -68,6 +68,10 @@ class Shop extends MX_Controller {
 		$this->load->library('pagination');		
 		$this->pagination->initialize($config);
 		$data['links'] = $this->pagination->create_links();
+
+		$data['title'] = "Products - Astroriva.com";
+		$data['description'] = "Here you can buy products with much cheaper price and live your life the way you want.";
+
 		$this->layout->view('shop',$data,'home1');
 	}
 
@@ -79,7 +83,7 @@ class Shop extends MX_Controller {
 
 		$this->load->library('pagination');
 
-		echo $id = $this->db->get_where('shop_category',array('name'=>$slug))->row()->id;
+		$id = $this->db->get_where('shop_category',array('name'=>$slug))->row()->id;
 
 		$config['base_url'] = base_url().'shop/category/'.$cat."/".$slug."/";
 		$config['total_rows'] = $this->db->get_where('shop_product',array('type'=>1,'category_id'=>$id))->num_rows();
@@ -132,16 +136,25 @@ class Shop extends MX_Controller {
 		$this->pagination->initialize($config);
 		$data['links'] = $this->pagination->create_links();	
 		$data['products'] = $this->shop_model->getProducts($config['per_page'], $start,$id);
+
+		$data['title'] = "Products - Astroriva.com";
+		$data['description'] = "Here you can buy products with much cheaper price and live your life the way you want.";
+
+
 		$this->layout->view('shop',$data,'home1');
 	}
 
 	public function details($product_id)
 	{
 		$data['category'] = $this->shop_model->getCategory();		
-		$data['product_details'] = $this->shop_model->getProductDetails($product_id);
+		$data['product_details'] = $this->shop_model->getProductDetails($product_id);		
 		$data['product_reviews'] = $this->shop_model->getProductReviews($product_id);
 		$data['related_products'] = $this->shop_model->getRelatedProducts($product_id);
 		//echo "<pre>";print_r($data['related_products']);exit();
+
+		$data['title'] = $data['product_details']->name." - Astroriva.com";
+		$data['description'] = substr($data['product_details']->details,0,120);
+
 		$this->layout->view('details',$data,'home1');
 	}
 
@@ -153,6 +166,9 @@ class Shop extends MX_Controller {
         $data['category'] = $this->shop_model->getCategory(); 
         $data['links'] = "";     
 		$data['products'] = $this->shop_model->getProductsSearch($search);
+
+		$data['title'] = "Search Products - Astroriva.com";
+		$data['description'] = "";
 		$this->layout->view('shop',$data,'home1');
 	}
 
@@ -180,7 +196,7 @@ class Shop extends MX_Controller {
 		
 	}
 
-	public function add()
+	public function add($pid)
 	{
 		if($this->input->post())
 		{
@@ -205,13 +221,14 @@ class Shop extends MX_Controller {
 			//echo "<pre>";print_r($this->cart->contents());exit();
 			$this->session->set_flashdata('success','Product added successfully');	
 			//$this->cart->destroy();		
-			redirect('shop/details/'.str_replace(' ','-',$this->input->post('name')));
+			redirect('shop/details/'.$pid."/".str_replace(' ','-',$this->input->post('name')));
 		}
 	}
 
 	public function cart()
 	{
-		$data = array();
+		$data['title'] = "Cart Page - Astroriva.com";
+		$data['description'] = "Contains the products in your cart.";
 		$this->layout->view('cart',$data,'home1');
 	}
 
@@ -308,6 +325,9 @@ class Shop extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = "Checkout Page - Astroriva.com";
+			$data['description'] = "Contains the products in your cart.";
+
 			$data['countries'] = $this->shop_model->getCountries();
 			$this->layout->view('checkout',$data,'home1');
 		}

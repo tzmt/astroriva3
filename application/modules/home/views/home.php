@@ -72,12 +72,12 @@
                 <h1 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">Tips &amp; Remedy</h1>
                 <hr class="hr_margin">
                 <div class="row common_margin">
-                    <div class="col-xs-12 font16">
+                    <div class="col-xs-12">
                     <?php foreach($tips1 as $tip){ ?>
 	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
 	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"  width="53px" height="53px"></div>
 	                            <div class="col-md-9">
-	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
+	                            	<span style="color:#e36480"><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $tip->astrologers_id; ?>/details"><?php echo $tip->name; ?></a></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
 	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/tips-and-remedy'><strong>Read More...</strong></a>"; ?></span>
 	                            </div>
@@ -90,18 +90,20 @@
             <div class="col-md-4 m-t-40">
                 <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.1s">Market Prediction</h1>
                 <hr>
-                <div class="row common_margin">                    
+                <div class="row common_margin">   
+                    <div class="col-xs-12">                 
                         <?php foreach($tips as $tip){ ?>
 	                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
 	                            <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle" width="53px" height="53px"></div>
 	                            <div class="col-md-9">
-	                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
+	                            	<span style="color:#e36480"><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $tip->astrologers_id; ?>/details"><?php echo $tip->name; ?></a></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
 	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/market-prediction'><strong>Read More...</strong></a>"; ?></span>
 	                            </div>
 	                        </div>
 
                         <?php } ?>
+                    </div>.
                 </div>
             </div>
             <div class="col-md-4 m-t-40">

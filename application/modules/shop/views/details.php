@@ -99,7 +99,7 @@
             ?>  
                 
                 <span>
-                    <form method="POST" action="<?php echo base_url(); ?>shop/add/">
+                    <form method="POST" action="<?php echo base_url(); ?>shop/add/<?php echo $this->uri->segment(3); ?>">
                         <h2><span><i class="fa fa-rupee"></i> <?php echo $product_details->price; ?></span></h2>
                         <label>Quantity:</label>
                         <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />

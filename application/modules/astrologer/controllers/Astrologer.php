@@ -24,6 +24,9 @@ class Astrologer extends MX_Controller {
 
 	public function dashboard()
 	{		
+		$data['title'] = "Dashboard - Astroriva";
+		$data['description'] = "";
+
 		$data['all_data'] = $this->astrologer_model->getAstrologerDetails();			
 		$this->layout->view('dashboard',$data,'astrologer');
 	}
@@ -63,6 +66,8 @@ class Astrologer extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = "Profile Details - Astroriva";
+			$data['description'] = "";
 			$data['astrologers'] = $this->astrologer_model->getAstrologers();
 			$data['all_data'] = $this->astrologer_model->getAstrologerData();	
 			$this->layout->view('edit_profile',$data,'astrologer');
@@ -271,6 +276,9 @@ class Astrologer extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = "Tips Management - Astroriva";
+			$data['description'] = "";
+
 			$data['astrologers'] = $this->astrologer_model->getAstrologers();
 			$data['rashi_list'] = $this->astrologer_model->getRashi();
 			$data['all_data'] = $this->astrologer_model->getAstrologerData();
@@ -310,7 +318,10 @@ class Astrologer extends MX_Controller {
 			}
 		}
 		else
-		{			
+		{		
+			$data['title'] = "Add Prediction - Astroriva";
+			$data['description'] = "";
+
 			$data['rashi_list'] = $this->astrologer_model->getRashi();
 			$data['all_data'] = $this->astrologer_model->getAstrologerData();
 			$data['prediction'] = $this->astrologer_model->getPrediction();	
@@ -350,6 +361,9 @@ class Astrologer extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = "Add Market Prediction - Astroriva";
+			$data['description'] = "";
+
 			$data['astrologers'] = $this->astrologer_model->getAstrologers();
 			$data['rashi_list'] = $this->astrologer_model->getRashi();
 			$data['all_data'] = $this->astrologer_model->getAstrologerData();
@@ -527,6 +541,9 @@ class Astrologer extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = "Password Change - Astroriva";
+			$data['description'] = "";
+
 			$data['astrologers'] = $this->astrologer_model->getAstrologers();
 			$data['rashi_list'] = $this->astrologer_model->getRashi();
 			$data['all_data'] = $this->astrologer_model->getAstrologerData();
@@ -583,7 +600,10 @@ class Astrologer extends MX_Controller {
 			}
 		}
 		else
-		{			
+		{		
+			$data['title'] = "Add Products - Astroriva";
+			$data['description'] = "";
+
 			$data['category'] = $this->astrologer_model->getCategory();	
 			$this->layout->view('add_products',$data,'astrologer');
 		}	
@@ -664,6 +684,9 @@ class Astrologer extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = "List Products - Astroriva";
+			$data['description'] = "";
+
 			$data['products'] = $this->astrologer_model->getUserProduct();
 			$data['category'] = $this->astrologer_model->getCategory();	
 			$this->layout->view('list_products',$data,'astrologer');
@@ -705,7 +728,10 @@ class Astrologer extends MX_Controller {
 			}
 		}
 		else
-		{			
+		{		
+			$data['title'] = "Add Branch - Astroriva";
+			$data['description'] = "";
+
 			$data['all_data'] = $this->astrologer_model->getBranchList();
 			$data['tips'] = $this->astrologer_model->getTips();	
 			$this->layout->view('add_branch',$data,'astrologer');
@@ -714,6 +740,9 @@ class Astrologer extends MX_Controller {
 
 	public function orders()
 	{
+		$data['title'] = "Orders List - Astroriva";
+		$data['description'] = "";
+
 		$data['order_list'] = $this->db->order_by('id','DESC')->get_where('orders',array('astrologers_id'=>$this->session->userdata('astro_astrologer')->id))->result();
 		$this->layout->view('orders',$data,'astrologer');
 	}
@@ -782,6 +811,9 @@ class Astrologer extends MX_Controller {
 		}
 		else
 		{
+			$data['title'] = "Account Upgrade - Astroriva";
+			$data['description'] = "";
+
 			$data['data'] = $this->db->get_where('membership_apply',array('astrology_id'=>$this->session->userdata('astro_astrologer')->id))->row();
 			$this->layout->view('upgrade',$data,'astrologer');
 		}
