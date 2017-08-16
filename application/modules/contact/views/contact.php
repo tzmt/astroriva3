@@ -60,7 +60,7 @@
 	                    <input type="email" name="email" class="contact_email form-control" required="required" placeholder="Your Email">
 
 	                    <label for="contact_email" class="text-info label_align">Subject:</label>
-	                    <input type="email" name="subject" class="contact_email form-control" required="required" placeholder="Your Subject">
+	                    <input type="text" name="subject" class="contact_email form-control" required="required" placeholder="Your Subject">
 	                </div>
 	            </div>
 	            <div class="col-md-8 contact_block">

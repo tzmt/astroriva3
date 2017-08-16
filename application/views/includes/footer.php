@@ -2,11 +2,10 @@
 <hr/>
         <div class="row text-center">
 
-            <p>made with &nbsp;<img src="<?php echo base_url(); ?>assets/site_assets/images/heartf.png" alt="heart loading"/>&nbsp; by
-
+            <p>Delevoped By &nbsp;
                 <a href="http://www.webscorb.com"
 
-                   class="footer_color_variant">Webscorb.com</a></p>
+                   class="footer_color_variant" target="_blank">Webscorb.com</a></p>
 
         </div>
 
