@@ -3,7 +3,7 @@
         <div class="row text-center">
 
             <p>Delevoped By &nbsp;
-                <a href="http://www.webscorb.com"
+                <a href="http://webscorb.com"
 
                    class="footer_color_variant" target="_blank">Webscorb.com</a></p>
 
