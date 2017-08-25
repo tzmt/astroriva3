@@ -142,8 +142,7 @@
                                 <h4><?php echo $bastu->title; ?></h4>
                                 <p><?php echo $bastu->description; ?></p>
                                 <div class="row">
-                                    <div class="col-md-6"><button type="submit" class="btn btn-success col-md-12">Book Appointment</button></div>
-                                    <div class="col-md-6"><button type="submit" class="btn btn-warning col-md-12">View More</button></div>
+                                    <div class="col-md-6"><a href="<?php echo base_url(); ?>astrologer-details/appointment/santanu-sashtri/"><button type="button" class="btn btn-success col-md-12">Book Appointment</button></a></div>                                    
                                 </div>
                             </div>
                         </div>

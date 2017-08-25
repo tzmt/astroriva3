@@ -317,4 +317,11 @@ class Astrology extends MX_Controller {
 		$data['description'] = "There are various astrology branches to help you learn more about astrology.";	
 		$this->layout->view('astro_branches',$data,'home1');
 	}
+
+	public function horoscope_bank()
+	{
+		$data['title'] = "Horoscope Bank - Astroriva.com";
+		$data['description'] = "";
+		$this->layout->view('horoscope_bank',$data,'home1');
+	}
 }

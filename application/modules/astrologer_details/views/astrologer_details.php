@@ -60,7 +60,8 @@
 										<span class='st_email_large' displayText='Email'></span>
 										<span class='st_sharethis_large' displayText='ShareThis'></span>
 										<br/>
-										<a href="javascript:void(0)" class="btn btn-primary" onclick="showAppointment()">Book An Appoinment</a> <a href="#" class="btn btn-primary">1 Like</a> <a href="#" class="btn btn-primary">10 Comments</a>
+										<a href="javascript:void(0)" class="btn btn-primary" onclick="showAppointment()">Book An Appoinment</a>
+										<a href="<?php echo base_url(); ?>astrologer-details/<?php echo $all_data->id; ?>/<?php echo strtolower(str_replace(" ","-",$all_data->name)); ?>/products/" class="btn btn-primary" onclick="showAppointment()">Products</a>
 										<br/>										
 									</div>
 								</div>

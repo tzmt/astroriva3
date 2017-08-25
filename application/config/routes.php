@@ -83,3 +83,5 @@ $route['astrologyajax/getajaxrashi'] = 'astrology/getajaxrashi';
 $route['shop/(:num)'] = 'shop/index/$1';
 
 $route['astrologer/search'] = 'astrologer_list/search';
+
+$route['horoscope-bank'] = 'astrology/horoscope_bank';
