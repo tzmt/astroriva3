@@ -44,7 +44,7 @@
 					        'hash' => $this->security->get_csrf_hash()
 					);
 				?>			
-					<div class="col-md-5">						
+					<div class="col-md-8">						
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Rashi Details</div>
 							<div class="panel-body">
@@ -102,38 +102,103 @@
 						</div><!-- /panel -->
 					</div><!-- /.col -->
 
-					<div class="col-md-7">
+					<div class="col-md-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								Rashi Details
 							</div>
 							<div class="panel-body no-padding">
-								<div class="tab-right">
-									<ul class="tab-bar">
-										<?php $q = $this->rashi_model->getRashiDetails(); ?>
-										<?php $i=0; foreach($q as $rashi){ ?>
-										<li <?php if($i == 0) {?> class="active" <?php } ?>><a href="#<?php echo $rashi->rashi_id; ?>" data-toggle="tab"> <?php echo $this->rashi_model->getRashiNameFromId($rashi->rashi_id); ?></a></li>
-										<?php $i++; } ?>										
-									</ul>
-									<div class="tab-content">
+								<!-- <div class="tab-right"> -->
+									<!-- <ul class="tab-bar">
+										<?php //$q = $this->rashi_model->getRashiDetails(); ?>
+										<?php //$i=0; foreach($q as $rashi){ ?>
+										<li <?php //if($i == 0) {?> class="active" <?php //} ?>><a href="#<?php //echo $rashi->rashi_id; ?>" data-toggle="tab"> <?php //echo $this->rashi_model->getRashiNameFromId($rashi->rashi_id); ?></a></li>
+										<?php //$i++; } ?>										
+									</ul> -->
+									<!-- <div class="tab-content">
 										
-										<?php $j = 0; foreach($q as $q1){ ?>										
-										<div class="tab-pane fade in <?php if($j==0){ ?>active <?php } ?>" id="<?php echo $q1->rashi_id ?>">
-											<p><img src="<?php echo SITE_URL; ?>assets/rashi_details/<?php echo $q1->image; ?>" class="img-thumbnail" ></p>
-											<p><strong>Rashi Name: </strong><?php echo $this->rashi_model->getRashiNameFromId($rashi->rashi_id); ?></p>
-											<p><strong>Topic Name: </strong><?php echo $this->rashi_model->getRashiTopicNameFromId($rashi->topic_id); ?></p>
-											<p><strong>Description: </strong><?php echo $q1->description; ?></p>
-											<a href="<?php echo base_url(); ?>rashi/edit_details/<?php echo $q1->id; ?>"><span class="badge badge-warning">Edit</span></a>
-											<a href="<?php echo base_url(); ?>rashi/delete_rashi_details/<?php echo $q1->id; ?>"><span class="badge badge-danger">Delete</span></a>
+										<?php //$j = 0; foreach($q as $q1){ ?>										
+										<div class="tab-pane fade in <?php //if($j==0){ ?>active <?php //} ?>" id="<?php //echo $q1->rashi_id ?>">
+											<p><img src="<?php //echo SITE_URL; ?>assets/rashi_details/<?php //echo $q1->image; ?>" class="img-thumbnail" ></p>
+											<p><strong>Rashi Name: </strong><?php //echo $this->rashi_model->getRashiNameFromId($rashi->rashi_id); ?></p>
+											<p><strong>Topic Name: </strong><?php //echo $this->rashi_model->getRashiTopicNameFromId($rashi->topic_id); ?></p>
+											<p><strong>Description: </strong><?php //echo $q1->description; ?></p>
+											<a href="<?php //echo base_url(); ?>rashi/edit_details/<?php //echo $q1->id; ?>"><span class="badge badge-warning">Edit</span></a>
+											<a href="<?php //echo base_url(); ?>rashi/delete_rashi_details/<?php //echo $q1->id; ?>"><span class="badge badge-danger">Delete</span></a>
 										</div>	
-										<?php $j++; } ?>									
-									</div>
+										<?php //$j++; } ?>									
+									</div> -->
+								<!-- </div> -->
+
+								<div class="tabbable">
+								    <ul class="nav nav-tabs">  
+								        <?php
+								    	$q = $this->db->get_where('rashi_list')->result();
+								    	$arr1 = array();
+								    	foreach($q as $q1){
+								    		$arr1[] = $q1->name.'_'.$q1->id;
+								    	?>									  
+										  <li><a href="#<?php echo $q1->name.'_'.$q1->id; ?>" data-toggle="tab"><?php echo $q1->name; ?></a></li>
+									  	<?php } ?>
+								    </ul>
+								    <div class="tab-content"> 
+								    	 <?php
+								    	 	foreach($arr1 as $ar){
+								    	 ?>
+								        <div class="tab-pane" id="<?php echo $ar; ?>">							           
+								            <div class="tabbable">
+								                <ul class="nav nav-tabs">
+								                <?php
+                                                    $this->db->group_by('rashi_topic_list.name');
+                                       				$q2 = $this->db->select('rashi_topic_list.name,rashi_topic_list.id,rashi_topic_details.id as topic_id,rashi_topic_details.rashi_id,rashi_topic_details.description')->from('rashi_topic_details')->join('rashi_topic_list','rashi_topic_list.id = rashi_topic_details.topic_id','left')->get()->result();
+                                       				$arr2 = array();
+                                       				foreach($q2 as $q3){
+                                       					$arr3['id'] = $q3->name."_".$q3->topic_id;
+                                       					$arr3['topic_id'] = $q3->topic_id;
+                                       					$arr3['desc'] = $q3->description;
+
+                                       					$arr2[] = $arr3;
+
+                                   					?>								                    
+								                    	<li><a href="#<?php echo $q3->topic_id; ?>" data-toggle="tab"><?php echo $q3->name; ?></a></li>
+						                    	<?php } ?>
+								                </ul>
+								                <?php
+								                	//echo "<pre>";print_r($arr2);
+								                ?>
+								                <div class="tab-content">
+								                <?php foreach($arr2 as $arr4){
+								                	$exp = explode('_',$arr4['id']);
+								                	$exp1 = end($exp);
+								                ?>
+								                    <div class="tab-pane" id="#<?php echo $exp1; ?>">
+								                        <p>I'm in Section 3.</p>
+							                   		</div>		
+						                   		<?php } ?>
+								                </div>
+								            </div>
+								        </div>
+
+								        <?php } ?>
+								    </div>
 								</div>
+
+
 							</div>
 						</div><!-- panel -->
 					</div><!-- /.col -->
+
+					<div class="row">
+						
+
+
+
+						    
+						    	    
+
+						
+					</div>
 				</div>
 			</div>
 		</div><!-- /main-container -->
 	</div><!-- /wrapper -->
-

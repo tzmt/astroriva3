@@ -95,10 +95,11 @@ class Course extends MX_Controller{
 	public function lists($limit_from = '')
 	{
 		if($this->input->post())
-		{		
+		{	
+			$id = $this->input->post('course_id');
 			$post_data['course_id'] = $this->input->post('course_id');
 			$image = '';  
-			$total_books = count($_FILES['book']['name']);
+			$total_books = count($_FILES['books']['name']);
 			$total_assign = count($_FILES['assignment']['name']);              
 			if($_FILES['syllabus']['name'] !="")
 			{
@@ -109,7 +110,7 @@ class Course extends MX_Controller{
 				move_uploaded_file($_FILES['syllabus']['tmp_name'], $dir.$file_name);
 			}
 
-			if($_FILES['books']['name'] !="")
+			if(count($total_books) > 0)
 			{
 				$q = $this->db->get_where('course_books',array('course_id'=>$id))->result();
 				foreach($q as $q1)
@@ -125,11 +126,11 @@ class Course extends MX_Controller{
 
 				for($i = 0; $i < $total_books; $i++)
 				{
-					$dir = '../assets/syllabus/';
-					$ext = end(explode('.',$_FILES['syllabus']['name']));				
+					$dir = '../assets/books/';
+					$ext = end(explode('.',$_FILES['books']['name']));				
 					$file_name = time().rand(0000,9999).'.'.$ext;
-					$post_data['syllabus'] = $file_name;
-					move_uploaded_file($_FILES['syllabus']['tmp_name'], $dir.$file_name);
+					$post_data['books'] = $file_name;
+					move_uploaded_file($_FILES['books']['tmp_name'], $dir.$file_name);
 					$arr = array('course_id'=>$last_id,'books'=>$file_name);
 					$this->db->insert('course_books',$arr);
 				}

@@ -122,6 +122,12 @@
 							<?php } ?>
 						</tbody>
 					</table>
+					<?php
+						$csrf = array(
+						        'name' => $this->security->get_csrf_token_name(),
+						        'hash' => $this->security->get_csrf_hash()
+						);
+					?>	
 					<?php foreach($all_data as $key=> $prid){ ?>
 					<div class="modal fade" id="simpleEditModal<?php echo $prid->id; ?>">
 								<div class="modal-dialog">
@@ -131,12 +137,13 @@
 										<h4>Edit Course</h4>
 					  				</div>
 								    <div class="modal-body">
-								       <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>course/lists/" enctype="multipart/form-data">									
+							       		<form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>course/lists/" enctype="multipart/form-data">									
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Name</label>
 										<div class="col-lg-10">
 											<input type="text" name="name" class="form-control input-sm" id="inputEmail1" value="<?php echo $prid->name; ?>" required>
 											<input type="hidden" name="course_id" value="<?php echo $prid->id; ?>">
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 
@@ -145,7 +152,7 @@
 										<div class="col-lg-10">									
 											<select name="duration" class="form-control input-sm">
 												<?php for($i = 1; $i<=36; $i++){ ?>
-												<option value="<?php echo $i; ?>" <?php if($prid->duration == $i) echo "selected"; ?>><?php echo $i; ?> Months</option>
+													<option value="<?php echo $i; ?>" <?php if($prid->duration == $i) echo "selected"; ?>><?php echo $i; ?> Months</option>
 												<?php } ?>
 											</select>
 										</div><!-- /.col -->
@@ -169,9 +176,7 @@
 											</div>
 										</div><!-- /.col -->
 										<a href="<?php echo SITE_URL ?>assets/syllabus/<?php echo $prid->syllabus; ?>"><span class="pull-right" style="margin-top: 11px;
-    color: blue;margin-right:17px">Download Syllabus</span></a>
-    <a href="javascript:void(0)"><span class="pull-left" style="margin-top: 11px;
-    margin-left: 17px;color: red;">Leave blank if you don't want to change it</span></a>
+    color: blue;margin-right:17px">Download Syllabus</span></a><a href="javascript:void(0)"><span class="pull-left" style="margin-top: 11px; margin-left: 17px;color: red;">Leave blank if you don't want to change it</span></a>
 									</div><!-- /form-group -->
 
 									<div class="form-group">
@@ -186,15 +191,14 @@
 										<label class="control-label col-lg-2">Book</label>
 										<div class="col-lg-10">
 											<div class="upload-file">
-												<input type="file" name="book[]" id="upload-demo1" class="upload-demo">
+												<input type="file" name="books[]" id="upload-demo1" class="upload-demo" multiple>
 												<label data-title="Select file" for="upload-demo1">
 													<span data-title="No file selected..."></span>
 												</label>												
 											</div>
 										</div>
 										<a href="javascript:void(0)"><span class="pull-right" style="margin-top: 10px;margin-right: 18px;color: blue;" onclick="addBooks()">Add More</span></a>
-										<a href="javascript:void(0)"><span class="pull-left" style="margin-top: 11px;
-    margin-left: 17px;color: red;">Leave blank if you don't want to change it</span></a>
+										<a href="javascript:void(0)"><span class="pull-left" style="margin-top: 11px;margin-left: 17px;color: red;">Leave blank if you don't want to change it</span></a>
 									</div><!-- /form-group -->
 
 									<div id="add_books"></div>
@@ -218,8 +222,7 @@
 											</div>
 										</div>
 										<a href="javascript:void(0)"><span class="pull-right" style="margin-top: 10px;margin-right: 18px;color: blue;" onclick="addAssign()">Add More</span></a>
-										<a href="javascript:void(0)"><span class="pull-left" style="margin-top: 11px;
-    margin-left: 17px;color: red;">Leave blank if you don't want to change it</span></a>
+										<a href="javascript:void(0)"><span class="pull-left" style="margin-top: 11px;margin-left: 17px;color: red;">Leave blank if you don't want to change it</span></a>
 									</div><!-- /form-group -->
 
 									<div id="add_assign"></div>											
@@ -267,7 +270,7 @@
 		function addBooks()
 		{
 			i++;
-			var html = '<div class="form-group"><label class="control-label col-lg-2">Book '+i+'</label><div class="col-lg-10"><div class="upload-file"><input type="file" name="book[]" id="upload-demo_book'+i+'" class="upload-demo"><label data-title="Select file" for="upload-demo_book'+i+'"><span data-title="No file selected..."></span></label></div></div></div>';			
+			var html = '<div class="form-group"><label class="control-label col-lg-2">Book '+i+'</label><div class="col-lg-10"><div class="upload-file"><input type="file" name="books[]" id="upload-demo_book'+i+'" class="upload-demo"><label data-title="Select file" for="upload-demo_book'+i+'"><span data-title="No file selected..."></span></label></div></div></div>';			
 			$('#add_books').append(html);
 		}
 

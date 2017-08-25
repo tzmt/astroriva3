@@ -2,10 +2,9 @@
 <hr/>
         <div class="row text-center">
 
-            <p>Delevoped By &nbsp;
-                <a href="http://webscorb.com"
-
-                   class="footer_color_variant" target="_blank">Webscorb.com</a></p>
+          <div class="col-md-12">
+            <p>Delevoped By &nbsp;<a href="http://webscorb.com" class="footer_color_variant" target="_blank">Webscorb.com</a></p>
+          </div>
 
         </div>
 
