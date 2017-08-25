@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="<?php echo $description; ?>">
+    <meta name="image" content="<?php echo $image; ?>">
+    <meta name="og:title" content="<?php echo $title; ?>">
+    <meta name="og:description" content="<?php echo $description; ?>">
+    <meta name="og:url" content="<?php echo current_url(); ?>">    
+    <meta name="og:type" content="website">
     <meta name="author" content="RRishibani">
     <title><?php echo $title; ?></title>
     <!--=============== Global Css Start ===============-->
