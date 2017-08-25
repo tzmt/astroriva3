@@ -9,13 +9,13 @@ class Home_model extends CI_Model{
 
 	public function getPannelledAstrologers()
 	{
-		$this->db->limit(8);
+		$this->db->limit(6);
 		return $this->db->order_by('rand()')->get_where('astrologer',array('status'=>2))->result();
 	}
 
 	public function getPremiumAstrologers()
 	{
-		$this->db->limit(8);
+		$this->db->limit(6);
 		return $this->db->order_by('rand()')->get_where('astrologer',array('status'=>1))->result();
 	}
 
