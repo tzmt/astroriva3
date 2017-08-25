@@ -125,6 +125,12 @@
 
             	<table class="table table-bordered">
                     <tr>
+                        <td colspan="2"><strong>Details</strong></td>                        
+                    </tr>
+                    <tr>                        
+                        <td colspan="2"><?php echo $product_details->details;?></td>
+                    </tr>
+                    <tr>
                         <td><strong>Availability</strong></td>
                         <td><?php if($product_details->quantity > 0) {?>In Stock<?php } else { echo "Out Of Stock"; }?></td>
                     </tr>

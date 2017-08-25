@@ -20,7 +20,7 @@ class Shop extends MX_Controller {
 		$this->load->library('pagination');
 
 		$config['base_url'] = base_url().'shop/';
-		$config['total_rows'] = $this->db->get_where('shop_product',array('type'=>1))->num_rows();
+		$config['total_rows'] = $this->db->get('shop_product')->num_rows();
 		$config['per_page'] = 15;
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 2;

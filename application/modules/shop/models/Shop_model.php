@@ -17,7 +17,7 @@ class Shop_model extends CI_Model{
         if($cat == "")
         {            
             $this->db->limit($lim_to,$lim_from); 
-            return $q = $this->db->get_where('shop_product',array('type'=>1))->result();
+            return $q = $this->db->get('shop_product')->result();
         }
         else
         {

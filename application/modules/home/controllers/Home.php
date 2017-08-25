@@ -10,7 +10,7 @@ class Home extends MX_Controller {
 		date_default_timezone_set('Asia/Kolkata');
 		$query = $this->db->get_where('settings',array('id'=>1))->row();
 		define('LOGO',$query->logo);
-		define('FAVICON',$query->favicon);		
+		define('FAVICON',$query->favicon);	
 	}
 
 	public function index()
