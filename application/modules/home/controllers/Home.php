@@ -34,7 +34,7 @@ class Home extends MX_Controller {
 		$this->home_model->updateStatistics();		
 		$data['title'] = "Rrishibani Institute for Vedic Astrology - The Ultimate Way of Traditional Astrological Research";
 		$data['description'] = 'Know about your Rashi Retails, General Characters, Positive and Negative aspects, The predictions made by our Astrologers for you, And exclusive Remedies and Tips for your Rashi.';
-		$data['image'] ="<?php echo base_url(); ?>assets/images/12633668_1049640938389380_6721966995694747480_o.jpg";		
+		$data['image'] = base_url()."assets/images/12633668_1049640938389380_6721966995694747480_o.jpg";		
 		$data['url'] = current_url();
 		$data['keywords'] = "free horoscope prediction, free match making prediction, horoscope, today's horoscope, free rashi prediction, get my rashi prediction, astrologers prediction, get astrologer prediction, astrology for business, astrology for career, astrology for education, astrology for wealth, learn astrology, learn astrology in bengali, bengali astrology class, Rrishibani astrology";
 		//print_r($data['tips']);	
