@@ -11,6 +11,7 @@
     <meta name="og:description" content="<?php echo $description; ?>">
     <meta name="og:url" content="<?php echo current_url(); ?>">    
     <meta name="og:type" content="website">
+    <meta name="og:image" content="<?php echo $image; ?>">
     <meta name="author" content="RRishibani">
     <title><?php echo $title; ?></title>
     <!--=============== Global Css Start ===============-->
