@@ -57,7 +57,7 @@ function googleTranslateElementInit() {
                 <div class="col-sm-2 col-xs-2 head_signs">
                     <a href="<?php echo base_url(); ?>shop/">
                         <div class="bg-info header_bg center-block">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/dislike.png" alt="Image missing">
+                            <i class="fa fa-shopping-cart" style="color: #fff"></i>
                         </div>
                         <div class="text-center info1 font13 hidden-xs">Shop</div>
                     </a>
@@ -65,7 +65,7 @@ function googleTranslateElementInit() {
                 <div class="col-sm-2 col-xs-2 text-center head_signs">
                     <a href="<?php echo base_url(); ?>services/">
                         <div class="bg-info header_bg center-block">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/head.png" alt="Image missing">
+                            <i class="fa fa-shield" style="color: #fff"></i>
                         </div>
                         <div class="text-center info1 font13 hidden-xs">Services</div>
                     </a>
@@ -73,7 +73,7 @@ function googleTranslateElementInit() {
                 <div class="col-sm-2 col-xs-2 text-center head_signs">
                     <a href="<?php echo base_url(); ?>gallery/">
                         <div class="bg-info header_bg center-block">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/heart.png" alt="Image missing">
+                            <i class="fa fa-picture-o" style="color: #fff"></i>
                         </div>
                         <div class="text-center info1 font13 hidden-xs">Gallery</div>
                     </a>
@@ -82,7 +82,7 @@ function googleTranslateElementInit() {
                 <div class="col-sm-2 col-xs-2 text-center head_signs">
                     <a href="<?php echo base_url(); ?>horoscope-bank/">
                         <div class="bg-info header_bg center-block">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/man-with-tie.png" alt="Image missing">
+                            <i class="fa fa-star" style="color: #fff"></i>
                         </div>
                         <div class="text-center info1 font13 hidden-xs">Horoscope Bank</div>
                     </a>
@@ -90,7 +90,7 @@ function googleTranslateElementInit() {
                 <div class="col-sm-2 col-xs-2 text-center head_signs">
                     <a href="<?php echo base_url(); ?>astrology-video-class">
                         <div class="bg-info header_bg center-block">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/yin-and-yang.png" alt="Image missing">
+                            <i class="fa fa-video-camera" style="color: #fff"></i>
                         </div>
                         <div class="text-center info1 font13 hidden-xs">Video Class</div>
                     </a>
@@ -98,7 +98,7 @@ function googleTranslateElementInit() {
                 <div class="col-sm-2 col-xs-2 text-center head_signs">
                     <a href="<?php echo base_url(); ?>contact/">
                         <div class="bg-info header_bg center-block">
-                            <img src="<?php echo URL; ?>assets/site_assets/images/calendar.png" alt="Image missing">
+                            <i class="fa fa-envelope" style="color: #fff"></i>
                         </div>
                         <div class="text-center info1 font13 hidden-xs">Contact Us</div>
                     </a>
