@@ -38,7 +38,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<?php if($q->num_rows() > 0){ ?>
-									<a data-toggle="collapse" data-parent="#accordian" href="#<?php echo strtolower($cat->name); ?>">
+									<a data-toggle="collapse" data-parent="#accordian" href="#<?php echo str_replace(" ","_",strtolower($cat->name)); ?>">
 										<span class="badge pull-right"><i class="fa fa-plus"></i></span>
 										<?php echo $cat->name; ?>
 									</a>
@@ -48,7 +48,7 @@
 								</h4>
 							</div>
 							<?php if($q->num_rows() > 0){ ?>
-							<div id="<?php echo strtolower($cat->name); ?>" class="panel-collapse collapse">
+							<div id="<?php echo str_replace(" ","_",strtolower($cat->name)); ?>" class="panel-collapse collapse">
 								<div class="panel-body">
 									<ul>
 										<?php $q1 = $q->result(); ?>
@@ -101,6 +101,9 @@
                 <span>
                     <form method="POST" action="<?php echo base_url(); ?>shop/add/<?php echo $this->uri->segment(3); ?>">
                         <h2><span><i class="fa fa-rupee"></i> <?php echo $product_details->price; ?></span></h2>
+                        <?php                       
+                            if($product_details->type == 1){
+                        ?>
                         <label>Quantity:</label>
                         <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
                         <input type="number" value="1" name="quantity" min="0" max="<?php echo $product_details->quantity; ?>"/>
@@ -113,10 +116,19 @@
                         <input type="hidden" name="price" value="<?php echo $product_details->price; ?>"/>
                         <input type="hidden" name="weight" value="<?php echo $product_details->weight; ?>"/>
                         <input type="hidden" name="quantity1" value="<?php echo $product_details->quantity; ?>"/>
+
                         <button type="submit" class="btn btn-primary cart">
                             <i class="fa fa-shopping-cart"></i>
                             Add to cart
                         </button>
+                        <?php } else{                            
+                            $ast = strtolower(str_replace(" ","-",$this->db->get_where('astrologer',array('id'=>$product_details->astrologers_id))->row()->name));
+                        ?>
+                        <a href="<?php echo base_url(); ?>astrologer-details/<?php echo $product_details->astrologers_id; ?>/<?php echo $ast; ?>"><button type="button" class="btn btn-primary cart">
+                            <i class="fa fa-user"></i>
+                            View Seller Details
+                        </button></a>
+                        <?php } ?>
                     </form>
                 </span>
 

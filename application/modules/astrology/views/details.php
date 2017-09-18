@@ -140,7 +140,7 @@
                             </div>
                             <div class="col-sm-10 col-xs-8 m-t-26">
                                 <h4><?php echo $bastu->title; ?></h4>
-                                <p><?php echo $bastu->description; ?></p>
+                                <p style="text-align: justify;"><?php echo substr($bastu->description,0,150); ?><?php if(strlen($bastu->description) > 150){?><span id="showBastu" style="display: none;"><?php echo substr($bastu->description,150,strlen($bastu->description)); ?></span><span>... <a href="javascript:void(0)" onclick="showBastu()"><strong id="readtext">&nbsp;Read More...</strong></a></span> <?php  } ?></p>
                                 <div class="row">
                                     <div class="col-md-6"><a href="<?php echo base_url(); ?>astrologer-details/appointment/santanu-sashtri/"><button type="button" class="btn btn-success col-md-12">Book Appointment</button></a></div>                                    
                                 </div>
@@ -269,7 +269,23 @@
                 //$('#rashiajaxdetails').html("");
             },
             dataType: 'html'
-        });
-        
+        });        
+    }
+
+    var a = 0;
+    function showBastu()
+    {
+        if(a == 0)
+        {
+            $('#showBastu').slideDown();
+            $('#readtext').text('Show Less...');
+            a = 1;
+        }
+        else
+        {
+            $('#showBastu').slideUp();
+            $('#readtext').text('Read More...');
+            a = 0;
+        }
     }
 </script>

@@ -44,7 +44,7 @@
 				<div class="portfolio-item padding-bottom portfolio_contents" style="margin-top: 50px;">
 					<div id="portfolio_filter">	
 						<?php foreach($video_list as $list){ ?>							
-							<div class="col-md-3 vid<?php echo $list->id; ?> showhide123" style="border-radius: 5px;padding:5px;">
+							<div class="col-md-3 vid<?php echo $list->cat_id; ?> showhide123" style="border-radius: 5px;padding:5px;">
 								<div class="entry-header" style="text-align: left;background: #fff;">
 
 
@@ -114,10 +114,12 @@
 <style>
 	.activevid{background: #e36480;
     padding: 5px 10px 5px 10px;
-    color: #fff;
+    color: #fff !important;
     border-radius: 10px;
     color: #fff;
 }
+.activevid > a:hover{color: #fff !important}
+.activevid > a{color: #fff !important}
 </style>
 <script type="text/javascript">
 	function showHideVideo(id)

@@ -79,7 +79,7 @@
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $tip->astrologers_id; ?>/details"><?php echo $tip->name; ?></a></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/tips-and-remedy'><strong>Read More...</strong></a>"; ?></span>
+	                            	<span><?php echo substr($tip->description,0,45)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/tips-and-remedy'><strong>Read More</strong></a>"; ?></span>
 	                            </div>
 	                        </div>
 
@@ -98,7 +98,7 @@
 	                            <div class="col-md-9">
 	                            	<span style="color:#e36480"><a href="<?php echo base_url(); ?>astrologer-details/<?php echo $tip->astrologers_id; ?>/details"><?php echo $tip->name; ?></a></span><br/>
 	                            	<span><strong><?php echo $tip->topic; ?></strong></span><br/>
-	                            	<span><?php echo substr($tip->description,0,50)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/market-prediction'><strong>Read More...</strong></a>"; ?></span>
+	                            	<span><?php echo substr($tip->description,0,45)." &nbsp;<a href='".base_url()."astrology/".$tip->rashi_name."/market-prediction'><strong>Read More</strong></a>"; ?></span>
 	                            </div>
 	                        </div>
 
@@ -122,7 +122,7 @@
                                 <div class="col-xs-3"><img src="<?php echo base_url(); ?>assets/events/<?php echo $q1->image; ?>" width="100%" class="img-circle"  width="53px" height="53px"></div>
                                 <div class="col-md-9">
                                     <span style="color:#e36480"><?php echo $q1->title; ?></span><br/>
-                                    <span><?php echo substr($q1->description,0,50)." &nbsp;<a href=''><strong>Read More...</strong></a>"; ?></span>
+                                    <span><?php echo substr($q1->description,0,45)." &nbsp;<a href=''><strong>Read More</strong></a>"; ?></span>
                                 </div>
                             </div>
 

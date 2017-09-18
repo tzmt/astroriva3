@@ -45,9 +45,7 @@
 											<li style="color:#000"><i class="fa fa-angle-double-right"></i> <strong>Description:</strong> <?php echo $all_data->details; ?></li>
 											<hr>
 											<li style="color:#000"><i class="fa fa-angle-double-right"></i><strong>Education:</strong> <?php echo $all_data->education; ?> </li>
-											<hr>
-											<li style="color:#000"><i class="fa fa-angle-double-right"></i><strong>Email:</strong> <?php echo $all_data->email; ?></li>
-											<hr>
+											<hr>											
 											<li style="color:#000"><i class="fa fa-angle-double-right"></i><strong>Specialisation:</strong> <?php echo $all_data->specialization; ?></li>
 											<hr>
 											<li style="color:#000"><i class="fa fa-angle-double-right"></i><strong>Experience:</strong> <?php echo $all_data->experience; ?></li>

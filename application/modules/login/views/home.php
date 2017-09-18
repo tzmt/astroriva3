@@ -29,8 +29,7 @@
 
                             <select name="type" id="login_type" required="required" class="form-control">
                                 <option value="">[Select]</option>
-                                <option value="1">Astrologer</option>
-                                <option value="3">Member</option>
+                                <option value="1">Astrologer</option>                                
                                 <option value="2">Student</option>
                             </select>
 
