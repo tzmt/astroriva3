@@ -33,6 +33,7 @@ class Settings extends MX_Controller{
 				$post_data['description'] = $this->input->post('description');
 				$post_data['meta_keywords'] = $this->input->post('meta_keywords');	
 				$post_data['maintenance'] = $this->input->post('maintenance');
+				$post_data['address'] = $this->input->post('address');
 
 				if($_FILES['favicon']['error'] !=4)
 				{

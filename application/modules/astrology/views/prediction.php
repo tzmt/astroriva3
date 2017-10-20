@@ -40,18 +40,17 @@
 					<hr/>
 					<?php //} ?>
 				</div> -->
-				<div class="col-md-6"> 
+				<div class="col-md-12"> 					
 					<div class="comments-area">
 						<h3>ASTROLOGERS PREDICTION</h3>
 							<?php foreach($prediction as $tip){ ?>
-		                        <div class="wow fadeInLeft col-md-12" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
+		                        <div class="wow fadeInLeft col-md-6" data-wow-duration="1s" data-wow-delay="0.1s" style="margin-bottom: 15px;border-bottom: 1px solid #ddd;padding-bottom: 10px;">
 		                            <div class="col-xs-2"><img src="<?php echo base_url(); ?>assets/astrologer/<?php echo $tip->image; ?>" width="100%" class="img-circle"></div>
-		                            <div class="col-md-9">
+		                            <div class="col-md-6">
 		                            	<span style="color:#e36480"><?php echo $tip->name; ?></span><br/>
 		                            	<span><?php echo $tip->description; ?></span>
 		                            </div>
 		                        </div>
-
 	                        <?php } ?>	
 					</div><!--/comments-area-->
 				</div>

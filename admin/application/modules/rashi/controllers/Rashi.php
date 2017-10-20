@@ -642,7 +642,7 @@ class Rashi extends MX_Controller{
 		}
 	}
 
-	function edit_rashi()
+	public function edit_rashi()
 	{
 		if($this->input->post())
 		{
@@ -684,4 +684,47 @@ class Rashi extends MX_Controller{
 			}
 		}
 	}
+
+	public function edit_topic($id)
+	{
+		if($id != "")
+		{
+			if($this->input->post())
+			{				
+				$this->form_validation->set_rules('name','Topic Name','required');	
+
+				if($this->form_validation->run() == FALSE)
+				{
+					$this->session->set_flashdata('error',validation_errors());
+					redirect('rashi/edit_topic/'.$id);
+				}
+				else
+				{	
+					$post_data = $this->security->xss_clean($this->input->post());
+
+					
+					$this->db->where('id',$id);
+					if($this->db->update('rashi_topic_list',$post_data))
+					{
+						$this->session->set_flashdata('success',"Topic Updated Successfully");
+						redirect('rashi/edit_topic/'.$id);
+					}
+					else
+					{
+						$this->session->set_flashdata('error',"Please try again");
+						redirect('rashi/edit_topic/'.$id);
+					}
+				}
+			}
+
+			$data['topic_list'] = $this->rashi_model->getRashiTopicList();
+			$data['topic'] = $this->db->get_where('rashi_topic_list',array('id'=>$id))->row();
+			$this->layout->view('topic',$data,'normal');
+		}
+		else
+		{
+			redirect('rashi/topic');
+		}
+	}
+
 }

@@ -763,7 +763,7 @@ class Astrology extends MX_Controller{
 		$this->db->where('id',$id);
 		$this->db->delete('branch_image');
 		$this->db->last_query();
-		if(file_exists("../assets/branch/'.$image"))
+		if(file_exists('../assets/branch/'.$image))
 		{				
 			unlink('../assets/branch/'.$image);
 		}			

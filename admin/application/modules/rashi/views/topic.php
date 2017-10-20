@@ -50,17 +50,29 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Topic</div>
 							<div class="panel-body">
-								<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>rashi/topic/">
+							<?php
+								$id = $this->uri->segment(3);
+								if(isset($id)){
+							?>
+								<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>rashi/edit_topic/<?php echo $id; ?>">
+							<?php } else { ?>
+								<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>rashi/topic/<?php echo $id; ?>">
+							<?php } ?>
 									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Topic Name</label>
 										<div class="col-lg-10">
-											<input type="text" name="name" class="form-control input-sm" id="inputEmail1" placeholder="Name" required>
+											<input type="text" name="name" value="<?php if(isset($topic->name)) echo $topic->name; ?>" class="form-control input-sm" id="inputEmail1" placeholder="Name" required>
 											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 									<div class="form-group">
 										<div class="col-lg-offset-2 col-lg-10">
-											<button type="submit" class="btn btn-success btn-sm">Add Topic</button>
+											<?php											
+											if(isset($id)) { ?>
+												<button type="submit" class="btn btn-success btn-sm">Update Topic</button>
+											<?php } else { ?>
+												<button type="submit" class="btn btn-success btn-sm">Add Topic</button>
+											<?php } ?>
 										</div><!-- /.col -->
 									</div><!-- /form-group -->
 								</form>
@@ -88,7 +100,7 @@
 									<tr>
 										<td><?php echo $key+1; ?></td>
 										<td><?php echo $list->name; ?></td>										
-										<td><a href="<?php base_url(); ?>rashi/delete_topic/<?php echo $list->id; ?>"><span class="badge badge-danger">Delete</span></a></td>
+										<td><a href="<?php echo base_url(); ?>rashi/edit_topic/<?php echo $list->id; ?>"><span class="badge badge-primary">Edit</span></a> | <a href="<?php echo base_url(); ?>rashi/delete_topic/<?php echo $list->id; ?>"><span class="badge badge-danger">Delete</span></a></td>
 									</tr>
 									<?php } } else { ?>
 									<tr>

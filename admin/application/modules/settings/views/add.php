@@ -73,6 +73,13 @@
 									</div><!-- /form-group -->
 
 									<div class="form-group">
+										<label for="inputEmail1" class="col-lg-2 control-label">Address</label>
+										<div class="col-lg-10">											
+											<textarea name="address" class="form-control input-sm" placeholder="Address goes here..." required><?php echo $all_data->address; ?></textarea>
+										</div><!-- /.col -->
+									</div><!-- /form-group -->
+
+									<div class="form-group">
 										<label for="inputEmail1" class="col-lg-2 control-label">Favicon</label>
 										<div class="col-lg-10">		
 											<p><img src="<?php echo SITE_URL; ?>assets/ico/<?php echo $all_data->favicon; ?>"></p>									
